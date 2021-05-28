@@ -19,8 +19,35 @@ Outras características importantes sobre a ferramenta são:
 - Pode se integrar a aplicações já desenvolvidas;
 
 
-<h2>Instalando o Flutter</h2>
+<h2>Instalação</h2>
+
 
 Para instalar e usar o Flutter, é preciso seguir alguns passos:
 
 - [Baixar Flutter para Windows](https://flutter.dev/docs/get-started/install/windows)
+- Extrair o contéudo do arquivo zip
+- Encaminhar o arquivo resultante para uma pasta no disco local (exemplo: C:\src\flutter)
+
+
+<h2>Criar Variável de Ambiente</h2>
+
+
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
+
+- Acessar as propriedades em 'Meu Computador';
+- Acessar 'configurações avançadas do sistema';
+- Acessar 'Variáveis de Ambiente';
+- Em 'Variáveis de usuário' selecionar 'Path' e clicar em Editar;
+- Selecionar a opção 'Novo' e definir o caminho C:\src\flutter como nova variável de ambiente;
+- Encerrar clicando em OK;
+
+Após esse processo é possível executar o Flutter no Cmd do Windows. Para verificar se o Flutter foi corretamente instalado é possível utilizar os comandos a sequir:
+
+    // Verificar a versão instalada
+
+    flutter --version
+
+    // Acessar gerenciador do Flutter
+
+    flutter
+
