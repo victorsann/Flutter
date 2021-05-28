@@ -12,11 +12,11 @@ Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](
 
 Outras características importantes sobre a ferramenta são:
 
-- Dispõe o Stateful Hot Reload;
-- Utiliza Widgets Reativos Customizaveis;
-- Roda em diversas IDE's;
-- Utiliza a GPU e permite acesso as API'S das plataformas android e IOS;
-- Pode se integrar a aplicações já desenvolvidas;
+- Dispõe o Stateful Hot Reload
+- Utiliza Widgets Reativos Customizaveis
+- Roda em diversas IDE's
+- Utiliza a GPU e permite acesso as API'S das plataformas android e IOS
+- Pode se integrar a aplicações já desenvolvidas
 
 
 <h2>Instalação</h2>
@@ -41,7 +41,7 @@ Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sis
 - Selecionar a opção 'Novo' e definir o caminho C:\src\flutter\bin como nova variável de ambiente
 - Encerrar clicando em OK
 
-Após esse processo é possível executar o Flutter no Cmd do Windows. Para verificar se o Flutter foi corretamente instalado é possível utilizar os comandos a sequir:
+Após esse processo é possível executar o Flutter no Cmd do Windows. E para verificar se o Flutter foi corretamente instalado é possível utilizar os comandos a sequir:
 
     // Verificar a versão instalada
 
