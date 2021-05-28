@@ -9,3 +9,11 @@
 O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pelo google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
 Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo apenas um código fonte.
+
+Outras características importantes sobre a ferramenta são:
+
+- Dispõe o Stateful Hot Reload;
+- Utiliza Widgets Reativos Customizaveis;
+- Roda em diversas IDE's;
+- Utiliza a GPU e permite acesso as API'S das plataformas android e IOS;
+- Pode se integrar a aplicações já desenvolvidas;
