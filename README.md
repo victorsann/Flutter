@@ -17,3 +17,10 @@ Outras características importantes sobre a ferramenta são:
 - Roda em diversas IDE's;
 - Utiliza a GPU e permite acesso as API'S das plataformas android e IOS;
 - Pode se integrar a aplicações já desenvolvidas;
+
+
+<h2>Instalando o Flutter</h2>
+
+Para instalar e usar o Flutter, é preciso seguir alguns passos:
+
+- [Baixar Flutter para Windows](https://flutter.dev/docs/get-started/install/windows)
