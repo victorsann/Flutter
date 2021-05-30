@@ -12,9 +12,9 @@ Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](
 
 Outras características importantes sobre a ferramenta são:
 
-- Dispõe o Stateful Hot Reload
+- Dispõe de um Stateful Hot Reload
 - Utiliza Widgets Reativos Customizaveis
-- Roda em diversas IDE's
+- É compatível em diversas IDE's
 - Utiliza a GPU e permite acesso as API'S das plataformas android e IOS
 - Pode se integrar a aplicações já desenvolvidas
 
@@ -26,12 +26,12 @@ Antes de iniciar o processo de instalação, é importante frisar que há mais d
 
 - Criar uma pasta src no disco local da sua máquina
 - Acessar [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copiar o Flutter repo Link
-- Acessar o cmd e criar um clone do Flutter na pasta criada
+- Acessar o cmd e criar um clone do Flutter rep na pasta src, anteriormente criada
 
 A partir deste ponto as ferramentas que Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes
 
 
-<h2>Definindo Variável de Usuário</h2>
+<h2>Atualizando Path</h2>
 
 
 Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
@@ -42,9 +42,6 @@ Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sis
 - Em 'Variáveis de usuário' criar nova variável com o nome 'FLUTTER_HOME', tendo 'C:\src\flutter' como seu valor
 
 A variável criada serve como um capinho padrão para acesso aos recursos Flutter
-
-
-<h2>Atualizando o Path</h2>
 
 
 A declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Abaixo está o passo a passo do processo de redefinição necessário:
