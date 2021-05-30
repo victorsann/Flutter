@@ -169,7 +169,7 @@ Para verificar a instalaçao execute
 
     java -version
 
-Obs: É extremamente importante que a versão instala seja a 1.8.0_211, como isso é garantido resultados serão semelhantes nos futuros exemplos
+Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
 
 
 <h3>Android Device</h3>
