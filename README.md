@@ -8,7 +8,7 @@
 
 O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pelo google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo apenas um código fonte.
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo apenas um código fonte
 
 Outras características importantes sobre a ferramenta são:
 
@@ -66,10 +66,11 @@ O comando acessa a ferramenta de gestão do Flutter, ele retorna o status do amb
         ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
     [√] Chrome - develop for the web
     [!] Android Studio (not installed)
-    [√] VS Code (version 1.56.2)
-    [√] Connected device (2 available)
+    [!] VS Code (not installed)
+    [!] Connected device 
+        ! no devices available
     
-    ! Doctor found issues in 2 categories.
+    ! Doctor found issues in 4 categories.
 
 Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passo corrigem estas faltas
 
@@ -108,14 +109,67 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 <h3>Flutter Plugin</h3>
 
 
-A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin, está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
+A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120121007-887b8f00-c177-11eb-982c-b10e39eeb463.png">
 </div>
 
 
-<h3>ANDROID_HOME</h3>
+<h2>Atualizando Variável de Usuário</h2>
+
+
+Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isso seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
+
+- Tornar a acessar o menu SDK Manager
+- Copiar o caminho correspondente ao Android SDK Location
+- Acessar as propriedades em 'Meu Computador'
+- Acessar 'configurações avançadas do sistema'
+- Acessar 'Variáveis de Ambiente' 
+- Em 'Variáveis de usuário' criar nova variável com o nome 'ANDROID_HOME', tendo o caminho do Android SDK Location como seu valor
+
+
+<h2>Atualizando Path</h2>
+
+
+Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais uma atualização no path das variáveis de abiente. Dessa vez correspondente a variável ANDROID_HOME anteriormente criada:
+
+- Acessar as propriedades em 'Meu Computador'
+- Acessar 'configurações avançadas do sistema'
+- Acessar 'Variáveis de Ambiente'
+- Em 'Path' selecionar 'editar'
+- Definir '%ANDROID_HOME%\tools\bi' como uma nova variável em path
+- Definir '%ANDROID_HOME%\platform-tools' como uma nova variável em path
+
+Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
+
+
+<h2>jdk8</h2>
+
+
+Qualquer aplicação android depende essencialmente de um Java Development Kit ou jdk. Sendo um framework que desenvolve aplicações híbridas, o Fluter não é exceção, sendo estritamente necessário tê-lo instalado e operando. A seguir está listado o processo de instalação do jdk8:
+
+
+<h3>Chocolatey</h3>
+
+
+O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. Para instalá-lo execute o PowerShell como administrador e efetue o seguinte comando:
+
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]     ::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+Para verificar a instalação execute
+
+    choco --version
+  
+Tendo a versão retornada é possível confirmar a instalação. Em seguida execute através do Chocolatey a instalação do jdk. 
+
+    choco install jdk8 
+
+Para verificar a instalaçao execute
+
+    java -version
+
+Obs: É extremamente importante que a versão instala seja a 1.8.0_211, garantindo resultados semelhantes nos futuros exemplos
 
 
 <h3>Criando Android Device</h3>
