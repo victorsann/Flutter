@@ -147,7 +147,7 @@ Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente a
 <h2>jdk8</h2>
 
 
-Qualquer aplicação android depende essencialmente de um Java Development Kit ou jdk. Sendo um framework que desenvolve aplicações híbridas, o Fluter não é exceção, sendo estritamente necessário tê-lo instalado e operando. A seguir está listado o processo de instalação do jdk8:
+Qualquer aplicação android depende essencialmente de um Java Development Kit ou jdk. Sendo um framework que desenvolve aplicações híbridas, o Flutter não é exceção, sendo estritamente necessário tê-lo instalado e operando. A seguir está listado o processo de instalação do jdk8:
 
 
 <h3>Chocolatey</h3>
@@ -161,7 +161,7 @@ Para verificar a instalação execute
 
     choco --version
   
-Tendo a versão retornada é possível confirmar a instalação. Em seguida execute através do Chocolatey a instalação do jdk. 
+Tendo a versão retornada é possível confirmar a instalação. Em seguida, instale o jdk com o seguinte comando: 
 
     choco install jdk8 
 
@@ -169,10 +169,10 @@ Para verificar a instalaçao execute
 
     java -version
 
-Obs: É extremamente importante que a versão instala seja a 1.8.0_211, garantindo resultados semelhantes nos futuros exemplos
+Obs: É extremamente importante que a versão instala seja a 1.8.0_211, como isso é garantido resultados serão semelhantes nos futuros exemplos
 
 
-<h3>Criando Android Device</h3>
+<h3>Android Device</h3>
 
 
 Após a instalação da ferramenta de desenvolvimento do android, é possível ter acesso a uma máquina virtual, a qual será utilizada como emulador para teste dos projetos futuros. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial 
