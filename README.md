@@ -90,3 +90,8 @@ Tendo o esse resultado, é possível inicializar o emulador do terminal de coman
 
     flutter emulators --launch Pixel_4a_API_30
 
+Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
+
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/61476935/120112169-1b520480-c14b-11eb-8fc5-d43d1dbd52d9.png">
+</div>
