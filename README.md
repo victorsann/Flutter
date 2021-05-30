@@ -55,3 +55,13 @@ Após esse processo é possível executar o Flutter no Cmd do Windows. E para ve
 - Explicar processo de sownload do android studio e do emulador a ser usado
 - Preparar ambiente(vscode): extenções e demais coisas
 - Explicar estrutura da main.dart file
+
+
+<h2>Ambiente de Desenvolvimento</h2>
+
+
+Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos:
+
+- [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
+- VScode (Recomendado)
+
