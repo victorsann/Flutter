@@ -51,3 +51,6 @@ Após esse processo é possível executar o Flutter no Cmd do Windows. E para ve
 
     flutter
 
+- Definir demais variáveis de ambiente
+- Preparar ambiente(vscode): extenções e demias coisas
+- Explicar estrutura da main.dart file
