@@ -65,3 +65,9 @@ Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvi
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
 - [VScode](https://code.visualstudio.com/) (Recomendado)
 
+
+<h3>Android Studio</h3>
+
+
+O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações que rodem em dispositivos android. Apesar de suprir estas necessidades, a IDE não será utilizada como ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recuso vizado é a criação e uso de emuladores, processo que será visto a seguir
+
