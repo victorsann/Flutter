@@ -63,5 +63,5 @@ Após esse processo é possível executar o Flutter no Cmd do Windows. E para ve
 Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos:
 
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
-- VScode (Recomendado)
+- [VScode](https://code.visualstudio.com/) (Recomendado)
 
