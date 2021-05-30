@@ -75,8 +75,5 @@ O android studio dispõe de recurso essenciais para para o desenvolvimento de ap
 <h3>Criando Android Device</h3>
 
 
-Após a instalação da ferramenta de desenvolvimento do android, é possível ter acesso a uma máquina virtual, a qual será utilizada como emulador para teste dos projetos futuros. O passo a passo de criação e configuração do emulador esta descrito abaixo:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120111114-04a9ae80-c147-11eb-9e14-b30680baf402.png">
-</div>
+Após a instalação da ferramenta de desenvolvimento do android, é possível ter acesso a uma máquina virtual, a qual será utilizada como emulador para teste dos projetos futuros. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial 
+do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
