@@ -8,7 +8,7 @@
 
 O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pelo google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo apenas um código fonte
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo um código fonte único
 
 Outras características importantes sobre a ferramenta são:
 
@@ -172,10 +172,10 @@ Para verificar a instalaçao execute
 Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
 
 
-<h3>Android Device</h3>
+<h2>Android Device</h2>
 
 
-Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
+Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
 
 Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
