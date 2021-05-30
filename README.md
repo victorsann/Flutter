@@ -22,54 +22,100 @@ Outras características importantes sobre a ferramenta são:
 <h2>Instalação</h2>
 
 
-Para instalar e usar o Flutter, é preciso seguir alguns passos:
+Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, porém, há formas mais recomendadas que evitam um maior número de erros durante a execução; os passos aqui descritos são os mais recomendados pela documentação e comunidade Flutter. Para instalar e usar o Flutter, é preciso seguir alguns passos:
 
-- [Baixar Flutter para Windows](https://flutter.dev/docs/get-started/install/windows)
-- Extrair o contéudo do arquivo zip
-- Encaminhar o arquivo resultante para uma pasta no disco local (exemplo: C:\src\flutter)
+- Criar uma pasta src no disco local da sua máquina
+- Acessar [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copiar o Flutter repo Link
+- Acessar o cmd e criar um clone do Flutter na pasta criada
+
+A partir deste ponto as ferramentas que Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes
+
+
+<h2>Atualizando Variável de Usuário</h2>
+
+
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
+
+- Acessar as propriedades em 'Meu Computador'
+- Acessar 'configurações avançadas do sistema'
+- Acessar 'Variáveis de Ambiente'
+- Em 'Variáveis de usuário' criar nova variável com o nome 'FLUTTER_HOME', tendo 'C:\src\flutter' como seu valor
+
+A variável criada serve como um capinho padrão para acesso aos recursos Flutter
 
 
 <h2>Atualizando Path</h2>
 
 
-Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
+A declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Abaixo está o passo a passo do processo de redefinição necessário:
 
 - Acessar as propriedades em 'Meu Computador'
 - Acessar 'configurações avançadas do sistema'
 - Acessar 'Variáveis de Ambiente'
-- Em 'Variáveis de usuário' selecionar 'Path' e clicar em Editar
-- Selecionar a opção 'Novo' e definir o caminho C:\src\flutter\bin como nova variável de ambiente
-- Encerrar clicando em OK
+- Em 'Path' selecionar 'editar'
+- Definir '%FLUTTER_HOME%\bin' como uma nova variável em path
 
-Após esse processo é possível executar o Flutter no Cmd do Windows. E para verificar se o Flutter foi corretamente instalado é possível utilizar os comandos a sequir:
+Após esse processo é possível executar o Flutter no cmd do Windows. E para verificar se tudo foi devidamente instalado, utilize o seguinte comando:
 
-    // Verificar a versão instalada
+    flutter doctor
 
-    flutter --version
+O comando acessa a ferramenta de gestão do Flutter, ele retorna o status do ambiente criado, definindo se ele está ou não dentro do esperado. Nesse ponto, é provável que o retorno seja algo parecido com o seguinte:
 
-    // Acessar gerenciador do Flutter
+    [√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)
+    [!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+        ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
+    [√] Chrome - develop for the web
+    [!] Android Studio (not installed)
+    [√] VS Code (version 1.56.2)
+    [√] Connected device (2 available)
+    
+    ! Doctor found issues in 2 categories.
 
-    flutter
-
-- Definir demais variáveis de ambiente
-- Explicar processo de sownload do android studio e do emulador a ser usado
-- Preparar ambiente(vscode): extenções e demais coisas
-- Explicar estrutura da main.dart file
+Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passo corrigem estas faltas
 
 
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos:
+Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
 
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
 - [VScode](https://code.visualstudio.com/) (Recomendado)
 
 
-<h3>Android Studio</h3>
+<h2>Android Studio</h2>
 
 
-O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações android. Apesar de suprir estas necessidades, a IDE não será utilizada como ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado é a criação e uso de um ou mais emuladores, processo visto a seguir
+O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta
+
+
+<h3>SDK Platforms</h3>
+
+
+Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sistemas operacionais para os quais é possível desenvolver dentro do android studio. No momento a versão mais recente do android é a 11.0, portanto, os exemplos criados aqui serão desenvolvidos nesta versão
+
+
+<h3>Configurando Android SDK</h3>
+
+
+O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120120831-561d6200-c176-11eb-8695-f1426c4d0e2b.png">
+</div>
+
+
+<h3>Flutter Plugin</h3>
+
+
+A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin, está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120121007-887b8f00-c177-11eb-982c-b10e39eeb463.png">
+</div>
+
+
+<h3>ANDROID_HOME</h3>
 
 
 <h3>Criando Android Device</h3>
@@ -84,15 +130,10 @@ Tendo seguido as inticações da documentação, é possível verificar a instal
 
 O resultado deve conter o AVD Name, definido no precesso de criação. Exemplo:
 
-    Pixel_4a_API_30 • Pixel 4a API 30 • Google • android
+   
 
 Tendo o esse resultado, é possível inicializar o emulador através do terminal de comando da seguinte forma:
 
     flutter emulators --launch Pixel_4a_API_30
 
 Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
-
-<div align="center">
- <img src="https://user-images.githubusercontent.com/61476935/120112169-1b520480-c14b-11eb-8fc5-d43d1dbd52d9.png">
-</div>
-
