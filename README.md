@@ -175,7 +175,7 @@ Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso gar
 <h3>Android Device</h3>
 
 
-Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
+Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
 
 Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
