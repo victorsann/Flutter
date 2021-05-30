@@ -78,15 +78,15 @@ O android studio dispõe de recurso essenciais para para o desenvolvimento de ap
 Após a instalação da ferramenta de desenvolvimento do android, é possível ter acesso a uma máquina virtual, a qual será utilizada como emulador para teste dos projetos futuros. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial 
 do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
 
-é possível verificar a instalação do emulador criado através do comando a seguir
+Tendo seguido as inticações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
     flutter emulators
 
-O resultado deve conter o ADV Name, definido no precesso de criação. Exemplo:
+O resultado deve conter o AVD Name, definido no precesso de criação. Exemplo:
 
     Pixel_4a_API_30 • Pixel 4a API 30 • Google • android
 
-Tendo o esse resultado, é possível inicializar o emulador do terminal de comando da seguinte forma:
+Tendo o esse resultado, é possível inicializar o emulador através do terminal de comando da seguinte forma:
 
     flutter emulators --launch Pixel_4a_API_30
 
@@ -95,3 +95,4 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 <div align="center">
  <img src="https://user-images.githubusercontent.com/61476935/120112169-1b520480-c14b-11eb-8fc5-d43d1dbd52d9.png">
 </div>
+
