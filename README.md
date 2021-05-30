@@ -69,7 +69,7 @@ Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvi
 <h3>Android Studio</h3>
 
 
-O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações que rodem em dispositivos android. Apesar de suprir estas necessidades, a IDE não será utilizada como ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recuso vizado é a criação e uso de emuladores, processo que visto a seguir
+O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações android. Apesar de suprir estas necessidades, a IDE não será utilizada como ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado é a criação e uso de um ou mais emuladores, processo visto a seguir
 
 
 <h3>Criando Android Device</h3>
