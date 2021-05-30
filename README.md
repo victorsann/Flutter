@@ -31,7 +31,7 @@ Antes de iniciar o processo de instalação, é importante frisar que há mais d
 A partir deste ponto as ferramentas que Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes
 
 
-<h2>Atualizando Variável de Usuário</h2>
+<h2>Definindo Variável de Usuário</h2>
 
 
 Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
@@ -44,7 +44,7 @@ Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sis
 A variável criada serve como um capinho padrão para acesso aos recursos Flutter
 
 
-<h2>Atualizando Path</h2>
+<h2>Atualizando o Path</h2>
 
 
 A declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Abaixo está o passo a passo do processo de redefinição necessário:
@@ -116,7 +116,7 @@ A instalação de plugins torna muito mais viável a compilação e desenvolvime
 </div>
 
 
-<h2>Atualizando Variável de Usuário</h2>
+<h2>Definindo Variável de Usuário</h2>
 
 
 Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isso seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
@@ -129,7 +129,7 @@ Como foi definido, o android studio não será a ferramenta na qual os exemplos 
 - Em 'Variáveis de usuário' criar nova variável com o nome 'ANDROID_HOME', tendo o caminho do Android SDK Location como seu valor
 
 
-<h2>Atualizando Path</h2>
+<h2>Atualizando o Path</h2>
 
 
 Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais uma atualização no path das variáveis de abiente. Dessa vez correspondente a variável ANDROID_HOME anteriormente criada:
@@ -175,19 +175,23 @@ Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso gar
 <h3>Android Device</h3>
 
 
-Após a instalação da ferramenta de desenvolvimento do android, é possível ter acesso a uma máquina virtual, a qual será utilizada como emulador para teste dos projetos futuros. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial 
-do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
+Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's. O passo a passo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
 
-Tendo seguido as inticações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
+Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
     flutter emulators
 
 O resultado deve conter o AVD Name, definido no precesso de criação. Exemplo:
 
-   
+    Pixel_4_API_30 • Pixel 4 API 30 • Google • android
 
 Tendo o esse resultado, é possível inicializar o emulador através do terminal de comando da seguinte forma:
 
-    flutter emulators --launch Pixel_4a_API_30
+    flutter emulators --launch Pixel_4_API_30
 
 Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120123175-c2529280-c183-11eb-92f0-7b6b081ab394.png">
+</div>
+
