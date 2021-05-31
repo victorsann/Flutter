@@ -109,8 +109,8 @@ A instalação de plugins torna muito mais viável a compilação e desenvolvime
 
 Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
 
-- Tornar a acessar o menu SDK Manager
-- Copiar o caminho correspondente ao Android SDK Location
+- Torne a acessar o menu SDK Manager
+- Copie o caminho correspondente ao Android SDK Location
 
 Após isso, será criada uma nova variável de ambiente, específica para o acesso às SDK Tools
 
