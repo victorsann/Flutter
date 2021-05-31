@@ -24,9 +24,9 @@ Outras características importantes sobre a ferramenta são:
 
 Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, porém, há formas mais recomendadas que evitam um maior número de erros durante a execução; os passos aqui descritos são os mais recomendados pela documentação e comunidade Flutter. Para instalar e usar o Flutter, é preciso seguir alguns passos:
 
-- Criar uma pasta src no disco local da sua máquina
-- Acessar [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copiar o Flutter repo Link
-- Acessar o cmd e criar um clone do Flutter rep na pasta src, anteriormente criada
+- Crie uma pasta src no disco local da sua máquina
+- Acesse [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copie o Flutter repo Link
+- Acesse o cmd e crie um git clone do Flutter repo na pasta src anteriormente criada
 
 A partir deste ponto as ferramentas que Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes
 
@@ -34,23 +34,14 @@ A partir deste ponto as ferramentas que Flutter disponibiliza já estão instala
 <h2>Atualizando Path</h2>
 
 
-Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Abaixo está o passo a passo do processo:
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e emm 'Variáveis de usuário' crie uma nova variável com as seguintes definições
 
-- Acessar as propriedades em 'Meu Computador'
-- Acessar 'configurações avançadas do sistema'
-- Acessar 'Variáveis de Ambiente'
-- Em 'Variáveis de usuário' criar nova variável com o nome 'FLUTTER_HOME', tendo 'C:\src\flutter' como seu valor
+    Nome da Variável: FLUTTER_HOME
+    Valor da Variável: C:\src\flutter
 
-A variável criada serve como um capinho padrão para acesso aos recursos Flutter
+A variável criada serve como um capinho padrão para acesso aos recursos Flutter. Além disso, a declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Ainda nas variáveis de ambiente do Windows, e emm 'Path' selecione a opção 'editar' e crie adicione a seguinte linha
 
-
-A declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Abaixo está o passo a passo do processo de redefinição necessário:
-
-- Acessar as propriedades em 'Meu Computador'
-- Acessar 'configurações avançadas do sistema'
-- Acessar 'Variáveis de Ambiente'
-- Em 'Path' selecionar 'editar'
-- Definir '%FLUTTER_HOME%\bin' como uma nova variável em path
+    %FLUTTER_HOME%\bin
 
 Após esse processo é possível executar o Flutter no cmd do Windows. E para verificar se tudo foi devidamente instalado, utilize o seguinte comando:
 
