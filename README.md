@@ -156,7 +156,7 @@ Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso gar
 <h2>Android Device</h2>
 
 
-Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device, a qual será utilizada como emulador para testes dos projetos futuros. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do emulador pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br).
+Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
 
 Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
@@ -166,7 +166,7 @@ O resultado deve conter o AVD Name, definido no precesso de criação. Exemplo:
 
     Pixel_4_API_30 • Pixel 4 API 30 • Google • android
 
-Tendo o esse resultado, é possível inicializar o emulador através do terminal de comando da seguinte forma:
+Tendo esse resultado, é possível inicializar o emulador através do terminal de comando da seguinte forma:
 
     flutter emulators --launch Pixel_4_API_30
 
