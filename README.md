@@ -34,12 +34,12 @@ A partir deste ponto as ferramentas que Flutter disponibiliza já estão instala
 <h2>Atualizando Path</h2>
 
 
-Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, dentro da pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e emm 'Variáveis de usuário' crie uma nova variável com as seguintes definições
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em Variáveis de usuário crie uma nova variável com as seguintes definições
 
     Nome da Variável: FLUTTER_HOME
     Valor da Variável: C:\src\flutter
 
-A variável criada serve como um capinho padrão para acesso aos recursos Flutter. Além disso, a declaração de um path define o acesso de determinados pacotes, essenciais para executar uma aplicação Flutter. Ainda nas variáveis de ambiente do Windows, e emm 'Path' selecione a opção 'editar' e crie adicione a seguinte linha
+A variável criada serve como um capinho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha
 
     %FLUTTER_HOME%\bin
 
@@ -47,7 +47,7 @@ Após esse processo é possível executar o Flutter no cmd do Windows. E para ve
 
     flutter doctor
 
-O comando acessa a ferramenta de gestão do Flutter, ele retorna o status do ambiente criado, definindo se ele está ou não dentro do esperado. Nesse ponto, é provável que o retorno seja algo parecido com o seguinte:
+O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambiente criado, definindo se ele está ou não dentro do esperado. Nesse ponto, é provável que o retorno seja algo parecido com o seguinte:
 
     [√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)
     [!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
@@ -66,7 +66,7 @@ Os issues encontrados definem o que ainda não foi instalado ou que ainda não f
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
+Tendo o Flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
 
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
 - [VScode](https://code.visualstudio.com/) (Recomendado)
@@ -75,7 +75,7 @@ Tendo o flutter instalado, o próximo passo é preparar o ambiente de desenvolvi
 <h2>Android Studio</h2>
 
 
-O android studio dispõe de recurso essenciais para para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta
+O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta
 
 
 <h3>SDK Platforms</h3>
@@ -104,30 +104,23 @@ A instalação de plugins torna muito mais viável a compilação e desenvolvime
 </div>
 
 
-<h2>Definindo Variável de Usuário</h2>
+<h2>Atualizando Path</h2>
 
 
-Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isso seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
+Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
 
 - Tornar a acessar o menu SDK Manager
 - Copiar o caminho correspondente ao Android SDK Location
-- Acessar as propriedades em 'Meu Computador'
-- Acessar 'configurações avançadas do sistema'
-- Acessar 'Variáveis de Ambiente' 
-- Em 'Variáveis de usuário' criar nova variável com o nome 'ANDROID_HOME', tendo o caminho do Android SDK Location como seu valor
 
+Após isso, será criada uma nova variável de ambiente, específica para o acesso às SDK Tools
 
-<h2>Atualizando o Path</h2>
+    Nome da Variável: ANDROID_HOME
+    Valor da Variável: Android SDK Location (C:\...\...)
 
+Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de abiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
 
-Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais uma atualização no path das variáveis de abiente. Dessa vez correspondente a variável ANDROID_HOME anteriormente criada:
-
-- Acessar as propriedades em 'Meu Computador'
-- Acessar 'configurações avançadas do sistema'
-- Acessar 'Variáveis de Ambiente'
-- Em 'Path' selecionar 'editar'
-- Definir '%ANDROID_HOME%\tools\bi' como uma nova variável em path
-- Definir '%ANDROID_HOME%\platform-tools' como uma nova variável em path
+    %ANDROID_HOME%\tools\bi
+    %ANDROID_HOME%\platform-tools
 
 Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
 
