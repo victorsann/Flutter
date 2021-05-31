@@ -120,6 +120,9 @@ Após isso, será criada uma nova variável de ambiente, específica para o aces
 Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de abiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
 
     %ANDROID_HOME%\tools\bi
+    
+<br>
+
     %ANDROID_HOME%\platform-tools
 
 Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
