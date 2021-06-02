@@ -183,7 +183,7 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 <h2>VSCode</h2>
 
 
-Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizável. O passo a passo do criação do ambiente de desenvolvimento Flutter será visto a seguir
+Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizável e consumir menos memória no processo de execução. O passo a passo do criação do ambiente de desenvolvimento Flutter será visto a seguir
 
 
 <h3>Plugins</h3>
