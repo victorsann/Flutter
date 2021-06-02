@@ -90,7 +90,7 @@ Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sis
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120120831-561d6200-c176-11eb-8695-f1426c4d0e2b.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120419664-3c784800-c339-11eb-83d8-eda2fa8302c3.png">
 </div>
 
 
@@ -100,7 +100,7 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120419664-3c784800-c339-11eb-83d8-eda2fa8302c3.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120121007-887b8f00-c177-11eb-982c-b10e39eeb463.png">
 </div>
 
 
