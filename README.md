@@ -90,7 +90,7 @@ Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sis
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120419664-3c784800-c339-11eb-83d8-eda2fa8302c3.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120420128-2323cb80-c33a-11eb-95d8-aed0c7666b95.png">
 </div>
 
 
