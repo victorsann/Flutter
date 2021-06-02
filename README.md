@@ -189,12 +189,14 @@ Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de 
 <h3>Plugins</h3>
 
 
-Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, as extenções dão acesso a funcionalidades que compõem e complementam o ambinete de desenvolvimento. Eles são:
+Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, as extensões dão acesso a funcionalidades que compõem e complementam o ambinete de desenvolvimento. Eles são:
 
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417267-f7521700-c334-11eb-8ade-49fa71965d84.png">
 </div>
+
+Esta extensão do VSCode adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para a linguagem de programação Dart
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417507-544dcd00-c335-11eb-8474-4eaf7654bdf7.png">
