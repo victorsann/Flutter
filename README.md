@@ -207,9 +207,27 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 </div>
 
 <div align="center">
+  <h5>
+    Traz um conjunto de Widgets Flutter e Dart úteis para o desenvolvimento de aplicações Flutter
+  </h5>
+</div>
+
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417751-bd354500-c335-11eb-9516-20ef2ed9d4a0.png">
 </div>
 
 <div align="center">
+  <h5>
+    O Awesome Flutter Snippets é uma coleção de classes e métodos comumente utilizados no Flutter. Ele aumenta a velocidade de desenvolvimento, eliminando a maior parte do código clichê associado à criação de um widget
+  </h5>
+</div>
+
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120418464-f6ba8000-c336-11eb-855d-f3e4a8da4ec6.png">
+</div>
+
+<div align="center">
+  <h5>
+   O Dart Data Class Generator cria classes de dados dart com facilidade, rapidez e sem escrever boilerplate ou executar a geração de código
+  </h5>
 </div>
