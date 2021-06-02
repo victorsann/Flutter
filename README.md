@@ -180,6 +180,9 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 </div>
 
 
+<h2>Simulador IOS</h2>
+
+
 <h2>VSCode</h2>
 
 
@@ -232,5 +235,3 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
   </h5>
 </div>
 
-
-<h2>Simulador IOS</h2>
