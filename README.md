@@ -231,3 +231,6 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
    O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código
   </h5>
 </div>
+
+
+<h2>Simulador IOS</h2>
