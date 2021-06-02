@@ -199,3 +199,11 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417507-544dcd00-c335-11eb-8474-4eaf7654bdf7.png">
 </div>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120417751-bd354500-c335-11eb-9516-20ef2ed9d4a0.png">
+</div>
+
+<div align="center">
+  <img src="">
+</div>
