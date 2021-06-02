@@ -100,7 +100,7 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120121007-887b8f00-c177-11eb-982c-b10e39eeb463.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120419664-3c784800-c339-11eb-83d8-eda2fa8302c3.png">
 </div>
 
 
