@@ -194,25 +194,25 @@ Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de 
 
 Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, as extensões dão acesso a funcionalidades que compõem e complementam o ambinete de desenvolvimento. Eles são:
 
-* Flutter - Esta extensão do VSCode adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para a linguagem de programação Dart
+* <h4>Flutter</h4> - Esta extensão do VSCode adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para a linguagem de programação Dart
 
 <!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417267-f7521700-c334-11eb-8ade-49fa71965d84.png">
 </div> -->
 
-* Flutter Widgets Snippets - Traz um conjunto de Widgets Flutter e Dart úteis para o desenvolvimento de aplicações Flutter
+* <h4>Flutter Widgets Snippets</h4> - Traz um conjunto de Widgets Flutter e Dart úteis para o desenvolvimento de aplicações Flutter
 
 <!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417507-544dcd00-c335-11eb-8474-4eaf7654bdf7.png">
 </div> -->
 
-* Awesome Flutter Snippets - O Awesome Flutter Snippets é uma coleção de classes e métodos comumente utilizados no Flutter. Ele aumenta a velocidade de desenvolvimento, eliminando a maior parte do código clichê associado à criação de um widget
+* <h4>Awesome Flutter Snippets</h4> - O Awesome Flutter Snippets é uma coleção de classes e métodos comumente utilizados no Flutter. Ele aumenta a velocidade de desenvolvimento, eliminando a maior parte do código clichê associado à criação de um widget
 
 <!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417751-bd354500-c335-11eb-9516-20ef2ed9d4a0.png">
 </div> -->
 
-* Dart Data Class Generator - O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código
+* <h4>Dart Data Class Generator</h4> - O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código
 
 <!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120418464-f6ba8000-c336-11eb-855d-f3e4a8da4ec6.png">
