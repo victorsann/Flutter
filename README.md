@@ -141,7 +141,7 @@ O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. 
 
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]     ::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-Para verificar a instalação execute
+Para verificar a instalação execute:
 
     choco --version
   
@@ -149,7 +149,7 @@ Tendo a versão retornada é possível confirmar a instalação. Em seguida, ins
 
     choco install jdk8 
 
-Para verificar a instalaçao execute
+Para verificar a instalaçao execute:
 
     java -version
 
