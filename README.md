@@ -259,5 +259,12 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
   <img src="https://user-images.githubusercontent.com/61476935/120896193-dddff200-c5f6-11eb-88d3-7977f0806e41.png">
 </div>
 
-Nele é possível acessar o emulador anteriomente instalado e configurado. Nele também estão o Chrome, onde também é possível executar a aplicação, já que com o flutter também é pissível desenvolver para Web, além do Edge e a criação de uma novo emulador
+Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identicifar o AVD Name anteriormente mencionado. Nele também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador.
+
+Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é seguinte:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
+</div>
+
 
