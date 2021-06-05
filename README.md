@@ -245,5 +245,7 @@ Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, 
 
     flutter create primeiro_projeto
 
-Após a execução, uma série de arquivos referentes ao primeiro_projeto serão gerados em uma pasta de mesmo nome, sendo esta a file geral do projeto
+Após a execução, uma série de arquivos referentes ao primeiro_projeto serão gerados em uma pasta de mesmo nome, sendo esta a file geral do projeto. Estes arquivos consitem em:
+
+
 
