@@ -256,7 +256,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120895885-6362a280-c5f5-11eb-8761-91faefd8b131.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120896126-817cd280-c5f6-11eb-85d6-cf4a3e62c724.jpg">
 </div>
 
 Nele é possível acessar o emulador anteriomente instalado e configurado. Neste menu também estão o Chrome, onde também é possível executar a aplicação, já que com o flutter também é pissível desenvolver para Web, além do Edge e a criação de uma novo emulador
