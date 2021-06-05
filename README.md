@@ -279,14 +279,19 @@ Um app padão é executado como resposta, sendo possível customizá-lo e ver o 
 
 O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, e assim podendo acessá-lo no menu de Devices de forma imediata: 
 
+<br>
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
 </div>
 
+<br>
+
 
 O resultado é seguinte:
 
+<br>
 
 <div align="center">
-  <img width="40%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
 </div>
