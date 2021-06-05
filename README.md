@@ -183,12 +183,12 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 <h2>Dispositivo Real</h2>
 
 
-Há casos em que desenvolver utilizando um emulador se torna inviável devido a limitações no hardware do desenvolvedor. Essa falta pode ser resolvida com o uso de um dispositivo real como alternativa. A execução de aplicações em Smartphones é um recurso disponibilizado em qualquer aparelho android moderno, sendo possível ativa-lo caso o mesmo já não esteja ativo. A seguir estão descritos os passos para a ativações, podendo variar em dispositivos distintos:
+Há casos em que desenvolver utilizando um emulador se torna inviável devido a limitações no hardware do desenvolvedor. Essa falta pode ser resolvida com o uso de um dispositivo em alternativa. A execução de aplicações em Smartphones é um recurso disponibilizado em qualquer aparelho android moderno, sendo possível ativa-lo caso o mesmo já não esteja ativo. A seguir estão descritos os passos para a ativações, podendo variar de dispositivos para dispositivos:
 
 - Acesse as configurações do dispositivo
 - Ative o modo de desenvolvedor atráves do build number, clicando multiplas vezes no mesmo até ativar a função
 
-Em seguida é possível ter acesso as configurações de desenvolvedor no dispositivo. Acessando esse recurso é possível definir as seguintes configurações:
+Em seguida é possível ter acesso as configurações de desenvolvedor no dispositivo. Acessando esse recurso, é possível definir as seguintes configurações:
 
 - Permanecer Ativo
 - Depuração USB
