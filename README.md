@@ -255,9 +255,13 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
+<br>
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120896193-dddff200-c5f6-11eb-88d3-7977f0806e41.png">
 </div>
+
+<br>
 
 Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identicifar o AVD Name anteriormente mencionado. Nele também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador.
 
