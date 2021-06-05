@@ -196,9 +196,6 @@ Em seguida é possível ter acesso as configurações de desenvolvedor no dispos
 A primeira opção define que o aparelho não irá se desligar enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código será feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real
 
 
-<h2>Simulador IOS</h2>
-
-
 <h2>VSCode</h2>
 
 
