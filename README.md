@@ -271,4 +271,22 @@ Após executar o android device, vá até a pasta lib dos arquivos do projeto e 
   <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
 </div>
 
+Um app padão é executado como resposta, sendo possível customizá-lo e ver o resultado ser compilado em tela após o save de forma instantânea. Nele é possível ver a definição de alguns Widgets, esctruturas base de uma aplicação Flutter, as quais serão mais bem abordadas a frente
 
+
+<h2>Executando no Dispositivo Real</h2>
+
+
+O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, e assim podendo acessá-lo no menu de Devices de forma imediata: 
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
+</div>
+
+
+O resultado é seguinte:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
+</div>
