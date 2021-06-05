@@ -248,4 +248,16 @@ Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, 
 Após a execução, uma série de arquivos referentes ao primeiro_projeto serão gerados em uma pasta de mesmo nome, sendo esta a file geral do projeto. Estes arquivos consitem em:
 
 
+<h2>Executando no Emulador</h2>
+
+
+Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em dipositivo real. O primeiro passo é executar o emulado definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de como, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Pal tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+
+- Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120895885-6362a280-c5f5-11eb-8761-91faefd8b131.png">
+</div>
+
+Nele é possível acessar o emulador anteriomente instalado e configurado. Neste menu também estão o Chrome, onde também é possível executar a aplicação, já que com o flutter também é pissível desenvolver para Web, além do Edge e a criação de uma novo emulador
 
