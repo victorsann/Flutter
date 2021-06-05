@@ -232,7 +232,9 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 </div> -->
 
 
+<h2>Primeiro Projeto</h2>
 
-- Emulador IOS antes da explicação sobre o VSCode;
+
+
 - Após a explicação sobre o VSCode, explicar o processo de criação e compilação de um projeto em Flutter. Mostrando a inicialização dos Devices, mostrando uma imagem de ambos sendo executados;
 - Explicar estrutura básica de um projeto Flutter, dos arquivos ao código;
