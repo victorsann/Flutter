@@ -263,7 +263,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 <br>
 
-Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identicifar o AVD Name anteriormente mencionado. Nele também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador.
+Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identicifar o AVD Name tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador.
 
 Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é seguinte:
 
