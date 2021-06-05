@@ -235,10 +235,10 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 <h2>Primeiro Projeto</h2>
 
 
-Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação execução e configuração de um projeto será visto a frente, além de uma definição dos arquivos gerados e um overview dos arquivos que são gerados com a execução do comando a seguir.
+Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação, execução e configuração de um projeto será visto a frente, além de um overview dos arquivos que são gerados na criação
 
 
-<h3>Gerar um Projeto Flutter</h3>
+<h3>Gerando um Projeto Flutter</h3>
 
 
 Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, em seguida abra o VSCode. Com o terminal aberto, acesse o diretório criado e executando o seguinte comando:
