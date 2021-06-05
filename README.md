@@ -288,7 +288,7 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 <br>
 
 
-O resultado é seguinte:
+Tendo o seguinte resultado:
 
 <br>
 
