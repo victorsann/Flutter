@@ -90,7 +90,7 @@ Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sis
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120420128-2323cb80-c33a-11eb-95d8-aed0c7666b95.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120892355-41acef80-c5e4-11eb-9a47-2e9468d74e65.png">
 </div>
 
 
@@ -186,15 +186,15 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 <h2>VSCode</h2>
 
 
-Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizável e consumir menos memória no processo de execução. O passo a passo do criação do ambiente de desenvolvimento Flutter será visto a seguir
+Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizável e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir
 
 
 <h3>Plugins</h3>
 
 
-Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, as extensões dão acesso a funcionalidades que compõem e complementam o ambinete de desenvolvimento. Eles são:
+Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, os plugins dão acesso a funcionalidades que compõem o ambinete de desenvolvimento. Eles são:
 
-* <strong>Flutter</strong> - Esta extensão do VSCode adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para a linguagem de programação Dart
+* <strong>Flutter</strong> - O Flutter plugin adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para o Dart
 
 <!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417267-f7521700-c334-11eb-8ade-49fa71965d84.png">
@@ -218,3 +218,7 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
   <img src="https://user-images.githubusercontent.com/61476935/120418464-f6ba8000-c336-11eb-855d-f3e4a8da4ec6.png">
 </div> -->
 
+
+Emulador IOS antes da explicação sobre o VSCode;
+Após a explicação sobre o VSCode, explicar o processo de criação e compilação de um projeto em Flutter. Mostrando a inicialização dos Devices, mostrando uma imagem de ambos sendo executados;
+Explicar estrutura básica de um projeto Flutter, dos arquivos ao código;
