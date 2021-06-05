@@ -288,5 +288,5 @@ O resultado é seguinte:
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
+  <img width="30%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
 </div>
