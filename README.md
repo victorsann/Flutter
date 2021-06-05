@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
 
-O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pelo google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
+O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
 Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo um código fonte único
 
@@ -39,7 +39,7 @@ Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sis
     Nome da Variável: FLUTTER_HOME
     Valor da Variável: C:\src\flutter
 
-A variável criada serve como um capinho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha
+A variável criada serve como um camfinho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha
 
     %FLUTTER_HOME%\bin
 
@@ -119,7 +119,7 @@ Após isso, será criada uma nova variável de ambiente, específica para o aces
 
 Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de abiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
 
-    %ANDROID_HOME%\tools\bi
+    %ANDROID_HOME%\tools\bin
     
 <br>
 
@@ -153,13 +153,13 @@ Para verificar a instalaçao execute:
 
     java -version
 
-Obs: É extremamente importante que a versão instala seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
+Obs: É extremamente importante que a versão instalada seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
 
 
 <h2>Android Device</h2>
 
 
-Sendo o último passo da preparação do ambiente, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
+Sendo o último passo da preparação do ambiente android, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
 
 Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
 
@@ -192,7 +192,7 @@ Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de 
 <h3>Plugins</h3>
 
 
-Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, os plugins dão acesso a funcionalidades que compõem o ambinete de desenvolvimento. Eles são:
+Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, os plugins dão acesso a funcionalidades que compõem o ambiente de desenvolvimento. Eles são:
 
 * <strong>Flutter</strong> - O Flutter plugin adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para o Dart
 
@@ -219,6 +219,7 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 </div> -->
 
 
-Emulador IOS antes da explicação sobre o VSCode;
-Após a explicação sobre o VSCode, explicar o processo de criação e compilação de um projeto em Flutter. Mostrando a inicialização dos Devices, mostrando uma imagem de ambos sendo executados;
-Explicar estrutura básica de um projeto Flutter, dos arquivos ao código;
+
+- Emulador IOS antes da explicação sobre o VSCode;
+- Após a explicação sobre o VSCode, explicar o processo de criação e compilação de um projeto em Flutter. Mostrando a inicialização dos Devices, mostrando uma imagem de ambos sendo executados;
+- Explicar estrutura básica de um projeto Flutter, dos arquivos ao código;
