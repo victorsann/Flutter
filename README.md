@@ -263,9 +263,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 <br>
 
-Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identicifar o AVD Name tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador.
-
-Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é seguinte:
+Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é seguinte:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
@@ -293,5 +291,5 @@ Tendo o seguinte resultado:
 <br>
 
 <div align="center">
-  <img width="35%" height="70%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
 </div>
