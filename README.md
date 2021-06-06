@@ -251,7 +251,7 @@ Após a execução, uma série de arquivos referentes ao primeiro_projeto serão
 <h2>Executando no Emulador</h2>
 
 
-Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em dipositivo real. O primeiro passo é executar o emulado definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de como, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Pal tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em dipositivo real. O primeiro passo é executar o emulado definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de como, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
 
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
@@ -285,8 +285,7 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 
 <br>
 
-
-Tendo o seguinte resultado:
+O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device
 
 <br>
 
@@ -295,4 +294,4 @@ Tendo o seguinte resultado:
 </div>
 
 
-<h2>main.dart</h2>
+<h2>Main.dart</h2>
