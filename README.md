@@ -8,9 +8,9 @@
 
 O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, mantendo um código fonte único
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, e um código fonte único
 
-Outras características importantes sobre a ferramenta são:
+Outras características importantes da ferramenta são:
 
 - Dispõe de um Stateful Hot Reload
 - Utiliza Widgets Reativos Customizaveis
@@ -60,7 +60,7 @@ O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambi
     
     ! Doctor found issues in 4 categories.
 
-Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passo corrigem estas faltas
+Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas
 
 
 <h2>Ambiente de Desenvolvimento</h2>
@@ -117,7 +117,7 @@ Após isso, será criada uma nova variável de ambiente, específica para o aces
     Nome da Variável: ANDROID_HOME
     Valor da Variável: Android SDK Location (C:\...\...)
 
-Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de abiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
+Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de ambiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
 
     %ANDROID_HOME%\tools\bin
     
@@ -199,7 +199,7 @@ A primeira opção define que o aparelho não irá se desligar enquanto a aplica
 <h2>VSCode</h2>
 
 
-Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizável e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir
+Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir
 
 
 <h3>Plugins</h3>
@@ -251,7 +251,7 @@ Após a execução, uma série de arquivos referentes ao primeiro_projeto serão
 <h2>Executando no Emulador</h2>
 
 
-Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em dipositivo real. O primeiro passo é executar o emulado definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de como, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em um dipositivo real. O primeiro passo é executar o emulador definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de comando, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
 
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
@@ -263,13 +263,13 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 <br>
 
-Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é seguinte:
+Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é o seguinte:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
 </div>
 
-Um app padão é executado como resposta, sendo possível customizá-lo e ver o resultado ser compilado em tela após o save de forma instantânea. Nele é possível ver a definição de alguns Widgets, esctruturas base de uma aplicação Flutter, as quais serão mais bem abordadas a frente
+Um app padão é executado como resposta, sendo possível customizá-lo e ver o resultado ser compilado em tela após o save de forma instantânea. Nele é possível ver a definição de alguns Widgets, esctruturas base de uma aplicação Flutter, as quais serão mais bem abordadas no futuro
 
 
 <h2>Executando no Dispositivo Real</h2>
@@ -287,11 +287,11 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 
 O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device
 
-<br>
+<!-- <br>
 
 <div align="center">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
-</div>
+</div> -->
 
 
 <h2>Main.dart</h2>
