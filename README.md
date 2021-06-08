@@ -293,6 +293,62 @@ O resultado é semelhante ao anteriormente visto em um android device. E como j�
 <h2>Main.dart</h2>
 
 
+O arquivo main.dart executa uma aplicação padrão, criada como base de qualquer projeto Flutter. Para entender melhor a estrutura de uma aplicação mobile Flutter, é importante entender o que ocorre neste arquivo. A seguir há uma definição básica da estrutura padão no main.dart:
+
+
+<h3>Estrutura Básica</h3>
+
+
+    import 'package:flutter/material.dart';
+    
+    void main() {
+      runApp(MyApp());
+    }
+    
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.purple,
+          ),
+          home: MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+      }
+    }
+
+
+A estrutura padão no main.dar consiste em:
+
+  - import 'package:flutter/material.dart';
+
+Define o acesso a classes e métodos essenciais para gerar e dodar uma aplicação;
+
+  - void main() {}
+
+Principal método do projeto;
+
+  - runApp();
+
+infla o widget fornecido e o anexa à tela;
+
+  - MyApp
+
+Class correspondente a toda a aplicação, onde features padão são definidas;
+
+  - Widget build(BuildContext context) {}
+
+Descreve a parte da interface do usuário representada pelo widget, retornando uma intância da classe MaterialApp
+
+  - MaterialApp
+
+Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;
+
+
+Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
+  
+
 <h1>Componentes de Interface</h1>
 
 
