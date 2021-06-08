@@ -321,27 +321,27 @@ O arquivo main.dart executa uma aplicação padrão, criada como base de qualque
 
 A estrutura padão no main.dar consiste em:
 
-  - import 'package:flutter/material.dart';
+    import 'package:flutter/material.dart';
 
 Define o acesso a classes e métodos essenciais para gerar e dodar uma aplicação;
 
-  - void main() {}
+    void main() {}
 
 Principal método do projeto;
 
-  - runApp();
+    runApp();
 
 infla o widget fornecido e o anexa à tela;
 
-  - MyApp
+    MyApp
 
 Class correspondente a toda a aplicação, onde features padão são definidas;
 
-  - Widget build(BuildContext context) {}
+    Widget build(BuildContext context) {}
 
 Descreve a parte da interface do usuário representada pelo widget, retornando uma intância da classe MaterialApp
 
-  - MaterialApp
+    MaterialApp
 
 Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;
 
