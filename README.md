@@ -341,7 +341,7 @@ A estrutura padão no main.dar consiste em:
 
     MyApp
 
-<div>
+<div align="center">
  <h5>Class correspondente a toda a aplicação, onde features padão são definidas;</h5>
 </div>
 
@@ -357,7 +357,9 @@ A estrutura padão no main.dar consiste em:
  <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;</h5>
 </div>
 
-Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
+<div align="center">
+ Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
+</div>
   
 
 <h1>Componentes de Interface</h1>

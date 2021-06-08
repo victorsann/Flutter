@@ -1,16 +1,9 @@
-//----- Estrutura Básica -----
-
-import 'package:flutter/material.dart'; // Importação de Pacotes Essenciais
-
-// Principal Classe da Aplicação
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(
-    title: "Frases do Dia",
-    home: Container(
-      color: Colors.white,
-    ),
-  ));
+      title: "Frases do Dia",
+      home: Column(
+        children: <Widget>[Text("Usuário:"), Text("Senha:")],
+      )));
 }
-
-//----- Estrutura Básica -----
