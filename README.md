@@ -289,11 +289,47 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 
 O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device
 
-<!-- <br>
-
-<div align="center">
-  <img width="35%" src="https://user-images.githubusercontent.com/61476935/120897365-24841b00-c5fc-11eb-9e25-4f9fdaf0a638.jpeg">
-</div> -->
-
 
 <h2>Main.dart</h2>
+
+
+<h1>Componentes de Interface</h1>
+
+
+Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização gigantesca de interfaces gráficas. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso. Também conta com uma arquitetura concentra baseada em widgets
+
+
+<h2>Widgets</h2>
+
+
+Baseados no Material Design, os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas.
+
+Há uma série de Widgets padrão que todo iniciante em Flatter deve conhcer. Eles são:
+
+
+<h3>Appbar</h3>
+
+
+<h3>Column</h3>
+
+
+<h3>Row</h3>
+
+
+<h3>Container</h3>
+
+
+<h3>Buttons</h3>
+
+
+<h3>Icons</h3>
+
+
+<h3>Images</h3>
+
+
+<h3>Scaffold</h3>
+
+
+<h3>Text</h3>
+
