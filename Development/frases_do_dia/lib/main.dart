@@ -4,6 +4,10 @@ void main() {
   runApp(new MaterialApp(
       title: "Frases do Dia",
       home: Column(
-        children: <Widget>[Text("Usuário:"), Text("Senha:")],
+        children: <Widget>[
+          Text("Usuário:"),
+          Text("Senha:"),
+          Text("Esqueci minha senha")
+        ],
       )));
 }

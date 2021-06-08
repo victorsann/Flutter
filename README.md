@@ -324,7 +324,7 @@ A estrutura padão no main.dar consiste em:
     import 'package:flutter/material.dart';
 
 <div align="center">
- <h5>Define o acesso a classes e métodos essenciais para gerar e dodar uma aplicação;</h5></h5>
+ <h5>Define o acesso a classes e métodos essenciais para gerar e rodar uma aplicação;</h5></h5>
 </div>
 
     void main() {}
@@ -354,7 +354,7 @@ A estrutura padão no main.dar consiste em:
     MaterialApp
 
 <div align="center">
- <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;</h5>
+ <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los em projetos baseados em Widgets;</h5>
 </div>
 
 <div align="center">
@@ -373,7 +373,11 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 
 Baseados no Material Design, os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas.
 
-Há uma série de Widgets padrão que todo iniciante em Flatter deve conhcer. Eles são:
+
+<h3>Estrutura de Um Widget</h3>
+
+
+Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. Eles são:
 
 
 <h3>Appbar</h3>
@@ -388,17 +392,21 @@ Há uma série de Widgets padrão que todo iniciante em Flatter deve conhcer. El
 <h3>Container</h3>
 
 
+<h3>Scaffold</h3>
+
+
+<h3>Text</h3>
+
+
+<h3>Images</h3>
+
+
 <h3>Buttons</h3>
 
 
 <h3>Icons</h3>
 
 
-<h3>Images</h3>
 
 
-<h3>Scaffold</h3>
-
-
-<h3>Text</h3>
 
