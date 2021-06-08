@@ -323,28 +323,39 @@ A estrutura padão no main.dar consiste em:
 
     import 'package:flutter/material.dart';
 
-Define o acesso a classes e métodos essenciais para gerar e dodar uma aplicação;
+<div ="center">
+ <h5>Define o acesso a classes e métodos essenciais para gerar e dodar uma aplicação;</h5></h5>
+</div>
 
     void main() {}
 
-Principal método do projeto;
+<div ="center">
+ <h5>Principal método do projeto;</h5>
+</div>
 
     runApp();
 
-infla o widget fornecido e o anexa à tela;
+<div ="center">
+ <h5>infla o widget fornecido e o anexa à tela;</h5>
+</div>
 
     MyApp
 
-Class correspondente a toda a aplicação, onde features padão são definidas;
+<div>
+ <h5>Class correspondente a toda a aplicação, onde features padão são definidas;</h5>
+</div>
 
     Widget build(BuildContext context) {}
 
-Descreve a parte da interface do usuário representada pelo widget, retornando uma intância da classe MaterialApp
+<div ="center">
+ <h5>Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp</h5>
+ </div>
 
     MaterialApp
 
-Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;
-
+<div ="center">
+ <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los;</h5>
+</div>
 
 Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
   
