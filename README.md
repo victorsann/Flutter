@@ -392,9 +392,9 @@ Os principais Widgets associados ao Appbar são:
 </div>
 
 <strong>leading</strong> - Um Widget definido antes do title<br>
-<strong>title</strong> - O primeiro Widget exibido no Appbar
-<strong>actions</strong> - Uma lista de Widgets agrupados em linha após o tile
-<strong>flexibleSpace</strong> - Este widget está empilhado atrás da toolbar e da tab bar. Tendo sua altura definida pela altura geral da Appbar.
+<strong>title</strong> - O primeiro Widget exibido no Appbar<br>
+<strong>actions</strong> - Uma lista de Widgets agrupados em linha após o tile<br>
+<strong>flexibleSpace</strong> - Este widget está empilhado atrás da toolbar e da tab bar. Tendo sua altura definida pela altura geral da Appbar.<br>
 <strong>bottom</strong> - Define o bottom do Appbar
 
 
