@@ -429,7 +429,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 
 Há uma série de Widgets que podem ser definidos como children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
 
-<h3>children</h3> - Lista de Widgets definidos como parte da Column<br>
+<h4>children</h4> Lista de Widgets definidos como parte da Column<br>
 <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal<br>
 <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo <br>
 <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
