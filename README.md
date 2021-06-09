@@ -417,27 +417,36 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[
-        const Expanded(
-          child: Text("..."),
+      children: <Widget>[
+        Expanded(
+          child: Container(...),
         ),
-        const Expanded(
-          child: Text("..."),
+        Expanded(
+          child: Container(...),
         ),
-         const Expanded(
-          child: Row("..."),
+        Expanded(
+          child: Row(
+            children:  <Widget> [
+              Flexible(
+               child: Container(...),
+             ),
+              Expanded(
+               child: Container(...),
+             ),
+            ], // <Widget>[]
+          ), // Row
         ),
-         const Flexible(
-          child: Text("..."),
+        Flexible(
+          child: Container(...),
         ),
-         const Flexible(
-          child: Text("..."),
+        Flexible(
+          child: Container(...),
         )
-       ],
+       ], // <Widget>[]
 
-    )
+    ) // Column
 
-O Widget Column conta com definiçãos de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo iria se comportar:
+O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo iria se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121289548-7c9c7500-c8bb-11eb-93c5-6af2b8e0ad82.png">
@@ -457,31 +466,35 @@ Há uma série de Widgets que podem ser children de uma Column, muitos associado
 Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. Exemplo de declaração de uma Row:
 
     Row(
-      textDirection: TextDirection.rtl,
       children: <Widget>[
         const Flexible(
-          child: Text("..."),
+          child: FittedBox(...),
         ),
         const Expanded(
-          child: Text("..."),
+          child: FittedBox(...),
         ),
          const Flexible(
-          child: Text("..."),
+          child: FittedBox(...),
         ),
-      ],
-    )
+      ], // <Widget>[]
+    ) // Row
 
-Um Row também conta com definiçãos de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
+Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121290979-e3229280-c8bd-11eb-9a04-4f4460f4215d.png">
 </div>
 
-
+* <strong>children</strong> - Lista de Widgets definidos como parte da Row
+* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
+* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
+* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
 <h3>Container</h3>
 
+
+Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento. De forma semelhante a uma Column ou Row, um container provê definições para os  Widgets que ele contém, por isso é definido como um Widget de estruturação. 
 
 <h3>Scaffold</h3>
 
