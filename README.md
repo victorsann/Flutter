@@ -426,7 +426,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
   <img src="https://user-images.githubusercontent.com/61476935/121287761-925c6b00-c8b8-11eb-922e-576231fef373.png">
 </div>
 
-Os principais Widget associado ao Column é:
+Há uma série de Widgets que podem ser definidos como children de uma Column, porém, o principal Widget associado a um Column é:
 
 * <strong>children</strong> - Lista de Widgets definidos como parte da Column
 
