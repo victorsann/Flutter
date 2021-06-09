@@ -610,11 +610,41 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 * <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
 
 
-
-<h3>Buttons</h3>
-
-
 <h3>Icons</h3>
+
+
+<h3>ElevaitedButtons</h3>
+
+
+Um ElevaitedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevaitedButtons:
+
+    Row(
+      children: <Wdget>[
+        ElevatedButton(
+        style: ButtonStyle( ... ),
+        onPressed: null,
+        child: Text('ElevatedButton'),
+       ),
+        ElevatedButton(
+        style: ButtonStyle( ... ),
+        onPressed: () {},
+        child: Text('ElevatedButton'),
+       )
+      ]
+    )
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121426355-e1061580-c949-11eb-9aa1-f4536c1e76d4.png">
+</div>
+
+Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevaitedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
+
+* <strong>style</strong> - Define style do ElevaitedButton
+* <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
+* <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
+* <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
+
 
 
 

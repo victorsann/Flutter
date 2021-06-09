@@ -9,22 +9,29 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "My App",
-        theme: ThemeData(
-          primarySwatch: Colors.purple,
-        ),
         home: Center(
           child: Container(
             alignment: Alignment.center,
-            child: Image(
-              image: NetworkImage(
-                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+            child: Column(
+              children: <Widget>[
+                ElevatedButton(
+                  style: ButtonStyle(),
+                  onPressed: null,
+                  child: Text('ElevatedButton'),
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(),
+                  onPressed: () {},
+                  child: Text('ElevatedButton'),
+                )
+              ],
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15), color: Colors.white),
             height: 300,
             width: 300,
             margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
           ),
         ));
   }
