@@ -512,7 +512,7 @@ Neste caso o Container define um espaçamento padrão e um cor para si. Para cri
 
 <br>
 <div align="center">
-  <img width="1000px" src="https://user-images.githubusercontent.com/61476935/121372952-0dec0580-c915-11eb-8951-51bb85016f28.png">
+  <img width="1684px" src="https://user-images.githubusercontent.com/61476935/121372952-0dec0580-c915-11eb-8951-51bb85016f28.png">
 </div>
 <br>
 
