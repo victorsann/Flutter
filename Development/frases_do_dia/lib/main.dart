@@ -15,10 +15,9 @@ class MyApp extends StatelessWidget {
         home: Center(
           child: Container(
             alignment: Alignment.center,
-            child: Center(
-              child: Image(
-                  image: NetworkImage(
-                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')),
+            child: Image(
+              image: NetworkImage(
+                  'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
             ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15), color: Colors.white),

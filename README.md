@@ -569,7 +569,7 @@ Alguns dos atributos de um Widget de estilização de texto são:
 <h3>Images</h3>
 
 
-O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado. Contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image
+O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
 
     Image(
       image: NetworkImage(
@@ -577,12 +577,28 @@ O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network o
       ),
     )
 
-
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121402504-58c74680-c930-11eb-8427-0d367448f900.png">
 </div>
 
+
+Além do Image propriamente dito, há uma série de classes(contructors) com definições distintas de fontes de imagens, usadas em situações difentes. A seguir estão algumas delas:
+
+// Obtém imagens a partir de um asset bundler
+
+    Image.asset( ... )
+
+// Obtém imagens a partir de arquivos
+
+    Image.file( ... )
+
+// Obtém imagens a partir de um Uint8List
+
+    Image.memory( ... )
+
+// Obtém imagens a partir de um network
+
+    Image.network( ... )
 
 <h3>Buttons</h3>
 
