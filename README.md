@@ -512,7 +512,7 @@ Um Container é um Widget de estruturação que combina widgets comuns de pintin
 Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121374164-0e38d080-c916-11eb-9fee-7497cc6af7d3.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121402399-3a614b00-c930-11eb-8d56-b00e37efa412.png">
 </div>
 
 Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
@@ -555,7 +555,7 @@ O Widget Text exibe um string com um single style. Um string pode sofrer um brea
 A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121401709-6fb96900-c92f-11eb-97d2-26f3fa547df7.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121402451-4b11c100-c930-11eb-9d21-86a565fb6e32.png">
 </div>
 
 Alguns dos atributos de um Widget de estilização de texto são:
@@ -580,7 +580,7 @@ O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network o
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121401610-4698d880-c92f-11eb-9bf8-2559666c84df.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121402504-58c74680-c930-11eb-8427-0d367448f900.png">
 </div>
 
 
