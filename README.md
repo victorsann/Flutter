@@ -552,7 +552,7 @@ O Widget Text exibe um string com um single style. Um string pode sofrer um brea
      ),
     )
 
-A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros
+A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121398810-21569b00-c92c-11eb-95e2-35006b697ca1.png">
@@ -566,9 +566,20 @@ Alguns dos atributos de um Widget de estilização de texto são:
 * <strong>style</strong> - Definição de estilo do texto
 
 
-
-
 <h3>Images</h3>
+
+
+O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado. Contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image
+
+    Image(
+        image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+    )
+
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121401610-4698d880-c92f-11eb-9bf8-2559666c84df.png">
+</div>
 
 
 <h3>Buttons</h3>

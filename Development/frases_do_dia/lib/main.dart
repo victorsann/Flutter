@@ -16,15 +16,10 @@ class MyApp extends StatelessWidget {
           child: Container(
             alignment: Alignment.center,
             child: Center(
-                child: Text(
-              'Children',
-              textDirection: TextDirection.rtl,
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: Colors.blue[900],
-              ),
-            )),
+              child: Image(
+                  image: NetworkImage(
+                      'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg')),
+            ),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15), color: Colors.white),
             height: 300,
