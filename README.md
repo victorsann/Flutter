@@ -423,7 +423,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121286810-c040b000-c8b6-11eb-80bb-7803ad7eccd9.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121287761-925c6b00-c8b8-11eb-922e-576231fef373.png">
 </div>
 
 Os principais Widget associado ao Column é:
