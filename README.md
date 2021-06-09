@@ -413,21 +413,37 @@ Os principais Widgets associados ao Appbar são:
 <h3>Column</h3>
 
 
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. Exemplo de declaração de uma Column:
-
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. Exemplo de declaração de uma Column:
 
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const <Widget>[ ... ],
+      children: const <Widget>[
+        const Expanded(
+          child: Text("..."),
+        ),
+        const Expanded(
+          child: Text("..."),
+        ),
+         const Expanded(
+          child: Row("..."),
+        ),
+         const Flexible(
+          child: Text("..."),
+        ),
+         const Flexible(
+          child: Text("..."),
+        )
+       ],
 
     )
 
+O Widget Column conta com definiçãos de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo iria se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121287761-925c6b00-c8b8-11eb-922e-576231fef373.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121289548-7c9c7500-c8bb-11eb-93c5-6af2b8e0ad82.png">
 </div>
 
-Há uma série de Widgets que podem ser definidos como children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
+Há uma série de Widgets que podem ser children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
 
 * <strong>children</strong> - Lista de Widgets definidos como parte da Column
 * <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
@@ -435,8 +451,33 @@ Há uma série de Widgets que podem ser definidos como children de uma Column, m
 * <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
-
 <h3>Row</h3>
+
+
+Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. Exemplo de declaração de uma Row:
+
+    Row(
+      textDirection: TextDirection.rtl,
+      children: <Widget>[
+        const Flexible(
+          child: Text("..."),
+        ),
+        const Expanded(
+          child: Text("..."),
+        ),
+         const Flexible(
+          child: Text("..."),
+        ),
+      ],
+    )
+
+Um Row também conta com definiçãos de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121290979-e3229280-c8bd-11eb-9a04-4f4460f4215d.png">
+</div>
+
+
 
 
 <h3>Container</h3>
