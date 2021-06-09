@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(
-      title: "Frases do Dia",
-      home: Column(
-        children: <Widget>[
-          Text("Usuário:"),
-          Text("Senha:"),
-          Text("Esqueci minha senha")
-        ],
-      )));
+    title: "Frases do Dia",
+    home: Container(
+      color: Colors.green,
+    ),
+  ));
 }

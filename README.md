@@ -383,6 +383,21 @@ Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. E
 <h3>Appbar</h3>
 
 
+Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. 
+
+Os principais Widgets associados ao Appbar são:
+
+* leading
+* title
+* actions
+* flexibleSpace
+* bottom
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121281208-f2014900-c8ad-11eb-9e4a-5e6f9098beb9.png">
+</div>
+
+
 <h3>Column</h3>
 
 
