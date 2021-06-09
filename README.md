@@ -468,13 +468,13 @@ Uma Row também é definida como um Widget de estruturação, cuja função é a
     Row(
       children: <Widget>[
        Flexible(
-          child: Container(),
+          child: Container( ... ),
         ),
        Expanded(
-          child: Container(),
+          child: Container( ... ),
         ),
        Flexible(
-          child: Container(),
+          child: Container( ... ),
         ),
       ], // <Widget>[]
     ) 
