@@ -498,10 +498,13 @@ Um Container é um Widget de estruturação que combina widgets comuns de pintin
 
     Center(
       child: Container(
-        margin: const EdgeInsets.all(10.0),
-        color: Colors.blue[900],
-        width: 48.0,
-        height: 48.0,
+        child: Center(child: Text("Children")),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15), color: Colors.white),
+        height: 300,
+        width: 300,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
       ),
     )
 
@@ -509,7 +512,7 @@ Neste caso o Container define um espaçamento padrão e um cor para si. Para cri
 
 <br>
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121298365-2256e080-c8ca-11eb-913c-3522db3a8cca.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121372952-0dec0580-c915-11eb-8951-51bb85016f28.png">
 </div>
 <br>
 
@@ -519,7 +522,7 @@ Por se trantar de uma estrutura, um Container possui propriedades bastantes coop
 * <strong>child</strong> - Define o child contido
 * <strong>color</strong> - Definição de cor do Container
 * <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
-* <strong>decoration</strong> - Definição de decorator
+* <strong>decoration</strong> - Definição de estilo do Container
 * <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
 * <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
 
