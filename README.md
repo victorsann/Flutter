@@ -505,9 +505,22 @@ Um Container é um Widget de estruturação que combina widgets comuns de pintin
       ),
     )
 
+Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121298365-2256e080-c8ca-11eb-913c-3522db3a8cca.png">
 </div>
+
+Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
+
+* <strong>alignment</strong> - Define o alinhamento do child dentro do Container
+* <strong>child</strong> - Define o child contido
+* <strong>color</strong> - Definição de cor do Container
+* <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
+* <strong>decoration</strong> - Definição de decorator
+* <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
+* <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
+
 
 
 <h3>Scaffold</h3>
