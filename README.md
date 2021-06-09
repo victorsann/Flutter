@@ -385,6 +385,7 @@ Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. E
 
 Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
 
+
     @override
     Widget build(BuildContext context) {
       return Scaffold(
@@ -394,6 +395,7 @@ Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo co
           ...
       );
     }
+  
 
 Os principais Widgets associados ao Appbar são:
 
@@ -411,11 +413,22 @@ Os principais Widgets associados ao Appbar são:
 <h3>Column</h3>
 
 
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. 
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. Exemplo de declaração de uma Column:
+
+
+    Column(
+      children: const <Widget>[ ... ],
+
+    )
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121286810-c040b000-c8b6-11eb-80bb-7803ad7eccd9.png">
 </div>
+
+Os principais Widget associado ao Column é:
+
+* <strong>children</strong> - Lista de Widgets definidos como parte da Column
 
 
 <h3>Row</h3>
