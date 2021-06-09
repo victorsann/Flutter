@@ -652,8 +652,8 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 
 Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
 
-    Row(
-      children: <Wdget>[
+    Column(
+      children: <Widget>[
         ElevatedButton(
         style: ButtonStyle( ... ),
         onPressed: null,
