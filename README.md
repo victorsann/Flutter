@@ -467,17 +467,17 @@ Uma Row também é definida como um Widget de estruturação, cuja função é a
 
     Row(
       children: <Widget>[
-        const Flexible(
-          child: FittedBox(...),
+       Flexible(
+          child: Container(),
         ),
-        const Expanded(
-          child: FittedBox(...),
+       Expanded(
+          child: Container(),
         ),
-         const Flexible(
-          child: FittedBox(...),
+       Flexible(
+          child: Container(),
         ),
       ], // <Widget>[]
-    ) // Row
+    ) 
 
 Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
 
@@ -494,7 +494,21 @@ Um Row também conta com definições de prioridade, onde um children pode ocupa
 <h3>Container</h3>
 
 
-Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento. De forma semelhante a uma Column ou Row, um container provê definições para os  Widgets que ele contém, por isso é definido como um Widget de estruturação. 
+Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
+
+    Center(
+      child: Container(
+        margin: const EdgeInsets.all(10.0),
+        color: Colors.blue[900],
+        width: 48.0,
+        height: 48.0,
+      ),
+    )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121298365-2256e080-c8ca-11eb-913c-3522db3a8cca.png">
+</div>
+
 
 <h3>Scaffold</h3>
 
