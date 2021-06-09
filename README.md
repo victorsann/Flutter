@@ -417,6 +417,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 
 
     Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: const <Widget>[ ... ],
 
     )
@@ -426,9 +427,13 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
   <img src="https://user-images.githubusercontent.com/61476935/121287761-925c6b00-c8b8-11eb-922e-576231fef373.png">
 </div>
 
-Há uma série de Widgets que podem ser definidos como children de uma Column, porém, o principal Widget associado a um Column é:
+Há uma série de Widgets que podem ser definidos como children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
 
 * <strong>children</strong> - Lista de Widgets definidos como parte da Column
+* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
+* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
+* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
+
 
 
 <h3>Row</h3>
