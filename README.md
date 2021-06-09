@@ -414,7 +414,7 @@ Os principais Widgets associados ao Appbar são:
 Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121286703-98514c80-c8b6-11eb-8ba5-ec66b82f7e11.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121286810-c040b000-c8b6-11eb-80bb-7803ad7eccd9.png">
 </div>
 
 
