@@ -511,7 +511,7 @@ Neste caso o Container define um espaçamento padrão e um cor para si. Para cri
   <img src="https://user-images.githubusercontent.com/61476935/121298365-2256e080-c8ca-11eb-913c-3522db3a8cca.png">
 </div>
 <br>
-Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
+Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:<br>
 
 * <strong>alignment</strong> - Define o alinhamento do child dentro do Container
 * <strong>child</strong> - Define o child contido
