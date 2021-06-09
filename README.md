@@ -572,7 +572,9 @@ Alguns dos atributos de um Widget de estilização de texto são:
 O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado. Contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image
 
     Image(
-        image: NetworkImage('https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'),
+      image: NetworkImage(
+        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'
+      ),
     )
 
 
