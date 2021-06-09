@@ -387,15 +387,15 @@ Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo co
 
 Os principais Widgets associados ao Appbar são:
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
+</div>
+
 * <strong>leading</strong> - Um Widget definido antes do title<br>
 * <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
 * <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o tile<br>
 * <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
 * <strong>bottom</strong> - Define o bottom do Appbar
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
-</div>
 
 
 <h3>Column</h3>
