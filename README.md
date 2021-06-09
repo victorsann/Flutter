@@ -532,7 +532,7 @@ Por se trantar de uma estrutura, um Container possui propriedades bastantes coop
 O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização do container. Algumas delas são: 
 
 * <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
-* <strong>color</strong> - Cor do Container
+* <strong>color</strong> - Cor de definição Container
 * <strong>boxShadow</strong> - List de definições de sombreamento do Container
 * <strong>gradient</strong> - Gradiente de preenchimento do container
 * <strong>image</strong> - Definição de uma imagem contida
@@ -540,6 +540,21 @@ O decoration é uma propriedade do Container que define uma camada de style ante
 
 <h3>Text</h3>
 
+O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
+
+    Text(
+     'Children',
+     textDirection: TextDirection.rtl,
+     style: TextStyle(
+       fontSize: 20,
+       fontWeight: FontWeight.bold,
+       color: Colors.blue[900],
+     ),
+    )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121398810-21569b00-c92c-11eb-95e2-35006b697ca1.png">
+</div>
 
 <h3>Images</h3>
 
