@@ -552,9 +552,21 @@ O Widget Text exibe um string com um single style. Um string pode sofrer um brea
      ),
     )
 
+A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121398810-21569b00-c92c-11eb-95e2-35006b697ca1.png">
 </div>
+
+Alguns dos atributos de um Widget de estilização de texto são:
+
+* <strong>data</strong> - Texto a ser exibido
+* <strong>textDirection</strong> - Direção de exibição do texto
+* <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
+* <strong>style</strong> - Definição de estilo do texto
+
+
+
 
 <h3>Images</h3>
 
