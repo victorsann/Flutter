@@ -385,12 +385,10 @@ Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. E
 
 Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. 
 
-    AppBar({Key? key, Widget? leading, bool automaticallyImplyLeading, Widget? title, List<Widget>? actions, Widget? flexibleSpace, PreferredSizeWidget? bottom, double? elevation, Color? shadowColor, ShapeBorder? shape, Color? backgroundColor, Color? foregroundColor, Brightness? brightness, IconThemeData? iconTheme, IconThemeData? actionsIconTheme, TextTheme? textTheme, bool primary, bool? centerTitle, bool excludeHeaderSemantics, double? titleSpacing, double     toolbarOpacity, double bottomOpacity, double? toolbarHeight, double? leadingWidth, bool?     backwardsCompatibility, TextStyle? toolbarTextStyle, TextStyle? titleTextStyle,     SystemUiOverlayStyle? systemOverlayStyle})
-    
 Os principais Widgets associados ao Appbar são:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
+  <img width="110%" src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
 </div>
 
 * <strong>leading</strong> - Um Widget definido antes do title<br>
@@ -400,10 +398,12 @@ Os principais Widgets associados ao Appbar são:
 * <strong>bottom</strong> - Define o bottom do Appbar
 
 
+
 <h3>Column</h3>
 
 
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha de forma vertical. Uma Column não possui a função de scroll por 
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha de forma vertical. 
+
 
 <h3>Row</h3>
 
