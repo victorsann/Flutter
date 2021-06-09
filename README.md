@@ -584,21 +584,32 @@ O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network o
 
 Além do Image propriamente dito, há uma série de classes(contructors) com definições distintas de fontes de imagens, usadas em situações difentes. A seguir estão algumas delas:
 
-// Obtém imagens a partir de um asset bundler
+Obter imagens a partir de um asset bundler
 
-    Image.asset( ... )
+    Image.asset(String name, { ... })
 
-// Obtém imagens a partir de arquivos
+Obter imagens a partir de arquivos
 
-    Image.file( ... )
+    Image.file(File file, { ... })
 
-// Obtém imagens a partir de um Uint8List
+Obter imagens a partir de um Uint8List
 
-    Image.memory( ... )
+    Image.memory(Uinit8List bytes, { ... })
 
-// Obtém imagens a partir de um network
+Obter imagens a partir de um network
 
-    Image.network( ... )
+    Image.network(String src, { ... })
+
+Basicamente todos possuem as mesmas propriedades de definição de imagem, exceto por especificações relacionadas a obtenção da imagem, sendo um atributo obrigatório definido no inicio da chamada do constructor. Algumas das propriedades comuns a todos são:
+
+* <strong>image</strong> - A imagem que será exibida
+* <strong>width</strong> - Largura da imagem
+* <strong>height</strong> - Altura da imagem
+* <strong>alignment</strong> - Alinhamento da imagem com base em seus limites
+* <strong>fit</strong> - Alinhamento da imagen com base em seus limites
+* <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
+
+
 
 <h3>Buttons</h3>
 
