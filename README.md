@@ -413,7 +413,7 @@ Os principais Widgets associados ao Appbar são:
 <h3>Column</h3>
 
 
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. Exemplo de declaração de uma Column:
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos que ela contenha verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. Exemplo de declaração de uma Column:
 
 
     Column(
