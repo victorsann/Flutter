@@ -639,6 +639,13 @@ O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do
   <img src="https://user-images.githubusercontent.com/61476935/121428625-67bbf200-c94c-11eb-8258-bcf069060e71.png">
 </div>
 
+Os icons são definidos em um proporção customizavel, mas são renderizados em um squared format, evitando erros na forma do icon no processo de loading. Algumas das propriedades do Icon Widget são:
+
+* <strong>icon</strong> - Define style do ElevaitedButton
+* <strong>color</strong> - Cor definida como preenchimento da área correspondente ao icon
+* <strong>sixe</strong> - Tamanho do icon, definido em pixel
+* <strong>icon</strong> - Define style do ElevaitedButton
+
 
 <h3>ElevaitedButtons</h3>
 
