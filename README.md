@@ -394,7 +394,7 @@ Os principais Widgets associados ao Appbar são:
 * bottom
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121281763-d2b6eb80-c8ae-11eb-9709-b59f09c06f1c.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
 </div>
 
 
