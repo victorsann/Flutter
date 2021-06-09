@@ -12,18 +12,24 @@ class MyApp extends StatelessWidget {
         home: Center(
           child: Container(
             alignment: Alignment.center,
-            child: Column(
-              children: <Widget>[
-                ElevatedButton(
-                  style: ButtonStyle(),
-                  onPressed: null,
-                  child: Text('ElevatedButton'),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: const <Widget>[
+                Icon(
+                  Icons.zoom_out_map_outlined,
+                  color: Colors.red,
+                  size: 50.0,
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(),
-                  onPressed: () {},
-                  child: Text('ElevatedButton'),
-                )
+                Icon(
+                  Icons.hail,
+                  color: Colors.green,
+                  size: 50.0,
+                ),
+                Icon(
+                  Icons.face,
+                  color: Colors.blue,
+                  size: 50.0,
+                ),
               ],
             ),
             decoration: BoxDecoration(

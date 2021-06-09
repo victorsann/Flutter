@@ -612,6 +612,33 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 
 <h3>Icons</h3>
 
+O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: const <Widget>[
+        Icon(
+          Icons.zoom_out_map_outlined,
+          color: Colors.red,
+          size: 50.0,
+        ),
+        Icon(
+          Icons.hail,
+          color: Colors.green,
+          size: 50.0,
+        ),
+        Icon(
+          Icons.face,
+          color: Colors.blue,
+          size: 50.0,
+        ),
+      ],
+    )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121428625-67bbf200-c94c-11eb-8258-bcf069060e71.png">
+</div>
+
 
 <h3>ElevaitedButtons</h3>
 
