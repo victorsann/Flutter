@@ -531,7 +531,7 @@ Por se trantar de uma estrutura, um Container possui propriedades bastantes coop
 
 O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização do container. Algumas delas são: 
 
-* <strong>borderRadius</strong> - Curvatura das bordas do container, podendo ser aplicada a todas ou apenas a uma
+* <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
 * <strong>color</strong> - Cor do Container
 * <strong>boxShadow</strong> - List de definições de sombreamento do Container
 * <strong>gradient</strong> - Gradiente de preenchimento do container
