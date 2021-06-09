@@ -647,10 +647,10 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>icon</strong> - Define style do ElevaitedButton
 
 
-<h3>ElevaitedButtons</h3>
+<h3>ElevatedButtons</h3>
 
 
-Um ElevaitedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevaitedButtons:
+Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
 
     Row(
       children: <Wdget>[
@@ -669,12 +669,12 @@ Um ElevaitedButton é um rótulo child exibido em um Material Widget cujo Materi
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121426355-e1061580-c949-11eb-9aa1-f4536c1e76d4.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121429593-78b93300-c94d-11eb-9709-493825aa44d8.png">
 </div>
 
-Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevaitedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
+Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevatedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
 
-* <strong>style</strong> - Define style do ElevaitedButton
+* <strong>style</strong> - Define style do ElevatedButton
 * <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
 * <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
 * <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
