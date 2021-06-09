@@ -14,6 +14,7 @@ class MyApp extends StatelessWidget {
         ),
         home: Center(
           child: Container(
+            alignment: Alignment.center,
             child: Center(child: Text("Children")),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15), color: Colors.white),
