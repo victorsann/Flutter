@@ -478,7 +478,7 @@ Uma Row também é definida como um Widget de estruturação, cuja função é a
 Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121290979-e3229280-c8bd-11eb-9a04-4f4460f4215d.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121446402-cb084d00-c969-11eb-9645-4f8e5c212f9d.png">
 </div>
 
 * <strong>children</strong> - Lista de Widgets definidos como parte da Row
@@ -508,7 +508,7 @@ Um Container é um Widget de estruturação que combina widgets comuns de pintin
 Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121402399-3a614b00-c930-11eb-8d56-b00e37efa412.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121446422-d9eeff80-c969-11eb-8dd6-3b1e0d786ed9.png">
 </div>
 
 Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
@@ -551,7 +551,7 @@ O Widget Text exibe um string com um single style. Um string pode sofrer um brea
 A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121402451-4b11c100-c930-11eb-9d21-86a565fb6e32.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121446461-f1c68380-c969-11eb-927f-cac39d52b4a2.png">
 </div>
 
 Alguns dos atributos de um Widget de estilização de texto são:
