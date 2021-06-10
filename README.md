@@ -382,15 +382,13 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas.
 
 
-<div align="center">
-   <h1>Catálogo de Widgets</h1>
-</div>
+<h1>Catálogo de Widgets</h1>
 
 
 Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
-<h3>Scaffold</h3>
+<h2>Scaffold</h2>
 
 
 A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
@@ -413,7 +411,7 @@ O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Fl
   * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
 
 
-<h3>Container</h3>
+<h2>Container</h2>
 
 
 Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
@@ -460,7 +458,7 @@ O decoration é uma propriedade do Container que define uma camada de style ante
 * <strong>image</strong> - Definição de uma imagem contida
 
 
-<h3>Column</h3>
+<h2>Column</h2>
 
 
 Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. A seguir há um exemplo de declaração de uma Column:
@@ -510,7 +508,7 @@ Há uma série de Widgets que podem ser children de uma Column, muitos associado
 * <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
-<h3>Row</h3>
+<h2>Row</h2>
 
 
 Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. A seguir há um exemplo de declaração de uma Row:
@@ -541,8 +539,7 @@ Um Row também conta com definições de prioridade, onde um children pode ocupa
 * <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
-
-<h3>Text</h3>
+<h2>Text</h2>
 
 
 O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
@@ -658,7 +655,7 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 <h1>Material Components</h1>
 
 
-<h3>Appbar</h3>
+<h2>Appbar</h2>
 
 
 Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
