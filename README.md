@@ -565,7 +565,7 @@ Alguns dos atributos de um Widget de estilização de texto são:
 <h2>Assets, Images e Icons</h2>
 
 
-<h3>Images</h3>
+<h2>Images</h2>
 
 
 O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
@@ -609,7 +609,7 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 * <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
 
 
-<h3>Icons</h3>
+<h2>Icons</h2>
 
 O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
 
@@ -646,7 +646,7 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>icon</strong> - Define style do ElevaitedButton
 
 
-<h1>Material Components</h1>
+<h2>Material Components</h2>
 
 
 <h2>Appbar</h2>
@@ -682,7 +682,7 @@ Os principais Widgets associados ao Appbar são:
 <h2>Buttons</h2>
 
 
-<h3>ElevatedButtons</h3>
+<h2>ElevatedButtons</h2>
 
 
 Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
