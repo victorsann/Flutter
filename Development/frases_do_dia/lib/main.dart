@@ -15,50 +15,75 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
-        actions: [],
-        title: Text('My App'),
-        backgroundColor: Colors.purple,
-      ),
-      body: Container(
-        decoration: BoxDecoration(color: Colors.purple),
+        body: Center(
+      child: Container(
+        width: 500,
+        decoration: BoxDecoration(color: Colors.blue[800]),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text('Text'),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(0), color: Colors.white),
-              height: 200,
-              margin: EdgeInsets.all(20),
+            Column(
+              children: <Widget>[
+                Container(
+                  height: 100,
+                  width: 150,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                  margin: EdgeInsets.all(10.0),
+                  alignment: Alignment.topLeft,
+                ),
+                Container(
+                  height: 100,
+                  width: 150,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                  margin: EdgeInsets.all(10.0),
+                  alignment: Alignment.topRight,
+                ),
+                Container(
+                  height: 100,
+                  width: 150,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                  margin: EdgeInsets.all(10.0),
+                  alignment: Alignment.center,
+                ),
+                Container(
+                  height: 100,
+                  width: 150,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                  margin: EdgeInsets.all(10.0),
+                  alignment: Alignment.bottomLeft,
+                ),
+                Container(
+                  height: 100,
+                  width: 150,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+                  ),
+                  decoration: BoxDecoration(color: Colors.white),
+                  margin: EdgeInsets.all(10.0),
+                  alignment: Alignment.bottomRight,
+                )
+              ],
             ),
-            Container(
-              alignment: Alignment.center,
-              child: Text('Text'),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(0), color: Colors.white),
-              height: 200,
-              margin: EdgeInsets.all(20),
-            ),
-            // Container(
-            //   alignment: Alignment.center,
-            //   child: Text('Text'),
-            //   decoration: BoxDecoration(
-            //       borderRadius: BorderRadius.circular(0), color: Colors.white),
-            //   height: 200,
-            //   margin: EdgeInsets.all(20),
-            // ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          decoration: BoxDecoration(color: Colors.purple),
-          height: 100.0,
-        ),
-      ),
-    );
+    ));
   }
 }

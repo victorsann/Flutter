@@ -660,7 +660,86 @@ Alguns dos atributos de um Widget de estilização de texto são:
 * <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
 * <strong>style</strong> - Definição de estilo do texto
 
-<h2>Layout </h2>
+
+<h2>Layout</h2>
+
+
+Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design e as sensações que pretende causar no usuário. Portanto, é muito importante gastar certo tempo pensando em como estruturar o layout da aplicação. Quais Widgets utilizar e como utilizar definem quão harmonioso será o app. Para tal, o Flutter dá ao desenvolvedor uma série de Widgets capazes de criar uma boa experiência para o usuário:
+
+
+<h3>Aling</h3>
+
+
+A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
+
+
+    Column(
+       children: <Widget>[
+         Container(
+           height: 100,
+           width: 150,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+           decoration: BoxDecoration(color: Colors.white),
+           margin: EdgeInsets.all(10.0),
+           alignment: Alignment.topLeft,
+         ),
+         Container(
+           height: 100,
+           width: 150,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+           decoration: BoxDecoration(color: Colors.white),
+           margin: EdgeInsets.all(10.0),
+           alignment: Alignment.topRight,
+         ),
+         Container(
+           height: 100,
+           width: 150,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+           decoration: BoxDecoration(color: Colors.white),
+           margin: EdgeInsets.all(10.0),
+           alignment: Alignment.center,
+         ),
+         Container(
+           height: 100,
+           width: 150,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+           decoration: BoxDecoration(color: Colors.white),
+           margin: EdgeInsets.all(10.0),
+           alignment: Alignment.bottomLeft,
+         ),
+         Container(
+           height: 100,
+           width: 150,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+           decoration: BoxDecoration(color: Colors.white),
+           margin: EdgeInsets.all(10.0),
+           alignment: Alignment.bottomRight,
+         )
+       ],
+     )
+
+O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo iria se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121553202-75728580-c9e7-11eb-9c4e-91f37888bd39.png">
+</div>
+
 
 
 <h2>Scrolling</h2>
