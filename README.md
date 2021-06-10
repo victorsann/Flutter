@@ -735,9 +735,28 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo iria se comportar:
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
+</div>
+
+Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
+
+    Container(
+      height: 100,
+      width: 150,
+      child: Text(
+        'Child',
+        style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+      ),
+      decoration: BoxDecoration(color: Colors.white),
+      margin: EdgeInsets.all(10.0),
+      alignment: Alignment(0.2, 0.6),
+    )
+
+As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. A imagem abaixo ilustra como o exemplo iria se comportar: 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121553202-75728580-c9e7-11eb-9c4e-91f37888bd39.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121556618-6ccf7e80-c9ea-11eb-8c4d-4a9d9b043c64.png">
 </div>
 
 
