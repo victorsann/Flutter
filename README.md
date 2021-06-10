@@ -762,18 +762,12 @@ Essas posições são definidas a partir da classe Alignment, e são atribuidas 
 
 Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
 
-     Container(
-      height: 100,
-      width: 150,
-      child: Align(
-        alignment: Alignment(0.2, 0.6),
-        child: Text(
-          'Child',
-          style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-        ),
+    Align(
+      alignment: Alignment(0.2, 0.6),
+      child: Text(
+        'Child', 
+        style: TextStyle(fontSize: 20, color: Colors.blue[800]),
       ),
-      decoration: BoxDecoration(color: Colors.white),
-      margin: EdgeInsets.all(10.0),
     )
 
 As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo iria se comportar: 
@@ -788,26 +782,19 @@ As coordenadas são definidas em um eixo horizontal/vertical, correspondendo res
 
 O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
 
-    Container(
-       height: 200,
-       width: 350,
-       margin: EdgeInsets.all(10.0),
-       alignment: Alignment.center,
-       decoration: BoxDecoration(color: Colors.white),
-       child: AspectRatio(
-         aspectRatio: 2 / 3,
-         child: Container(
-           alignment: Alignment.center,
-           decoration: BoxDecoration(color: Colors.yellow),
-           child: Text(
-             'Child',
-             style: TextStyle(color: Colors.blue[800], fontSize: 20),
-           ),
-         ),
-       ),
-     ),
+    AspectRatio(
+      aspectRatio: 2 / 3,
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: Colors.yellow),
+        child: Text(
+          'Child',
+          style: TextStyle(color: Colors.blue[800], fontSize: 20),
+        ),
+      ),
+    )
 
-Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima.A imagem a seguir ilustra como o mesmo iria se comportar:
+Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo iria se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
@@ -815,35 +802,24 @@ Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele se
 
 O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
 
-    Container(
-      height: 200,
-      width: 350,
-      margin: EdgeInsets.all(10.0),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: Colors.white),
-      child: AspectRatio(
-        aspectRatio: 0.6,
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(color: Colors.yellow),
-          child: Text(
-            'Child',
-            style: TextStyle(color: Colors.blue[800], fontSize: 20),
-          ),
+    AspectRatio(
+      aspectRatio: 0.6,
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: Colors.yellow),
+        child: Text(
+          'Child',
+          style: TextStyle(color: Colors.blue[800], fontSize: 20),
         ),
       ),
-    ),
-
+    )
 
 <h3>ConstrainedBox</h3>
 
 
-    Container(
-      height: 200,
-      width: 350,
-      alignment: Alignment.center,
-      decoration: BoxDecoration(color: Colors.white),
-      child: ConstrainedBox(
+Assim como os demias Widgets de layout, o ConstrainedBox define as demenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
+
+    ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
         child: Container(
           color: Colors.yellow,
@@ -862,12 +838,39 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
           ),
         ),
       )
-    )
 
+O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima iria se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121584119-7ddab880-ca07-11eb-965b-d073ff9899d4.png">
 </div>
+
+Outra situação em que é possível aplicar o ConstraintBox é quando um Widget child precisar oculpar todo o espaço correspondente ao Widget que o carrega. Exemplo:
+
+
+    ConstrainedBox(
+      constraints: BoxConstraints.expand(),
+      child: Container(
+        color: Colors.yellow,
+        padding: EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: Text.rich(TextSpan(children: <TextSpan>[
+          TextSpan(
+              text: 'Some text that you want to',
+              style: TextStyle(fontSize: 20)),
+          TextSpan(
+              text: ' break',
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold))
+        ])),
+      ),
+    )
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121586309-e62a9980-ca09-11eb-9b32-00e7128b6b35.png">
+</div>
+
 
 
 <h2>Scrolling</h2>

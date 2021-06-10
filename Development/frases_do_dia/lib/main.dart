@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(color: Colors.white),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
+                      constraints: BoxConstraints.expand(),
                       child: Container(
                         color: Colors.yellow,
                         padding: EdgeInsets.all(10),
