@@ -381,37 +381,81 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas.
 
-Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. Eles são:
+
+<h1>Catálogo de Widgets</h1>
 
 
-<h3>Appbar</h3>
+Para entender o conceito de Widget é importante sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
-Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
+<h3>Scaffold</h3>
 
 
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-          ...
-      );
-    }
-  
+A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
 
-Os principais Widgets associados ao Appbar são:
+    Scaffold(
+      appBar: AppBar( ... ),
+      body: Container( ... ),
+      drawer: Drawer( ... ),
+      floatingActionButton: FloatingActionButton( ... ),
+      bottomNavigationBar: BottomAppBar( ... )
+    )
+
+
+O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
+
+  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
+  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
+  * <strong>drawer</strong> - Um painel exibido ao lado do boody, acionado por uma ação de swipe
+  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
+  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
+
+
+<h3>Container</h3>
+
+
+Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
+
+    Center(
+      child: Container(
+        alignment: Alignment.center,
+        child: Center(child: Text("Children")),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15), color: Colors.white),
+        height: 300,
+        width: 300,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+      ),
+    )
+
+Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121446422-d9eeff80-c969-11eb-8dd6-3b1e0d786ed9.png">
 </div>
 
-* <strong>leading</strong> - Um Widget definido antes do title<br>
-* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
-* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
-* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
-* <strong>bottom</strong> - Define o bottom do Appbar
+Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
+
+* <strong>alignment</strong> - Alinhamento do child dentro do Container
+* <strong>child</strong> - Define o child contido
+* <strong>color</strong> - Definição de cor do Container
+* <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
+* <strong>decoration</strong> - Definição de estilo do Container
+* <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
+* <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
+
+
+<h3>Decoration</h3>
+
+
+O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização do container. Algumas delas são: 
+
+* <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
+* <strong>color</strong> - Cor de definição Container
+* <strong>boxShadow</strong> - List de definições de sombreamento do Container
+* <strong>gradient</strong> - Gradiente de preenchimento do container
+* <strong>image</strong> - Definição de uma imagem contida
 
 
 <h3>Column</h3>
@@ -495,75 +539,6 @@ Um Row também conta com definições de prioridade, onde um children pode ocupa
 * <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
-<h3>Container</h3>
-
-
-Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
-
-    Center(
-      child: Container(
-        alignment: Alignment.center,
-        child: Center(child: Text("Children")),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.white),
-        height: 300,
-        width: 300,
-        margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.all(10),
-      ),
-    )
-
-Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446422-d9eeff80-c969-11eb-8dd6-3b1e0d786ed9.png">
-</div>
-
-Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
-
-* <strong>alignment</strong> - Alinhamento do child dentro do Container
-* <strong>child</strong> - Define o child contido
-* <strong>color</strong> - Definição de cor do Container
-* <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
-* <strong>decoration</strong> - Definição de estilo do Container
-* <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
-* <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
-
-
-<h3>Decoration</h3>
-
-
-O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização do container. Algumas delas são: 
-
-* <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
-* <strong>color</strong> - Cor de definição Container
-* <strong>boxShadow</strong> - List de definições de sombreamento do Container
-* <strong>gradient</strong> - Gradiente de preenchimento do container
-* <strong>image</strong> - Definição de uma imagem contida
-
-
-<h3>Scaffold</h3>
-
-
-A classe Scaffold, que literalmente significa andaime, permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
-
-Scaffold(
-  appBar: AppBar( ... ),
-  body: Container( ... ),
-  bottomNavigationBar: BottomAppBar( ... ),
-  drawer: Drawer( ... ),
-  floatingActionButton: FloatingActionButton( ... )
-)
-
-
-O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
-
-  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
-  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
-  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
-  * <strong>drawer</strong> - Um painel exibido ao lado do boody, acionado por uma ação de swipe
-  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
-
 
 <h3>Text</h3>
 
@@ -592,6 +567,9 @@ Alguns dos atributos de um Widget de estilização de texto são:
 * <strong>textDirection</strong> - Direção de exibição do texto
 * <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
 * <strong>style</strong> - Definição de estilo do texto
+
+
+<h2>Assets, Images e Icons</h2>
 
 
 <h3>Images</h3>
@@ -675,6 +653,42 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>icon</strong> - Define style do ElevaitedButton
 
 
+<h1>Material Components</h1>
+
+
+<h3>Appbar</h3>
+
+
+Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
+
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+          ...
+      );
+    }
+  
+
+Os principais Widgets associados ao Appbar são:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
+</div>
+
+* <strong>leading</strong> - Um Widget definido antes do title<br>
+* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
+* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
+* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
+* <strong>bottom</strong> - Define o bottom do Appbar
+
+
+<h2>Buttons</h2>
+
+
 <h3>ElevatedButtons</h3>
 
 
@@ -708,6 +722,5 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 * <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
 
 
-<h1>Catálogo de Widgets</h1>
 
 
