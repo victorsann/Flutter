@@ -756,7 +756,7 @@ Como já foi citado, também é possível definir o alinhamento com base em valo
 As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. A imagem abaixo ilustra como o exemplo iria se comportar: 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121556618-6ccf7e80-c9ea-11eb-8c4d-4a9d9b043c64.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556618-6ccf7e80-c9ea-11eb-8c4d-4a9d9b043c64.png">
 </div>
 
 
