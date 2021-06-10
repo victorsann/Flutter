@@ -78,13 +78,13 @@ Tendo o Flutter instalado, o próximo passo é preparar o ambiente de desenvolvi
 O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta
 
 
-<h3>SDK Platforms</h3>
+<h2>SDK Platforms</h2>
 
 
 Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sistemas operacionais para os quais é possível desenvolver dentro do android studio. No momento a versão mais recente do android é a 11.0, portanto, os exemplos criados aqui serão desenvolvidos nesta versão
 
 
-<h3>Configurando Android SDK</h3>
+<h2>Configurando Android SDK</h2>
 
 
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
@@ -94,7 +94,7 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 </div>
 
 
-<h3>Flutter Plugin</h3>
+<h2>Flutter Plugin</h2>
 
 
 A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
@@ -134,7 +134,7 @@ Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente a
 Qualquer aplicação android depende essencialmente de um Java Development Kit ou jdk. Sendo um framework que desenvolve aplicações híbridas, o Flutter não é exceção, sendo estritamente necessário tê-lo instalado e operando. A seguir está listado o processo de instalação do jdk8:
 
 
-<h3>Chocolatey</h3>
+<h2>Chocolatey</h2>
 
 
 O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. Para instalá-lo execute o PowerShell como administrador e efetue o seguinte comando:
@@ -202,7 +202,7 @@ A primeira opção define que o aparelho não irá se desligar enquanto a aplica
 Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir
 
 
-<h3>Plugins</h3>
+<h2>Plugins</h2>
 
 
 Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, os plugins dão acesso a funcionalidades que compõem o ambiente de desenvolvimento. Eles são:
@@ -238,7 +238,7 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação, execução e configuração de um projeto será visto a frente, além de um overview dos arquivos que são gerados na criação
 
 
-<h3>Gerando um Projeto Flutter</h3>
+<h2>Gerando um Projeto Flutter</h2>
 
 
 Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, em seguida abra o VSCode. Com o terminal aberto, acesse o diretório criado e executando o seguinte comando:
@@ -296,7 +296,7 @@ O resultado é semelhante ao anteriormente visto em um android device. E como j�
 O arquivo main.dart executa uma aplicação padrão, criada como base de qualquer projeto Flutter. Para entender melhor a estrutura de uma aplicação mobile Flutter, é importante entender o que ocorre neste arquivo. A seguir há uma definição básica da estrutura padão no main.dart:
 
 
-<h3>Estrutura Básica</h3>
+<h2>Estrutura Básica</h2>
 
 
     import 'package:flutter/material.dart';
