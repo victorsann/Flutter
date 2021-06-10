@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(color: Colors.white),
                   margin: EdgeInsets.all(10.0),
-                  alignment: Alignment(0.2, 0.6),
+                  alignment: Alignment(0.01, 0.9),
                 ),
               ],
             ),

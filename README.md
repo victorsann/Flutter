@@ -753,10 +753,10 @@ Como já foi citado, também é possível definir o alinhamento com base em valo
       alignment: Alignment(0.2, 0.6),
     )
 
-As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. A imagem abaixo ilustra como o exemplo iria se comportar: 
+As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo iria se comportar: 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556618-6ccf7e80-c9ea-11eb-8c4d-4a9d9b043c64.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121560045-87efbd80-c9ed-11eb-967f-dde5cac7edb2.png">
 </div>
 
 
