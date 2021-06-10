@@ -814,6 +814,27 @@ Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele se
   <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
 </div>
 
+O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
+
+    Container(
+      height: 200,
+      width: 350,
+      margin: EdgeInsets.all(10.0),
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: Colors.white),
+      child: AspectRatio(
+        aspectRatio: 0.6,
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(color: Colors.yellow),
+          child: Text(
+            'Child',
+            style: TextStyle(color: Colors.blue[800], fontSize: 20),
+          ),
+        ),
+      ),
+    ),
+
 
 <h2>Scrolling</h2>
 

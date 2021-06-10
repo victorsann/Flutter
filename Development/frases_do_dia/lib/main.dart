@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(color: Colors.white),
                   child: AspectRatio(
-                    aspectRatio: 2 / 3,
+                    aspectRatio: 0.6,
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(color: Colors.yellow),
