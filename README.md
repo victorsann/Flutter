@@ -402,7 +402,7 @@ O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Fl
 
   * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
   * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
-  * <strong>drawer</strong> - Um painel exibido ao lado do boody, acionado por uma ação de swipe
+  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
   * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
   * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
 
@@ -445,7 +445,7 @@ Por se trantar de uma estrutura, um Container possui propriedades bastantes coop
 <h3>Decoration</h3>
 
 
-O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização do container. Algumas delas são: 
+O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização ao container. Algumas delas são: 
 
 * <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
 * <strong>color</strong> - Cor de definição Container
@@ -496,7 +496,7 @@ O Widget Column conta com definições de prioridade, onde um children pode ocup
   <img src="https://user-images.githubusercontent.com/61476935/121446097-2ede4600-c969-11eb-9f11-ee271e7ae79e.png">
 </div>
 
-Há uma série de Widgets que podem ser children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
+Há uma série de Widgets que podem ser associados a uma Column. A seguir estão definidos alguns deles:
 
 * <strong>children</strong> - Lista de Widgets definidos como parte da Column
 * <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
@@ -535,36 +535,7 @@ Um Row também conta com definições de prioridade, onde um children pode ocupa
 * <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
 
 
-<h2>Text</h2>
-
-
-O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
-
-    Text(
-     'Children',
-     textDirection: TextDirection.rtl,
-     style: TextStyle(
-       fontSize: 20,
-       fontWeight: FontWeight.bold,
-       color: Colors.blue[900],
-     ),
-    )
-
-A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446461-f1c68380-c969-11eb-927f-cac39d52b4a2.png">
-</div>
-
-Alguns dos atributos de um Widget de estilização de texto são:
-
-* <strong>data</strong> - Texto a ser exibido
-* <strong>textDirection</strong> - Direção de exibição do texto
-* <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
-* <strong>style</strong> - Definição de estilo do texto
-
-
-<h2>Assets, Images e Icons</h2>
+<h2>Assets, Images, Icons e Text</h2>
 
 Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associado a View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais. Para isso o Flutter conta com a Class AssetsBundle, cunja função é gerir uma coleção de recurso usados pela aplicação.
 
@@ -577,7 +548,7 @@ Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual c
         - assets/images/
         - assets/icons/
 
-É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets  
+É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets:  
 
 
 <h3>Images</h3>
@@ -660,6 +631,34 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>sixe</strong> - Tamanho do icon, definido em pixel
 * <strong>icon</strong> - Define style do ElevaitedButton
 
+
+<h3>Text</h3>
+
+
+O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
+
+    Text(
+     'Children',
+     textDirection: TextDirection.rtl,
+     style: TextStyle(
+       fontSize: 20,
+       fontWeight: FontWeight.bold,
+       color: Colors.blue[900],
+     ),
+    )
+
+A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121446461-f1c68380-c969-11eb-927f-cac39d52b4a2.png">
+</div>
+
+Alguns dos atributos de um Widget de estilização de texto são:
+
+* <strong>data</strong> - Texto a ser exibido
+* <strong>textDirection</strong> - Direção de exibição do texto
+* <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
+* <strong>style</strong> - Definição de estilo do texto
 
 <h2>Layout </h2>
 
