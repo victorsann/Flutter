@@ -351,7 +351,7 @@ A estrutura padão no main.dar consiste em:
  <h5>Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp</h5>
  </div>
 
-    MaterialApp
+    MaterialApp()
 
 <div align="center">
  <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los em projetos baseados em Widgets;</h5>
@@ -365,17 +365,13 @@ A estrutura padão no main.dar consiste em:
 <h1>Componentes de Interface</h1>
 
 
-Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização gigantesca de interfaces gráficas. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso. Também conta com uma arquitetura concentrada baseada em widgets
+Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso. Também conta com uma arquitetura concentrada baseada em widgets
 
 
 <h2>Widgets</h2>
 
 
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas.
-
-
-<h3>Estrutura de Um Widget</h3>
-
 
 Há uma série de Widgets padrão que todo iniciante em Flatter deve conhecer. Eles são:
 
@@ -413,7 +409,7 @@ Os principais Widgets associados ao Appbar são:
 <h3>Column</h3>
 
 
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. Exemplo de declaração de uma Column:
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. A seguir há um exemplo de declaração de uma Column:
 
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -449,7 +445,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo iria se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121289548-7c9c7500-c8bb-11eb-93c5-6af2b8e0ad82.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121446097-2ede4600-c969-11eb-9f11-ee271e7ae79e.png">
 </div>
 
 Há uma série de Widgets que podem ser children de uma Column, muitos associados a alinhamento e posição. A seguir estão definidos alguns deles:
@@ -463,7 +459,7 @@ Há uma série de Widgets que podem ser children de uma Column, muitos associado
 <h3>Row</h3>
 
 
-Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. Exemplo de declaração de uma Row:
+Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. A seguir há um exemplo de declaração de uma Row:
 
     Row(
       children: <Widget>[
