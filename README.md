@@ -909,6 +909,35 @@ Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widge
   <img src="https://user-images.githubusercontent.com/61476935/121590423-b0d47a80-ca0e-11eb-9758-23dbc513f055.png">
 </div>
 
+Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
+
+    Row(
+      children: <Widget>[
+        Expanded(
+            flex: 1,
+            child: Container(
+              color: Colors.blue,
+              height: 100,
+            )),
+        Container(
+          color: Colors.yellow,
+          height: 100,
+          width: 70,
+        ),
+        Expanded(
+            flex: 2,
+            child: Container(
+              color: Colors.blue,
+              height: 100,
+            )),
+         ],
+      )
+
+O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima iria se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121592232-ce0a4880-ca10-11eb-8d68-7b13254a431e.png">
+</div>
 
 <h2>Scrolling</h2>
 

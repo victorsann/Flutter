@@ -16,24 +16,25 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Column(
+      child: Row(
         children: <Widget>[
+          Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.blue,
+                height: 100,
+              )),
           Container(
-            color: Colors.blue,
-            height: 150,
-            width: 500,
+            color: Colors.yellow,
+            height: 100,
+            width: 70,
           ),
           Expanded(
-            child: Container(
-              color: Colors.amber,
-              width: 500,
-            ),
-          ),
-          Container(
-            color: Colors.blue,
-            height: 150,
-            width: 500,
-          ),
+              flex: 2,
+              child: Container(
+                color: Colors.blue,
+                height: 100,
+              )),
         ],
       ),
     ));
