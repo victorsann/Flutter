@@ -351,11 +351,19 @@ A estrutura padão no main.dar consiste em:
  <h5>Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp</h5>
  </div>
 
-    MaterialApp()
+    MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
 
-<div align="center">
- <h5>Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los em projetos baseados em Widgets;</h5>
-</div>
+
+ <h5>
+ Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los em projetos baseados em Widgets. O MaterialApp é uma classe de definição de layout baseada no Material Design do Google. Ele possui uma série de atributos que definem características gerais da aplicação. Os atributos do exemplo correspondem a um title do projeto, uma definição de tema e tela inicial, definida como home.
+ </h5>
+
 
 <div align="center">
  Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
@@ -533,6 +541,10 @@ O decoration é uma propriedade do Container que define uma camada de style ante
 * <strong>gradient</strong> - Gradiente de preenchimento do container
 * <strong>image</strong> - Definição de uma imagem contida
 
+
+<h3>Scaffold</h3>
+
+A classa ou Widget Scaffold permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando API's de estilização
 
 <h3>Text</h3>
 
