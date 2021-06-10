@@ -369,9 +369,11 @@ A estrutura padão no main.dar consiste em:
  Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
 </div>
   
+<br>
 
 <h1>Catálogo de Widgets</h1>
 
+<br>
 
 Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso. Também conta com uma arquitetura concentrada baseada em widgets
 
