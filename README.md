@@ -566,6 +566,8 @@ Alguns dos atributos de um Widget de estilização de texto são:
 
 <h2>Assets, Images e Icons</h2>
 
+Os assets se tratam dos ativos, também definido como recursos, de uma aplicação, geralmente associado a inclusão de arquivos da View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra
+
 
 <h2>Images</h2>
 
