@@ -569,7 +569,7 @@ Alguns dos atributos de um Widget de estilização de texto são:
 Os assets se tratam dos ativos, também definido como recursos, de uma aplicação, geralmente associado a inclusão de arquivos da View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais
 
 
-<h2>Images</h2>
+<h3>Images</h3>
 
 
 O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
@@ -613,7 +613,7 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 * <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
 
 
-<h2>Icons</h2>
+<h3>Icons</h3>
 
 O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
 
