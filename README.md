@@ -809,7 +809,6 @@ O AspectRatio faz parte dos Widgets de definição de layout graças a sua capac
 
 Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima.A imagem a seguir ilustra como o mesmo iria se comportar:
 
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
 </div>
@@ -834,6 +833,41 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
         ),
       ),
     ),
+
+
+<h3>ConstrainedBox</h3>
+
+
+    Container(
+      height: 200,
+      width: 350,
+      alignment: Alignment.center,
+      decoration: BoxDecoration(color: Colors.white),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
+        child: Container(
+          color: Colors.yellow,
+          padding: EdgeInsets.all(10),
+          alignment: Alignment.center,
+          child: Text.rich(TextSpan(children: <TextSpan>[
+            TextSpan(
+              text: 'Some text that you want to',
+              style: TextStyle(fontSize: 20)),
+            TextSpan(
+              text: ' break',
+               style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold))
+              ]
+            )
+          ),
+        ),
+      )
+    )
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121584119-7ddab880-ca07-11eb-965b-d073ff9899d4.png">
+</div>
 
 
 <h2>Scrolling</h2>

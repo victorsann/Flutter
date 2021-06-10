@@ -25,23 +25,27 @@ class MyHomePage extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  height: 200,
-                  width: 350,
-                  margin: EdgeInsets.all(10.0),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: AspectRatio(
-                    aspectRatio: 0.6,
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(color: Colors.yellow),
-                      child: Text(
-                        'Child',
-                        style: TextStyle(color: Colors.blue[800], fontSize: 20),
+                    height: 200,
+                    width: 350,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(color: Colors.white),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
+                      child: Container(
+                        color: Colors.yellow,
+                        padding: EdgeInsets.all(10),
+                        alignment: Alignment.center,
+                        child: Text.rich(TextSpan(children: <TextSpan>[
+                          TextSpan(
+                              text: 'Some text that you want to',
+                              style: TextStyle(fontSize: 20)),
+                          TextSpan(
+                              text: ' break',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.bold))
+                        ])),
                       ),
-                    ),
-                  ),
-                ),
+                    )),
               ],
             ),
           ],
