@@ -566,7 +566,18 @@ Alguns dos atributos de um Widget de estilização de texto são:
 
 <h2>Assets, Images e Icons</h2>
 
-Os assets se tratam dos ativos, também definido como recursos, de uma aplicação, geralmente associado a inclusão de arquivos da View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais
+Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associado a View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais. Para isso o Flutter conta com a Class AssetsBundle, cunja função é gerir uma coleção de recurso usados pela aplicação.
+
+Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependencias tanto do Material design(android) quanto do cupertino(ios). Exemplo:
+
+ flutter:
+   uses-material-design: true
+ # Para adicionar assets a sua aplicação, crie uma assets section:
+   assets:
+     - assets/images/
+     - assets/icons/
+
+É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets  
 
 
 <h3>Images</h3>
@@ -608,7 +619,7 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 * <strong>image</strong> - A imagem que será exibida
 * <strong>width</strong> - Largura da imagem
 * <strong>height</strong> - Altura da imagem
-* <strong>alignment</strong> - Alinhamento da imagem com base em seus limites
+* <strong>alignment</strong> - Alinhamento da imagem com base nos limites da tela
 * <strong>fit</strong> - Alinhamento da imagen com base em seus limites
 * <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
 
