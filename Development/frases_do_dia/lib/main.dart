@@ -25,15 +25,22 @@ class MyHomePage extends StatelessWidget {
             Column(
               children: <Widget>[
                 Container(
-                  height: 100,
-                  width: 150,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-                  ),
-                  decoration: BoxDecoration(color: Colors.white),
+                  height: 200,
+                  width: 350,
                   margin: EdgeInsets.all(10.0),
-                  alignment: Alignment(0.01, 0.9),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(color: Colors.white),
+                  child: AspectRatio(
+                    aspectRatio: 2 / 3,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(color: Colors.yellow),
+                      child: Text(
+                        'Child',
+                        style: TextStyle(color: Colors.blue[800], fontSize: 20),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),

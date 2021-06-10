@@ -672,66 +672,75 @@ Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design
 
 A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
 
-
     Column(
-       children: <Widget>[
-         Container(
-           height: 100,
-           width: 150,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-           decoration: BoxDecoration(color: Colors.white),
-           margin: EdgeInsets.all(10.0),
+     children: <Widget>[
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
            alignment: Alignment.topLeft,
-         ),
-         Container(
-           height: 100,
-           width: 150,
            child: Text(
              'Child',
              style: TextStyle(fontSize: 20, color: Colors.blue[800]),
            ),
-           decoration: BoxDecoration(color: Colors.white),
-           margin: EdgeInsets.all(10.0),
+         ),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
            alignment: Alignment.topRight,
-         ),
-         Container(
-           height: 100,
-           width: 150,
            child: Text(
              'Child',
              style: TextStyle(fontSize: 20, color: Colors.blue[800]),
            ),
-           decoration: BoxDecoration(color: Colors.white),
-           margin: EdgeInsets.all(10.0),
+         ),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
            alignment: Alignment.center,
-         ),
-         Container(
-           height: 100,
-           width: 150,
            child: Text(
              'Child',
              style: TextStyle(fontSize: 20, color: Colors.blue[800]),
            ),
-           decoration: BoxDecoration(color: Colors.white),
-           margin: EdgeInsets.all(10.0),
+         ),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
            alignment: Alignment.bottomLeft,
-         ),
-         Container(
-           height: 100,
-           width: 150,
            child: Text(
              'Child',
              style: TextStyle(fontSize: 20, color: Colors.blue[800]),
            ),
-           decoration: BoxDecoration(color: Colors.white),
-           margin: EdgeInsets.all(10.0),
+         ),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
            alignment: Alignment.bottomRight,
-         )
-       ],
-     )
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+           ),
+         ),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       )
+     ],
+     
 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo iria se comportar:
 
@@ -739,18 +748,32 @@ O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padr�
   <img src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
 </div>
 
+Essas posições são definidas a partir da classe Alignment, e são atribuidas a propriedade alignment do Widget Align(). A seguir temos uma lista dessas posições:
+
+* center
+* centerleft
+* centerrRight
+* topCenter
+* topLeft
+* topRight
+* bottomCenter
+* bottomLeft
+* bottomRight
+
 Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
 
-    Container(
+     Container(
       height: 100,
       width: 150,
-      child: Text(
-        'Child',
-        style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+      child: Align(
+        alignment: Alignment(0.2, 0.6),
+        child: Text(
+          'Child',
+          style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+        ),
       ),
       decoration: BoxDecoration(color: Colors.white),
       margin: EdgeInsets.all(10.0),
-      alignment: Alignment(0.2, 0.6),
     )
 
 As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo iria se comportar: 
@@ -759,6 +782,37 @@ As coordenadas são definidas em um eixo horizontal/vertical, correspondendo res
   <img src="https://user-images.githubusercontent.com/61476935/121560324-cb4a2c00-c9ed-11eb-818c-6e2e94001f7e.png">
 </div>
 
+
+<h3>AspectRatio</h3>
+
+
+O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
+
+    Container(
+       height: 200,
+       width: 350,
+       margin: EdgeInsets.all(10.0),
+       alignment: Alignment.center,
+       decoration: BoxDecoration(color: Colors.white),
+       child: AspectRatio(
+         aspectRatio: 2 / 3,
+         child: Container(
+           alignment: Alignment.center,
+           decoration: BoxDecoration(color: Colors.yellow),
+           child: Text(
+             'Child',
+             style: TextStyle(color: Colors.blue[800], fontSize: 20),
+           ),
+         ),
+       ),
+     ),
+
+Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima.A imagem a seguir ilustra como o mesmo iria se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
+</div>
 
 
 <h2>Scrolling</h2>
