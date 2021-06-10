@@ -842,7 +842,7 @@ Assim como os demias Widgets de layout, o ConstrainedBox define as demenções d
 O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima iria se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121584119-7ddab880-ca07-11eb-965b-d073ff9899d4.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121586511-1eca7300-ca0a-11eb-83ac-dd91d54f0b31.png">
 </div>
 
 Outra situação em que é possível aplicar o ConstraintBox é quando um Widget child precisar oculpar todo o espaço correspondente ao Widget que o carrega. Exemplo:
@@ -868,7 +868,7 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121586309-e62a9980-ca09-11eb-9b32-00e7128b6b35.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121586564-30137f80-ca0a-11eb-867b-ac1b3feefa71.png">
 </div>
 
 
