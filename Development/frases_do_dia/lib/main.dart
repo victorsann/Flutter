@@ -16,40 +16,25 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Container(
-        width: 500,
-        decoration: BoxDecoration(color: Colors.blue[800]),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Container(
-                    height: 200,
-                    width: 350,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(color: Colors.white),
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints.expand(),
-                      child: Container(
-                        color: Colors.yellow,
-                        padding: EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        child: Text.rich(TextSpan(children: <TextSpan>[
-                          TextSpan(
-                              text: 'Some text that you want to',
-                              style: TextStyle(fontSize: 20)),
-                          TextSpan(
-                              text: ' break',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold))
-                        ])),
-                      ),
-                    )),
-              ],
+      child: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.blue,
+            height: 150,
+            width: 500,
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.amber,
+              width: 500,
             ),
-          ],
-        ),
+          ),
+          Container(
+            color: Colors.blue,
+            height: 150,
+            width: 500,
+          ),
+        ],
       ),
     ));
   }

@@ -817,7 +817,7 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
 <h3>ConstrainedBox</h3>
 
 
-Assim como os demias Widgets de layout, o ConstrainedBox define as demenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
+Assim como os demias Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
 
     ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
@@ -849,20 +849,22 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 
 
     ConstrainedBox(
-      constraints: BoxConstraints.expand(),
-      child: Container(
-        color: Colors.yellow,
-        padding: EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: Text.rich(TextSpan(children: <TextSpan>[
-          TextSpan(
-              text: 'Some text that you want to',
-              style: TextStyle(fontSize: 20)),
-          TextSpan(
-              text: ' break',
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold))
-        ])),
+       constraints: BoxConstraints.expand(),
+       child: Container(
+         color: Colors.yellow,
+         padding: EdgeInsets.all(10),
+         alignment: Alignment.center,
+         child: Text.rich(TextSpan(children: <TextSpan>[
+           TextSpan(
+             text: 'Some text that you want to',
+             style: TextStyle(fontSize: 20)),
+           TextSpan(
+             text: ' break',
+             style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold))
+            ]
+          )
+        ),
       ),
     )
 
@@ -871,6 +873,41 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
   <img src="https://user-images.githubusercontent.com/61476935/121586564-30137f80-ca0a-11eb-867b-ac1b3feefa71.png">
 </div>
 
+
+<h3>Expanded</h3>
+
+
+O já mencionado Expanded é um Widget de definição de dimenções, normalmente associado a um Widget Multi-child, como uma Column ou row. Ele basicamente indica qual dos Widgets do vetor devem ocupar mais espaço em relação aos demias. A seguir há um exemplo de uso do Expanded:
+
+    Center(
+      child: Column(
+        children: <Widget>[
+          Container(
+            color: Colors.blue,
+            height: 150,
+            width: 500,
+          ),
+          Expanded(
+            child: Container(
+              color: Colors.amber,
+              width: 500,
+            ),
+          ),
+          Container(
+            color: Colors.blue,
+            height: 150,
+            width: 500,
+          ),
+        ],
+      ),
+    )
+
+Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima iria se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121590423-b0d47a80-ca0e-11eb-9758-23dbc513f055.png">
+</div>
 
 
 <h2>Scrolling</h2>
