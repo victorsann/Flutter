@@ -646,6 +646,12 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>icon</strong> - Define style do ElevaitedButton
 
 
+<h2>Layout </h2>
+
+
+<h2>Scrolling</h2>
+
+
 <h2>Material Components</h2>
 
 
