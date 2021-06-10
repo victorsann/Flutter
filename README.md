@@ -370,7 +370,9 @@ A estrutura padão no main.dar consiste em:
 </div>
   
 
-<h1>Componentes de Interface</h1>
+<div align="center">
+  <h1>Componentes de Interface</h1>
+</div>
 
 
 Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso. Também conta com uma arquitetura concentrada baseada em widgets
@@ -385,7 +387,7 @@ Baseados no [Material Design](https://material.io/design), os Widgets são a bas
 <h1>Catálogo de Widgets</h1>
 
 
-Para entender o conceito de Widget é importante sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
+Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
 <h3>Scaffold</h3>
