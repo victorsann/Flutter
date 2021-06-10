@@ -7,38 +7,58 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: "My App",
-        home: Center(
-          child: Container(
-            alignment: Alignment.center,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: const <Widget>[
-                Icon(
-                  Icons.zoom_out_map_outlined,
-                  color: Colors.red,
-                  size: 50.0,
-                ),
-                Icon(
-                  Icons.hail,
-                  color: Colors.green,
-                  size: 50.0,
-                ),
-                Icon(
-                  Icons.face,
-                  color: Colors.blue,
-                  size: 50.0,
-                ),
-              ],
+    return MaterialApp(title: "My App", home: MyHomePage());
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        actions: [],
+        title: Text('My App'),
+        backgroundColor: Colors.purple,
+      ),
+      body: Container(
+        decoration: BoxDecoration(color: Colors.purple),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text('Text'),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0), color: Colors.white),
+              height: 200,
+              margin: EdgeInsets.all(20),
             ),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15), color: Colors.white),
-            height: 300,
-            width: 300,
-            margin: const EdgeInsets.all(10),
-            padding: const EdgeInsets.all(20),
-          ),
-        ));
+            Container(
+              alignment: Alignment.center,
+              child: Text('Text'),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0), color: Colors.white),
+              height: 200,
+              margin: EdgeInsets.all(20),
+            ),
+            // Container(
+            //   alignment: Alignment.center,
+            //   child: Text('Text'),
+            //   decoration: BoxDecoration(
+            //       borderRadius: BorderRadius.circular(0), color: Colors.white),
+            //   height: 200,
+            //   margin: EdgeInsets.all(20),
+            // ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          decoration: BoxDecoration(color: Colors.purple),
+          height: 100.0,
+        ),
+      ),
+    );
   }
 }

@@ -544,9 +544,29 @@ O decoration é uma propriedade do Container que define uma camada de style ante
 
 <h3>Scaffold</h3>
 
-A classa ou Widget Scaffold permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando API's de estilização
+
+A classe Scaffold, que literalmente significa andaime, permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
+
+Scaffold(
+  appBar: AppBar( ... ),
+  body: Container( ... ),
+  bottomNavigationBar: BottomAppBar( ... ),
+  drawer: Drawer( ... ),
+  floatingActionButton: FloatingActionButton( ... )
+)
+
+
+O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
+
+  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
+  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
+  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
+  * <strong>drawer</strong> - Um painel exibido ao lado do boody, acionado por uma ação de swipe
+  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
+
 
 <h3>Text</h3>
+
 
 O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
 
@@ -688,7 +708,6 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 * <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
 
 
-
-
+<h1>Catálogo de Widgets</h1>
 
 
