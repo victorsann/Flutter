@@ -570,12 +570,12 @@ Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associad
 
 Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependencias tanto do Material design(android) quanto do cupertino(ios). Exemplo:
 
- flutter:
-   uses-material-design: true
- # Para adicionar assets a sua aplicação, crie uma assets section:
-   assets:
-     - assets/images/
-     - assets/icons/
+    flutter:
+      uses-material-design: true
+     // Para adicionar assets a sua aplicação, crie uma assets section:
+      assets:
+        - assets/images/
+        - assets/icons/
 
 É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets  
 
