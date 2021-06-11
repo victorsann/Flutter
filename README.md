@@ -1117,7 +1117,7 @@ O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gera
 
 <div align="center">
   <img width="30%" src="https://user-images.githubusercontent.com/61476935/121717502-a0c4a580-cab7-11eb-8593-4d1084ff07a5.png">
-  <img width="30%" src="https://user-images.githubusercontent.com/61476935/121724066-b8069180-cabd-11eb-9bec-aae92205a10e.png">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/121724066-b8069180-cabd-11eb-9bec-aae92205a10e.png">
 </div>
 
 
