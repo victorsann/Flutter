@@ -740,6 +740,7 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
          margin: EdgeInsets.all(10.0),
        )
      ],
+    )
      
 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
@@ -752,7 +753,7 @@ Essas posições são definidas a partir da classe Alignment, e são atribuidas 
 
 * center
 * centerleft
-* centerrRight
+* centerRight
 * topCenter
 * topLeft
 * topRight
@@ -1027,6 +1028,11 @@ O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utili
 </div>
 
 
+Como já foi mencionado, o FittedBox conta com a propriedade fit, que define o nível de ajuste de posicionamento do child.Além disso, o FittedBox conta também com a propriedade alignment, qua ajuda no dimensionamento dos Widgets:
+
+* <strong>fit</strong>
+* <strong>alignment</strong>
+
 A seguir estão as descritas cada propriedade do BoxFit:
 
 * <strong>cover</strong> - Torna o espaço oculpado pelo child maior que o disponível 
@@ -1036,13 +1042,57 @@ A seguir estão as descritas cada propriedade do BoxFit:
 * <strong>none</strong> - Anula os efeitos do FittedBox
 
 
+<h3>FractionallySizedBox</h3>
 
 
+O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
+
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          color: Colors.white,
+          height: 200,
+          width: 200,
+          margin: EdgeInsets.all(10),
+          alignment: Alignment.center,
+          child: FractionallySizedBox(
+            heightFactor: 1.0,
+            widthFactor: 0.6,
+            child: Container(
+              decoration: BoxDecoration(color: Colors.yellow),
+            ),
+          ),
+        ),
+        Container(
+          color: Colors.white,
+          height: 200,
+          width: 200,
+          margin: EdgeInsets.all(10),
+          alignment: Alignment.center,
+          child: FractionallySizedBox(
+            heightFactor: 0.6,
+            widthFactor: 1.0,
+            child: Container(
+              decoration: BoxDecoration(color: Colors.yellow),
+            ),
+          ),
+        )
+      ],
+    )
+
+O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% do 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
 
 
-Além disso, o FittedBox conta com a propriedade alignment, qua ajuda no dimensionamento dos Widgets
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121710836-5986e680-cab0-11eb-9d03-26d67faa7410.png">
+</div>
 
-<h3>FittedBox</h3>
+
+Os principais Factores da classe FractionallySizedBox() são:
+
+* <strong>heightFactor</strong> - Fator de altura
+* <strong>widthFactor</strong> - Fator de largura
 
 
 <h3>FittedBox</h3>

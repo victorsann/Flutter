@@ -24,71 +24,29 @@ class MyHomePage extends StatelessWidget {
             children: <Widget>[
               Container(
                 color: Colors.white,
-                height: 100,
-                width: 100,
+                height: 200,
+                width: 200,
                 margin: EdgeInsets.all(10),
-                child: FittedBox(
-                  alignment: Alignment.bottomLeft,
-                  fit: BoxFit.cover,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20),
+                alignment: Alignment.center,
+                child: FractionallySizedBox(
+                  heightFactor: 1.0,
+                  widthFactor: 0.6,
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.yellow),
                   ),
                 ),
               ),
               Container(
                 color: Colors.white,
-                height: 100,
-                width: 100,
+                height: 200,
+                width: 200,
                 margin: EdgeInsets.all(10),
-                child: FittedBox(
-                  alignment: Alignment.topLeft,
-                  fit: BoxFit.fill,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                height: 20,
-                width: 100,
-                margin: EdgeInsets.all(10),
-                child: FittedBox(
-                  alignment: Alignment.center,
-                  fit: BoxFit.fitHeight,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                height: 100,
-                width: 50,
-                margin: EdgeInsets.all(10),
-                child: FittedBox(
-                  alignment: Alignment.topLeft,
-                  fit: BoxFit.fitWidth,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                height: 100,
-                width: 100,
-                margin: EdgeInsets.all(10),
-                child: FittedBox(
-                  alignment: Alignment.bottomLeft,
-                  fit: BoxFit.none,
-                  child: Text(
-                    'Child',
-                    style: TextStyle(fontSize: 20),
+                alignment: Alignment.center,
+                child: FractionallySizedBox(
+                  heightFactor: 0.6,
+                  widthFactor: 1.0,
+                  child: Container(
+                    decoration: BoxDecoration(color: Colors.yellow),
                   ),
                 ),
               )
