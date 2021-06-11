@@ -1095,8 +1095,33 @@ Os principais Factores da classe FractionallySizedBox() são:
 * <strong>widthFactor</strong> - Fator de largura
 
 
-<h3>FittedBox</h3>
+<h3>LimitedBox</h3>
 
+
+Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
+
+    ListView(
+      children: [
+      for (var i = 0; i < 10; i++)
+        LimitedBox(
+          maxHeight: 200,
+          maxWidth: 200,
+          child: Container(
+              margin: EdgeInsets.all(1),
+              decoration: BoxDecoration(color: Colors.white)),
+        )
+    ]
+
+O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121717502-a0c4a580-cab7-11eb-8593-4d1084ff07a5.png">
+  <img src="">
+</div>
+
+
+<h3>LimitedBox</h3>
 
 
 <h2>Scrolling</h2>

@@ -19,39 +19,16 @@ class MyHomePage extends StatelessWidget {
       child: Container(
           width: 500,
           decoration: BoxDecoration(color: Colors.blue[900]),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                color: Colors.white,
-                height: 200,
-                width: 200,
-                margin: EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: FractionallySizedBox(
-                  heightFactor: 1.0,
-                  widthFactor: 0.6,
-                  child: Container(
-                    decoration: BoxDecoration(color: Colors.yellow),
-                  ),
-                ),
-              ),
-              Container(
-                color: Colors.white,
-                height: 200,
-                width: 200,
-                margin: EdgeInsets.all(10),
-                alignment: Alignment.center,
-                child: FractionallySizedBox(
-                  heightFactor: 0.6,
-                  widthFactor: 1.0,
-                  child: Container(
-                    decoration: BoxDecoration(color: Colors.yellow),
-                  ),
-                ),
+          child: ListView(children: [
+            for (var i = 0; i < 10; i++)
+              LimitedBox(
+                maxHeight: 200,
+                maxWidth: 100,
+                child: Container(
+                    margin: EdgeInsets.all(1),
+                    decoration: BoxDecoration(color: Colors.white)),
               )
-            ],
-          )),
+          ])),
     ));
   }
 }
