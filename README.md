@@ -1023,7 +1023,7 @@ O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utili
 
 
 <div align="center">
-  <img width="10%" src="https://user-images.githubusercontent.com/61476935/121698162-20487980-caa4-11eb-9c29-1284c47ca2eb.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121698707-a5339300-caa4-11eb-809d-12722e89155b.png">
 </div>
 
 
