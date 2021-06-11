@@ -28,6 +28,7 @@ class MyHomePage extends StatelessWidget {
                 width: 100,
                 margin: EdgeInsets.all(10),
                 child: FittedBox(
+                  alignment: Alignment.bottomLeft,
                   fit: BoxFit.cover,
                   child: Text(
                     'Child',
@@ -41,6 +42,7 @@ class MyHomePage extends StatelessWidget {
                 width: 100,
                 margin: EdgeInsets.all(10),
                 child: FittedBox(
+                  alignment: Alignment.topLeft,
                   fit: BoxFit.fill,
                   child: Text(
                     'Child',
@@ -54,6 +56,7 @@ class MyHomePage extends StatelessWidget {
                 width: 100,
                 margin: EdgeInsets.all(10),
                 child: FittedBox(
+                  alignment: Alignment.center,
                   fit: BoxFit.fitHeight,
                   child: Text(
                     'Child',
@@ -67,6 +70,7 @@ class MyHomePage extends StatelessWidget {
                 width: 50,
                 margin: EdgeInsets.all(10),
                 child: FittedBox(
+                  alignment: Alignment.topLeft,
                   fit: BoxFit.fitWidth,
                   child: Text(
                     'Child',
@@ -80,6 +84,7 @@ class MyHomePage extends StatelessWidget {
                 width: 100,
                 margin: EdgeInsets.all(10),
                 child: FittedBox(
+                  alignment: Alignment.bottomLeft,
                   fit: BoxFit.none,
                   child: Text(
                     'Child',

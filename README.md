@@ -1019,15 +1019,15 @@ Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou
        ],
      )
 
-O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em divérsas situações. A imagem a seguir mostra como o exemplo irá se comportar:
+O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em diversas situações. A imagem a seguir mostra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121698707-a5339300-caa4-11eb-809d-12722e89155b.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
 </div>
 
 
-A seguir estão as descrições de cada propriedade do BoxFit:
+A seguir estão as descritas cada propriedade do BoxFit:
 
 * <strong>cover</strong> - Torna o espaço oculpado pelo child maior que o disponível 
 * <strong>fill</strong> -  Encaixa o child no espaço disponível sem considerar as proporções
