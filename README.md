@@ -490,7 +490,7 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
 
     ) // Column
 
-O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo iria se comportar:
+O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121446097-2ede4600-c969-11eb-9f11-ee271e7ae79e.png">
@@ -523,7 +523,7 @@ Uma Row também é definida como um Widget de estruturação, cuja função é a
       ], // <Widget>[]
     ) 
 
-Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo iria se comportar:
+Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121446402-cb084d00-c969-11eb-9645-4f8e5c212f9d.png">
@@ -742,7 +742,7 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
      ],
      
 
-O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo iria se comportar:
+O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
@@ -770,7 +770,7 @@ Como já foi citado, também é possível definir o alinhamento com base em valo
       ),
     )
 
-As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo iria se comportar: 
+As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo irá se comportar: 
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121560324-cb4a2c00-c9ed-11eb-818c-6e2e94001f7e.png">
@@ -794,7 +794,7 @@ O AspectRatio faz parte dos Widgets de definição de layout graças a sua capac
       ),
     )
 
-Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo iria se comportar:
+Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
@@ -839,7 +839,7 @@ Assim como os demias Widgets de layout, o ConstrainedBox define as dimenções d
         ),
       )
 
-O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima iria se comportar:
+O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121586511-1eca7300-ca0a-11eb-83ac-dd91d54f0b31.png">
@@ -902,7 +902,7 @@ O já mencionado Expanded é um Widget de definição de dimenções, normalment
       ),
     )
 
-Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima iria se comportar:
+Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 
 <div align="center">
@@ -933,11 +933,121 @@ Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, 
          ],
       )
 
-O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima iria se comportar:
+O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121592232-ce0a4880-ca10-11eb-8d68-7b13254a431e.png">
 </div>
+
+
+<h3>FittedBox</h3>
+
+
+Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou mesmo postos um dentro do outro. O FittedBox age quando o espaço correspondente a um Widget é diferente de seu child, com isso é possível adaptar o espaço que o child oculpa. Há uma série de opções de 'encaixe', as quais podem ser definidas na principal propriedade do FittedBox Widget, a fit, que recebe um Boxfit como valor. A seguir temos exemplos de uso do FittedBox:
+
+    Container(
+     width: 500,
+     decoration: BoxDecoration(color: Colors.blue[800]),
+     child: Column(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: <Widget>[
+         Container(
+           color: Colors.white,
+           height: 100,
+           width: 100,
+           margin: EdgeInsets.all(10),
+           child: FittedBox(
+             fit: BoxFit.cover,
+             child: Text(
+               'Child',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+         ),
+         Container(
+           color: Colors.white,
+           height: 100,
+           width: 100,
+           margin: EdgeInsets.all(10),
+           child: FittedBox(
+             fit: BoxFit.fill,
+             child: Text(
+               'Child',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+         ),
+         Container(
+           color: Colors.white,
+           height: 20,
+           width: 100,
+           margin: EdgeInsets.all(10),
+           child: FittedBox(
+             fit: BoxFit.fitHeight,
+             child: Text(
+               'Child',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+         ),
+         Container(
+           color: Colors.white,
+           height: 100,
+           width: 50,
+           margin: EdgeInsets.all(10),
+           child: FittedBox(
+             fit: BoxFit.fitWidth,
+             child: Text(
+               'Child',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+         ),
+         Container(
+           color: Colors.white,
+           height: 100,
+           width: 100,
+           margin: EdgeInsets.all(10),
+           child: FittedBox(
+             fit: BoxFit.none,
+             child: Text(
+               'Child',
+               style: TextStyle(fontSize: 20),
+             ),
+           ),
+         )
+       ],
+     )
+
+O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em divérsas situações. A imagem a seguir mostra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121698162-20487980-caa4-11eb-9c29-1284c47ca2eb.png">
+</div>
+
+
+A seguir estão as descrições de cada propriedade do BoxFit:
+
+* <strong>cover</strong> - Torna o espaço oculpado pelo child maior que o disponível 
+* <strong>fill</strong> -  Encaixa o child no espaço disponível sem considerar as proporções
+* <strong>fitHeight</strong> - Adapta o tamanho do child de acordo com a altura do Widget pai
+* <strong>fitWidth</strong> - Adapta o tamanho do child de acordo com a largura do Widget pai
+* <strong>none</strong> - Anula os efeitos do FittedBox
+
+
+
+
+
+
+Além disso, o FittedBox conta com a propriedade alignment, qua ajuda no dimensionamento dos Widgets
+
+<h3>FittedBox</h3>
+
+
+<h3>FittedBox</h3>
+
+
 
 <h2>Scrolling</h2>
 

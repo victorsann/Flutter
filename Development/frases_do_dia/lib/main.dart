@@ -16,27 +16,79 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: Row(
-        children: <Widget>[
-          Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.blue,
+      child: Container(
+          width: 500,
+          decoration: BoxDecoration(color: Colors.blue[900]),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                color: Colors.white,
                 height: 100,
-              )),
-          Container(
-            color: Colors.yellow,
-            height: 100,
-            width: 70,
-          ),
-          Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.blue,
+                width: 100,
+                margin: EdgeInsets.all(10),
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
                 height: 100,
-              )),
-        ],
-      ),
+                width: 100,
+                margin: EdgeInsets.all(10),
+                child: FittedBox(
+                  fit: BoxFit.fill,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                height: 20,
+                width: 100,
+                margin: EdgeInsets.all(10),
+                child: FittedBox(
+                  fit: BoxFit.fitHeight,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                height: 100,
+                width: 50,
+                margin: EdgeInsets.all(10),
+                child: FittedBox(
+                  fit: BoxFit.fitWidth,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                height: 100,
+                width: 100,
+                margin: EdgeInsets.all(10),
+                child: FittedBox(
+                  fit: BoxFit.none,
+                  child: Text(
+                    'Child',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              )
+            ],
+          )),
     ));
   }
 }
