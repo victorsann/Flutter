@@ -1288,8 +1288,25 @@ Define um espaçamento único para cada direção:
          child: Text('Symmetric', style: TextStyle(fontSize: 20)),
        )),
 
+Cada definição aceita números inteiros e decimais como valor de espaçamento, sendo esses definidos em pixels
+
 
 <h3>SizedBox</h3>
+
+
+O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
+
+
+    SizedBox(
+        width: 300.0,
+        height: 300.0,
+        child: Card(
+          color: Colors.blue[800],
+        ),
+      )
+
+
+<h3>Transform</h3>
 
 
 
