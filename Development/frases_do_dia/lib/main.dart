@@ -18,7 +18,7 @@ class MyHomePage extends StatelessWidget {
         body: Center(
       child: Container(
           width: 500,
-          decoration: BoxDecoration(color: Colors.blue[900]),
+          decoration: BoxDecoration(color: Colors.white),
           child: ListView(children: [
             for (var i = 0; i < 10; i++)
               LimitedBox(
@@ -26,7 +26,7 @@ class MyHomePage extends StatelessWidget {
                 maxWidth: 100,
                 child: Container(
                     margin: EdgeInsets.all(1),
-                    decoration: BoxDecoration(color: Colors.white)),
+                    decoration: BoxDecoration(color: Colors.blue[900])),
               )
           ])),
     ));
