@@ -818,7 +818,7 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
 <h3>ConstrainedBox</h3>
 
 
-Assim como os demias Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
+Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
 
     ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
@@ -1123,14 +1123,36 @@ O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gera
 
 <br>
 
-O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListeView, isso é possível graças aos atributos a seguir:
+O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListView, isso é possível graças aos atributos a seguir:
 
 * <strong>maxHeight</strong> - Altura máximo de um child
 * <strong>maxWidth</strong> - Largura máxima de um child
 
 
-<h3>LimitedBox</h3>
+<h3>Padding</h3>
 
+
+O padding define o espaçamento externo que um Widget terá com relação aos outros elementos da estrutura. Um padding é definido a partir do espaço que um Widget oculpa, diminuindo seu tamanho e substituindo esse espaço por um espaço vazio. A seguir há um exemplo de uso do Widget padding():
+
+
+    Padding(
+      padding: EdgeInsets.all(100),
+      child: Container(
+        decoration: BoxDecoration(color: Colors.yellow),
+      ),
+    )
+
+
+Um padding é definido através do atributo padding que recebe um EdgeInsets, Wideget que define um conjunto imutável de deslocamento em cada uma das quatro direções cardeais. Por isso é possível definir um padding para cada direção individulmente ou para todos igualmente. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121789339-89ff7b00-cbab-11eb-8bb5-76895ff20951.png">
+</div>
+
+
+
+
+<h3>SizedBox</h3>
 
 
 

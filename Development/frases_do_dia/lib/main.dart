@@ -17,18 +17,16 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
         body: Center(
       child: Container(
+          height: 500,
           width: 500,
-          decoration: BoxDecoration(color: Colors.white),
-          child: ListView(children: [
-            for (var i = 0; i < 10; i++)
-              LimitedBox(
-                maxHeight: 200,
-                maxWidth: 100,
-                child: Container(
-                    margin: EdgeInsets.all(1),
-                    decoration: BoxDecoration(color: Colors.blue[900])),
-              )
-          ])),
+          decoration: BoxDecoration(color: Colors.blue[800]),
+          child: Container(
+              child: Padding(
+            padding: EdgeInsets.all(100),
+            child: Container(
+              decoration: BoxDecoration(color: Colors.yellow),
+            ),
+          ))),
     ));
   }
 }
