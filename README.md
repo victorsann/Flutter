@@ -1143,13 +1143,150 @@ O padding define o espaçamento externo que um Widget terá com relação aos ou
     )
 
 
-Um padding é definido através do atributo padding que recebe um EdgeInsets, Wideget que define um conjunto imutável de deslocamento em cada uma das quatro direções cardeais. Por isso é possível definir um padding para cada direção individulmente ou para todos igualmente. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+Um padding é definido através do atributo padding que recebe um EdgeInsets, Wideget responsável por definir um conjunto imutável de deslocamento em cada uma das quatro direções cardeais. Por isso é possível definir um padding para cada direção individulmente ou para todos igualmente. No exemplo acima, são definidos 100px de espaçamento entre o Widget pai e o child. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121789339-89ff7b00-cbab-11eb-8bb5-76895ff20951.png">
 </div>
 
 
+<h3>EdgeInsets</h3>
+
+
+Anteriormente mencionado, o EdgeInsets define dimensionamento nas quatro direções existentes em um Widget. É normalmente associado a definição de margins e paddings, e possui atributos especificando para qual direção será aplicado o espaçamento. Estes são:
+
+
+<h3>EdgeInsets.all(value)</h3>
+
+
+Define que o espaçamento será aplicado nas quatro direções cardinais:
+
+    Container(
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.all(10),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('All', style: TextStyle(fontSize: 20)),
+     )),
+
+
+<h3>EdgeInsets.only(left: value)</h3>
+
+
+Define que o espaçamento será aplicado apenas a esquerda:
+
+    Container(
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.only(left: 140),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('left only', style: TextStyle(fontSize: 20)),
+     )), 
+
+
+<h3>EdgeInsets.only(right: value)</h3>
+
+
+Define que o espaçamento será aplicado apenas a direita:
+
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(right: 65),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('right only', style: TextStyle(fontSize: 20)),
+      )),
+
+
+<h3>EdgeInsets.only(top: value)</h3>
+
+
+Define que o espaçamento será aplicado apenas no topo:
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(top: 65),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Top only', style: TextStyle(fontSize: 20)),
+      )),
+
+<h3>EdgeInsets.only(bottom: value)</h3>
+
+
+Define que o espaçamento será aplicado apenas no bottom:
+
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(bottom: 30),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Bottom only', style: TextStyle(fontSize: 20)),
+      )),
+
+
+<h3>EdgeInsets.symmetric(vertical: value, horizontal: value)</h3>
+
+
+Define o espaçamento vertical e horizontalmente:
+
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 55),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Symmetric', style: TextStyle(fontSize: 20)),
+      )),
+
+
+<h3>EdgeInsets.fromLTRB(left, right, top, bottom)</h3>
+
+
+Define um espaçamento único para cada direção:
+
+    Container(
+       height: 90,
+       width: 200,
+       color: Colors.yellow,
+       margin: EdgeInsets.all(10),
+       padding: EdgeInsets.fromLTRB(
+         left: 10.6,
+         right: 30,
+         top: 59.4,
+         bottom: 97.8),
+       child: Container(
+         color: Colors.orange,
+         alignment: Alignment.center,
+         child: Text('Symmetric', style: TextStyle(fontSize: 20)),
+       )),
 
 
 <h3>SizedBox</h3>
