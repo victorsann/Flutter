@@ -1114,12 +1114,14 @@ Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitand
 
 O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagems a seguir ilustram como o exemplo irá se comportar:
 
+<br>
 
 <div align="center">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788819-d2686a00-cba6-11eb-8519-6da69e4b19ec.png">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788837-2410f480-cba7-11eb-90b8-8b8fd48b7264.png">
 </div>
 
+<br>
 
 O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListeView, isso é possível graças aos atributos a seguir:
 
