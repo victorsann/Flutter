@@ -1428,7 +1428,7 @@ O exemplo acima gera uma lista de três items, estes sendo definidos em um Strin
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
 </div>
 
 
@@ -1455,8 +1455,31 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
 </div>
 
 
-
 <h3>GridView</h3>
+
+
+O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo determinar quantos Widgets por eixo transversal a lista irá exibir. É normalmente utilizado o GridView em conjunto com o constructor count. A seguir temos um exemplo de uso do GridView.count():
+
+    GridView.count(
+          crossAxisCount: 4,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text('first'),
+              color: Colors.orange[100],
+            ),
+
+            ...
+            
+          ],
+        )
+
+Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img src="">
+</div>
+
 
 <h2>Material Components</h2>
 

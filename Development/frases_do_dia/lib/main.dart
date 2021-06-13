@@ -12,9 +12,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<String> children = <String>['First', 'Second', 'Third'];
-  final List<int> colorCodes = <int>[600, 700, 800];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,17 +20,50 @@ class MyHomePage extends StatelessWidget {
             width: 500,
             alignment: Alignment.center,
             decoration: BoxDecoration(color: Colors.blue[800]),
-            child: ListView.separated(
-                padding: const EdgeInsets.all(8),
-                itemCount: children.length,
-                separatorBuilder: (BuildContext context, int index) =>
-                    const Divider(),
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: 100,
-                    color: Colors.orange[colorCodes[index]],
-                    child: Center(child: Text('${children[index]}')),
-                  );
-                })));
+            child: GridView.count(
+              crossAxisCount: 4,
+              children: <Widget>[
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('first'),
+                  color: Colors.orange[100],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('second'),
+                  color: Colors.orange[200],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('third'),
+                  color: Colors.orange[300],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('fourth'),
+                  color: Colors.orange[400],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('fifth'),
+                  color: Colors.orange[500],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('sixth'),
+                  color: Colors.orange[600],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('seventh'),
+                  color: Colors.orange[700],
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  child: Text('eighth'),
+                  color: Colors.orange[800],
+                ),
+              ],
+            )));
   }
 }
