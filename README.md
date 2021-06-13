@@ -1348,14 +1348,6 @@ O rotate, cuja principal propriedade é o angle, recebe um ângulo de definiçã
 </div>
 
 
-
-<h3>Transform.scale()</h3>
-
-
-<h3>Transform.translate()</h3>
-
-
-
 <h2>Scrolling</h2>
 
 

@@ -31,30 +31,30 @@ class MyHomePage extends StatelessWidget {
                 //     color: Colors.white,
                 //   ),
                 // ),
-                Transform.rotate(
-                  angle: 3 / 4, // 45 deg)
-                  child: Container(
-                    height: 150,
-                    width: 150,
-                    color: Colors.white,
-                  ),
-                ),
-                // Transform.scale(
-                //   scale: 0.9,
+                // Transform.rotate(
+                //   angle: 3 / 4, // 45 deg)
                 //   child: Container(
                 //     height: 150,
                 //     width: 150,
                 //     color: Colors.white,
                 //   ),
                 // ),
-                // Transform.translate(
-                //   offset: Offset(2.0, 9.9),
+                // Transform.scale(
+                //   scale: 1,
                 //   child: Container(
                 //     height: 150,
                 //     width: 150,
                 //     color: Colors.white,
                 //   ),
-                // )
+                // ),
+                Transform.translate(
+                  offset: Offset(2.0, 1.9),
+                  child: Container(
+                    height: 150,
+                    width: 150,
+                    color: Colors.white,
+                  ),
+                )
               ],
             )));
   }
