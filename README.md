@@ -1571,6 +1571,7 @@ O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste 
 
 Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padrão, neste caso sendo retornado pela principal classe da main.dart file. Também é importante observar o PageController(initialPage: 0);, que trata de aplicar a posição que dever ser exibida primeiro. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
+<br>
 
 <div align="center">
   <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820950-f5a91d00-cc6b-11eb-9dc8-efce54a64b9b.png">
@@ -1578,6 +1579,7 @@ Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padr
   <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820683-9bf42300-cc6a-11eb-91f8-c957d3266887.png">
 </div>
 
+<br>
 
 Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exmplo:
 
