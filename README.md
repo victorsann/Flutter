@@ -1332,6 +1332,22 @@ Principal constructor da classe, cuja principal propriedade é a transform, e es
 
 <h3>Transform.rotate()</h3>
 
+O rotate, cuja principal propriedade é o angle, recebe um ângulo de definição que rotaciona o Widget. O ângulo é dado pela razão entre dois valore ou pelo resultado da operação. A seguir temos um exemplo de uso do Transform.rotate():
+
+    Transform.rotate(
+      angle: 3 / 4, // 45 deg)
+      child: Container(
+        height: 150,
+        width: 150,
+        color: Colors.white,
+      ),
+    ),
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121811300-5b7cb100-cc3a-11eb-8f0e-6d8f00f33087.png">
+</div>
+
+
 
 <h3>Transform.scale()</h3>
 
