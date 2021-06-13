@@ -1317,16 +1317,16 @@ O Widget Transform aplica uma série de efeitos sobre seu child antes da renderi
 Principal constructor da classe, cuja principal propriedade é a transform, e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
 
     Transform(
-       transform: Matrix4.skewY(0.3)..rotateZ(-9 / 12.0),
+       transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
        child: Container(
          height: 150,
          width: 150,
-         color: Colors.yellow,
+         color: Colors.white,
        ),
      )
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121809709-3f761100-cc34-11eb-80ef-34bfba587c0c.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121810711-443cc400-cc38-11eb-98ab-a7a1618b46d1.png">
 </div>
 
 
