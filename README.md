@@ -1196,7 +1196,6 @@ Define que o espaçamento será aplicado apenas a esquerda:
 
 Define que o espaçamento será aplicado apenas a direita:
 
-
     Container(
       height: 90,
       width: 200,
@@ -1227,11 +1226,11 @@ Define que o espaçamento será aplicado apenas no topo:
         child: Text('Top only', style: TextStyle(fontSize: 20)),
       )),
 
+
 <h3>EdgeInsets.only(bottom: value)</h3>
 
 
 Define que o espaçamento será aplicado apenas no bottom:
-
 
     Container(
       height: 90,
@@ -1250,7 +1249,6 @@ Define que o espaçamento será aplicado apenas no bottom:
 
 
 Define o espaçamento vertical e horizontalmente:
-
 
     Container(
       height: 90,
@@ -1293,7 +1291,6 @@ Cada definição aceita números inteiros e decimais como valor de espaçamento,
 
 
 O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
-
 
     SizedBox(
         width: 300.0,
@@ -1399,7 +1396,6 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 
 O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
 
-
     class MyHomePage extends StatelessWidget {
       final List<String> children = <String>['First', 'Second', 'Third'];
       final List<int> colorCodes = <int>[600, 700, 800];
@@ -1434,6 +1430,24 @@ O exemplo acima gera uma lista de três items, estes sendo definidos em um Strin
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
 </div>
+
+
+Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
+
+    ListView.separated(
+      padding: const EdgeInsets.all(8),
+      itemCount: children.length,
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 100,
+          color: Colors.orange[colorCodes[index]],
+          child: Center(child: Text('${children[index]}')),
+        );
+      }
+    )
+
+
 
 
 <h3>GridView</h3>

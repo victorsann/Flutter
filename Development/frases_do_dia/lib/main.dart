@@ -23,9 +23,11 @@ class MyHomePage extends StatelessWidget {
             width: 500,
             alignment: Alignment.center,
             decoration: BoxDecoration(color: Colors.blue[800]),
-            child: ListView.builder(
+            child: ListView.separated(
                 padding: const EdgeInsets.all(8),
                 itemCount: children.length,
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: 100,
