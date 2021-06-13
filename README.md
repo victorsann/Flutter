@@ -1573,9 +1573,9 @@ Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padr
 
 
 <div align="center">
-  <img width="32%" src="https://user-images.githubusercontent.com/61476935/121820502-76b2e500-cc69-11eb-9cf7-6b0000deabd7.png">
-  <img width="32%" src="https://user-images.githubusercontent.com/61476935/121820575-09ec1a80-cc6a-11eb-9358-fec289c9cb05.png">
-  <img width="32%" src="https://user-images.githubusercontent.com/61476935/121820683-9bf42300-cc6a-11eb-91f8-c957d3266887.png">
+  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820502-76b2e500-cc69-11eb-9cf7-6b0000deabd7.png">
+  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820575-09ec1a80-cc6a-11eb-9358-fec289c9cb05.png">
+  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820683-9bf42300-cc6a-11eb-91f8-c957d3266887.png">
 </div>
 
 
