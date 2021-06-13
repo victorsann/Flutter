@@ -1309,6 +1309,36 @@ O SizedBox é um Widget cujas definições de height e width são herdadas por s
 <h3>Transform</h3>
 
 
+O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estas são:
+
+
+<h3>Transform()</h3>
+
+Principal constructor da classe, cuja principal propriedade é a transform, e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
+
+    Transform(
+       transform: Matrix4.skewY(0.3)..rotateZ(-9 / 12.0),
+       child: Container(
+         height: 150,
+         width: 150,
+         color: Colors.yellow,
+       ),
+     )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121809709-3f761100-cc34-11eb-80ef-34bfba587c0c.png">
+</div>
+
+
+<h3>Transform.rotate()</h3>
+
+
+<h3>Transform.scale()</h3>
+
+
+<h3>Transform.translate()</h3>
+
+
 
 <h2>Scrolling</h2>
 
