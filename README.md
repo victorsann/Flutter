@@ -1047,7 +1047,7 @@ A seguir estão as descritas cada propriedade do BoxFit:
 
 O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
 
-    Column(
+    Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Container(
@@ -1085,7 +1085,7 @@ O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No 
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121710836-5986e680-cab0-11eb-9d03-26d67faa7410.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121811868-23766d80-cc3c-11eb-826e-2d7bd71d87c9.png">
 </div>
 
 
