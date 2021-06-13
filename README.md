@@ -1451,7 +1451,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
     )
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121816785-f9c94080-cc53-11eb-91d9-1b2cd2b532b7.png">
+  <img width="60%" src="https://user-images.githubusercontent.com/61476935/121816785-f9c94080-cc53-11eb-91d9-1b2cd2b532b7.png">
 </div>
 
 
