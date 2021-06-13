@@ -1083,11 +1083,9 @@ O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma 
 
 O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% do 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
 
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121811868-23766d80-cc3c-11eb-826e-2d7bd71d87c9.png">
 </div>
-
 
 Os principais Factores da classe FractionallySizedBox() são:
 
