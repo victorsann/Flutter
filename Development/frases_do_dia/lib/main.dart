@@ -22,8 +22,8 @@ class MyHomePage extends StatelessWidget {
             decoration: BoxDecoration(color: Colors.blue[800]),
             child: GridView.count(
               crossAxisCount: 4,
-              // crossAxisSpacing: 20.0,
-              mainAxisSpacing: 20.0,
+              crossAxisSpacing: 20.0,
+              // mainAxisSpacing: 20.0,
               children: <Widget>[
                 Container(
                   alignment: Alignment.center,
