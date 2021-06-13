@@ -1326,7 +1326,7 @@ Principal constructor da classe, cuja principal propriedade é a transform, e es
      )
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121810859-c62ced00-cc38-11eb-848f-9c2ac98e37dc.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121811712-96331900-cc3b-11eb-9f44-9a9f0cb5c112.png">
 </div>
 
 
@@ -1344,7 +1344,7 @@ O rotate, cuja principal propriedade é o angle, recebe um ângulo de definiçã
     ),
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121811300-5b7cb100-cc3a-11eb-8f0e-6d8f00f33087.png">
+  <img src="https://user-images.githubusercontent.com/61476935/121811740-aa771600-cc3b-11eb-8daa-778835fed838.png">
 </div>
 
 
