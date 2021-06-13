@@ -1312,6 +1312,7 @@ O Widget Transform aplica uma série de efeitos sobre seu child antes da renderi
 
 <h3>Transform()</h3>
 
+
 Principal constructor da classe, cuja principal propriedade é a transform, e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
 
     Transform(
@@ -1329,6 +1330,7 @@ Principal constructor da classe, cuja principal propriedade é a transform, e es
 
 
 <h3>Transform.rotate()</h3>
+
 
 O rotate, cuja principal propriedade é o angle, recebe um ângulo de definição que rotaciona o Widget. O ângulo é dado pela razão entre dois valore ou pelo resultado da operação. A seguir temos um exemplo de uso do Transform.rotate():
 
@@ -1348,6 +1350,15 @@ O rotate, cuja principal propriedade é o angle, recebe um ângulo de definiçã
 
 <h2>Scrolling</h2>
 
+
+Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegação. O Flutter conta com uma série de tipos e definiçãos de scroll, todos relacionados a classe Scrollable. A classe Scrollable implemanta o modelo de interação para um scrollable Widget, incluindo reconhecimento de gestos, mas não modifica como a janela de visualização, que realmente exibe os children, é construída. É incomum criar diretamente utilizando a classe Scrollable, no lugar disso considere utilizar um ListView ou GridView, os quais combinam rolagem, janela de visualização e um modelo de layout. Os principais Scrollable Widgets são:
+
+
+<h3>ListView</h3>
+
+
+
+<h3>GridView</h3>
 
 <h2>Material Components</h2>
 
