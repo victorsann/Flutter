@@ -1359,6 +1359,82 @@ Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegaçã
 <h3>ListView</h3>
 
 
+O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
+
+    ListView(
+       children: <Widget>[
+         Container(
+             height: 100,
+             color: Colors.orange[500],
+             alignment: Alignment.center,
+             child: Text('Child', style: TextStyle(fontSize: 20))),
+         Container(
+             height: 100,
+             color: Colors.orange[600],
+             alignment: Alignment.center,
+             child: Text('Child', style: TextStyle(fontSize: 20))),
+         Container(
+             height: 100,
+             color: Colors.orange[700],
+             alignment: Alignment.center,
+             child: Text('Child', style: TextStyle(fontSize: 20))),
+         Container(
+             height: 100,
+             color: Colors.orange[800],
+             alignment: Alignment.center,
+             child: Text('Child', style: TextStyle(fontSize: 20)))
+       ],
+     )
+
+O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121813717-ad760480-cc43-11eb-83ba-2cc9214680c4.png">
+</div>
+
+
+<h3>ListView.builder()</h3>
+
+
+O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
+
+
+    class MyHomePage extends StatelessWidget {
+      final List<String> children = <String>['First', 'Second', 'Third'];
+      final List<int> colorCodes = <int>[600, 700, 800];
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+            body: Container(
+                height: 1000,
+                width: 500,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(color: Colors.blue[800]),
+                child: ListView.builder(
+                    padding: const EdgeInsets.all(8),
+                    itemCount: children.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        height: 100,
+                        color: Colors.orange[colorCodes[index]],
+                        child: Center(child: Text('${children[index]}')),
+                      );
+                    }
+                  )
+                )
+              );
+            }
+          }
+
+O exemplo acima gera uma lista de três items, estes sendo definidos em um String List, e os valores correspondentes as cores definidos em um List a parte. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a cor correspondente a sua posição equivalente na List colorCodes. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
+</div>
+
 
 <h3>GridView</h3>
 

@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  final List<String> children = <String>['First', 'Second', 'Third'];
+  final List<int> colorCodes = <int>[600, 700, 800];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,42 +23,15 @@ class MyHomePage extends StatelessWidget {
             width: 500,
             alignment: Alignment.center,
             decoration: BoxDecoration(color: Colors.blue[800]),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                // Transform(
-                //   transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
-                //   child: Container(
-                //     height: 150,
-                //     width: 150,
-                //     color: Colors.white,
-                //   ),
-                // ),
-                // Transform.rotate(
-                //   angle: 3 / 4, // 45 deg)
-                //   child: Container(
-                //     height: 150,
-                //     width: 150,
-                //     color: Colors.white,
-                //   ),
-                // ),
-                // Transform.scale(
-                //   scale: 1,
-                //   child: Container(
-                //     height: 150,
-                //     width: 150,
-                //     color: Colors.white,
-                //   ),
-                // ),
-                Transform.translate(
-                  offset: Offset(2.0, 1.9),
-                  child: Container(
-                    height: 150,
-                    width: 150,
-                    color: Colors.white,
-                  ),
-                )
-              ],
-            )));
+            child: ListView.builder(
+                padding: const EdgeInsets.all(8),
+                itemCount: children.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: 100,
+                    color: Colors.orange[colorCodes[index]],
+                    child: Center(child: Text('${children[index]}')),
+                  );
+                })));
   }
 }
