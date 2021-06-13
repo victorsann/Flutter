@@ -1528,6 +1528,70 @@ O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir 
 </div>
 
 
+<h3>PageView</h3>
+
+
+O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste caso, cada índice da List é forçado a preencher o espaço correspondente a viewport, ou seja, cada índice passa a ser uma página do app. O PageView é definido em conjunto com um PageControll, que por sua vez declara qual das página(índice) será visto primeiro. A seguir temos um exmplo de uso do PageView():
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(title: "My App", home: Scaffold(body: MyHomePage()));
+      }
+    }
+    
+    class MyHomePage extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        final PageController controller = PageController(initialPage: 0);
+        return PageView(
+          scrollDirection: Axis.horizontal,
+          controller: controller,
+          children: <Widget>[
+            Container(
+              color: Colors.blue[700],
+              alignment: Alignment.center,
+              child: Text('First Page'),
+            ),
+            Container(
+              color: Colors.blue[800],
+              alignment: Alignment.center,
+              child: Text('Second Page'),
+            ),
+            Container(
+              color: Colors.blue[900],
+              alignment: Alignment.center,
+              child: Text('Third Page'),
+            )
+          ],
+        );
+      }
+    }
+
+
+Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padrão, neste caso sendo retornado pela principal classe da main.dart file. Também é importante observar o PageController(initialPage: 0);, que trata de aplicar a posição que dever ser exibida primeiro. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121820502-76b2e500-cc69-11eb-9cf7-6b0000deabd7.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121820575-09ec1a80-cc6a-11eb-9358-fec289c9cb05.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121820683-9bf42300-cc6a-11eb-91f8-c957d3266887.png">
+</div>
+
+
+Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exmplo:
+
+    PageView(
+      scrollDirection: Axis.vertical,
+      controller: controller,
+      children: <Widget>[
+        
+        ...
+
+      ],
+    );
+
+
 <h2>Material Components</h2>
 
 
