@@ -1456,7 +1456,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
     )
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121816785-f9c94080-cc53-11eb-91d9-1b2cd2b532b7.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
 </div>
 
 
@@ -1483,6 +1483,48 @@ Os elementos children do GridView são alinhados de acordo com o valor int de el
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818118-a955e100-cc5b-11eb-9c6f-f73cddebccbc.png">
+</div>
+
+Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
+
+    GridView.count(
+          crossAxisCount: 4,
+          mainAxisSpacing: 20.0,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text('first'),
+              color: Colors.orange[100],
+            ),
+
+            ...
+            
+          ],
+        )
+
+<div align="center">
+  <img width="50%" src="">
+</div>
+  
+O mesmo pode ser tido quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
+
+     GridView.count(
+          crossAxisCount: 4,
+          crossAxisSpacing: 20.0,
+          children: <Widget>[
+            Container(
+              alignment: Alignment.center,
+              child: Text('first'),
+              color: Colors.orange[100],
+            ),
+
+            ...
+            
+          ],
+        )
+
+<div align="center">
+  <img width="50%" src="">
 </div>
 
 
