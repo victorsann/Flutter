@@ -1506,7 +1506,7 @@ Também é possível definir um espaçamento padrão para cada eixo. O espaçame
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818644-d8218680-cc5e-11eb-9e07-bb7b760e4545.png">
 </div>
   
-O mesmo pode ser tido quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
+O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
 
      GridView.count(
           crossAxisCount: 4,
@@ -1524,7 +1524,7 @@ O mesmo pode ser tido quanto ao espaçamento vertical, que é definido a partir 
         )
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818729-4cf4c080-cc5f-11eb-8072-994ae8f813c1.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818847-28e5af00-cc60-11eb-8730-92d04cfbc3be.png">
 </div>
 
 
