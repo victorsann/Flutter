@@ -749,6 +749,8 @@ O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padr�
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
 </div>
 
+<br> 
+
 Essas posições são definidas a partir da classe Alignment, e são atribuidas a propriedade alignment do Widget Align(). A seguir temos uma lista dessas posições:
 
 * center
