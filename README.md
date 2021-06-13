@@ -1432,6 +1432,9 @@ O exemplo acima gera uma lista de três items, estes sendo definidos em um Strin
 </div>
 
 
+<h3>ListView.separated()</h3>
+
+
 Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
 
     ListView.separated(
@@ -1447,6 +1450,9 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
       }
     )
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
+</div>
 
 
 
