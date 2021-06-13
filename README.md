@@ -745,6 +745,8 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
 
+<br> 
+
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
 </div>
@@ -1480,7 +1482,7 @@ O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo 
 Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
-  <img src="">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818118-a955e100-cc5b-11eb-9c6f-f73cddebccbc.png">
 </div>
 
 
