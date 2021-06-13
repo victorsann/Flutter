@@ -1024,7 +1024,7 @@ O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utili
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
 </div>
 
 
@@ -1387,7 +1387,7 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121813717-ad760480-cc43-11eb-83ba-2cc9214680c4.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121813717-ad760480-cc43-11eb-83ba-2cc9214680c4.png">
 </div>
 
 
