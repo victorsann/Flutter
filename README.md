@@ -746,7 +746,7 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
 </div>
 
 Essas posições são definidas a partir da classe Alignment, e são atribuidas a propriedade alignment do Widget Align(). A seguir temos uma lista dessas posições:
@@ -907,7 +907,7 @@ Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widge
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121590423-b0d47a80-ca0e-11eb-9758-23dbc513f055.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121590423-b0d47a80-ca0e-11eb-9758-23dbc513f055.png">
 </div>
 
 Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
@@ -1027,6 +1027,7 @@ O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utili
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
 </div>
 
+<br>
 
 Como já foi mencionado, o FittedBox conta com a propriedade fit, que define o nível de ajuste de posicionamento do child.Além disso, o FittedBox conta também com a propriedade alignment, qua ajuda no dimensionamento dos Widgets:
 
