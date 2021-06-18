@@ -778,7 +778,7 @@ Como já foi citado, também é possível definir o alinhamento com base em valo
 As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo irá se comportar: 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121560324-cb4a2c00-c9ed-11eb-818c-6e2e94001f7e.png">
+  <img src="https://user-images.githubusercontent.com/61476935/122596875-e72e7d00-d040-11eb-9f5f-8b544d8cc167.png">
 </div>
 
 
