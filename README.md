@@ -1278,11 +1278,7 @@ Define um espaçamento único para cada direção:
        width: 200,
        color: Colors.yellow,
        margin: EdgeInsets.all(10),
-       padding: EdgeInsets.fromLTRB(
-         left: 10.6,
-         right: 30,
-         top: 59.4,
-         bottom: 97.8),
+       padding: EdgeInsets.fromLTRB(10, 30, 50, 90),
        child: Container(
          color: Colors.orange,
          alignment: Alignment.center,
@@ -1309,13 +1305,13 @@ O SizedBox é um Widget cujas definições de height e width são herdadas por s
 <h3>Transform</h3>
 
 
-O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estas são:
+O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estes são:
 
 
 <h3>Transform()</h3>
 
 
-Principal constructor da classe, cuja principal propriedade é a transform, e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
+Principal constructor da classe, cuja principal propriedade é a transform e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
 
     Transform(
        transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
@@ -1581,7 +1577,7 @@ Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padr
 
 <br>
 
-Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exmplo:
+Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exemplo:
 
     PageView(
       scrollDirection: Axis.vertical,
