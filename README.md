@@ -1659,7 +1659,6 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 * <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
 
 
-
 <h1>Flutter State Management</h1>
 
 
@@ -1686,3 +1685,15 @@ Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter perm
 
 
 Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria IU (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
+
+
+<h2>Ephemeral State e App State</h2>
+
+
+Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget, e as que trafegam entre os demais. Elas são respectivamente:
+
+
+<h2>Ephemeral State</h2>
+
+
+Algumas definições simplistas de um Ephemeral State são a página padrão de um ListView, o progresso atual de uma animação ou a atual guia selecionada em uma BottomNavigationBar. Nesses casos, todos os estados são definidos no próprio Widget, em outras palavras, não é preciso utilizar o state management para tratar estes casos.
