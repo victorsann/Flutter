@@ -1772,3 +1772,12 @@ Neste caso temos o uso método setState(), responsável por gerar um rebuild do 
 <h2>App State</h2>
 
 
+O App State, tabém chamado de shared state, se caracteriza pelo compartilhamento do mesmo entre os demais Widgets ou partes da aplicação. Alguns exemplos simplórios de App States são as user preferences, informações de login, notificações em app de redes sociais, um carrinho de compras em um e-commerce e entre outros. 
+
+
+É importante ter em mente que ambos podem ser utilizados da forma como o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122981890-9f756180-d370-11eb-9df2-e857bee87aef.png">
+</div>
