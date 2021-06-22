@@ -1660,10 +1660,10 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 
 
 
-<h1>Flutter State management</h1>
+<h1>Flutter State Management</h1>
 
 
-A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamdos de estado. A forma como o fluxo de dados ocorre em uma aplicação influencia de formas deversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tòpicos, vamos entender melhor o que é o estado para uma aplicação Flutter:
+A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre em uma aplicação influencia de formas deversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o estado para uma aplicação Flutter:
 
 
 <div align="center">
@@ -1671,4 +1671,5 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente mudando o estado atual. 
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.
+Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada.
