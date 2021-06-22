@@ -1670,7 +1670,51 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada.
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+
+
+<h2>StateLessWidget</h2>
+
+
+Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles defeinidas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. A seguir há um exemplo de declaração de um StateLessWidget:
+
+
+    lass MeuWidget extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+
+<h2>StatefulWidget</h2>
+
+
+Sendo o oposto dos StatelessWidget, herdam da classe StatefulWidget a mutabilidade do State e são utilizados de forma recorrente em paralelo aos StatelessWidget. Tabém utilizam uma estrutura de classes e métodos específicos para tratar 
+a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidget:
+
+
+    // Declaração da classe 
+
+    class MeuWidget extends StatefulWidget {
+      @override
+
+    // Método responsável por criar o State 
+
+      _MeuWidgetState createState() => _MeuWidgetState();
+    }
+
+    // Widget que sofre um rebuild a cada mudança de State
+    
+    class _MeuWidgetState extends State<MeuWidget> {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+
+Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
 
 <h2>Start thinking declaratively</h2>
@@ -1686,10 +1730,6 @@ Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter perm
 
 Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria IU (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
 
-
-<h2>Ephemeral State e App State</h2>
-
-
 Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget, e as que trafegam entre os demais. Elas são respectivamente:
 
 
@@ -1697,3 +1737,6 @@ Tendo definido o que é um State para o Flutter, é importante entender o mesmo 
 
 
 Algumas definições simplistas de um Ephemeral State são a página padrão de um ListView, o progresso atual de uma animação ou a atual guia selecionada em uma BottomNavigationBar. Nesses casos, todos os estados são definidos no próprio Widget, em outras palavras, não é preciso utilizar o state management para tratar estes casos.
+
+
+<h2>Ephemeral State e App State</h2>
