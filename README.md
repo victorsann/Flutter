@@ -1667,5 +1667,8 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122953824-4f3cd600-d355-11eb-9d86-f8666aa54241.png">
+  <img src="https://user-images.githubusercontent.com/61476935/122956044-0c7bfd80-d357-11eb-901c-86ac2c9a830d.png">
 </div>
+
+
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente mudando o estado atual. 
