@@ -1717,7 +1717,7 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
 
-<h2>Start thinking declaratively</h2>
+<h2>Programação Declarativa</h2>
 
 
 Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
@@ -1728,15 +1728,47 @@ Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter perm
 </div>
 
 
-Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria IU (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
+Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
 
-Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget, e as que trafegam entre os demais. Elas são respectivamente:
+Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
 
 
 <h2>Ephemeral State</h2>
 
 
-Algumas definições simplistas de um Ephemeral State são a página padrão de um ListView, o progresso atual de uma animação ou a atual guia selecionada em uma BottomNavigationBar. Nesses casos, todos os estados são definidos no próprio Widget, em outras palavras, não é preciso utilizar o state management para tratar estes casos.
+Algumas definições simplistas de Ephemeral States são a página padrão de um ListView, o progresso atual de uma animação ou a atual guia selecionada em uma BottomNavigationBar. Nesses casos, todos os estados são definidos no próprio Widget, em outras palavras, não é preciso utilizar o state management para tratá-los. No exemplo a seguir vemos como a seleção padrão em uma bottom navigation bar é armazenada no campo _index da classe _MyHomepageState, sendo este um exemplo de Ephemeral state:
 
 
-<h2>Ephemeral State e App State</h2>
+    class MyHomepage extends StatefulWidget {
+      @override
+      _MyHomepageState createState() => _MyHomepageState();
+    }
+    
+    class _MyHomepageState extends State<MyHomepage> {
+      int _index = 0;
+    
+      @override
+      Widget build(BuildContext context) {
+        return BottomNavigationBar(
+
+          // Atributo que recebe o índice padrão
+
+          currentIndex: _index,
+
+          onTap: (newIndex) {
+            setState(() {
+              _index = newIndex;
+            });
+          },
+          // ... items ...
+        );
+      }
+    }
+
+
+Neste caso temos o uso método setState(), responsável por gerar um rebuild do Widget cada vez que o State é atualizado. Além disso, com este exmplo é possível ver que o State nele declarado(_index) não é importante para outros Widgets, o definindo como um Ephemeral State.
+
+
+<h2>App State</h2>
+
+
