@@ -1673,3 +1673,15 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 
 A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.
 Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada.
+
+
+<h2>Start thinking declaratively</h2>
+
+
+Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O significa que o Flutter constroi a interface para refletir o atual estado do app:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122967005-6208d800-d360-11eb-8450-e81df34516a8.png">
+</div>
+
