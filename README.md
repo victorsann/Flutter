@@ -1670,7 +1670,7 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
@@ -1781,3 +1781,48 @@ O App State, tabém chamado de shared state, se caracteriza pelo compartilhament
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
 </div>
+
+
+<h2>Abordagens de Gerenciamento</h2>
+
+
+O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de uma aplicação:
+
+
+<h2>Provider</h2>
+
+
+<h2>setState</h2>
+
+
+<h2>InheritedWidget & InheritedModel</h2>
+
+
+<h2>Redux</h2>
+
+
+<h2>Fish-Redux</h2>
+
+
+<h2>BLoC / Rx</h2>
+
+
+<h2>GetIt</h2>
+
+
+<h2>MobX</h2>
+
+
+<h2>Flutter Commands</h2>
+
+
+<h2>Binder</h2>
+
+
+<h2>GetX</h2>
+
+
+<h2>Riverpod</h2>
+
+
+
