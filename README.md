@@ -1779,5 +1779,5 @@ O App State, tabém chamado de shared state, se caracteriza pelo compartilhament
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122981890-9f756180-d370-11eb-9df2-e857bee87aef.png">
+  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
 </div>
