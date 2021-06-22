@@ -1786,7 +1786,7 @@ O App State, tabém chamado de shared state, se caracteriza pelo compartilhament
 <h2>Abordagens de Gerenciamento</h2>
 
 
-O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de uma aplicação:
+O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de estado de uma aplicação:
 
 
 <h2>Provider</h2>
