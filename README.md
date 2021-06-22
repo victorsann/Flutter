@@ -1671,17 +1671,18 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.
-Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada.
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que nenhuma informação é descartada, mas sim atualizada ou realocada.
 
 
 <h2>Start thinking declaratively</h2>
 
 
-Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O significa que o Flutter constroi a interface para refletir o atual estado do app:
+Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122967005-6208d800-d360-11eb-8450-e81df34516a8.png">
+  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
 </div>
 
+
+Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria IU (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
