@@ -1670,7 +1670,21 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada.
+
+
+<h2>Programação Declarativa</h2>
+
+
+Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
+</div>
+
+
+Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
@@ -1690,7 +1704,7 @@ Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou 
 <h2>build Method</h2>
 
 
-As classes que hendam da classe StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por definir um falor de retorno que será alocado na arvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
+As classes que hendam da classe StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por criar um valor de retorno que será alocado na árvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
 
 
     Widget build(BuildContext context) {
@@ -1728,19 +1742,6 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 
 Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
-
-<h2>Programação Declarativa</h2>
-
-
-Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
-</div>
-
-
-Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. 
 
 Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
 
