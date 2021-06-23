@@ -1670,7 +1670,7 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada, . A seguir veremos as definições básicas de interface para gerenciamento de um State:
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
@@ -1679,12 +1679,24 @@ A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicaç�
 Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles defeinidas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. A seguir há um exemplo de declaração de um StateLessWidget:
 
 
-    lass MeuWidget extends StatelessWidget {
+    class MeuWidget extends StatelessWidget {
       @override
       Widget build(BuildContext context) {
         return Container();
       }
     }
+
+
+<h2>build Method</h2>
+
+
+As classes que hendam da classe StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por definir um falor de retorno que será alocado na arvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
+
+
+    Widget build(BuildContext context) {
+      // here, Scaffold.of(context) returns null
+        return Container();
+      }
 
 
 <h2>StatefulWidget</h2>
