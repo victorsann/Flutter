@@ -21,7 +21,7 @@ class MyHomePage extends StatelessWidget {
           body: SetState(),
         ),
         Scaffold(
-          appBar: AppBar(title: Text('SetState')),
+          appBar: AppBar(title: Text('InheritedWidgets & InheritedModel')),
         ),
         Scaffold(
           appBar: AppBar(title: Text('SetState')),

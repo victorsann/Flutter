@@ -7,6 +7,8 @@ class SetState extends StatefulWidget {
 
 class _MyState extends State<SetState> {
   int _favorite = 0;
+  int _cash = 0;
+  int _grade = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,44 @@ class _MyState extends State<SetState> {
                       Text(
                         '$_favorite',
                         style: TextStyle(color: Colors.pink),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                          color: Colors.green,
+                          onPressed: () {
+                            setState(() {
+                              _cash++;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.shopping_cart,
+                            size: 40.0,
+                          )),
+                      Text(
+                        '$_cash',
+                        style: TextStyle(color: Colors.green),
+                      )
+                    ],
+                  ),
+                  Row(
+                    children: <Widget>[
+                      IconButton(
+                          color: Colors.yellow,
+                          onPressed: () {
+                            setState(() {
+                              _grade++;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.grade,
+                            size: 40.0,
+                          )),
+                      Text(
+                        '$_grade',
+                        style: TextStyle(color: Colors.yellow),
                       )
                     ],
                   )
