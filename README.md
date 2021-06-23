@@ -1743,6 +1743,13 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
 
+<h3>StatefulWidget</h3>
+
+<h3>createState Method</h3>
+
+<h3>State Class</h3>
+
+
 Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
 
 
