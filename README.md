@@ -1662,7 +1662,7 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 <h1>Flutter State Management</h1>
 
 
-A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre em uma aplicação influencia de formas deversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o estado para uma aplicação Flutter:
+A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre influencia de formas deversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o State para uma aplicação Flutter:
 
 
 <div align="center">
@@ -1670,7 +1670,7 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada, . A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
@@ -1772,10 +1772,10 @@ Neste caso temos o uso método setState(), responsável por gerar um rebuild do 
 <h2>App State</h2>
 
 
-O App State, tabém chamado de shared state, se caracteriza pelo compartilhamento do mesmo entre os demais Widgets ou partes da aplicação. Alguns exemplos simplórios de App States são as user preferences, informações de login, notificações em app de redes sociais, um carrinho de compras em um e-commerce e entre outros. 
+O App State, tabém chamado de shared state, se caracteriza pelo compartilhamento do mesmo entre os demais Widgets ou partes da aplicação. Alguns exemplos simplórios de App States são as user preferences, informações de login, notificações em apps de redes sociais, um carrinho de compras em um e-commerce e entre outros. 
 
 
-É importante ter em mente que ambos podem ser utilizados da forma como o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
+Contudo, é importante ter em mente que ambos podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
 
 
 <div align="center">
@@ -1789,13 +1789,13 @@ O App State, tabém chamado de shared state, se caracteriza pelo compartilhament
 O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de estado de uma aplicação:
 
 
-<h2>Provider</h2>
-
-
 <h2>setState</h2>
 
 
 <h2>InheritedWidget & InheritedModel</h2>
+
+
+<h2>Provider</h2>
 
 
 <h2>Redux</h2>
