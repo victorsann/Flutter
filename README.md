@@ -1730,7 +1730,7 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 <h2>createState Method</h2>
 
 
-O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na árvore em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da árvore e posteriormente inserido na árvore novamente, o framework irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
+O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na árvore em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da árvore e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
 
 
 <h2>State Class</h2>
@@ -1787,7 +1787,9 @@ Algumas definições simplistas de Ephemeral States são a página padrão de um
     }
 
 
-Neste caso temos o uso método setState(), responsável por gerar um rebuild do Widget cada vez que o State é atualizado. Além disso, com este exmplo é possível ver que o State nele declarado(_index) não é importante para outros Widgets, o definindo como um Ephemeral State.
+<div align="center">
+  <h5>Com este exemplo é possível ver que o State nele declarado(_index) não é importante para outros Widgets, o definindo como um Ephemeral State.</h5>
+</div>
 
 
 <h2>App State</h2>
