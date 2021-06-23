@@ -1670,13 +1670,13 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados.Perceba também que aqui as informações são atualizadas ou realocada.
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados. Perceba também que aqui as informações são atualizadas ou realocada.
 
 
 <h2>Programação Declarativa</h2>
 
 
-Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativas, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
+Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativa, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
 
 
 <div align="center">
@@ -1684,13 +1684,13 @@ Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter perm
 </div>
 
 
-Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI (como widget.setText) - o estado é alterado e a IU é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui. Com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI - o estado é alterado e a UI é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui, e com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
 
 
-Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles defeinidas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. A seguir há um exemplo de declaração de um StateLessWidget:
+Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles declaradas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. A seguir há um exemplo de declaração de um StateLessWidget:
 
 
     class MeuWidget extends StatelessWidget {
@@ -1708,7 +1708,7 @@ As classes que hendam da classe StatelessWidget herdam o método build. O métod
 
 
     Widget build(BuildContext context) {
-      // here, Scaffold.of(context) returns null
+      // here, Container.of(context) returns null
         return Container();
       }
 
@@ -1720,17 +1720,11 @@ Sendo o oposto dos StatelessWidget, herdam da classe StatefulWidget a mutabilida
 a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidget:
 
 
-    // Declaração da classe 
-
     class MeuWidget extends StatefulWidget {
       @override
 
-    // Método responsável por criar o State 
-
       _MeuWidgetState createState() => _MeuWidgetState();
     }
-
-    // Widget que sofre um rebuild a cada mudança de State
     
     class _MeuWidgetState extends State<MeuWidget> {
       @override
@@ -1743,11 +1737,11 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
 
-<h3>StatefulWidget</h3>
+<h2>StatefulWidget</h2>
 
-<h3>createState Method</h3>
+<h2>createState Method</h2>
 
-<h3>State Class</h3>
+<h2>State Class</h2>
 
 
 Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
