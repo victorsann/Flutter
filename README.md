@@ -1690,7 +1690,7 @@ Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de 
 <h2>StateLessWidget</h2>
 
 
-Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles declaradas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. A seguir há um exemplo de declaração de um StateLessWidget:
+Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles declaradas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. Os Widgets que não possuem uma definição de estado são utilizados para estruturar a aplicação em partes não afetadas pela mudanço no State. A seguir há um exemplo de declaração de um StateLessWidget:
 
 
     class MeuWidget extends StatelessWidget {
@@ -1699,18 +1699,6 @@ Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou 
         return Container();
       }
     }
-
-
-<h2>build Method</h2>
-
-
-As classes que hendam da classe StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por criar um valor de retorno que será alocado na árvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
-
-
-    Widget build(BuildContext context) {
-      // here, Container.of(context) returns null
-        return Container();
-      }
 
 
 <h2>StatefulWidget</h2>
@@ -1737,11 +1725,28 @@ a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidg
 Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.
 
 
-<h2>StatefulWidget Class</h2>
-
 <h2>createState Method</h2>
 
+
+O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na árvore em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da árvore e posteriormente inserido na árvore novamente, o framework irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
+
+
 <h2>State Class</h2>
+
+
+A classe State define o comportamento da interface de acordo com o estado atual do mesmo, ela é responsável por definir o State e fazer um rebuild a cada mudança. O build ou rebuild é feito através do método build, o qual será visto a seguir.
+
+
+<h2>build Method</h2>
+
+
+Tanto as classes que hendam da classe StatefulWidget quanto StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por criar um valor de retorno que será alocado na árvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
+
+
+    Widget build(BuildContext context) {
+      // here, Container.of(context) returns null
+        return Container();
+      }
 
 
 Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
