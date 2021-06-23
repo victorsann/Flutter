@@ -1891,6 +1891,9 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 <h2>InheritedWidget & InheritedModel</h2>
 
 
+Também definidos como um low-level approach, o uso dos InheritedWidget & InheritedModel volta o State Management para a comunicação entre Widgets hierarquicamente ligados, também chamados de ancestors e children. 
+
+
 <h2>Provider</h2>
 
 
@@ -1907,6 +1910,36 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 
 
 <h2>MobX</h2>
+
+
+O MobX é uma biblioteca de State Management que facilita o processo de interação entre os dados de uma aplicação e sua UI de forma reativa, gerenciando tanto estados locais quanto globais. Ele possui uma triade de conseitos básicos essenciais que juntos formam um escopo fechado de gerenciamento. 
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123152016-7ae5bc00-d43a-11eb-8318-8904605b1dea.png">
+</div>
+
+
+A seguir podemos ver esses conseitos com mais detalhes, sendo acompanhados de exemplos práticos que se inspiram no counter app criado pelo Flutter.
+
+<h2>Actions</h2>
+
+
+ Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada, é o que o setState method faz, e consiste no conceito mais básico da programação reativa; tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
+
+
+<h2>Observables</h2>
+
+
+Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de nofificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
+
+
+<h2>Reactions</h2>
+
+
+Por último está o responsável por completar a triade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
+
+
 
 
 <h2>Flutter Commands</h2>
