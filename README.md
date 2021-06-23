@@ -1884,7 +1884,7 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/123118576-22ea8d80-d419-11eb-8885-bc9f287cfa37.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123119216-b3c16900-d419-11eb-8e69-3894993fca6c.png">
 </div>
 
 
