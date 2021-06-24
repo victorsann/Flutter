@@ -1922,7 +1922,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 
 A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
-No arquivo pubspec.yaml, logo após cupertino_icons:, defina as seguintes dependências:
+No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
     mobx: ^2.0.0
     flutter_mobx: ^2.0.0
@@ -1931,7 +1931,7 @@ O primeiro package é referente ao MobX em si, já o segundo define o acesso a u
 
     flutter packages get  
 
-Em seguida já é possível gerenciar o State da aplicação utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
+Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
 
 Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
 
@@ -1951,7 +1951,7 @@ Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter 
     }
 
 
-Em uma file próprie, crie a classe na qual iremos definir a estrutura a chamada classe Controller:
+Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada classe Controller:
 
 
     import 'package:flutter/material.dart';
@@ -2001,7 +2001,7 @@ Em uma file próprie, crie a classe na qual iremos definir a estrutura a chamada
     }
 
 
-A seguir veremos a qual conceito do MobX cada parte do código corresponde e sua importancia: 
+A seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
 
 
 <h2>Actions</h2>
@@ -2019,7 +2019,7 @@ A seguir veremos a qual conceito do MobX cada parte do código corresponde e sua
     _increment() => counter.value++;
 
 
-No exemplo é criada um atributo do tipo Action, o qual é associado a um método que retorna o incremento do valor dado. Esse método é chamado quando o botão "Incrementar" é clicado:
+No exemplo é criado um atributo do tipo Action, o qual é associado a um método que retorna o incremento do valor dado. Esse método é chamado quando o botão "Incrementar" é clicado:
  
     ...
 
@@ -2027,9 +2027,12 @@ No exemplo é criada um atributo do tipo Action, o qual é associado a um métod
 
     ...
 
-    onPressed: () {
-           controller.increment();
-         },
+    ElevatedButton(
+      onPressed: () {
+        controller.increment();
+      },
+      child: Text('Incrementar'),
+    )
 
 
 <h2>Observables</h2>
