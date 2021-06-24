@@ -1,13 +1,15 @@
 import 'package:mobx/mobx.dart';
 
-class Controller {
-  var counter = Observable(0);
+class Controller = ControllerBase with _$Controller;
 
-  late Action increment;
+// O mixin Store é utilizado na geração do código
 
-  Controller() {
-    increment = Action(_increment);
+abstract class ControllerBase with Store {
+  @observable
+  int counter = 0;
+
+  @action
+  increment() {
+    counter++;
   }
-
-  _increment() => counter.value++;
 }

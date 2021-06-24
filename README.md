@@ -1924,14 +1924,18 @@ A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um ex
 
 No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
+
     mobx: ^2.0.0
     flutter_mobx: ^2.0.0
 
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões idicadas são as mais atuais neste momento, caso você queira verificar as versões no momento em que está lendo verifique [MobX.dart](https://mobx.netlify.app/getting-started). 
 
-Após criar as dependências, rode o seguinte comando na pasta do projeto:
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira verificar as versões no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
+
+Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconhaça as alterações, rode o seguinte comando na pasta do projeto:
+
 
     flutter packages get  
+
 
 Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
 
@@ -2072,6 +2076,50 @@ Por último, mas não menos importante, está o responsável por completar a tri
 
 
 A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<h2>Gerando Códigos MobX</h2>
+
+
+Todo o processo visto anteriormente exemplifica o uso e as definições da triade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratadas como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
+
+No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
+
+
+    mobx_codegen: ^2.0.0
+    build_runner: ^1.12.2
+
+
+Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. Noarquivo controller, crie as seguintes modificações:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    class Controller = ControllerBase with _$Controller;
+    
+    // O mixin Store é utilizado na geração do código
+    
+    abstract class ControllerBase with Store {
+    
+      @observable
+      int counter = 0;
+    
+      @action
+      increment() {
+        counter++;
+      }
+    }
+
+
+Uma classe abstract é definida como base para a execução da gerência do State. Esta classe possui um Mixin atribuida a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também são atribuidos dois membros:
+
+
+- @observable - Um annotation que identifica o atributo counter como um observable
+- @action - Um annotation que identifica o método increment() como uma action 
+
+
+Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$
+
 
 
 <div align="center">
