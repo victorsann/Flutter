@@ -1933,14 +1933,87 @@ O primeiro package é referente ao MobX em si, já o segundo define o acesso a u
 
 Em seguida já é possível gerenciar o State da aplicação utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
 
+Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
 
 
+    import 'package:mobx/mobx.dart';
+    
+    class Controller {
+      var counter = Observable(0);
+    
+      late Action increment;
+    
+      Controller() {
+        increment = Action(_increment);
+      }
+    
+      _increment() => counter.value++;
+    }
+
+Aproveitando o mesmo código utilizado no exemplo de uso do setState, vamos definir o acesso a classe Controller e seus membros:
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_mobx/flutter_mobx.dart';
+    import 'package:mobx_aula/controller.dart';
+    
+    class Home extends StatefulWidget {
+      @override
+      _HomeState createState() => _HomeState();
+    }
+    
+    class _HomeState extends State<Home> {
+    
+      Controller controller = Controller();
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Observer(
+                      builder: (_) {
+                        return Text(
+                          '${controller.counter.value}',
+                          style: TextStyle(color: Colors.black, fontSize: 80),
+                        );
+                      },
+                    )),
+                Padding(
+                    padding: EdgeInsets.all(16),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        controller.increment();
+                      },
+                      child: Text('Incrementar'),
+                    )),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+
+
+A seguir veremos a qual conceito do MobX cada parte do código corresponde e sua importancia: 
 
 
 <h2>Actions</h2>
 
 
  Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste no conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
+
+
+    late Action increment;
+    
+    Controller() {
+      increment = Action(_increment);
+    }
+  
+    _increment() => counter.value++;
 
 
 <h2>Observables</h2>
