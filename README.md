@@ -2202,7 +2202,12 @@ Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível te
     }
 
 
-Perceba que tanto o atributo counter quanto o método increment sofrem um @override, passando o tratamento do State para sua novas definições no arquivo gerado. Também é muito importante não modificar este arquivo por indicação da própria ferramenta.
+Perceba que tanto o atributo counter quanto o método increment sofrem um @override, passando o tratamento do State para suas novas definições no arquivo gerado. Também é muito importante não modificar este arquivo por indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
+</div>
 
 
 <h2>Flutter Commands</h2>
