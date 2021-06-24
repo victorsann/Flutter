@@ -1912,7 +1912,7 @@ Também definidos como um low-level approach, o uso dos InheritedWidget & Inheri
 <h2>MobX</h2>
 
 
-O MobX é uma biblioteca de State Management que facilita o processo de interação entre os dados de uma aplicação e sua UI de forma reativa, gerenciando tanto estados locais quanto globais. Ele possui uma triade de conseitos básicos essenciais que juntos formam um escopo fechado de gerenciamento. 
+O MobX é uma biblioteca de State Management que facilita o processo de interação entre os dados de uma aplicação e sua UI de forma reativa, gerenciando tanto estados locais quanto globais. Ele possui uma tríade de conseitos básicos essenciais que juntos formam um escopo fechado de gerenciamento. 
 
 
 <div align="center">
@@ -1920,7 +1920,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
@@ -2056,7 +2056,7 @@ O Observable aqui é uma variável que guarda o valor inicial do counter, sendo 
 <h2>Reactions</h2>
 
 
-Por último, mas não menos importante, está o responsável por completar a triade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
+Por último, mas não menos importante, está o responsável por completar a tríade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
 
 
     ...
@@ -2086,7 +2086,7 @@ A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente me
 <h2>Gerando Códigos MobX</h2>
 
 
-Todo o processo visto anteriormente exemplifica o uso e as definições da triade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratadas como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
+Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratadas como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
 
 No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
 
