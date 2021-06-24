@@ -1927,7 +1927,9 @@ No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes depend�
     mobx: ^2.0.0
     flutter_mobx: ^2.0.0
 
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. Após criar as dependências, rode o seguinte comando na pasta do projeto:
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões idicadas são as mais atuais neste momento, caso você queira verificar as versões no momento em que está lendo verifique [MobX.dart](https://mobx.netlify.app/getting-started). 
+
+Após criar as dependências, rode o seguinte comando na pasta do projeto:
 
     flutter packages get  
 
