@@ -1920,7 +1920,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada e em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons:, defina as seguintes dependências:
 
@@ -1950,7 +1950,9 @@ Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter 
       _increment() => counter.value++;
     }
 
-Aproveitando o mesmo código utilizado no exemplo de uso do setState, vamos definir o acesso a classe Controller e seus membros:
+
+Em uma file próprie, crie a classe na qual iremos definir a estrutura a chamada classe Controller:
+
 
     import 'package:flutter/material.dart';
     import 'package:flutter_mobx/flutter_mobx.dart';
@@ -1973,23 +1975,24 @@ Aproveitando o mesmo código utilizado no exemplo de uso do setState, vamos defi
             child: Column(
               children: [
                 Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Observer(
-                      builder: (_) {
-                        return Text(
-                          '${controller.counter.value}',
-                          style: TextStyle(color: Colors.black, fontSize: 80),
-                        );
-                      },
-                    )),
+                  padding: EdgeInsets.all(16),
+                  child: Observer(
+                    builder: (_) {
+                      return Text(
+                        '${controller.counter.value}',
+                        style: TextStyle(color: Colors.black, fontSize: 80),
+                      );
+                    },
+                  )),
                 Padding(
-                    padding: EdgeInsets.all(16),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        controller.increment();
-                      },
-                      child: Text('Incrementar'),
-                    )),
+                  padding: EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.increment();
+                    },
+                    child: Text('Incrementar'),
+                  )
+                ),
               ],
             ),
           ),
@@ -2016,18 +2019,59 @@ A seguir veremos a qual conceito do MobX cada parte do código corresponde e sua
     _increment() => counter.value++;
 
 
+No exemplo é criada um atributo do tipo Action, o qual é associado a um método que retorna o incremento do valor dado. Esse método é chamado quando o botão "Incrementar" é clicado:
+ 
+    ...
+
+    Controller controller = Controller();
+
+    ...
+
+    onPressed: () {
+           controller.increment();
+         },
+
+
 <h2>Observables</h2>
 
 
 Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de nofificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
 
 
+    var counter = Observable(0);
+
+
+O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual incrementa seu valor.
+
+
 <h2>Reactions</h2>
 
 
-Por último está o responsável por completar a triade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
+Por último, mas não menos importante, está o responsável por completar a triade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
 
 
+    ...
+
+    Controller controller = Controller();
+
+    ...
+
+    Observer(
+      builder: (_) {
+        return Text(
+          '${controller.counter.value}',
+          style: TextStyle(color: Colors.black, fontSize: 80),
+        );
+      },
+    )
+
+
+A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela é a responsável por fazer o rebuild do Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
+</div>
 
 
 <h2>Flutter Commands</h2>
