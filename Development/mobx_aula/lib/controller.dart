@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 
+part 'controller.g.dart';
+
 class Controller = ControllerBase with _$Controller;
 
 // O mixin Store é utilizado na geração do código

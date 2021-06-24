@@ -2078,6 +2078,11 @@ Por último, mas não menos importante, está o responsável por completar a tri
 A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
+</div>
+
+
 <h2>Gerando Códigos MobX</h2>
 
 
@@ -2098,7 +2103,6 @@ Após definir as novas dependências, vamos modificar o código do exemplo anter
     class Controller = ControllerBase with _$Controller;
     
     // O mixin Store é utilizado na geração do código
-    
     abstract class ControllerBase with Store {
     
       @observable
@@ -2118,13 +2122,82 @@ Uma classe abstract é definida como base para a execução da gerência do Stat
 - @action - Um annotation que identifica o método increment() como uma action 
 
 
-Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$
+Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$. Esta classe será gerada em arquivo a parte, e para que isso aconteça é preciso seguir mais alguns passos.
+
+Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos necessários. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de controller neste caso:
 
 
+    part 'controller.g.dart';
+ 
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
-</div>
+Após esse processo, é preciso gerar a classe associada. Para isso existem dois possiveis comandos:
+
+
+    flutter pub run build_runner watch
+
+
+Comando que gera a classe e monitora as alterações no arquivo controller.
+
+
+    flutter pub run build_runner build
+
+
+Comando que gera a classe apenas uma vez, e só a atualiza caso seja rodado novamente.
+
+
+Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
+
+
+    // GENERATED CODE - DO NOT MODIFY BY HAND
+    
+    part of 'controller.dart';
+    
+    // **************************************************************************
+    // StoreGenerator
+    // **************************************************************************
+    
+    // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas,     prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+    
+    mixin _$Controller on ControllerBase, Store {
+      final _$counterAtom = Atom(name: 'ControllerBase.counter');
+    
+      @override
+      int get counter {
+        _$counterAtom.reportRead();
+        return super.counter;
+      }
+    
+      @override
+      set counter(int value) {
+        _$counterAtom.reportWrite(value, super.counter, () {
+          super.counter = value;
+        });
+      }
+    
+      final _$ControllerBaseActionController =
+          ActionController(name: 'ControllerBase');
+    
+      @override
+      dynamic increment() {
+        final _$actionInfo = _$ControllerBaseActionController.startAction(
+            name: 'ControllerBase.increment');
+        try {
+          return super.increment();
+        } finally {
+          _$ControllerBaseActionController.endAction(_$actionInfo);
+        }
+      }
+    
+      @override
+      String toString() {
+        return '''
+    counter: ${counter}
+        ''';
+      }
+    }
+
+
+Perceba que tanto o atributo counter quanto o método increment sofrem um @override, passando o tratamento do State para sua novas definições no arquivo gerado. Também é muito importante não modificar este arquivo por indicação da própria ferramenta.
 
 
 <h2>Flutter Commands</h2>
