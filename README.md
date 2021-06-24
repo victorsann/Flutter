@@ -539,7 +539,7 @@ Um Row também conta com definições de prioridade, onde um children pode ocupa
 
 Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associado a View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais. Para isso o Flutter conta com a Class AssetsBundle, cunja função é gerir uma coleção de recurso usados pela aplicação.
 
-Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependencias tanto do Material design(android) quanto do cupertino(ios). Exemplo:
+Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependências tanto do Material design(android) quanto do cupertino(ios). Exemplo:
 
     flutter:
       uses-material-design: true
@@ -1920,12 +1920,25 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir podemos ver esses conseitos com mais detalhes, sendo acompanhados de exemplos práticos que se inspiram no counter app criado pelo Flutter.
+A seguir veremos esses conceitos de forma mais aprofundada e em com um exemplo prático de app. O app será semelhante ao app de increment disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Antes de prosseguir com as definiçãoes, é preciso ter o mobx package alocado nas dependências de um novo projeto ou mesmo em um já existente. Portanto, siga os passos abaixo:
+
+
+No arquivo pubspec.yaml, logo após cupertino_icons:, defina as seguintes dependências:
+
+    mobx: ^2.0.0
+    flutter_mobx: ^2.0.0
+
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. Após criar as dependências, na pasta do projeto rode o seguinte comando:
+
+    flutter packages get  
+
+Em seguida já é possível gerenciar o State da aplicação utilizando o MobX.
+
 
 <h2>Actions</h2>
 
 
- Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada, é o que o setState method faz, e consiste no conceito mais básico da programação reativa; tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
+ Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste no conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
 
 
 <h2>Observables</h2>
