@@ -1931,7 +1931,7 @@ No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes depend�
 
 O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira verificar as versões no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
 
-Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconhaça as alterações, rode o seguinte comando na pasta do projeto:
+Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconheça as alterações, rode o seguinte comando na pasta do projeto:
 
 
     flutter packages get  
@@ -1957,7 +1957,7 @@ Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter 
     }
 
 
-Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada classe Controller:
+Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada da classe Controller:
 
 
     import 'package:flutter/material.dart';
@@ -2007,7 +2007,7 @@ Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada
     }
 
 
-A seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
+Tendo concluído estes passos, a seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
 
 
 <h2>Actions</h2>
@@ -2086,7 +2086,7 @@ A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente me
 <h2>Gerando Códigos MobX</h2>
 
 
-Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratadas como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
+Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
 
 No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
 
@@ -2122,7 +2122,7 @@ Uma classe abstract é definida como base para a execução da gerência do Stat
 - @action - Um annotation que identifica o método increment() como uma action 
 
 
-Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$. Esta classe será gerada em arquivo a parte, e para que isso aconteça é preciso seguir mais alguns passos.
+Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$ e será gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
 
 Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos necessários. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de controller neste caso:
 
@@ -2136,13 +2136,17 @@ Após esse processo, é preciso gerar a classe associada. Para isso existem dois
     flutter pub run build_runner watch
 
 
-Comando que gera a classe e monitora as alterações no arquivo controller.
+<div align="center">
+  <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
+</div>
 
 
     flutter pub run build_runner build
 
 
-Comando que gera a classe apenas uma vez, e só a atualiza caso seja rodado novamente.
+<div align="center">
+  <h5>Comando que gera a classe apenas uma vez, e só a atualiza caso seja rodado novamente.</h5>
+</div>
 
 
 Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
