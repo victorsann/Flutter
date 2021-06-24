@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx_aula/controller.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -6,7 +8,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _counter = 0;
+  // int _counter = 0;
+
+  Controller controller = Controller();
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +21,19 @@ class _HomeState extends State<Home> {
           children: [
             Padding(
                 padding: EdgeInsets.all(16),
-                child: Text(
-                  '$_counter',
-                  style: TextStyle(color: Colors.black, fontSize: 80),
+                child: Observer(
+                  builder: (_) {
+                    return Text(
+                      '${controller.counter.value}',
+                      style: TextStyle(color: Colors.black, fontSize: 80),
+                    );
+                  },
                 )),
             Padding(
                 padding: EdgeInsets.all(16),
                 child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      _counter++;
-                    });
+                    controller.increment();
                   },
                   child: Text('Incrementar'),
                 )),

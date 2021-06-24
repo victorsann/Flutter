@@ -1920,19 +1920,21 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada e em com um exemplo prático de app. O app será semelhante ao app de increment disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Antes de prosseguir com as definiçãoes, é preciso ter o mobx package alocado nas dependências de um novo projeto ou mesmo em um já existente. Portanto, siga os passos abaixo:
-
+A seguir veremos esses conceitos de forma mais aprofundada e em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da triade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons:, defina as seguintes dependências:
 
     mobx: ^2.0.0
     flutter_mobx: ^2.0.0
 
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. Após criar as dependências, na pasta do projeto rode o seguinte comando:
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. Após criar as dependências, rode o seguinte comando na pasta do projeto:
 
     flutter packages get  
 
-Em seguida já é possível gerenciar o State da aplicação utilizando o MobX.
+Em seguida já é possível gerenciar o State da aplicação utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
+
+
+
 
 
 <h2>Actions</h2>
