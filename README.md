@@ -2222,6 +2222,27 @@ Perceba que tanto o atributo counter quanto o método increment sofrem um @overr
 </div>
 
 
+<h2>Auto Run</h2>
+
+
+O autorun() é um método de execução muito utilizado para verificar alterações de State no Debug Console. Melho dizendo, imagine que você precisa verificar se o valor do campo de formulário está sendo de fato recebido; o autorun devolve o valor a cada atualização de State. O exempllo a seguir explica de forma mais detalhada.
+
+Ainda no exemplo anterior, faça a seguinte alteração do arquivo controller.dart:
+
+    ControllerBase() {
+       autorun((_) {
+         print(counter);
+       });
+     }
+
+O constructor da classe ControllerBase define um autorun method, o qual faz um print do valor contido no atributo counter a cada mudança de State. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123450593-49443080-d5b3-11eb-80a3-38dbf7628af3.png">
+</div>
+
+
 <h2>MobX Computed Observables</h2>
 
 
