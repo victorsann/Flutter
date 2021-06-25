@@ -2222,6 +2222,168 @@ Perceba que tanto o atributo counter quanto o método increment sofrem um @overr
 </div>
 
 
+<h2>MobX Computed Observables</h2>
+
+
+Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
+
+Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. 
+
+
+    import 'package:mobx/mobx.dart';
+    
+    part 'contact.g.dart';
+    
+    class Contact = ContactBase with _$Contact;
+    
+    abstract class ContactBase with Store {
+      @observable
+      String firstName;
+    
+      @observable
+      String lastName;
+    
+      @computed
+      String get fullName => '$firstName, $lastName';
+    
+    }
+
+
+Para exemplificar o uso do recurso, vamos criar um tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar um action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
+
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_mobx/flutter_mobx.dart';
+    
+    class Computed extends StatefulWidget {
+      @override
+      _ComputedState createState() => _ComputedState();
+    }
+    
+    class _ComputedState extends State<Computed> {
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    decoration: InputDecoration(labelText: "Email"),
+                    onChanged: (_) {},
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    decoration: InputDecoration(labelText: "Senha"),
+                    onChanged: (_) {},
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(16), child: Text('Campos inválidos')),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Login'),
+                  )
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+
+
+Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a variação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    part 'controller.g.dart';
+    
+    class Controller = ControllerBase with _$Controller;
+    
+    abstract class ControllerBase with Store {}
+
+
+Como já foi visto anteriormente, essa estrutura será a base para o run de um arquivo no qual o state será gerenciado. Para criar este arquivo e monitorar suas atualizações, rode o seguinte comando no diretório do formulário:
+
+    
+    flutter pub run build_runner watch
+
+
+Agora que a base de gerenciamento foi criada, vamos fazer algumas alterações nos arquivos computed.dart e controller.dart.
+
+No arquivo computed.dart defina o acesso a classe Controller:
+
+    ...
+
+    import 'package:mobx_aula/components/computed/controller.dart';
+
+    ...
+
+    class _ComputedState extends State<Computed> {
+      
+      Controller controller = Controller();
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+           ...
+        );
+      }
+
+
+Posteriormente, agora no arquivo controller.dart, defina os observables e as actions referentes aos campos do formulário:
+
+
+    abstract class ControllerBase with Store {
+      @observable
+      String email = '';
+    
+      @observable
+      String senha = '';
+    
+      @action
+      void setEmail(valor) => email = valor;
+    
+      @action
+      void setSenha(valor) => senha = valor;
+    }
+
+
+Em seguida vamos associar cada campo a sua respectiva action:
+
+
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: TextField(
+        decoration: InputDecoration(labelText: "Email"),
+        onChanged: controller.setEmail,
+      ),
+    ),
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: TextField(
+        decoration: InputDecoration(labelText: "Senha"),
+        onChanged: controller.setSenha,
+      ),
+    )
+
+
+
 <h2>Flutter Commands</h2>
 
 

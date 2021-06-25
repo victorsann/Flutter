@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx_aula/controller.dart';
+import 'package:mobx_aula/components/home/controller.dart';
 
 class Home extends StatefulWidget {
   @override
