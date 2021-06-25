@@ -35,9 +35,18 @@ class _ComputedState extends State<Computed> {
                 padding: EdgeInsets.all(16),
                 child: Observer(
                   builder: (_) {
-                    return Text(controller.formularioValidado
-                        ? 'Campos Válidos'
-                        : 'Campos Inválidos');
+                    return Text.rich(TextSpan(children: [
+                      TextSpan(
+                          text: controller.formularioValidado
+                              ? 'Campos Válidos'
+                              : '',
+                          style: TextStyle(color: Colors.green)),
+                      TextSpan(
+                          text: controller.formularioValidado
+                              ? ''
+                              : 'Campos Inválidos',
+                          style: TextStyle(color: Colors.red))
+                    ]));
                   },
                 )),
             Padding(

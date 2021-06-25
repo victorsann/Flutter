@@ -2225,9 +2225,9 @@ Perceba que tanto o atributo counter quanto o método increment sofrem um @overr
 <h2>Auto Run</h2>
 
 
-O autorun() é um método de execução muito utilizado para verificar alterações de State no Debug Console. Melho dizendo, imagine que você precisa verificar se o valor do campo de formulário está sendo de fato recebido; o autorun devolve o valor a cada atualização de State. O exempllo a seguir explica de forma mais detalhada.
+O autorun() é um método de execução muito utilizado para verificar alterações de State no Debug Console. Imagine que você precisa verificar se os valores dos campos de um formulário estão sendo de fato recebidos; para isso é possível utilizar o autorun, qua quando definido, passa a ser o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva os valores a cada atualização do State. O exemplo a seguir explica de forma mais detalhada.
 
-Ainda no exemplo anterior, faça a seguinte alteração do arquivo controller.dart:
+Ainda no exemplo anterior, faça a seguinte alteração no arquivo controller.dart:
 
     ControllerBase() {
        autorun((_) {
@@ -2243,7 +2243,7 @@ O constructor da classe ControllerBase define um autorun method, o qual faz um p
 </div>
 
 
-A cada clique o valor do atributo counter, ou seu novo state é retornado. Assim é possível verificar se um valor é de fato recebido.
+A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assim é possível verificar se um valor é de fato recebido.
 
 
 <h2>MobX Computed Observables</h2>
@@ -2251,7 +2251,7 @@ A cada clique o valor do atributo counter, ou seu novo state é retornado. Assim
 
 Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
 
-Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. 
+Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. A seguir temos um exemplo de declaração do Computed Observable:
 
 
     import 'package:mobx/mobx.dart';
@@ -2273,7 +2273,7 @@ Derived states, os quais dependem de um core-state ou de outro derived-state par
     }
 
 
-Para exemplificar o uso do recurso, vamos criar um tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar um action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
+Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar um action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
 
 
     import 'package:flutter/material.dart';
@@ -2322,7 +2322,7 @@ Para exemplificar o uso do recurso, vamos criar um tela semelhante a uma tela de
     }
 
 
-Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a variação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
+Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a valiação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2354,7 +2354,7 @@ No arquivo computed.dart defina o acesso a classe Controller:
 
     ...
 
-    import 'package:mobx_aula/components/computed/controller.dart';
+    import 'package:mobx_aula/controller.dart';
 
     ...
 
@@ -2418,9 +2418,9 @@ Para verificar o recebimento dos valores do formulário, vamos utilizar o já vi
     }
 
 
-No constructor da class Controller criamos um autorun() method, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextFiel, já qua a chamada das actions é feita através do atributo onChanged. 
+ Criamos um autorun() method No constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextFiel, já qua a chamada das actions é feita através do atributo onChanged. 
 
-Após a mudança, torne a rodar o comando a seguir na pasta que contém a file do formulário, apenas se se a execução tiver sido interrompida:
+Após a mudança, se a execução tiver sido interrompida, torne a rodar o comando a seguir na pasta que contém a file do formulário:
 
 
     flutter pub run build_runner watch
@@ -2444,25 +2444,35 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
     bool get formularioValidado => email.length >= 5 && senha.length >= 5;
 
 
-O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retornando true caso os valores correspondam. O próximo passo é definir o consumo deste computer diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
+O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retorna true caso os valores sejam correspondentes. O próximo passo é definir o consumo deste computer diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
 
    
-    Padding(
-     padding: EdgeInsets.all(16),
-     child: Observer(
-       builder: (_) {
-         return Text(controller.formularioValidado
-             ? 'Campos Válidos'
-             : 'Campos Inválidos');
-       },
-     ))
+     Padding(
+      padding: EdgeInsets.all(16),
+      child: Observer(
+        builder: (_) {
+          return Text.rich(TextSpan(children: [
+            TextSpan(
+                text: controller.formularioValidado
+                    ? 'Campos Válidos'
+                    : '',
+                style: TextStyle(color: Colors.green)),
+            TextSpan(
+                text: controller.formularioValidado
+                    ? ''
+                    : 'Campos Inválidos',
+                style: TextStyle(color: Colors.red))
+          ]));
+        },
+      ))
 
 
-O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional que resulta no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. A imagem a seguir ilustra como o exemplo irá se comportar:
+O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional resultando no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/123484210-5d515780-d5de-11eb-8eb9-93bea4991ce7.png">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/123485121-de5d1e80-d5df-11eb-9f11-f8bc3d50dcb2.png">
 </div>
 
 
