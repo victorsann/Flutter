@@ -2324,11 +2324,13 @@ Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela d
 
 Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a valiação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
 
+<br>
 
 <div align="center">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/123485919-7a3b5a00-d5e1-11eb-8bad-b235eac03c76.png">
 </div>
 
+<br>
 
 Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
 
