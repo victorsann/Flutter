@@ -9,6 +9,14 @@ part of 'controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$Controller on ControllerBase, Store {
+  Computed<bool>? _$formularioValidadoComputed;
+
+  @override
+  bool get formularioValidado => (_$formularioValidadoComputed ??=
+          Computed<bool>(() => super.formularioValidado,
+              name: 'ControllerBase.formularioValidado'))
+      .value;
+
   final _$emailAtom = Atom(name: 'ControllerBase.email');
 
   @override
@@ -68,7 +76,8 @@ mixin _$Controller on ControllerBase, Store {
   String toString() {
     return '''
 email: ${email},
-senha: ${senha}
+senha: ${senha},
+formularioValidado: ${formularioValidado}
     ''';
   }
 }

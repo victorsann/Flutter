@@ -2243,6 +2243,9 @@ O constructor da classe ControllerBase define um autorun method, o qual faz um p
 </div>
 
 
+A cada clique o valor do atributo counter, ou seu novo state é retornado. Assim é possível verificar se um valor é de fato recebido.
+
+
 <h2>MobX Computed Observables</h2>
 
 
@@ -2303,7 +2306,7 @@ Para exemplificar o uso do recurso, vamos criar um tela semelhante a uma tela de
                     onChanged: (_) {},
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(16), child: Text('Campos inválidos')),
+                Padding(padding: EdgeInsets.all(16), child: Text('Campos Inválidos')),
                 Padding(
                   padding: EdgeInsets.all(16),
                   child: ElevatedButton(
@@ -2403,6 +2406,64 @@ Em seguida vamos associar cada campo a sua respectiva action:
       ),
     )
 
+
+Para verificar o recebimento dos valores do formulário, vamos utilizar o já visto autorun() method. No arquivo controller.dart faça a seguinte alteração:
+
+
+    Controller() {
+      autorun((_) {
+        print(email);
+        print(senha);
+      });
+    }
+
+
+No constructor da class Controller criamos um autorun() method, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextFiel, já qua a chamada das actions é feita através do atributo onChanged. 
+
+Após a mudança, torne a rodar o comando a seguir na pasta que contém a file do formulário, apenas se se a execução tiver sido interrompida:
+
+
+    flutter pub run build_runner watch
+
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h2>@computed</h2>
+
+
+ Como já foi dito, um Computed Observable ou Computed Propertie é um derived-state, ou seja, ele deriva de um core-state ou de outro derived-state, porém, pode ser aplicado de formas distintas, como veremos a seguir. No arquivo controller.dart crie a seguinte alteração:
+  
+
+    @computed
+    bool get formularioValidado => email.length >= 5 && senha.length >= 5;
+
+
+O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retornando true caso os valores correspondam. O próximo passo é definir o consumo deste computer diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
+
+   
+    Padding(
+     padding: EdgeInsets.all(16),
+     child: Observer(
+       builder: (_) {
+         return Text(controller.formularioValidado
+             ? 'Campos Válidos'
+             : 'Campos Inválidos');
+       },
+     ))
+
+
+O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional que resulta no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
 
 
 <h2>Flutter Commands</h2>

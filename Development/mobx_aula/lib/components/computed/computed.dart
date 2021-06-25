@@ -32,7 +32,14 @@ class _ComputedState extends State<Computed> {
               ),
             ),
             Padding(
-                padding: EdgeInsets.all(16), child: Text('Campos inválidos')),
+                padding: EdgeInsets.all(16),
+                child: Observer(
+                  builder: (_) {
+                    return Text(controller.formularioValidado
+                        ? 'Campos Válidos'
+                        : 'Campos Inválidos');
+                  },
+                )),
             Padding(
                 padding: EdgeInsets.all(16),
                 child: ElevatedButton(
