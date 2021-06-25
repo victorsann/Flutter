@@ -2117,9 +2117,17 @@ Após definir as novas dependências, vamos modificar o código do exemplo anter
 
 Uma classe abstract é definida como base para a execução da gerência do State. Esta classe possui um Mixin atribuida a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também são atribuidos dois membros:
 
+    @observable
 
-- @observable - Um annotation que identifica o atributo counter como um observable
-- @action - Um annotation que identifica o método increment() como uma action 
+<div align="center">
+  <h5>Um annotation que identifica o atributo counter como um observable</h5>
+</div>
+   
+    @action
+
+<div align="center">
+  <h5>Um annotation que identifica o método increment() como uma action </h5>
+</div>
 
 
 Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$ e será gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
