@@ -1815,7 +1815,7 @@ O Flutter possui uma série de abordagens do state management, cada uma com suas
 <h2>setState</h2>
 
 
-O setState é um low-level approach, normalmente utilizado para tratar ephemeral states. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
+O setState, ou gerência de estado implícita, é um low-level approach, normalmente utilizado para tratar ephemeral states. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
 
 
     setState(() { _myState = newValue; });
