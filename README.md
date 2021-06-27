@@ -2225,7 +2225,7 @@ Perceba que tanto o atributo counter quanto o método increment sofrem um @overr
 <h2>Auto Run</h2>
 
 
-O autorun() é um método de execução muito utilizado para verificar alterações de State no Debug Console. Imagine que você precisa verificar se os valores dos campos de um formulário estão sendo de fato recebidos; para isso é possível utilizar o autorun, qua quando definido, passa a ser o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva os valores a cada atualização do State. O exemplo a seguir explica de forma mais detalhada.
+O autorun() é um método de execução definido como o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva determinado valor assim que um classe sofre um rebuild. O exemplo a seguir explica de forma mais detalhada.
 
 Ainda no exemplo anterior, faça a seguinte alteração no arquivo controller.dart:
 
@@ -2249,7 +2249,7 @@ A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assi
 <h2>reaction()</h2>
 
 
-Assim como o autorun, o reaction method monitora mudanças nos observables da store. A ele está associado uma execução de monitoramento e efeito, onde uma função fn() define o observable a ser monitorado, e caso haja alguma alteração, uma função effect executa uma reação.
+Assim como o autorun, o reaction method monitora mudanças nos observables da store, porém, só é de fato chamado quando um determinado valor é alterado. A ele está associado uma execução de monitoramento e efeito, onde uma função fn() define o observable a ser monitorado, e caso haja alguma alteração, uma função effect executa uma reação.
 
     ReactionDisposer reaction<T>(T Function(Reaction) fn, void Function(T) effect)
 
@@ -2529,6 +2529,101 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 
 <br>
 
+
+<h3>Auth Simulation</h3>
+
+
+Como foi visto anteriormente, é possível definir a gerência de determinado State através do método reaction, que executa um effect após verificar uma mudança no observable definido. Neste caso, iremos aplicar algumas mudanças no formulário anterior, aplicando o reaction para simular uma autenticação dos dados do usuário. 
+
+O primeiro passo será criar uma nova action, esta sendo referente ao login em si, e também alguns observables, os quais irão servir como forma de validação. Na file controller.dart faça as seguintes alterações:
+
+
+     @observable
+     bool usuarioLogado = false;
+   
+     @observable
+     bool carregando = false;
+   
+     @action
+     Future<void>logar() async {
+       carregando = true;
+   
+       await Future.delayed(Duration(seconds: 3));
+   
+       carregando = false;
+
+       usuarioLogado = true;
+
+     }
+
+
+As novas definições consistem em um método que é chamado no onPress do botão de login, ou seja, apenas se os dados do usuário forem correspondentes aos parâmetros anteriormente definidos. Esse método, chamado de logar, possui um método delayed, cuja função é simular o carregamento de um select na base por exemplo, e a ele é atribuída a duração de 3 segundos. Em seguida, definimos que o usuário foi altenticado por meio do bool 'usuarioLogado'; assim seria possível chamar a tela subsequente após o carregamento. Carregamento este que é atribuído ao bool 'carregando', o qual é setado para true quando o método logar é chamado, e após o delayed, torna a ser false.
+
+Tendo concluído as alterações no controller.dart, torne a fazer o build com o comando a seguir:
+
+
+    flutter pub run build_runner watch
+
+
+Após o fim da execução, vamos partir para as próximas alteração. Elas consistem em:
+   
+
+    Controller controller = Controller();
+      
+    late ReactionDisposer reactionDisposer;
+
+    @override
+      void didChangeDependencies() {
+        super.didChangeDependencies();
+    
+        reactionDisposer = reaction((_) => controller.usuarioLogado, (valor) {
+          print(valor);
+        });
+      }
+
+     @override
+     void dispose() {
+       reactionDisposer();
+       super.dispose();
+     }
+
+
+Dentro do método didChangeDependencies() iremos definir o reaction method, o qual recebe o observable 'usuarioLogado' como monitorado, e define um print do seu valor no Debug Console caso haja uma mudança no mesmo. Além disso, é definido um ReactionDisposer e um override da classe dispose, evitando a chamda constante do reaction method. Em seguida:    
+  
+
+     TextSpan(
+       text: controller.formularioValidado && !controller.carregando
+           ? 'Campos Válidos' : '',
+       style: TextStyle(color: Colors.green))
+
+
+Essa alteração define que o text 'Campos Válidos' só será aparente quando o processo de carregamento não estiver ocorrendo. Em seguida:
+
+
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: Observer(builder: (_) {
+        return ElevatedButton(
+            onPressed: controller.formularioValidado ? () {
+                controller.logar();
+              } : null,
+            child: controller.carregando ? CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Colors.white),
+              ) : Text('Login'));
+        }
+      )
+    )
+
+
+Definimos a chamada do método logar no onPress, além de um CircularProgressIndicator, que indica o tempo de carregamento definido anteriormente. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123563206-c6290300-d789-11eb-839a-78795749e74f.png">
+</div>
+
+<br>
 
 
 <h2>Flutter Commands</h2>

@@ -80,7 +80,7 @@ mixin _$Controller on ControllerBase, Store {
   final _$logarAsyncAction = AsyncAction('ControllerBase.logar');
 
   @override
-  Future logar() {
+  Future<void> logar() {
     return _$logarAsyncAction.run(() => super.logar());
   }
 

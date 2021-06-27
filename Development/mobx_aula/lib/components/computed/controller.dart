@@ -5,12 +5,7 @@ part 'controller.g.dart';
 class Controller = ControllerBase with _$Controller;
 
 abstract class ControllerBase with Store {
-  Controller() {
-    autorun((_) {
-      print(email);
-      print(senha);
-    });
-  }
+  Controller() {}
 
   @observable
   String email = '';
@@ -31,13 +26,14 @@ abstract class ControllerBase with Store {
   bool carregando = false;
 
   @action
-  logar() async {
+  Future<void> logar() async {
     carregando = true;
 
     await Future.delayed(Duration(seconds: 3));
-    usuarioLogado = true;
 
     carregando = false;
+
+    usuarioLogado = true;
   }
 
   @computed

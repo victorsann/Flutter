@@ -11,6 +11,23 @@ class Computed extends StatefulWidget {
 class _ComputedState extends State<Computed> {
   Controller controller = Controller();
 
+  late ReactionDisposer reactionDisposer;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    reactionDisposer = reaction((_) => controller.usuarioLogado, (valor) {
+      print(valor);
+    });
+  }
+
+  @override
+  void dispose() {
+    reactionDisposer();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +55,8 @@ class _ComputedState extends State<Computed> {
                   builder: (_) {
                     return Text.rich(TextSpan(children: [
                       TextSpan(
-                          text: controller.formularioValidado
+                          text: controller.formularioValidado &&
+                                  !controller.carregando
                               ? 'Campos Válidos'
                               : '',
                           style: TextStyle(color: Colors.green)),
@@ -54,9 +72,16 @@ class _ComputedState extends State<Computed> {
                 padding: EdgeInsets.all(16),
                 child: Observer(builder: (_) {
                   return ElevatedButton(
-                    onPressed: controller.formularioValidado ? () {} : null,
-                    child: Text('Login'),
-                  );
+                      onPressed: controller.formularioValidado
+                          ? () {
+                              controller.logar();
+                            }
+                          : null,
+                      child: controller.carregando
+                          ? CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation(Colors.white),
+                            )
+                          : Text('Login'));
                 })),
           ],
         ),
