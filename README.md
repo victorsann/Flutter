@@ -2246,6 +2246,48 @@ O constructor da classe ControllerBase define um autorun method, o qual faz um p
 A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assim é possível verificar se um valor é de fato recebido.
 
 
+<h2>reaction()</h2>
+
+
+Assim como o autorun, o reaction method monitora mudanças nos observables da store. A ele está associado uma execução de monitoramento e efeito, onde uma função fn() define o observable a ser monitorado, e caso haja alguma alteração, uma função effect executa uma reação.
+
+    ReactionDisposer reaction<T>(T Function(Reaction) fn, void Function(T) effect)
+
+Um reaction method pode ser utilizado tando na controller.dart file, quanto na view, e para exemplificar seu uso, é onde iremos tratá-lo. Para isso é preciso definir o seguinte método na classe de State da tela:
+
+
+    @override
+    void didChangeDependencies() {
+      super.didChangeDependencies();
+    }
+
+
+Ele é importante pois define que o gerenciamento de state irá ocorrer fora do Widget correspondente, e assim como um autorun, ele é chamado a cada atualização do estado. Dentro dele iremos declarar o reaction method:
+
+
+    reaction(fn, effect);
+
+
+Por fim, faremos a chamada de um print, tendo um resultado semelhante ao do autorun anterior:
+
+
+    Controller controller = Controller();
+   
+     @override
+     void didChangeDependencies() {
+       super.didChangeDependencies();
+   
+       reaction((_) => controller.counter, (valor) {
+         print(valor);
+       });
+     }
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123561221-8b20d280-d77d-11eb-8f11-ee7bba6852c6.png">
+</div>
+
+
 <h2>MobX Computed Observables</h2>
 
 
@@ -2486,6 +2528,7 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 </div>
 
 <br>
+
 
 
 <h2>Flutter Commands</h2>

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:mobx_aula/components/home/controller.dart';
 
 class Home extends StatefulWidget {
@@ -8,9 +9,16 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // int _counter = 0;
-
   Controller controller = Controller();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    reaction((_) => controller.counter, (valor) {
+      print(valor);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

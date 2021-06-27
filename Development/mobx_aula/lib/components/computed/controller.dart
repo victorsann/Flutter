@@ -24,6 +24,22 @@ abstract class ControllerBase with Store {
   @action
   void setSenha(valor) => senha = valor;
 
+  @observable
+  bool usuarioLogado = false;
+
+  @observable
+  bool carregando = false;
+
+  @action
+  logar() async {
+    carregando = true;
+
+    await Future.delayed(Duration(seconds: 3));
+    usuarioLogado = true;
+
+    carregando = false;
+  }
+
   @computed
   bool get formularioValidado => email.length >= 5 && senha.length >= 5;
 }
