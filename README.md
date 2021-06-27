@@ -2620,7 +2620,7 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123563289-48b1c280-d78a-11eb-9ccf-fa653ee44e22.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123563343-844c8c80-d78a-11eb-8157-7decc8762387.png">
 </div>
 
 <br>
