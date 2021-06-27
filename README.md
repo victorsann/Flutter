@@ -2466,16 +2466,27 @@ O computed criado basicamente age como uma validação, definindo um número mí
                 style: TextStyle(color: Colors.red))
           ]));
         },
-      ))
+      )),
+      Padding(
+          padding: EdgeInsets.all(16),
+          child: Observer(builder: (_) {
+            return ElevatedButton(
+              onPressed: controller.formularioValidado ? () {} : null,
+              child: Text('Login'),
+            );
+          }))
 
 
-O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional resultando no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. A imagem a seguir ilustra como o exemplo irá se comportar:
+O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional resultando no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
 
+<br>
 
 <div align="center">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/123558908-4aba5800-d76f-11eb-8d6c-4fc5474c0a61.jpg">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/123559015-f82d6b80-d76f-11eb-8700-1f58a521b7ce.jpg">
 </div>
+
+<br>
 
 
 <h2>Flutter Commands</h2>
