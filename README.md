@@ -2477,7 +2477,7 @@ O computed criado basicamente age como uma validação, definindo um número mí
           }))
 
 
-O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional resultando no retorno do string 'Campos Válidos', caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
+O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional, resultando no retorno do string 'Campos Válidos' caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <br>
 
