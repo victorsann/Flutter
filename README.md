@@ -2473,7 +2473,7 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 
 
 <div align="center">
-  <img width="35%" src="https://user-images.githubusercontent.com/61476935/123558908-4aba5800-d76f-11eb-8d6c-4fc5474c0a61.jpg">
+  <img width="36%" src="https://user-images.githubusercontent.com/61476935/123558908-4aba5800-d76f-11eb-8d6c-4fc5474c0a61.jpg">
   <img width="35%" src="https://user-images.githubusercontent.com/61476935/123558954-a08f0000-d76f-11eb-94bc-79cf4618a6ee.jpg">
 </div>
 
