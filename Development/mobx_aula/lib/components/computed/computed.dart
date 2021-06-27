@@ -51,10 +51,12 @@ class _ComputedState extends State<Computed> {
                 )),
             Padding(
                 padding: EdgeInsets.all(16),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Login'),
-                )),
+                child: Observer(builder: (_) {
+                  return ElevatedButton(
+                    onPressed: controller.formularioValidado ? () {} : null,
+                    child: Text('Login'),
+                  );
+                })),
           ],
         ),
       ),
