@@ -3036,7 +3036,7 @@ Para a estrutura um módulo consite basicamente em três arquivos:
 
 
 <strong>app_controller.dart</strong> - Corresponde as classes que monitoram o state dos widgets do módulo em específico.
-<strong>app_module.dart</strong> - Corresponde a MainModule do módulo app.
+<strong>app_module.dart</strong> - Corresponde a MainModule do módulo app.<br>
 <strong>app_widget.dart</strong> - Estrutura de interface.
 
 
