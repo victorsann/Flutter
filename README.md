@@ -2803,6 +2803,11 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 </div>
 
 
+Os exemplos anteriores focam no monitoramento de uma lista, grenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
+
+A ela iremos adicionar as seguintes linhas de código:
+
+
 
 
 
