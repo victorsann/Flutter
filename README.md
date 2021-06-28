@@ -2626,6 +2626,74 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 <br>
 
 
+<h2>ObservableList</h2>
+
+
+O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um itemseja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. 
+
+Para melhor exemplificar, vamos retomar os exemplos anteriores e complementá-los:
+
+Cria uma pasta a parte da pasta computed, adicionando a ela dois arquivos. O primeiro, chamado de observableList.dart será a tela em si, já o segundo, este chamado de controller.dart, será onde o ObservableList será gerenciado.
+
+Na pasta observableList.dart, em um StatefulWidget, faça as seguintes inclusões:
+
+
+    _dialog() {
+        showDialog(
+            context: context,
+            builder: (_) {
+              return AlertDialog(
+                title: Text("Adicionar item"),
+                content: TextField(
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: "Digite uma descrição..."),
+                  onChanged: (valor) {},
+                ),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        "Cancelar",
+                        style: TextStyle(color: Colors.red),
+                      )),
+                  TextButton(onPressed: () {}, child: Text("Salvar"))
+                ],
+              );
+            });
+          }
+
+
+A primeira inclusão é um dialog, o qual será utilizado para adiministrar os itens da lista. A seguir iremos incluir um ListView.builder, que irá gerar os itens necessários:
+
+
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: ListView.builder(
+            itemCount: 10,
+            itemBuilder: (_, indice) {
+              return ListTile(
+                title: Text("Item $indice"),
+                onTap: () {},
+              );
+            },
+          ),
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              _dialog();
+            },
+          ),
+        );
+      }
+
+
+
+
+
 <h2>Flutter Commands</h2>
 
 

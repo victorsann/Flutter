@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx_aula/components/home/home.dart';
 import 'package:mobx_aula/components/computed/computed.dart';
+import 'package:mobx_aula/components/observableList/observableList.dart';
 
 class MyPageView extends StatelessWidget {
   @override
@@ -22,6 +23,10 @@ class MyHomePage extends StatelessWidget {
           appBar: AppBar(title: Text('Computed Observables')),
           body: Computed(),
         ),
+        Scaffold(
+          appBar: AppBar(title: Text('ObservableList')),
+          body: ObservableList(),
+        )
       ],
     );
   }
