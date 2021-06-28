@@ -2075,13 +2075,7 @@ Por último, mas não menos importante, está o responsável por completar a tr�
     )
 
 
-<div align="center">
-   <h5>A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable.
-</h5>
-</div>
-
-
-A imagem a seguir ilustra como o exemplo irá se comportar:
+A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2092,7 +2086,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 <h2>Gerando Códigos MobX</h2>
 
 
-Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo só são utilizadas no processo de desenvolvimento.
+Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo, só são utilizadas no processo de desenvolvimento.
 
 No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
 
@@ -2101,7 +2095,7 @@ No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes depend
     build_runner: ^1.12.2
 
 
-Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. Noarquivo controller, crie as seguintes modificações:
+Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. No arquivo controller, crie as seguintes modificações:
 
 
     import 'package:mobx/mobx.dart';
@@ -2121,7 +2115,7 @@ Após definir as novas dependências, vamos modificar o código do exemplo anter
     }
 
 
-Uma classe abstract é definida como base para a execução da gerência do State. Esta classe possui um Mixin atribuida a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também são atribuidos dois membros:
+Uma classe abstract é definida como base para a execução da gerência do State. Essa classe possui um Mixin atribuido a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também são atribuidos dois membros:
 
     @observable
 
@@ -2231,9 +2225,9 @@ Perceba que tanto o atributo counter quanto o método increment sofrem um @overr
 <h2>Auto Run</h2>
 
 
-O autorun() é um método de execução definido como o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva determinado valor assim que um classe sofre um rebuild. O exemplo a seguir explica de forma mais detalhada.
+O autorun() é um método definido como o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva determinado valor assim que um classe sofre um rebuild. O exemplo a seguir explica de forma mais detalhada.
 
-Ainda no exemplo anterior, faça a seguinte alteração no arquivo controller.dart:
+Ainda no arquivo controller.dart do exemplo anterior, faça a seguinte alteração:
 
     ControllerBase() {
        autorun((_) {
@@ -2380,7 +2374,7 @@ Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes 
 
 <br>
 
-Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
+Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta, crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
 
 
     import 'package:mobx/mobx.dart';
