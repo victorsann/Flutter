@@ -1920,7 +1920,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
@@ -1929,7 +1929,7 @@ No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes depend�
     flutter_mobx: ^2.0.0
 
 
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira verificar as versões no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira se assegurar de estar utilizando as versões mais recentes, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
 
 Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconheça as alterações, rode o seguinte comando na pasta do projeto:
 
@@ -1957,7 +1957,7 @@ Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter 
     }
 
 
-Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada da classe Controller:
+Em uma file própria, crie a classe na qual iremos definir a estrutura e a chamada da classe Controller:
 
 
     import 'package:flutter/material.dart';
@@ -2007,13 +2007,13 @@ Em uma file própria, crie a classe na qual iremos definir a estrutura e chamada
     }
 
 
-Tendo concluído estes passos, a seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
+Tendo concluído esses passos, a seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
 
 
 <h2>Actions</h2>
 
 
- Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste no conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
+ Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste em um dos conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
 
 
     late Action increment;
@@ -2075,7 +2075,13 @@ Por último, mas não menos importante, está o responsável por completar a tr�
     )
 
 
-A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
+<div align="center">
+   <h5>A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable.
+</h5>
+</div>
+
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2396,11 +2402,6 @@ Agora que a base de gerenciamento foi criada, vamos fazer algumas alterações n
 
 No arquivo computed.dart defina o acesso a classe Controller:
 
-    ...
-
-    import 'package:mobx_aula/controller.dart';
-
-    ...
 
     class _ComputedState extends State<Computed> {
       
@@ -2462,7 +2463,7 @@ Para verificar o recebimento dos valores do formulário, vamos utilizar o já vi
     }
 
 
- Criamos um autorun() method No constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextFiel, já qua a chamada das actions é feita através do atributo onChanged. 
+ Criamos um autorun() method No constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextField, já que a chamada das actions é feita através do atributo onChanged. 
 
 Após a mudança, se a execução tiver sido interrompida, torne a rodar o comando a seguir na pasta que contém a file do formulário:
 
@@ -2591,10 +2592,10 @@ Após o fim da execução, vamos partir para as próximas alteração. Elas cons
 Dentro do método didChangeDependencies() iremos definir o reaction method, o qual recebe o observable 'usuarioLogado' como monitorado, e define um print do seu valor no Debug Console caso haja uma mudança no mesmo. Além disso, é definido um ReactionDisposer e um override da classe dispose, evitando a chamda constante do reaction method. Em seguida:    
   
 
-     TextSpan(
-       text: controller.formularioValidado && !controller.carregando
-           ? 'Campos Válidos' : '',
-       style: TextStyle(color: Colors.green))
+    TextSpan(
+      text: controller.formularioValidado && !controller.carregando
+          ? 'Campos Válidos' : '',
+      style: TextStyle(color: Colors.green))
 
 
 Essa alteração define que o text 'Campos Válidos' só será aparente quando o processo de carregamento não estiver ocorrendo. Em seguida:
@@ -2604,12 +2605,13 @@ Essa alteração define que o text 'Campos Válidos' só será aparente quando o
       padding: EdgeInsets.all(16),
       child: Observer(builder: (_) {
         return ElevatedButton(
-            onPressed: controller.formularioValidado ? () {
-                controller.logar();
-              } : null,
-            child: controller.carregando ? CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Colors.white),
-              ) : Text('Login'));
+          onPressed: controller.formularioValidado ? () {
+              controller.logar();
+            } : null,
+          child: controller.carregando ? CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.white),
+            ) : Text('Login')
+          );
         }
       )
     )
@@ -2629,16 +2631,10 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 <h2>ObservableList</h2>
 
 
-O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um itemseja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar os exemplo anterior e complementá-lo.
+O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um item seja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar o exemplo anterior e complementá-lo.
 
-Ainda na file computed.dart, a seguinte alteração:
+Ainda na file computed.dart, faça a seguinte alteração:
 
-
-    ...
-
-    import 'package:mobx_aula/components/List/List.dart';
-    
-    ...
 
     @override
      void didChangeDependencies() {
@@ -2662,59 +2658,59 @@ Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
 
 
     _dialog() {
-        showDialog(
-            context: context,
-            builder: (_) {
-              return AlertDialog(
-                title: Text("Adicionar item"),
-                content: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: "Digite uma descrição..."),
-                  onChanged: (valor) {},
-                ),
-                actions: [
-                  TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: Text(
-                        "Cancelar",
-                        style: TextStyle(color: Colors.red),
-                      )),
-                  TextButton(onPressed: () {}, child: Text("Salvar"))
-                ],
-              );
-            });
-          }
+      showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            title: Text("Adicionar item"),
+            content: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Digite uma descrição..."),
+              onChanged: (valor) {},
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Cancelar",
+                    style: TextStyle(color: Colors.red),
+                  )),
+              TextButton(onPressed: () {}, child: Text("Salvar"))
+            ],
+          );
+        });
+      }
 
 
 A primeira inclusão é um dialog, o qual será utilizado para adiministrar os itens da lista. A seguir iremos incluir um ListView.builder, que irá gerar os itens necessários:
 
 
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          body: ListView.builder(
-            itemCount: 10,
-            itemBuilder: (_, indice) {
-              return ListTile(
-                title: Text("Item $indice"),
-                onTap: () {},
-              );
-            },
-          ),
-          floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
-            onPressed: () {
-              _dialog();
-            },
-          ),
-        );
-      }
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (_, indice) {
+            return ListTile(
+              title: Text("Item $indice"),
+              onTap: () {},
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            _dialog();
+          },
+        ),
+      );
+    }
 
 
-A princípio a lista contém 10 itens definido pelo itemCount attribute. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
+A princípio a lista contém 10 itens definidos pelo itemCount attribute. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <br>
@@ -2768,7 +2764,7 @@ Uma instância da classe LisController é criada, permitindo o acesso a action s
     }
 
 
-O ObservableList itemList define um List que armazena cada descrição de item criado, criando um novo espaço na memória a cada inserção, não sendo necessário atribuir um annotation @abservable a ela. Essa descrição é inserida no ObservableList através da action addItem. A action addItem por sua vez será chamada na ação de save no dialog antriormente criado:
+O ObservableList itemList define um List que armazena cada descrição de item criado, criando um novo espaço na memória a cada inserção, não sendo necessário atribuir um annotation @abservable a ela. Essa descrição é inserida no ObservableList através da action addItem. Por sua vez, a action addItem será chamada na ação de save no dialog anteriormente criado:
 
 
     TextButton(
@@ -2778,7 +2774,7 @@ O ObservableList itemList define um List que armazena cada descrição de item c
       child: Text("Salvar"))
 
 
-Neste ponto, cada item adicionado passa a fazer parte da lista criada. O príximo passo é fazer a exibição dos itens dessa lista. No ListView.builder faça as alterações a seguir:
+Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próximo passo é fazer a exibição dos itens dessa lista. No ListView.builder faça as alterações a seguir:
 
 
     body: Observer(
@@ -2795,7 +2791,7 @@ Neste ponto, cada item adicionado passa a fazer parte da lista criada. O príxim
         },
       )
 
-O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu langth como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTile. A imagem a seguir ilustra como o exemplor irá se comportar:
+O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu langth como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTile. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
