@@ -2799,7 +2799,7 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123577013-69d5db80-d7a9-11eb-8563-79167b9fc9f3.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123577429-30ea3680-d7aa-11eb-9602-c634d4279554.png">
 </div>
 
 
