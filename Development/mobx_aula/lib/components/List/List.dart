@@ -34,6 +34,7 @@ class _List extends State<List> {
               TextButton(
                   onPressed: () {
                     _listController.addItem();
+                    Navigator.pop(context);
                   },
                   child: Text("Salvar"))
             ],
@@ -52,10 +53,18 @@ class _List extends State<List> {
           return ListView.builder(
             itemCount: _listController.itemList.length,
             itemBuilder: (_, indice) {
-              return ListTile(
-                title: Text(_listController.itemList[indice]),
-                onTap: () {},
-              );
+              var item = _listController.itemList[indice];
+              return Observer(builder: (_) {
+                return ListTile(
+                  title: Text(item.titulo,
+                      style: TextStyle(
+                          decoration:
+                              item.marked ? TextDecoration.lineThrough : null)),
+                  onTap: () {
+                    item.marked = !item.marked;
+                  },
+                );
+              });
             },
           );
         },

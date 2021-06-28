@@ -1,4 +1,5 @@
 import 'package:mobx/mobx.dart';
+import 'package:mobx_aula/components/List/item/itemController.dart';
 
 part 'listController.g.dart';
 
@@ -11,10 +12,10 @@ abstract class ListControllerBase with Store {
   @action
   void setNewItem(String value) => newItem = value;
 
-  ObservableList<String> itemList = ObservableList();
+  ObservableList<ItemController> itemList = ObservableList<ItemController>();
 
   @action
   void addItem() {
-    itemList.add(newItem);
+    itemList.add(ItemController(newItem));
   }
 }

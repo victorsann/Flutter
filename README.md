@@ -2803,12 +2803,100 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 </div>
 
 
+<h3>Tratando Itens de Uma Lista</h3>
+
+
 Os exemplos anteriores focam no monitoramento de uma lista, grenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
 
 A ela iremos adicionar as seguintes linhas de código:
 
 
+    import 'package:mobx/mobx.dart';
 
+    part 'itemController.g.dart';
+    
+    class ItemController = ItemControllerBase with _$ItemController;
+    
+    abstract class ItemControllerBase with Store {
+      ItemControllerBase(this.titulo);
+    
+      final String titulo;
+    
+      @observable
+      bool marked = false;
+
+    }
+
+
+Basicamente criamos dois atributos, um referente a descrição dada a cada item, aqui chamada de titulo; o outro membro criado é um observable, este definindo o status do item que foi marcado. 
+
+Agora, para que o State de cada item possa ser monitorado pelo novo controller, vamos fazer uma alteração na file listController.dart:
+
+    
+    ...
+
+    import 'package: .../item/itemController.dart';
+
+    ...
+
+    ObservableList<ItemController> itemList = ObservableList<ItemController>();
+
+    @action
+    void addItem() {
+      itemList.add(ItemController(newItem));
+    }
+
+
+O valor definido como o tipo da ObservableList passa a ser a classe ItemController, e por consequência, também é definido como o tipo que será adicionado, declarado na action addItem. Em seguida iremos atualizar a file List.dart:
+
+
+    body: Observer(
+        builder: (_) {
+          return ListView.builder(
+            itemCount: _listController.itemList.length,
+            itemBuilder: (_, indice) {
+              var item = _listController.itemList[indice];
+              return Observer(builder: (_) {
+                return ListTile(
+                  title: Text(
+                    item.titulo,
+                      style: TextStyle(
+                          decoration:
+                              item.marked ? TextDecoration.lineThrough : null)),
+                  onTap: () {
+                    item.marked = !item.marked;
+                  },
+                );
+              });
+            },
+          );
+        },
+      ),
+
+
+Antes de mais nada, definimos um novo Observer como retorno do ListView.Builder, ele será responsável por monitorar as mudanças no state de cada item. O title da ListTitle, que antes consistia no _listController.itemList, passa a ser o novo atributo titulo, criado na file itemController.dart. Também definimos que ao clicar em um item da lista, o atributo bool marked passa a ser false.
+
+Como último alteração, iremos definir que ao salvar um item na lista o dialog 'Adicionar Item' será fechado. Faremos isso adicionando um Navigator.pop no atributo onPressed do TextButton "Salvar". 
+
+
+    TextButton(
+     onPressed: () {
+       _listController.addItem();
+       Navigator.pop(context);
+     },
+     child: Text("Salvar")
+
+
+Com isso o State de cada item da lista é gerenciado individualmente. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123654100-2066aa00-d804-11eb-9a07-442e83b2b2b3.png">
+</div>
+
+<br>
 
 
 <h2>Flutter Commands</h2>
