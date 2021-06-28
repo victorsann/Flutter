@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:mobx_aula/components/computed/controller.dart';
+import 'package:mobx_aula/components/List/List.dart';
 
 class Computed extends StatefulWidget {
   @override
@@ -17,8 +18,12 @@ class _ComputedState extends State<Computed> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    reactionDisposer = reaction((_) => controller.usuarioLogado, (valor) {
-      print(valor);
+    reactionDisposer =
+        reaction((_) => controller.usuarioLogado, (usuarioLogado) {
+      if (controller.usuarioLogado) {
+        Navigator.of(context)
+            .pushReplacement(MaterialPageRoute(builder: (_) => List()));
+      }
     });
   }
 

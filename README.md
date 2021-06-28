@@ -2629,13 +2629,30 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 <h2>ObservableList</h2>
 
 
-O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um itemseja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. 
+O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um itemseja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar os exemplo anterior e complementá-lo.
 
-Para melhor exemplificar, vamos retomar os exemplos anteriores e complementá-los:
+Ainda na file computed.dart, a seguinte alteração:
 
-Cria uma pasta a parte da pasta computed, adicionando a ela dois arquivos. O primeiro, chamado de observableList.dart será a tela em si, já o segundo, este chamado de controller.dart, será onde o ObservableList será gerenciado.
 
-Na pasta observableList.dart, em um StatefulWidget, faça as seguintes inclusões:
+    @override
+     void didChangeDependencies() {
+       super.didChangeDependencies();
+   
+       reactionDisposer = reaction((_) => controller.usuarioLogado,
+       (usuarioLogado) {
+         if (controller.usuarioLogado) {
+           Navigator.of(context)
+               .pushReplacement(MaterialPageRoute(builder: (_) => List()));
+         }
+       });
+     }
+
+
+Após a alteração, quando efetuado a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
+
+Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de controller.dart, corresponde a aonde o ObservableList será gerenciado.
+
+Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
 
 
     _dialog() {
@@ -2689,6 +2706,18 @@ A primeira inclusão é um dialog, o qual será utilizado para adiministrar os i
           ),
         );
       }
+
+
+A princípio a lista contém 10 itens definido pelo itemCount attribute. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123559218-1d6ea980-d771-11eb-9f72-167ab05018b5.png">
+</div>
+
+<br>
 
 
 

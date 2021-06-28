@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class ObservableList extends StatefulWidget {
+class List extends StatefulWidget {
   @override
-  _ObservableList createState() => _ObservableList();
+  _List createState() => _List();
 }
 
-class _ObservableList extends State<ObservableList> {
+class _List extends State<List> {
   _dialog() {
     showDialog(
         context: context,
@@ -37,6 +37,9 @@ class _ObservableList extends State<ObservableList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('ObservableList'),
+      ),
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (_, indice) {
