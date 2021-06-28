@@ -2530,7 +2530,7 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 <br>
 
 
-<h3>Auth Simulation</h3>
+<h2>Auth Simulation</h2>
 
 
 Como foi visto anteriormente, é possível definir a gerência de determinado State através do método reaction, que executa um effect após verificar uma mudança no observable definido. Neste caso, iremos aplicar algumas mudanças no formulário anterior, aplicando o reaction para simular uma autenticação dos dados do usuário. 
