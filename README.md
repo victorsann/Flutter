@@ -3035,9 +3035,9 @@ Com isso, tendo a importância da estrutura em mente, é recomendado que se siga
 Para a estrutura um módulo consite basicamente em três arquivos:
 
 
-<stron>app_controller.dart</stron> - Corresponde as classes que monitoram o state dos widgets do módulo em específico.
-<stron>app_module.dart</stron> - Corresponde a MainModule do módulo app.
-<stron>app_widget.dart</stron> - Estrutura de interface.
+<strong>app_controller.dart</strong> - Corresponde as classes que monitoram o state dos widgets do módulo em específico.
+<strong>app_module.dart</strong> - Corresponde a MainModule do módulo app.
+<strong>app_widget.dart</strong> - Estrutura de interface.
 
 
 Um quarto arquivo corresponde ao build da estrutura de gerenciamento dos states da tela especificada, normalmente tendo a mesma nomenclatura e um g(generate) adicional.
