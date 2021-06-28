@@ -3031,3 +3031,13 @@ Com isso, tendo a importância da estrutura em mente, é recomendado que se siga
   <img width="80%" src="https://user-images.githubusercontent.com/61476935/123699822-11005480-d836-11eb-83a4-bb99b0adf889.png">
 </div>
 
+
+Para a estrutura um módulo consite basicamente em três arquivos:
+
+
+<stron>app_controller.dart</stron> - Corresponde as classes que monitoram o state dos widgets do módulo em específico.
+<stron>app_module.dart</stron> - Corresponde a MainModule do módulo app.
+<stron>app_widget.dart</stron> - Estrutura de interface.
+
+
+Um quarto arquivo corresponde ao build da estrutura de gerenciamento dos states da tela especificada, normalmente tendo a mesma nomenclatura e um g(generate) adicional.
