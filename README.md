@@ -2903,6 +2903,11 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 
 <h2>Flutter Modular</h2>
 
+<div align="center">
+  <img src="">
+</div>
+
+
 
 Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
 
@@ -3011,3 +3016,18 @@ como propriedade de definição da rota, além de uma outra propriedade chamada 
 
 
 Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
+
+
+
+<h2>Estrutura Recomendada</h2>
+
+
+Como já foi dito, a modularização é o principal aspecto da arquitetura modular; cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. O importante é manter a modularização presente. O MobX também é bastante utilizado em conjunto com a estrutura modular, por isso o conceito de controller está bastante presente. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
+
+Com isso, tendo a importância da estrutura em mente, é recomendado que se siga um padrão estrutural quando se aplicar o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123699822-11005480-d836-11eb-83a4-bb99b0adf889.png">
+</div>
+
