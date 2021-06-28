@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx_aula/components/List/listController.dart';
 
 class List extends StatefulWidget {
   @override
   _List createState() => _List();
 }
+
+ListController _listController = ListController();
 
 class _List extends State<List> {
   _dialog() {
@@ -17,7 +20,7 @@ class _List extends State<List> {
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: "Digite uma descrição..."),
-              onChanged: (valor) {},
+              onChanged: _listController.setNewItem,
             ),
             actions: [
               TextButton(
@@ -28,7 +31,11 @@ class _List extends State<List> {
                     "Cancelar",
                     style: TextStyle(color: Colors.red),
                   )),
-              TextButton(onPressed: () {}, child: Text("Salvar"))
+              TextButton(
+                  onPressed: () {
+                    _listController.addItem();
+                  },
+                  child: Text("Salvar"))
             ],
           );
         });
@@ -40,12 +47,16 @@ class _List extends State<List> {
       appBar: AppBar(
         title: Text('ObservableList'),
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (_, indice) {
-          return ListTile(
-            title: Text("Item $indice"),
-            onTap: () {},
+      body: Observer(
+        builder: (_) {
+          return ListView.builder(
+            itemCount: _listController.itemList.length,
+            itemBuilder: (_, indice) {
+              return ListTile(
+                title: Text(_listController.itemList[indice]),
+                onTap: () {},
+              );
+            },
           );
         },
       ),

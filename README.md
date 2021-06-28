@@ -2634,6 +2634,12 @@ O ObservableList é um recurso utilizado para monitorar o State de listas de Wid
 Ainda na file computed.dart, a seguinte alteração:
 
 
+    ...
+
+    import 'package:mobx_aula/components/List/List.dart';
+    
+    ...
+
     @override
      void didChangeDependencies() {
        super.didChangeDependencies();
@@ -2650,7 +2656,7 @@ Ainda na file computed.dart, a seguinte alteração:
 
 Após a alteração, quando efetuado a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
 
-Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de controller.dart, corresponde a aonde o ObservableList será gerenciado.
+Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de listController.dart, corresponde a aonde o ObservableList será gerenciado.
 
 Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
 
@@ -2714,11 +2720,91 @@ A princípio a lista contém 10 itens definido pelo itemCount attribute. Além d
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123559218-1d6ea980-d771-11eb-9f72-167ab05018b5.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123576967-53c81b00-d7a9-11eb-845a-989b4c47b270.png">
 </div>
 
 <br>
 
+
+Tendo a estrutura criada, vamos definir como os states da lista serão gerenciados. Na file listController.dart, faça as seguintes alterações:
+
+
+    abstract class ListControllerBase with Store {
+      @observable
+      late String newItem = '';
+    
+      @action
+      void setNewItem(String value) => newItem = value;
+    }
+
+
+É criado um observable referente a mensagem inserida no processo de adição de um novo item, além de uma action referente a atribuição dessa mensagem ao mesmo. Em seguida iremos consumir esses membros da classe ListControllerBase. Na file List.dart crie:
+
+
+    ...
+    
+    ListController _listController = ListController();
+
+    ...
+    
+    content: TextField(
+      decoration: InputDecoration(
+       border: OutlineInputBorder(),
+       labelText: "Digite uma descrição..."),
+       onChanged: _listController.setNewItem,
+    )
+  
+    ...
+    
+
+Uma instância da classe LisController é criada, permitindo o acesso a action setNewItem, que é atribuída a ação de onChange do TextField Widget. Após esse processo, a informação que o usuário insere já pode ser armazenada:
+
+
+    ObservableList<String> itemList = ObservableList();
+  
+    @action
+    void addItem() {
+      itemList.add(newItem);
+    }
+
+
+O ObservableList itemList define um List que armazena cada descrição de item criado, criando um novo espaço na memória a cada inserção, não sendo necessário atribuir um annotation @abservable a ela. Essa descrição é inserida no ObservableList através da action addItem. A action addItem por sua vez será chamada na ação de save no dialog antriormente criado:
+
+
+    TextButton(
+      onPressed: () {
+        _listController.addItem();
+      },
+      child: Text("Salvar"))
+
+
+Neste ponto, cada item adicionado passa a fazer parte da lista criada. O príximo passo é fazer a exibição dos itens dessa lista. No ListView.builder faça as alterações a seguir:
+
+
+    body: Observer(
+        builder: (_) {
+          return ListView.builder(
+            itemCount: _listController.itemList.length,
+            itemBuilder: (_, indice) {
+              return ListTile(
+                title: Text(_listController.itemList[indice]),
+                onTap: () {},
+              );
+            },
+          );
+        },
+      )
+
+O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu langth como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTile. A imagem a seguir ilustra como o exemplor irá se comportar:
+
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123577013-69d5db80-d7a9-11eb-8563-79167b9fc9f3.png">
+</div>
+
+<br>
 
 
 
