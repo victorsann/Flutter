@@ -2901,4 +2901,29 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 <h2>Riverpod</h2>
 
 
+<h2>Flutter Modular</h2>
+
+
+Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
+
+
+<h2>Modular Structure</h2>
+
+
+A estrutura modular consiste em módulos desacoplados e independentes que representarão as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
+
+Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muio mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
+
+
+<h2>Modular Pillars</h2>
+
+
+Estes são os principais aspectos em que o Flutter Modular foca:
+
+
+- Gerenciamento de Memória Automático.
+- Injeção de Dependências.
+- Roteamento Dinâmico e Relativo.
+- Modularização do Código.
+
 
