@@ -2369,7 +2369,7 @@ Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes 
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123655955-da124a80-d805-11eb-99b6-1a00a5f62dca.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123656241-1e054f80-d806-11eb-9b75-5fe15262736c.png">
 </div>
 
 <br>
