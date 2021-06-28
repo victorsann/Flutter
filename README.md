@@ -2906,6 +2906,14 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 
 Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
 
+Estes são os principais aspectos em que o Flutter Modular foca:
+
+
+- Gerenciamento de Memória Automático.
+- Injeção de Dependências.
+- Gestão de Roteamento Dinâmico e Relativo.
+- Modularização do Código.
+
 
 <h2>Modular Structure</h2>
 
@@ -2915,15 +2923,91 @@ A estrutura modular consiste em módulos desacoplados e independentes que repres
 Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muio mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
 
 
-<h2>Modular Pillars</h2>
+<h2>Instalação</h2>
 
 
-Estes são os principais aspectos em que o Flutter Modular foca:
+Para fazer uso do modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione flutter_modular como uma dependência:
 
 
-- Gerenciamento de Memória Automático.
-- Injeção de Dependências.
-- Roteamento Dinâmico e Relativo.
-- Modularização do Código.
+    dependencies:
+      flutter_modular: any
 
 
+Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. E é o que iremos abordar a seguir.
+
+
+<h2>Dividindo o Projeto em Módulos</h2>
+
+
+Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets, tendo cada um o seu próprio e o utilizado em Widgets específicos, sobre os quais falaremos mais a frente.
+
+
+<h2>MainModule</h2>
+
+
+O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O project module é criado da seguinte forma:
+
+
+    // extend from MainModule
+    class AppModule extends MainModule {
+    
+      // Provide a list of dependencies to inject into your project
+      @override
+      List<Bind> get binds => [];
+    
+      // Provide all the routes for your module
+      @override
+      List<ModularRoute> get routes => [];
+
+      // add your main widget here
+      @override
+      Widget get bootstrap => AppWidget();
+    
+    }
+
+
+Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Elas são:
+
+
+<h2>Binds</h2>
+
+
+É basicamente um List proveniente de um override da propriedade binds, cuja função é guardar as principais classes das quais a aplicação depende, sendo possível recuparar esses Binds em qualquer parte do app. A seguir há um exemplo de declaração de dependências utilizada como modelo na estrutura Modular:
+
+
+    @override
+    List<Bind> get binds => [
+          Bind((i) => AppController()),
+          Bind((i) => HomeController()),
+          Bind((i) => ProfileController()),
+        ];
+
+
+A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso as dependências são os controllers de três páginas distintas. 
+
+    Bind((i) => MyClass())
+
+O Bind possui essa estrutura pois pode receber a injeção durante a chamada da classe, além de proporcionar o "Lazy Loading", ou seja, a classe só é instanciada quando chamada pela primeira vez, em seguida passa a obedecer certos parâmetros, que por padrão a tornam Singleton durante a vida útil do módulo do qual ela implementa.
+
+
+<h2>Routes</h2>
+
+
+List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
+
+
+    @override
+     List<ModularRoute> get routes => [
+           ChildRoute('/', child: (_, args) => HomePage()),
+           ChildRoute('/profile', child: (_, args) => ProfilePage()),
+     ];
+
+
+A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
+como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
+
+
+<h2>Bootstrap</h2>
+
+
+Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
