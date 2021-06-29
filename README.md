@@ -3035,7 +3035,7 @@ List proveniente de um override da propriedade routes, cuja função é registra
      ];
 
 
-A _estrutura_ do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
+A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
 como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
 
 
@@ -3047,3 +3047,23 @@ Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carr
 
 
 <h2>app_widget.dart</h2>
+
+
+A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada. A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
+
+
+    //  app_widget.dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_modular/flutter_modular.dart';
+    
+    class AppWidget extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          initialRoute: "/",
+        ).modular();
+      }
+    }
+
+
+Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do modular(). 
