@@ -2908,7 +2908,7 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 </div>
 
 
-Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
+Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular é uma arquitetura que provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
 
 Estes são os principais aspectos em que o Flutter Modular foca:
 
