@@ -2930,7 +2930,7 @@ Outra vantagem é o modelo de "singleton descartável", que permite gerar uma ap
 <h2>Instalação</h2>
 
 
-Para fazer uso do modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione flutter_modular como uma dependência:
+Para fazer criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione flutter_modular como uma dependência:
 
 
     dependencies:
