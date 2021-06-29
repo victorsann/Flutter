@@ -3093,3 +3093,69 @@ Basicamente é preciso fazer um import do package correspondente ao flutter_modu
 
 
 A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
+
+
+<h2>Slidy</h2>
+
+
+O Slidy é um package manager que automatiza o processo de criação de um projeto Modular. Com ele é possível gerar templates, gerenciar Modules, Pages, Widgets, BLoCs, Controllers, tests e mais. Sua principal função é permitir a estruturação padronizada de projetos, organizando sua aplicação em _Modules_ formados por pages, repositories, widgets, BLoCs, e também criar testes de unidade automaticamente. Além disso, o Slidy dá ao desenvolvedor um caminho mais fácil para injetar dependências e instalar pacotes, fazer updates ou removê-los. Isso tudo é feito com o run de comandos simples.
+
+
+<h2>Instalação</h2>
+
+
+O Slidy pode ser instalado de formas distintas:
+
+
+<h3>Flutter/Dart directly</h3>
+
+
+    dart pub global activate slidy
+
+
+<h3>choco (only windows)</h3>
+
+
+    choco install slidy
+
+
+<h3>Homebrew (macos and linux)</h3>
+
+
+    brew install slidy
+
+
+<h2>Comandos</h2>
+  
+
+<h3>Start</h3>
+
+
+O comando _Start_ cria uma estrutura básica de projeto(comfirme que a folder lib está vazia):
+
+    
+    slidy start
+
+
+<h3>Run</h3>
+
+
+O comando _run_ executa scripts alocados no parâmetro "scripts" na pubséc.yaml:
+
+
+    slidy run open_folder
+
+
+<h3>Install</h3>
+
+
+O comando _install_(ou update) instala novos pacotes:
+
+
+    slidy install mockito dio modular
+
+
+Também é possível instalar um package como dev_dependency utilizando a flag --dev:
+
+
+    slidy i flutter_launcher_icons --dev
