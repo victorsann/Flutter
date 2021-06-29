@@ -2922,9 +2922,9 @@ Estes são os principais aspectos em que o Flutter Modular foca:
 <h2>Modular Structure</h2>
 
 
-A estrutura modular consiste em módulos desacoplados e independentes que representarão as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
+A estrutura modular consiste em módulos desacoplados e independentes que representam as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
 
-Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muio mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
+Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muito mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
 
 
 <h2>Instalação</h2>
@@ -2937,13 +2937,41 @@ Para fazer uso do modelo de projeto Modular é preciso declarar sua dependência
       flutter_modular: any
 
 
-Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. E é o que iremos abordar a seguir.
+Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. E isso é o que iremos abordar a seguir.
 
 
 <h2>Dividindo o Projeto em Módulos</h2>
 
 
-Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets, tendo cada um o seu próprio e o utilizado em Widgets específicos, sobre os quais falaremos mais a frente.
+Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com sua próprias rotas e dependências, sobre os quais falaremos mais a frente.
+
+
+<h2>Estrutura Recomendada</h2>
+
+
+Por ter a modularização como principal aspecto da arquitetura modular; cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. O importante é manter a modularização presente. Há também uma forte presença do MobX na estrutura modular, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
+
+Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplica o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
+
+
+<div align="center">
+  <img width="80%" src="https://user-images.githubusercontent.com/61476935/123720576-c47b4000-d85a-11eb-83e1-7589f12e659c.png">
+</div>
+
+
+Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. Para essa estrutura um módulo consite basicamente em três arquivos:
+
+
+<h2>controller.dart</h2>
+
+
+Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um g(generate) após controller.
+
+
+<h2>module.dart</h2>
+
+
+A file module.dart corresponde ao MainModule, seja de toda a aplicação(app_module.dart), ou dos demais módulos. É nela que estão declaradas os Binds e as rotas do módulo especificado. É no module.dart que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file module.dart:
 
 
 <h2>MainModule</h2>
@@ -3011,32 +3039,11 @@ A estrutura do routes consiste em um List de tipo variável(no exemplo acima é 
 como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
 
 
-<h2>Bootstrap</h2>
+<!-- <h2>Bootstrap</h2>
 
 
 Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
+ -->
 
 
-
-<h2>Estrutura Recomendada</h2>
-
-
-Como já foi dito, a modularização é o principal aspecto da arquitetura modular; cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. O importante é manter a modularização presente. O MobX também é bastante utilizado em conjunto com a estrutura modular, por isso o conceito de controller está bastante presente. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
-
-Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplicar o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
-
-
-<div align="center">
-  <img width="80%" src="https://user-images.githubusercontent.com/61476935/123699822-11005480-d836-11eb-83a4-bb99b0adf889.png">
-</div>
-
-
-Para a estrutura um módulo consite basicamente em três arquivos:
-
-
-<strong>app_controller.dart</strong> - Corresponde as classes que monitoram o state dos widgets do módulo em específico.
-<strong>app_module.dart</strong> - Corresponde a MainModule do módulo app.<br>
-<strong>app_widget.dart</strong> - Estrutura de interface.
-
-
-Um quarto arquivo corresponde ao build da estrutura de gerenciamento dos states da tela especificada, normalmente tendo a mesma nomenclatura e um g(generate) adicional.
+<h2>widget.dart</h2>
