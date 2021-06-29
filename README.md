@@ -2955,7 +2955,7 @@ Com isso, tendo em mente a importância da estrutura, é recomendado que se siga
 
 
 <div align="center">
-  <img width="80%" src="https://user-images.githubusercontent.com/61476935/123720576-c47b4000-d85a-11eb-83e1-7589f12e659c.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123724985-aa922b00-d863-11eb-997d-993fc4bd9dcc.png">
 </div>
 
 
@@ -3049,7 +3049,9 @@ Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carr
 <h2>app_widget.dart</h2>
 
 
-A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada. A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
+A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada.
+
+A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
 
 
     //  app_widget.dart
