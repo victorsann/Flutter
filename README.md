@@ -2930,26 +2930,26 @@ Outra vantagem é o modelo de "singleton descartável", que permite gerar uma ap
 <h2>Instalação</h2>
 
 
-Para fazer criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione flutter_modular como uma dependência:
+Para criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione o flutter_modular como uma dependência:
 
 
     dependencies:
       flutter_modular: any
 
 
-Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. E isso é o que iremos abordar a seguir.
+Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. É o que iremos abordar a seguir.
 
 
 <h2>Dividindo o Projeto em Módulos</h2>
 
 
-Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com sua próprias rotas e dependências, sobre os quais falaremos mais a frente.
+Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro se refere a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
 
 
 <h2>Estrutura Recomendada</h2>
 
 
-Por ter a modularização como principal aspecto da arquitetura modular; cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. O importante é manter a modularização presente. Há também uma forte presença do MobX na estrutura modular, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
+Por ter a modularização como principal aspecto da arquitetura modular, cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. No Flutter Modular há também uma forte presença do MobX, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
 
 Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplica o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
 
@@ -2959,7 +2959,7 @@ Com isso, tendo em mente a importância da estrutura, é recomendado que se siga
 </div>
 
 
-Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. Para essa estrutura um módulo consite basicamente em três arquivos:
+Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. Para essa estrutura um módulo consite em basicamente três arquivos:
 
 
 <h2>app_controller.dart</h2>
@@ -2971,13 +2971,13 @@ Com já foi mencionado anteriormente, o MobX está bastante presente na estrutur
 <h2>app_module.dart</h2>
 
 
-A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declaradas os Binds e as rotas do que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file module.dart:
+A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declarados os Binds e as rotas que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file app_module.dart:
 
 
 <h3>MainModule</h3>
 
 
-O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O project module é criado da seguinte forma:
+O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O MainModule é criado da seguinte forma:
 
 
     // extend from MainModule
@@ -2998,7 +2998,7 @@ O MainModule consiste no módulo de gestão de toda a aplicação. Nele são def
     }
 
 
-Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Elas são:
+Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Eles são:
 
 
 <h3>Binds</h3>
@@ -3015,7 +3015,7 @@ Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModul
         ];
 
 
-A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso as dependências são os controllers de três páginas distintas. 
+A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso, as dependências são os controllers de três páginas distintas. 
 
     Bind((i) => MyClass())
 
@@ -3025,7 +3025,7 @@ O Bind possui essa estrutura pois pode receber a injeção durante a chamada da 
 <h3>Routes</h3>
 
 
-List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
+List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e associá-las as telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
 
 
     @override
@@ -3036,7 +3036,7 @@ List proveniente de um override da propriedade routes, cuja função é registra
 
 
 A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
-como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
+como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim, é definida a classe correspondente a tela acessada através da rota declarada.
 
 
 <!-- <h3>Bootstrap</h3>
@@ -3074,7 +3074,7 @@ Basicamente é preciso fazer um import do package correspondente ao flutter_modu
 <h2>main.dart</h2>
 
 
-A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, onde definimos as rotas e deéndências da aplicação:
+A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
 
 
     import 'package:exemplo/lib/app/app_module.dart';
