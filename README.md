@@ -2977,7 +2977,7 @@ A já conhecida main.dart é a file de iniciação do projeto, é nela que decla
 
 
 
-Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura um módulo consite em basicamente três arquivos:
+Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura, um módulo consite em basicamente três arquivos:
 
 
 <h2>app_controller.dart</h2>
