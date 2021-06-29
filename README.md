@@ -2962,16 +2962,16 @@ Com isso, tendo em mente a importância da estrutura, é recomendado que se siga
 Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. Para essa estrutura um módulo consite basicamente em três arquivos:
 
 
-<h2>controller.dart</h2>
+<h2>app_controller.dart</h2>
 
 
 Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um g(generate) após controller.
 
 
-<h2>module.dart</h2>
+<h2>app_module.dart</h2>
 
 
-A file module.dart corresponde ao MainModule, seja de toda a aplicação(app_module.dart), ou dos demais módulos. É nela que estão declaradas os Binds e as rotas do módulo especificado. É no module.dart que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file module.dart:
+A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declaradas os Binds e as rotas do que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file module.dart:
 
 
 <h3>MainModule</h3>
@@ -3046,4 +3046,4 @@ Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carr
  -->
 
 
-<h2>widget.dart</h2>
+<h2>app_widget.dart</h2>
