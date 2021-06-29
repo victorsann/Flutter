@@ -3159,3 +3159,45 @@ Também é possível instalar um package como dev_dependency utilizando a flag -
 
 
     slidy i flutter_launcher_icons --dev
+
+
+<h2>Generate</h2>
+
+
+Os comandos _gererate_ criam módulos, pages, widgets ou repositórios de acordo com o comando dado.
+
+
+<h3>Module</h3>
+
+
+Cria um novo módulo com o comando slidy generate module:
+
+
+    slidy generate module manager/product
+
+  
+<h3>Page</h3>
+
+
+Cria uma nova page com o comando slidy generate page:
+
+
+    slidy generate page manager/product/pages/add_product
+
+  
+<h3>Widget</h3>
+
+
+Cria um novo widget com o comando slidy generate widget:
+
+
+    slidy generate widget manager/product/widgets/product_detail
+
+
+<h3>Repository</h3>
+
+
+Cria um novo repository com o comando slidy generate repository:
+
+
+    slidy g r manager/product/repositories/product
