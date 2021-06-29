@@ -2955,11 +2955,29 @@ Com isso, tendo em mente a importância da estrutura, é recomendado que se siga
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123800554-cdeac380-d8bf-11eb-96b5-a0974a46ee81.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123803022-4783b100-d8c2-11eb-8d8a-89c3bfa95bae.png">
 </div>
 
 
-Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. Para essa estrutura um módulo consite em basicamente três arquivos:
+Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. As mudanças iniciam na lib folder, que consiste em um app folder e na main.dart file:
+
+
+<h2>main.dart</h2>
+
+
+A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
+
+
+    import 'package:exemplo/lib/app/app_module.dart';
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_modular/flutter_modular.dart';
+
+    void main() => runApp(ModularApp(module: AppModule()));
+
+
+
+Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura um módulo consite em basicamente três arquivos:
 
 
 <h2>app_controller.dart</h2>
@@ -3071,17 +3089,7 @@ A seguir temos um exemplo de declaração do uso do Modular como estrutura de um
 Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do modular(). 
 
 
-<h2>main.dart</h2>
+<h2>pages</h2>
 
 
-A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
-
-
-    import 'package:exemplo/lib/app/app_module.dart';
-
-    import 'package:flutter/material.dart';
-    import 'package:flutter_modular/flutter_modular.dart';
-
-    void main() => runApp(ModularApp(module: AppModule()));
-
-
+A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
