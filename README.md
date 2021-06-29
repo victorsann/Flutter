@@ -3035,7 +3035,7 @@ List proveniente de um override da propriedade routes, cuja função é registra
      ];
 
 
-A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
+A _estrutura_ do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
 como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
 
 
@@ -3046,4 +3046,4 @@ Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carr
  -->
 
 
-<h2>_app_widget.dart_</h2>
+<h2>app_widget.dart</h2>
