@@ -2974,7 +2974,7 @@ Com já foi mencionado anteriormente, o MobX está bastante presente na estrutur
 A file module.dart corresponde ao MainModule, seja de toda a aplicação(app_module.dart), ou dos demais módulos. É nela que estão declaradas os Binds e as rotas do módulo especificado. É no module.dart que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file module.dart:
 
 
-<h2>MainModule</h2>
+<h3>MainModule</h3>
 
 
 O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O project module é criado da seguinte forma:
