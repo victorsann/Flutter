@@ -3001,7 +3001,7 @@ O MainModule consiste no módulo de gestão de toda a aplicação. Nele são def
 Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Elas são:
 
 
-<h2>Binds</h2>
+<h3>Binds</h3>
 
 
 É basicamente um List proveniente de um override da propriedade binds, cuja função é guardar as principais classes das quais a aplicação depende, sendo possível recuparar esses Binds em qualquer parte do app. A seguir há um exemplo de declaração de dependências utilizada como modelo na estrutura Modular:
@@ -3022,7 +3022,7 @@ A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e dir
 O Bind possui essa estrutura pois pode receber a injeção durante a chamada da classe, além de proporcionar o "Lazy Loading", ou seja, a classe só é instanciada quando chamada pela primeira vez, em seguida passa a obedecer certos parâmetros, que por padrão a tornam Singleton durante a vida útil do módulo do qual ela implementa.
 
 
-<h2>Routes</h2>
+<h3>Routes</h3>
 
 
 List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
@@ -3039,7 +3039,7 @@ A estrutura do routes consiste em um List de tipo variável(no exemplo acima é 
 como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim é definida a classe correspondente a tela acessada através da rota declarada.
 
 
-<!-- <h2>Bootstrap</h2>
+<!-- <h3>Bootstrap</h3>
 
 
 Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
