@@ -2955,7 +2955,7 @@ Com isso, tendo em mente a importância da estrutura, é recomendado que se siga
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123724985-aa922b00-d863-11eb-997d-993fc4bd9dcc.png">
+  <img src="https://user-images.githubusercontent.com/61476935/123800554-cdeac380-d8bf-11eb-96b5-a0974a46ee81.png">
 </div>
 
 
