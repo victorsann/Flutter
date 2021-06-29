@@ -3164,7 +3164,7 @@ Também é possível instalar um package como dev_dependency utilizando a flag -
 <h2>Generate</h2>
 
 
-Os comandos _gererate_ criam módulos, pages, widgets ou repositórios de acordo com o comando dado.
+Os comandos _gererate_ criam módulos, pages, widgets ou repositórios de acordo com o comando especificado.
 
 
 <h3>Module</h3>
