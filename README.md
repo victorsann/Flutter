@@ -3069,3 +3069,19 @@ A seguir temos um exemplo de declaração do uso do Modular como estrutura de um
 
 
 Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do modular(). 
+
+
+<h2>main.dart</h2>
+
+
+A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, onde definimos as rotas e deéndências da aplicação:
+
+
+    import 'package:exemplo/lib/app/app_module.dart';
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_modular/flutter_modular.dart';
+
+    void main() => runApp(ModularApp(module: AppModule()));
+
+
