@@ -3214,7 +3214,9 @@ O Repository Pattern pode ser utilizado em conjunto com algumas das mais conheci
 Para exemplificar o uso do pattern, iremos criar uma aplicação simples que consome uma API externa e lista uma série de pokemons. Nela iremos aplicar os conceitos mais básicos da estrutura. Além de entender como o conceito de repository se complementa com o uso de uma lib Http client.
 
 
-<h2>dio</h2>
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/61476935/124007846-269a8900-d9b2-11eb-8c37-eb6ae8b7a03f.png">
+</div>
 
 
 O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou mais que a já citada Http library.
