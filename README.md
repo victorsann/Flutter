@@ -3209,7 +3209,7 @@ Cria um novo repository com o comando slidy generate repository:
 
 O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o cosumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Services possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
 
-O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http ou a dio, além de outras como http_parser, http_cliente etc.
+O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http, dio, além de outras como http_parser, http_cliente etc.
 
 Para exemplificar o uso do pattern, iremos criar uma aplicação simples que consome uma API externa e lista uma série de pokemons. Nela iremos aplicar os conceitos mais básicos da estrutura. Além de entender como o conceito de repository se complementa com o uso de uma lib Http client.
 
@@ -3219,7 +3219,7 @@ Para exemplificar o uso do pattern, iremos criar uma aplicação simples que con
 </div>
 <br>
 
-O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou mais que a já citada Http library.
+O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou até mais que a já citada Http library.
 
 
 <h3>Get Started</h3>
@@ -3265,9 +3265,9 @@ Ainda na lib folder, crie uma nova pasta chamada de _models_. Nela iremos criar 
     }
 
 
-A classe terá uma variável "name" que será responsável por guardar o nome do pokemon, além de um método para converter o json retornado pela API em um objeto de PkeModel.
+A classe terá uma variável "name" que será responsável por guardar o nome do pokemon, além de um método para converter o json retornado pela API em um objeto de PokeModel.
 
-Após criar o model e a interface, iremos criar a implementação do repository. Na repositories folder, crie uma file poke_repository.dart, e nela crie a regra de negócio para chamar a API especificada:
+Após criar o model e a interface, iremos criar a implementação do repository. Na repositories folder, crie uma file poke_repository.dart e nela crie a regra de negócio para chamar a API especificada:
 
 
     import 'package:exemple/repositories/poke_repository_interface.dart';
@@ -3299,7 +3299,7 @@ A classe PokeRepository define um implements da anteriormente criada IPokeReposi
 
 Em seguida, o método getAllPokemons retorna um List chamado de pokemons, que é iniciado como um array vazio, mas é retornado com todos nomes de pokemons vindos da API, esta sendo definida pela URL https://pokeapi.co/api/v2/pokemon. O valor de retorno, um Json, é atribuído a variável response.
 
-O próximo passo é acessar os dados armazenados em response e itrubuí-los à variável pokemons. Caso você não tenha verificado, o retorno da API é Map Json. Com isso, é preciso utilizar um map method para extrair os objetos pokemon e armazená-los na variável no List criada. Por fim, o método map recebe um ToList method, convertendo os valores no type desejado.
+O próximo passo é acessar os dados armazenados em response e itrubuí-los à variável pokemons. Caso você não tenha verificado, o retorno da API é Map Json. Com isso, um map method é utilizado para extrair os objetos pokemon e armazená-los na variável na List criada. Por fim, o método map recebe um ToList() method, convertendo os valores no type desejado.
 
 
 <h2>Listando Pokemons</h2>
@@ -3321,7 +3321,7 @@ Com o model e o repostory concluídos, podes de fato listar os valores retornado
     }
 
 
-A classe HomeController recebe o repository criado, além de uma intância o Dio. 
+A classe HomeController recebe o repository criado, além de uma intância do Http Client Dio. 
 
 
 Por último, iremos criar uma UI simples, cuja função é apenas listar o retorno da API. Com isso, na main.dart file, crie os Widget abaixo:
