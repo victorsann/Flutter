@@ -3201,3 +3201,165 @@ Cria um novo repository com o comando slidy generate repository:
 
 
     slidy g r manager/product/repositories/product
+
+
+
+<h2>Repository Pattern</h2>
+
+
+O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o cosumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Services possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
+
+O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http ou a dio, além de outras como http_parser, http_cliente etc.
+
+Para exemplificar o uso do pattern, iremos criar uma aplicação simples que consome uma API externa e lista uma série de pokemons. Nela iremos aplicar os conceitos mais básicos da estrutura. Além de entender como o conceito de repository se complementa com o uso de uma lib Http client.
+
+
+<h2>dio</h2>
+
+
+O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou mais que a já citada Http library.
+
+
+<h3>Get Started</h3>
+
+
+Para fazer uso da library é preciso adiciar uma nova dependencie na file pubspec.yaml da base do projeto:
+
+
+    dependencies:
+      dio: ^4.0.0
+
+
+Obs: A versão indicada é a mais atual neste momento, caso você queira se assegurar de estar utilizando a versão mais recentes, verifique em [pub.dev/packages/dio](https://pub.dev/packages/dio).
+
+
+<h2>Entendendo a Estrutura</h2>
+
+
+Em um novo projeto, após instalar o dio, crie uma nova pasta chamada _repositories_ na lib folder. Na nova pasta iremos criar um interface para agrupar todos os métodos do repository. Em uma file definida como poke_repository_interface.dart, crie as seguintes linhas de código:
+
+
+    import 'package:exemple/models/poke_model.dart';
+
+    abstract class IPokeRepository {
+      Future<List<PokeModel>> getAllPokemons();
+    }
+
+
+
+Na classe criada teremos apenas um método, a qual irá retornar um List de PokeModel. PokeModel será uma classe que irá representar o modelo de dados, ou seja, irá representar cada pokemon na list.
+
+Ainda na lib folder, crie uma nova pasta chamada de _models_. Nela iremos criar uma file poke_model.dart que irá conter a classe PokeModel:
+
+
+    class PokeModel {
+      var name;
+    
+      PokeModel({this.name});
+    
+      PokeModel.fromJson(Map<String, dynamic> json) {
+        name = json['name'];
+      }
+    }
+
+
+A classe terá uma variável "name" que será responsável por guardar o nome do pokemon, além de um método para converter o json retornado pela API em um objeto de PkeModel.
+
+Após criar o model e a interface, iremos criar a implementação do repository. Na repositories folder, crie uma file poke_repository.dart, e nela crie a regra de negócio para chamar a API especificada:
+
+
+    import 'package:exemple/repositories/poke_repository_interface.dart';
+    import 'package:exemplo/models/poke_model.dart';
+    
+    import 'package:dio/dio.dart';
+    
+    class PokeRepository implements IPokeRepository {
+      final Dio _dio;
+    
+      PokeRepository(this._dio);
+    
+      @override
+      Future<List<PokeModel>> getAllPokemons() async {
+        List<PokeModel> pokemons = [];
+    
+        var response = await _dio.get("https://pokeapi.co/api/v2/pokemon/");
+    
+        response.data['results'].map((pokemon) {
+          pokemons.add(PokeModel.fromJson(pokemon));
+        }).toList();
+    
+        return pokemons;
+      }
+    }
+
+
+A classe PokeRepository define um implements da anteriormente criada IPokeRepository, fazendo um override nos métodos da interface. Tendo isso definido, foi criada uma chamada do Client Http _Dio_, que passa a ser injetado no contructor da classe PokeRepository e se torna responsável por fazer o GET resquest na API. 
+
+Em seguida, o método getAllPokemons retorna um List chamado de pokemons, que é iniciado como um array vazio, mas é retornado com todos nomes de pokemons vindos da API, esta sendo definida pela URL https://pokeapi.co/api/v2/pokemon. O valor de retorno, um Json, é atribuído a variável response.
+
+O próximo passo é acessar os dados armazenados em response e itrubuí-los à variável pokemons. Caso você não tenha verificado, o retorno da API é Map Json. Com isso, é preciso utilizar um map method para extrair os objetos pokemon e armazená-los na variável no List criada. Por fim, o método map recebe um ToList method, convertendo os valores no type desejado.
+
+
+<h2>Listando Pokemons</h2>
+
+
+Com o model e o repostory concluídos, podes de fato listar os valores retornados. Porém, antes de partirmos para a interface, criaremos um "Controller" para receber o repository da aplicação como boa prática. Na lib folder, criaremos uma file home_controller.dart. Nela adicione as seguintes linhas de código:
+
+
+    import 'package:repositorypattern/models/poke_model.dart';
+    
+    import 'package:dio/dio.dart';
+    
+    class HomeController {
+      final IPokeRepository _pokeRepository = PokeRepository(Dio());
+    
+      Future<List<PokeModel>> fetchPokemons() {
+        return _pokeRepository.getAllPokemons();
+      }
+    }
+
+
+A classe HomeController recebe o repository criado, além de uma intância o Dio. 
+
+
+Por último, iremos criar uma UI simples, cuja função é apenas listar o retorno da API. Com isso, na main.dart file, crie os Widget abaixo:
+
+
+    import 'package:repositorypattern/models/poke_model.dart';
+    import 'package:repositorypattern/home_controller.dart';
+    import 'package:flutter/material.dart';
+    
+    ...
+
+    class HomePage extends StatelessWidget {
+      final HomeController _homeController = HomeController();
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(title: Text('Lista de Pokemons')),
+            body: FutureBuilder<List<PokeModel>>(
+              future: _homeController.fetchPokemons(),
+              builder: (context, snapshot) {
+                var pokemons = snapshot.data;
+                if (pokemons == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                return ListView.builder(
+                 itemCount: pokemons.length,
+                 itemBuilder: (context, index) {
+                   return ListTile(
+                    title: Text(pokemons[index].name),
+                );
+             });
+           },
+        ));
+      }
+    }
+
+
+A interface consiste um StatelessWidget que instancia a classe HomeController e um Future Builder que irá chamar o método do controller. Além disso, uma condicional gera um CircularProgressIndicator caso a API retorne null, e caso seja diferente de null, gera um ListView.bulder com todos os nomes do pokemons. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/61476935/124005193-2c429f80-d9af-11eb-9d92-cc1e9a059359.png">
+</div>
