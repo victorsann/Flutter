@@ -1687,12 +1687,21 @@ Um widget de material que é exibido na parte inferior de um aplicativo para sel
     }
 
 
-O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir olustra como o exemplo acima irá se comportar:
+O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/126208443-11adbbb4-4f8f-4b9d-8473-41d3482c5167.png">
 </div>
+
+
+Os principais atributos da BottomNavigationBar são
+
+
+* <strong>items</strong> - Itens que definem as possíveis seleções<br>
+* <strong>currentIndex</strong> - Define o item de seleção padrão<br>
+* <strong>selectedItemColor</strong> - Cor padrão do item selecionado<br>
+* <strong>onTap</strong> - Define uma reação a cada mudança de seleção<br>
 
 
 <h2>Buttons</h2>
