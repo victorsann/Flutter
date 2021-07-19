@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,7 +15,7 @@ class MyHomePage extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       controller: controller,
       children: <Widget>[
-        Scaffold(appBar: AppBar(title: Text('SetState')), body: ),
+        Scaffold(appBar: AppBar(title: Text('SetState'))),
       ],
     );
   }

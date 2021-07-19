@@ -442,7 +442,7 @@ Por se trantar de uma estrutura, um Container possui propriedades bastantes coop
 * <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
 
 
-<h3>Decoration</h3>
+<h2>Decoration</h2>
 
 
 O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização ao container. Algumas delas são: 
@@ -551,7 +551,7 @@ Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual c
 É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets:  
 
 
-<h3>Images</h3>
+<h2>Images</h2>
 
 
 O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
@@ -595,7 +595,7 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 * <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
 
 
-<h3>Icons</h3>
+<h2>Icons</h2>
 
 O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
 
@@ -632,7 +632,7 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 * <strong>icon</strong> - Define style do ElevaitedButton
 
 
-<h3>Text</h3>
+<h2>Text</h2>
 
 
 O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
@@ -667,7 +667,7 @@ Alguns dos atributos de um Widget de estilização de texto são:
 Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design e as sensações que pretende causar no usuário. Portanto, é muito importante gastar certo tempo pensando em como estruturar o layout da aplicação. Quais Widgets utilizar e como utilizar definem quão harmonioso será o app. Para tal, o Flutter dá ao desenvolvedor uma série de Widgets capazes de criar uma boa experiência para o usuário:
 
 
-<h3>Aling</h3>
+<h2>Aling</h2>
 
 
 A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
@@ -782,7 +782,7 @@ As coordenadas são definidas em um eixo horizontal/vertical, correspondendo res
 </div>
 
 
-<h3>AspectRatio</h3>
+<h2>AspectRatio</h2>
 
 
 O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
@@ -819,7 +819,7 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
       ),
     )
 
-<h3>ConstrainedBox</h3>
+<h2>ConstrainedBox</h2>
 
 
 Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
@@ -879,7 +879,7 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 </div>
 
 
-<h3>Expanded</h3>
+<h2>Expanded</h2>
 
 
 O já mencionado Expanded é um Widget de definição de dimenções, normalmente associado a um Widget Multi-child, como uma Column ou row. Ele basicamente indica qual dos Widgets do vetor devem ocupar mais espaço em relação aos demias. A seguir há um exemplo de uso do Expanded:
@@ -945,7 +945,7 @@ O flex factor define uma ordem de grandeza, e por consequência, de prioridade p
 </div>
 
 
-<h3>FittedBox</h3>
+<h2>FittedBox</h2>
 
 
 Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou mesmo postos um dentro do outro. O FittedBox age quando o espaço correspondente a um Widget é diferente de seu child, com isso é possível adaptar o espaço que o child oculpa. Há uma série de opções de 'encaixe', as quais podem ser definidas na principal propriedade do FittedBox Widget, a fit, que recebe um Boxfit como valor. A seguir temos exemplos de uso do FittedBox:
@@ -1047,7 +1047,7 @@ A seguir estão as descritas cada propriedade do BoxFit:
 * <strong>none</strong> - Anula os efeitos do FittedBox
 
 
-<h3>FractionallySizedBox</h3>
+<h2>FractionallySizedBox</h2>
 
 
 O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
@@ -1098,7 +1098,7 @@ Os principais Factores da classe FractionallySizedBox() são:
 * <strong>widthFactor</strong> - Fator de largura
 
 
-<h3>LimitedBox</h3>
+<h2>LimitedBox</h2>
 
 
 Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
@@ -1132,7 +1132,7 @@ O LimitedBox define um tamanho padrão máximo para todos os containers que fora
 * <strong>maxWidth</strong> - Largura máxima de um child
 
 
-<h3>Padding</h3>
+<h2>Padding</h2>
 
 
 O padding define o espaçamento externo que um Widget terá com relação aos outros elementos da estrutura. Um padding é definido a partir do espaço que um Widget oculpa, diminuindo seu tamanho e substituindo esse espaço por um espaço vazio. A seguir há um exemplo de uso do Widget padding():
@@ -1154,7 +1154,7 @@ Um padding é definido através do atributo padding que recebe um EdgeInsets, Wi
 </div>
 
 
-<h3>EdgeInsets</h3>
+<h2>EdgeInsets</h2>
 
 
 Anteriormente mencionado, o EdgeInsets define dimensionamento nas quatro direções existentes em um Widget. É normalmente associado a definição de margins e paddings, e possui atributos especificando para qual direção será aplicado o espaçamento. Estes são:
@@ -1288,7 +1288,7 @@ Define um espaçamento único para cada direção:
 Cada definição aceita números inteiros e decimais como valor de espaçamento, sendo esses definidos em pixels
 
 
-<h3>SizedBox</h3>
+<h2>SizedBox</h2>
 
 
 O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
@@ -1302,7 +1302,7 @@ O SizedBox é um Widget cujas definições de height e width são herdadas por s
       )
 
 
-<h3>Transform</h3>
+<h2>Transform</h2>
 
 
 O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estes são:
@@ -1354,7 +1354,7 @@ Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegaçã
 É incomum criar diretamente utilizando a classe Scrollable, no lugar disso considere utilizar um ListView ou GridView, os quais combinam rolagem, janela de visualização e um modelo de layout. Os principais Scrollable Widgets são:
 
 
-<h3>ListView</h3>
+<h2>ListView</h2>
 
 
 O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
@@ -1392,7 +1392,7 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 </div>
 
 
-<h3>ListView.builder()</h3>
+<h2>ListView.builder()</h2>
 
 
 O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
@@ -1433,7 +1433,7 @@ O exemplo acima gera uma lista de três items, estes sendo definidos em um Strin
 </div>
 
 
-<h3>ListView.separated()</h3>
+<h2>ListView.separated()</h2>
 
 
 Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
@@ -1456,7 +1456,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
 </div>
 
 
-<h3>GridView</h3>
+<h2>GridView</h2>
 
 
 O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo determinar quantos Widgets por eixo transversal a lista irá exibir. É normalmente utilizado o GridView em conjunto com o constructor count. A seguir temos um exemplo de uso do GridView.count():
@@ -1524,7 +1524,7 @@ O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir 
 </div>
 
 
-<h3>PageView</h3>
+<h2>PageView</h2>
 
 
 O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste caso, cada índice da List é forçado a preencher o espaço correspondente a viewport, ou seja, cada índice passa a ser uma página do app. O PageView é definido em conjunto com um PageControll, que por sua vez declara qual das página(índice) será visto primeiro. A seguir temos um exmplo de uso do PageView():
@@ -1593,7 +1593,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 <h2>Material Components</h2>
 
 
-<h3>Appbar</h3>
+<h2>Appbar</h2>
 
 
 Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
@@ -1623,7 +1623,7 @@ Os principais Widgets associados ao Appbar são:
 * <strong>bottom</strong> - Define o bottom do Appbar
 
 
-<h3>BottomNavigationBar</h3>
+<h2>BottomNavigationBar</h2>
 
 
 
@@ -1632,7 +1632,7 @@ Os principais Widgets associados ao Appbar são:
 <h2>Buttons</h2>
 
 
-<h3>ElevatedButtons</h3>
+<h2>ElevatedButtons</h2>
 
 
 Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
