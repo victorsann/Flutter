@@ -1594,7 +1594,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 <h2>Material Components</h2>
 
 
-Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design.
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface.
 
 
 <h2>Appbar</h2>
