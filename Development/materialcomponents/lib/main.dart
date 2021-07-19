@@ -49,7 +49,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           icon: Icon(Icons.menu),
           onPressed: () {},
         ),
-        title: Text('BottomNavigationBar'),
+        title: Text('AppBar'),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.notification_add))
+        ],
       ),
       body: Center(child: _index.elementAt(_selectedIndex)),
       bottomNavigationBar: BottomNavigationBar(

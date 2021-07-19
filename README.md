@@ -384,6 +384,178 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
+<h2>Material Components</h2>
+
+
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
+
+
+<h2>Scaffold</h2>
+
+
+A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
+
+    Scaffold(
+      appBar: AppBar( ),
+      body: Container( ),
+      drawer: Drawer( ),
+      floatingActionButton: FloatingActionButton( ),
+      bottomNavigationBar: BottomAppBar( )
+    )
+
+
+O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
+
+  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
+  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
+  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
+  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
+  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
+
+  
+<h2>Appbar</h2>
+
+
+Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scaffold, que será explicado mais a frente.  A seguir temos um exemplo de uso da Appbar:
+
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+          ...
+      );
+    }
+  
+
+Os principais Widgets associados ao Appbar são:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
+</div>
+
+* <strong>leading</strong> - Um Widget definido antes do title<br>
+* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
+* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
+* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
+* <strong>bottom</strong> - Define o bottom do Appbar
+
+
+<h2>BottomNavigationBar</h2>
+
+
+Um widget de material que é exibido na parte inferior de um aplicativo para selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos um exemplo de uso da BottomNavigationBar:
+
+
+    class MyBottomNavigationBar extends StatefulWidget {
+      @override
+      State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
+    }
+    
+    class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+      int _selectedIndex = 0;
+    
+      static const TextStyle optionStyle =
+          TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+    
+      List<Widget> _index = <Widget>[
+        Text('Home', style: optionStyle),
+        Text('Search', style: optionStyle),
+        Text('Profile', style: optionStyle),
+      ];
+    
+      void _onItemTapped(int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('BottomNavigationBar'),
+          ),
+          body: Center(child: _index.elementAt(_selectedIndex)),
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.blue[800],
+            onTap: _onItemTapped,
+          ), //BottomNavigationBar
+        ); 
+      }
+    }
+
+
+O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/126208443-11adbbb4-4f8f-4b9d-8473-41d3482c5167.png">
+</div>
+
+
+Os principais atributos da BottomNavigationBar são:
+
+
+* <strong>items</strong> - Itens que definem as possíveis seleções<br>
+* <strong>currentIndex</strong> - Define o item de seleção padrão<br>
+* <strong>selectedItemColor</strong> - Cor padrão do item selecionado<br>
+* <strong>onTap</strong> - Define uma reação a cada mudança de seleção<br>
+
+
+<h2>Buttons</h2>
+
+
+<h2>ElevatedButtons</h2>
+
+
+Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
+
+    Column(
+      children: <Widget>[
+        ElevatedButton(
+        style: ButtonStyle( ... ),
+        onPressed: null,
+        child: Text('ElevatedButton'),
+       ),
+        ElevatedButton(
+        style: ButtonStyle( ... ),
+        onPressed: () {},
+        child: Text('ElevatedButton'),
+       )
+      ]
+    )
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121429593-78b93300-c94d-11eb-9709-493825aa44d8.png">
+</div>
+
+Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevatedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
+
+* <strong>style</strong> - Define style do ElevatedButton
+* <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
+* <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
+* <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
+
+
 <h2>Container</h2>
 
 
@@ -1565,179 +1737,6 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
       ],
     );
-
-
-
-<h2>Material Components</h2>
-
-
-Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
-
-
-<h2>Scaffold</h2>
-
-
-A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
-
-    Scaffold(
-      appBar: AppBar( ... ),
-      body: Container( ... ),
-      drawer: Drawer( ... ),
-      floatingActionButton: FloatingActionButton( ... ),
-      bottomNavigationBar: BottomAppBar( ... )
-    )
-
-
-O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
-
-  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
-  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
-  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
-  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
-  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
-
-  
-<h2>Appbar</h2>
-
-
-Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scaffold, que será explicado mais a frente. Exemplo:
-
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-          ...
-      );
-    }
-  
-
-Os principais Widgets associados ao Appbar são:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
-</div>
-
-* <strong>leading</strong> - Um Widget definido antes do title<br>
-* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
-* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
-* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
-* <strong>bottom</strong> - Define o bottom do Appbar
-
-
-<h2>BottomNavigationBar</h2>
-
-
-Um widget de material que é exibido na parte inferior de um aplicativo para selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos um exemplo de uso da BottomNavigationBar:
-
-
-    class MyBottomNavigationBar extends StatefulWidget {
-      @override
-      State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
-    }
-    
-    class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
-      int _selectedIndex = 0;
-    
-      static const TextStyle optionStyle =
-          TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-    
-      List<Widget> _index = <Widget>[
-        Text('Home', style: optionStyle),
-        Text('Search', style: optionStyle),
-        Text('Profile', style: optionStyle),
-      ];
-    
-      void _onItemTapped(int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-      }
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('BottomNavigationBar'),
-          ),
-          body: Center(child: _index.elementAt(_selectedIndex)),
-          bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue[800],
-            onTap: _onItemTapped,
-          ),
-        );
-      }
-    }
-
-
-O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/126208443-11adbbb4-4f8f-4b9d-8473-41d3482c5167.png">
-</div>
-
-
-Os principais atributos da BottomNavigationBar são
-
-
-* <strong>items</strong> - Itens que definem as possíveis seleções<br>
-* <strong>currentIndex</strong> - Define o item de seleção padrão<br>
-* <strong>selectedItemColor</strong> - Cor padrão do item selecionado<br>
-* <strong>onTap</strong> - Define uma reação a cada mudança de seleção<br>
-
-
-<h2>Buttons</h2>
-
-
-<h2>ElevatedButtons</h2>
-
-
-Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
-
-    Column(
-      children: <Widget>[
-        ElevatedButton(
-        style: ButtonStyle( ... ),
-        onPressed: null,
-        child: Text('ElevatedButton'),
-       ),
-        ElevatedButton(
-        style: ButtonStyle( ... ),
-        onPressed: () {},
-        child: Text('ElevatedButton'),
-       )
-      ]
-    )
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121429593-78b93300-c94d-11eb-9709-493825aa44d8.png">
-</div>
-
-Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevatedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
-
-* <strong>style</strong> - Define style do ElevatedButton
-* <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
-* <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
-* <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
 
 
 <h1>Flutter State Management</h1>
