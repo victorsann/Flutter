@@ -1590,13 +1590,17 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
     );
 
 
+
 <h2>Material Components</h2>
+
+
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design.
 
 
 <h2>Appbar</h2>
 
 
-Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, podendo conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons, ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scafoold, que será esplicado mais a frente. Exemplo:
+Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scaffold, que será explicado mais a frente. Exemplo:
 
 
     @override
