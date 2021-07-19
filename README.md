@@ -384,29 +384,6 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
-<h2>Scaffold</h2>
-
-
-A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
-
-    Scaffold(
-      appBar: AppBar( ... ),
-      body: Container( ... ),
-      drawer: Drawer( ... ),
-      floatingActionButton: FloatingActionButton( ... ),
-      bottomNavigationBar: BottomAppBar( ... )
-    )
-
-
-O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
-
-  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
-  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
-  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
-  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
-  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
-
-
 <h2>Container</h2>
 
 
@@ -1597,6 +1574,29 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
 
 
+<h2>Scaffold</h2>
+
+
+A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
+
+    Scaffold(
+      appBar: AppBar( ... ),
+      body: Container( ... ),
+      drawer: Drawer( ... ),
+      floatingActionButton: FloatingActionButton( ... ),
+      bottomNavigationBar: BottomAppBar( ... )
+    )
+
+
+O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
+
+  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
+  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
+  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
+  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
+  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
+
+  
 <h2>Appbar</h2>
 
 

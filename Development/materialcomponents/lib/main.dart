@@ -45,6 +45,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {},
+        ),
         title: Text('BottomNavigationBar'),
       ),
       body: Center(child: _index.elementAt(_selectedIndex)),
