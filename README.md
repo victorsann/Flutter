@@ -1623,6 +1623,12 @@ Os principais Widgets associados ao Appbar são:
 * <strong>bottom</strong> - Define o bottom do Appbar
 
 
+<h3>BottomNavigationBar</h3>
+
+
+
+
+
 <h2>Buttons</h2>
 
 
