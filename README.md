@@ -439,11 +439,11 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/126219249-4768f814-2a97-4993-b4c4-6164fb18c5af.png">
+  <img src="https://user-images.githubusercontent.com/61476935/126220250-929ef219-8699-4449-b157-12fe5a6f99aa.png">
 </div>
 
 
-Os principais Widgets associados ao Appbar são:
+Os principais atributos da BottomNavigationBar são:
 
 
 * <strong>leading</strong> - Um Widget definido antes do title<br>
