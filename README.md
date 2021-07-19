@@ -423,24 +423,40 @@ Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, que pode c
     Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {},
         ),
-          ...
+        title: Text('AppBar'),
+        actions: [
+          IconButton(onPressed: () {}, icon: Icon(Icons.notification_add))
+        ],
+      )
       );
     }
   
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/126219249-4768f814-2a97-4993-b4c4-6164fb18c5af.png">
+</div>
+
 
 Os principais Widgets associados ao Appbar são:
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121282880-9b493e80-c8b0-11eb-894b-a737bb958885.png">
-</div>
 
 * <strong>leading</strong> - Um Widget definido antes do title<br>
 * <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
 * <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
 * <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
 * <strong>bottom</strong> - Define o bottom do Appbar
+
+
+<h2>Body</h2>
+
+
+<h2>Drawer</h2>
 
 
 <h2>BottomNavigationBar</h2>
@@ -507,7 +523,7 @@ O exemplo acima consiste na definição básica de uso de uma BottomNavigationBa
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/126208443-11adbbb4-4f8f-4b9d-8473-41d3482c5167.png">
+  <img src="https://user-images.githubusercontent.com/61476935/126219865-efd7587e-e51c-413e-80ac-755fdbc74051.png">
 </div>
 
 
