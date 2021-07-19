@@ -1594,7 +1594,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 <h2>Material Components</h2>
 
 
-Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface.
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
 
 
 <h2>Appbar</h2>
@@ -1630,7 +1630,69 @@ Os principais Widgets associados ao Appbar são:
 <h2>BottomNavigationBar</h2>
 
 
+Um widget de material que é exibido na parte inferior de um aplicativo para selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos um exemplo de uso da BottomNavigationBar:
 
+
+    class MyBottomNavigationBar extends StatefulWidget {
+      @override
+      State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
+    }
+    
+    class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+      int _selectedIndex = 0;
+    
+      static const TextStyle optionStyle =
+          TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+    
+      List<Widget> _index = <Widget>[
+        Text('Home', style: optionStyle),
+        Text('Search', style: optionStyle),
+        Text('Profile', style: optionStyle),
+      ];
+    
+      void _onItemTapped(int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('BottomNavigationBar'),
+          ),
+          body: Center(child: _index.elementAt(_selectedIndex)),
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.blue[800],
+            onTap: _onItemTapped,
+          ),
+        );
+      }
+    }
+
+
+O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir olustra como o exemplo acima irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/126208443-11adbbb4-4f8f-4b9d-8473-41d3482c5167.png">
+</div>
 
 
 <h2>Buttons</h2>

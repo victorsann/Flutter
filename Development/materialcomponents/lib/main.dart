@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:materialcomponents/app/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +13,60 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: MyBottomNavigationBar(),
+    );
+  }
+}
+
+class MyBottomNavigationBar extends StatefulWidget {
+  @override
+  State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
+}
+
+class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+  int _selectedIndex = 0;
+
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  List<Widget> _index = <Widget>[
+    Text('Home', style: optionStyle),
+    Text('Search', style: optionStyle),
+    Text('Profile', style: optionStyle),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('BottomNavigationBar'),
+      ),
+      body: Center(child: _index.elementAt(_selectedIndex)),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.blue[800],
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
