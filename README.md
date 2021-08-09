@@ -1976,7 +1976,7 @@ A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo p
     }
 
 
-O exemplo utiliza o setState method para simular um favorite, recurso muito comum em redes sociais. Um detalhe importante aqui é que o setState pode ser utilizado de formas distintas, sendo neste caso chamado diretamente pelo onPress do IconButton. A imagem a seguir ilustra como exemplo irá se comportar:
+O exemplo utiliza o setState method para simular um favorite, recurso muito comum em redes sociais. Um detalhe importante aqui é que o setState pode ser utilizado de formas distintas, sendo neste caso chamado diretamente pelo onPress do IconButton. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2016,7 +2016,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada em conjunto com um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçãoes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+A seguir veremos esses conceitos de forma mais aprofundada associados a um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçôes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
@@ -2025,7 +2025,7 @@ No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes depend�
     flutter_mobx: ^2.0.0
 
 
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira se assegurar de estar utilizando as versões mais recentes, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira se assegurar de estar utilizando as versões mais recentes no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
 
 Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconheça as alterações, rode o seguinte comando na pasta do projeto:
 
@@ -2033,7 +2033,7 @@ Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as m
     flutter packages get  
 
 
-Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criar o exemplo observe os passos a seguir:
+Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criarmos o exemplo observe os passos a seguir:
 
 Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
 
@@ -2053,7 +2053,7 @@ Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter 
     }
 
 
-Em uma file própria, crie a classe na qual iremos definir a estrutura e a chamada da classe Controller:
+Em uma file própria, crie a classe na qual iremos definir a estrutura e a chamada do Controller criado:
 
 
     import 'package:flutter/material.dart';
@@ -2103,7 +2103,7 @@ Em uma file própria, crie a classe na qual iremos definir a estrutura e a chama
     }
 
 
-Tendo concluído esses passos, a seguir veremos a definição dos conceitos do MobX e qual parte do código corresponde a cada um deles: 
+Tendo concluído esses passos, a seguir veremos a definição dos conceitos do MobX e quais partes do código correspondem a cada um deles: 
 
 
 <h2>Actions</h2>
@@ -2140,13 +2140,13 @@ No exemplo é criado um atributo do tipo Action, o qual é associado a um métod
 <h2>Observables</h2>
 
 
-Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de nofificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
+Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de notificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
 
 
     var counter = Observable(0);
 
 
-O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual incrementa seu valor.
+O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual é incrementado
 
 
 <h2>Reactions</h2>
@@ -2211,7 +2211,7 @@ Após definir as novas dependências, vamos modificar o código do exemplo anter
     }
 
 
-Uma classe abstract é definida como base para a execução da gerência do State. Essa classe possui um Mixin atribuido a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também são atribuidos dois membros:
+Uma classe abstract é definida como base para a execução da gerência do State. Essa classe possui um Mixin atribuido a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também serão atribuidos dois membros:
 
     @observable
 
@@ -2226,9 +2226,9 @@ Uma classe abstract é definida como base para a execução da gerência do Stat
 </div>
 
 
-Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada e age como Mixin é definida com o uso de _$ e será gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
+Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada age como um Mixin e é definida com o uso de _$, sendo gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
 
-Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos necessários. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de controller neste caso:
+Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos gerados. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de "controller" neste caso, separada da terminação .dart pelo marcador .g:
 
 
     part 'controller.g.dart';
@@ -2249,7 +2249,7 @@ Após esse processo, é preciso gerar a classe associada. Para isso existem dois
 
 
 <div align="center">
-  <h5>Comando que gera a classe apenas uma vez, e só a atualiza caso seja rodado novamente.</h5>
+  <h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
 </div>
 
 
@@ -2310,7 +2310,7 @@ Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível te
     }
 
 
-Perceba que tanto o atributo counter quanto o método increment sofrem um @override, passando o tratamento do State para suas novas definições no arquivo gerado. Também é muito importante não modificar este arquivo por indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
+Perceba que tanto o atributo counter quanto o método increment sofrem um @override, tornando suas novas definições as responsáveis por tratar o state. Também é muito importante não modificar este arquivo, sendo uma indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2411,7 +2411,7 @@ Derived states, os quais dependem de um core-state ou de outro derived-state par
     }
 
 
-Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar um action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
+Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar uma action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
 
 
     import 'package:flutter/material.dart';
@@ -2553,7 +2553,7 @@ Para verificar o recebimento dos valores do formulário, vamos utilizar o já vi
     }
 
 
- Criamos um autorun() method No constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextField, já que a chamada das actions é feita através do atributo onChanged. 
+ Criamos um autorun() method no constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextField, já que a chamada das actions é feita através do atributo onChanged. 
 
 Após a mudança, se a execução tiver sido interrompida, torne a rodar o comando a seguir na pasta que contém a file do formulário:
 
@@ -2579,7 +2579,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
     bool get formularioValidado => email.length >= 5 && senha.length >= 5;
 
 
-O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retorna true caso os valores sejam correspondentes. O próximo passo é definir o consumo deste computer diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
+O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retorna true caso os valores sejam correspondentes. O próximo passo é definir o consumo deste computed diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
 
    
      Padding(
@@ -2648,7 +2648,7 @@ O primeiro passo será criar uma nova action, esta sendo referente ao login em s
      }
 
 
-As novas definições consistem em um método que é chamado no onPress do botão de login, ou seja, apenas se os dados do usuário forem correspondentes aos parâmetros anteriormente definidos. Esse método, chamado de logar, possui um método delayed, cuja função é simular o carregamento de um select na base por exemplo, e a ele é atribuída a duração de 3 segundos. Em seguida, definimos que o usuário foi altenticado por meio do bool 'usuarioLogado'; assim seria possível chamar a tela subsequente após o carregamento. Carregamento este que é atribuído ao bool 'carregando', o qual é setado para true quando o método logar é chamado, e após o delayed, torna a ser false.
+As novas definições consistem em um método que é chamado no onPress do botão de login, ou seja, apenas se os dados do usuário forem correspondentes aos parâmetros anteriormente definidos. Esse método, chamado de logar, possui um método delayed, cuja função é simular o carregamento de um select na base por exemplo, e a ele é atribuída a duração de 3 segundos. Em seguida, definimos que o usuário foi autenticado por meio do bool 'usuarioLogado'; assim seria possível chamar a tela subsequente após o carregamento. Carregamento este que é atribuído ao bool 'carregando', o qual é setado para true quando o método logar é chamado, e após o delayed, torna a ser false.
 
 Tendo concluído as alterações no controller.dart, torne a fazer o build com o comando a seguir:
 
@@ -2688,7 +2688,7 @@ Dentro do método didChangeDependencies() iremos definir o reaction method, o qu
       style: TextStyle(color: Colors.green))
 
 
-Essa alteração define que o text 'Campos Válidos' só será aparente quando o processo de carregamento não estiver ocorrendo. Em seguida:
+Essa alteração define que o text 'Campos Válidos' só será aparente caso o processo de carregamento não estiver ocorrendo. Em seguida:
 
 
     Padding(
@@ -2721,7 +2721,7 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 <h2>ObservableList</h2>
 
 
-O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um item seja adicionado, removido o modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar o exemplo anterior e complementá-lo.
+O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um item seja adicionado, removido ou modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar o exemplo anterior e complementá-lo.
 
 Ainda na file computed.dart, faça a seguinte alteração:
 
@@ -2740,7 +2740,7 @@ Ainda na file computed.dart, faça a seguinte alteração:
      }
 
 
-Após a alteração, quando efetuado a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
+Após a alteração, quando efetuada a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
 
 Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de listController.dart, corresponde a aonde o ObservableList será gerenciado.
 
@@ -2784,7 +2784,7 @@ A primeira inclusão é um dialog, o qual será utilizado para adiministrar os i
         body: ListView.builder(
           itemCount: 10,
           itemBuilder: (_, indice) {
-            return ListTile(
+            return ListTitle(
               title: Text("Item $indice"),
               onTap: () {},
             );
@@ -2800,7 +2800,7 @@ A primeira inclusão é um dialog, o qual será utilizado para adiministrar os i
     }
 
 
-A princípio a lista contém 10 itens definidos pelo itemCount attribute. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
+A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <br>
@@ -2843,7 +2843,7 @@ Tendo a estrutura criada, vamos definir como os states da lista serão gerenciad
     ...
     
 
-Uma instância da classe LisController é criada, permitindo o acesso a action setNewItem, que é atribuída a ação de onChange do TextField Widget. Após esse processo, a informação que o usuário insere já pode ser armazenada:
+Uma instância da classe ListController é criada, permitindo o acesso a action setNewItem, que é atribuída a ação de onChange do TextField Widget. Após esse processo, a informação que o usuário insere já pode ser armazenada:
 
 
     ObservableList<String> itemList = ObservableList();
@@ -2872,7 +2872,7 @@ Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próxim
           return ListView.builder(
             itemCount: _listController.itemList.length,
             itemBuilder: (_, indice) {
-              return ListTile(
+              return ListTitle(
                 title: Text(_listController.itemList[indice]),
                 onTap: () {},
               );
@@ -2881,7 +2881,7 @@ Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próxim
         },
       )
 
-O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu langth como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTile. A imagem a seguir ilustra como o exemplo irá se comportar:
+O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu length como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTitle. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -2892,7 +2892,7 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 <h2>Tratando Itens de Uma Lista</h2>
 
 
-Os exemplos anteriores focam no monitoramento de uma lista, grenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
+Os exemplos anteriores focam no monitoramento de uma lista, gerenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
 
 A ela iremos adicionar as seguintes linhas de código:
 
@@ -2914,7 +2914,7 @@ A ela iremos adicionar as seguintes linhas de código:
     }
 
 
-Basicamente criamos dois atributos, um referente a descrição dada a cada item, aqui chamada de titulo; o outro membro criado é um observable, este definindo o status do item que foi marcado. 
+Basicamente criamos dois atributos, um referente a descrição dada a cada item, aqui chamada de "titulo"; o outro membro criado é um observable, este definindo o status do item que foi marcado. 
 
 Agora, para que o State de cada item possa ser monitorado pelo novo controller, vamos fazer uma alteração na file listController.dart:
 
@@ -2943,12 +2943,14 @@ O valor definido como o tipo da ObservableList passa a ser a classe ItemControll
             itemBuilder: (_, indice) {
               var item = _listController.itemList[indice];
               return Observer(builder: (_) {
-                return ListTile(
-                  title: Text(
-                    item.titulo,
-                      style: TextStyle(
-                          decoration:
-                              item.marked ? TextDecoration.lineThrough : null)),
+                return ListTitle(
+                 title: Text(
+                 item.titulo,
+                   style: TextStyle(
+                    decoration: item.marked 
+                     ? TextDecoration.lineThrough
+                     : null
+                    )),
                   onTap: () {
                     item.marked = !item.marked;
                   },
@@ -3039,7 +3041,7 @@ Após a declaração da dependência, já é possível utilizar o modelo Flutter
 <h2>Dividindo o Projeto em Módulos</h2>
 
 
-Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro se refere a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
+Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro é referemte a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
 
 
 <h2>Estrutura Recomendada</h2>
@@ -3079,7 +3081,7 @@ Já a estrutura que se repete começa a ser implementada na app folder, e para e
 <h2>app_controller.dart</h2>
 
 
-Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um g(generate) após controller.
+Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um .g(generate) após o nome.
 
 
 <h2>app_module.dart</h2>
@@ -3182,13 +3184,13 @@ A seguir temos um exemplo de declaração do uso do Modular como estrutura de um
     }
 
 
-Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do modular(). 
+Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do .modular(). 
 
 
 <h2>pages</h2>
 
 
-A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
+A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo o módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
 
 
 <h2>Slidy</h2>
@@ -3298,6 +3300,17 @@ Cria um novo repository com o comando slidy generate repository:
 
     slidy g r manager/product/repositories/product
 
+
+<h2>Controller Manager</h2>
+
+
+Como já foi dito, a estrutura modular conta com a preseça do MobX e seus controllers. Portanto, o slidy também conta com uma automatização do porcesso que gera os códigos responsáveis por gerenciar os states da aplicação. Para isso, usa-se o comando:
+
+
+    slidy run mobx_build_clean
+
+
+Ele é responsável por verificar todos os módulos do projeto, detectando modificações na controller.dart file e as aplicando na controller.g.dart.
 
 
 <h2>Repository Pattern</h2>
@@ -3445,7 +3458,7 @@ Por último, iremos criar uma UI simples, cuja função é apenas listar o retor
                 return ListView.builder(
                  itemCount: pokemons.length,
                  itemBuilder: (context, index) {
-                   return ListTile(
+                   return ListTitle(
                     title: Text(pokemons[index].name),
                 );
              });
