@@ -579,7 +579,7 @@ O <b><i>Drawer</i></b> é um painel exibido na lateral do body e é bastante com
     }
 
 
-O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um AppBar com um munu button, e enfem, o Drawer. Também conta com dois métodos, um de ativação e um de desativação do Drawer. Além disso, conta com _scaffoldKey: variável que carrega uma GlobalKey que gerencia o state do Scaffold e de suas propriedades ou children, incluindo o Drawer. A imagem a seguir ilustra como o exemplo irá se comportar:
+O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um AppBar com um munu button, e por fim, o Drawer. Também conta com dois métodos, um de ativação e um de desativação do Drawer. Além disso, conta com _scaffoldKey: variável que carrega uma GlobalKey responsável por gerenciar o state do Scaffold e de suas propriedades, incluindo o Drawer. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
@@ -587,7 +587,7 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 </div>
 
 
-O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>.
+O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>. A imagem a seguir mostra como a drag action funciona:
 
 
 <div align="center">
