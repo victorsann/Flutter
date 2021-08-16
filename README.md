@@ -680,7 +680,7 @@ Os principais atributos da BottomNavigationBar são:
 <h2>Buttons</h2>
 
 
-<h3>DropdownButton</h3>
+<h2>DropdownButton</h2>
 
 
 O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número definido de opções, podendo ter resultados distintos a cada opção selecionada. A seguir há um exemplo de uso do DropdownButton:
@@ -694,7 +694,7 @@ O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número d
       style: const TextStyle(color: Colors.deepPurple),
       underline: null,
       onChanged: (_) {},
-      items: <String>['One', 'Two', 'Free', 'Four'].map<DropdownMenuItem<String>>((String value) {
+      items: <String>['One', 'Two', 'Three', 'Four'].map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value),
@@ -703,15 +703,15 @@ O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número d
     )
 
 
-O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada), um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
+O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada)a um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129608258-d4388c13-9b15-4140-b9b2-54d8349d49ac.png">
 </div>
 
 
-<h3>FloatingActionButton</h3>
+<h2>FloatingActionButton</h2>
 
 
 Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no canto inferior direito da tela. Ele provê uma ação primária dentro da aplicação. Também é uma propriedade do Scaffold e é bastante associado a ele. A seguir há um exemplo de uso do FloatingActionButton:
@@ -731,7 +731,7 @@ Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no 
     )
 
 
-<h3>ElevatedButtons</h3>
+<h2>ElevatedButtons</h2>
 
 
 Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
@@ -754,18 +754,11 @@ Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widge
 A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129608336-7ec18571-a507-4eb7-9664-aa98e7d9aa0d.png">
 </div>
 
-Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevatedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
 
-* <strong>style</strong> - Define style do ElevatedButton
-* <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
-* <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
-* <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
-
-
-<h3>IconButton</h3>
+<h2>IconButton</h2>
 
 
 Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que reage ao toque, possuindo um efeito associado a uma cor como reação padrão. A seguir temos alguns exemplos de uso do IconButton:
@@ -796,14 +789,14 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129608463-64e97bac-75b4-4581-a547-b55dbdb82c96.png">
 </div>
 
 
-<h3>OutlinedButton</h3>
+<h2>OutlinedButton</h2>
 
 
-Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferença de possuir uma borda por padrão. Um OutlinedButton possui actions importantes, mas não são a uma primary action em um app. A seguir há um exemplo de uso de um OutlinedButton:
+Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferença de possuir uma borda por padrão. Um OutlinedButton possui actions importantes, mas não uma primary action em um app. A seguir há um exemplo de uso de um OutlinedButton:
 
 
     Container(
@@ -815,14 +808,14 @@ Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferen
 
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129608775-c0789ff6-290f-4270-8b66-43b697b32a07.png">
 </div>
 
 
-<h3>TextButton</h3>
+<h2>TextButton</h2>
 
 
-Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Normalmente é utilizado em dialogs, em um inline ou em qualquer como parte de um Widget que não dispõe de muito espaço disponível. A seguir há alguns exemplos de uso do TextButton:
+Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Normalmente é utilizado em dialogs, em um inline ou como parte de um Widget que não dispõe de muito espaço disponível. A seguir há alguns exemplos de uso do TextButton:
 
 
     Container(
@@ -846,11 +839,11 @@ Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Nor
       ]),
     )
 
-Um TextButton é bastante parecido com os demais tipos, onde também é possível desabilitá-lo atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
+Um TextButton é bastante parecido com os demais tipos, onde também é possível torná-lo disabled atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129608831-5aa7fb6b-e8ec-4442-88a3-b9fc2abf2463.png">
 </div>
 
 
