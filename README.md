@@ -734,6 +734,14 @@ Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no 
     )
 
 
+A imagem a seguir ilustra o como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129611402-7edd1d60-f5d6-4b56-a420-e13cce1b9ee7.png">
+</div>
+
+
 <h2>ElevatedButtons</h2>
 
 
