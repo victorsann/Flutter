@@ -1252,7 +1252,7 @@ O AspectRatio faz parte dos Widgets de definição de layout graças a sua capac
 Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo irá se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121577098-89c27c80-c9ff-11eb-86f7-1a975332ef15.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129612249-726555b3-198b-4a9d-a0b3-d7ea3e081df0.png">
 </div>
 
 O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
@@ -1297,7 +1297,7 @@ Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções d
 O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121586511-1eca7300-ca0a-11eb-83ac-dd91d54f0b31.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129612499-37c5f184-57b3-427b-a300-db53093b01b9.png">
 </div>
 
 Outra situação em que é possível aplicar o ConstraintBox é quando um Widget child precisar oculpar todo o espaço correspondente ao Widget que o carrega. Exemplo:
@@ -1325,7 +1325,7 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121586564-30137f80-ca0a-11eb-867b-ac1b3feefa71.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129612601-eefea79d-c675-43c9-87eb-7caf93466357.png">
 </div>
 
 
