@@ -116,7 +116,6 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
         },
         child: const Icon(Icons.add),
-        backgroundColor: Colors.red,
       ),
       body: Center(
         child: Column(

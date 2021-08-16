@@ -729,7 +729,6 @@ Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no 
 
         },
         child: const Icon(Icons.navigation),
-        backgroundColor: Colors.green,
       )
     )
 
