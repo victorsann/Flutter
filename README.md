@@ -680,6 +680,9 @@ Os principais atributos da BottomNavigationBar são:
 <h2>Buttons</h2>
 
 
+O Flutter conta com a uma série de opções de buttons herdados do Material Components, elas são:
+
+
 <h2>DropdownButton</h2>
 
 
