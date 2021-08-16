@@ -1361,7 +1361,7 @@ Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widge
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121590423-b0d47a80-ca0e-11eb-9758-23dbc513f055.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/129612786-f788767a-27af-4f2c-b415-edf079fa1106.png">
 </div>
 
 Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
@@ -1391,7 +1391,7 @@ Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, 
 O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121592232-ce0a4880-ca10-11eb-8d68-7b13254a431e.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129612965-76695621-a0a8-4ea8-85a5-af775005ba6f.png">
 </div>
 
 
@@ -1539,7 +1539,7 @@ O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma 
 O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% dos 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121812186-4fdeb980-cc3d-11eb-8f36-b9ccb114d2ad.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129613215-bae89f68-51e4-49f9-845e-a2837b19472b.png">
 </div>
 
 Os principais Factores da classe FractionallySizedBox() são:
@@ -1600,7 +1600,7 @@ Um padding é definido através do atributo padding que recebe um EdgeInsets, Wi
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121789339-89ff7b00-cbab-11eb-8bb5-76895ff20951.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129613351-1d15acfa-cdbb-412a-9910-991b609deb99.png">
 </div>
 
 
