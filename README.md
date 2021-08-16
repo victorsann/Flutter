@@ -8,9 +8,9 @@
 
 O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, e um código fonte único
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, e um código fonte único.
 
-Outras características importantes da ferramenta são:
+Outras características do Flutter são:
 
 - Dispõe de um Stateful Hot Reload
 - Utiliza Widgets Reativos Customizaveis
@@ -26,20 +26,20 @@ Antes de iniciar o processo de instalação, é importante frisar que há mais d
 
 - Crie uma pasta src no disco local da sua máquina
 - Acesse [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copie o Flutter repo Link
-- Acesse o cmd e crie um git clone do Flutter repo na pasta src anteriormente criada
+- Acesse o terminal de comando e crie um git clone do Flutter repo na pasta src
 
-A partir deste ponto as ferramentas que Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes
-
-
-<h2>Atualizando Path</h2>
+A partir deste ponto, as ferramentas que o Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes:
 
 
-Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em Variáveis de usuário crie uma nova variável com as seguintes definições
+<h2>Atualizando Path I</h2>
+
+
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em Variáveis de usuário crie uma nova variável com as seguintes definições:
 
     Nome da Variável: FLUTTER_HOME
     Valor da Variável: C:\src\flutter
 
-A variável criada serve como um camfinho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha
+A variável criada serve como um caminho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha:
 
     %FLUTTER_HOME%\bin
 
@@ -60,13 +60,13 @@ O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambi
     
     ! Doctor found issues in 4 categories.
 
-Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas
+Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas.
 
 
 <h2>Ambiente de Desenvolvimento</h2>
 
 
-Tendo o Flutter instalado, o próximo passo é preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
+Tendo o Flutter instalado, agora é preciso preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
 
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
 - [VScode](https://code.visualstudio.com/) (Recomendado)
@@ -75,13 +75,13 @@ Tendo o Flutter instalado, o próximo passo é preparar o ambiente de desenvolvi
 <h2>Android Studio</h2>
 
 
-O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta
+O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta:
 
 
 <h2>SDK Platforms</h2>
 
 
-Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sistemas operacionais para os quais é possível desenvolver dentro do android studio. No momento a versão mais recente do android é a 11.0, portanto, os exemplos criados aqui serão desenvolvidos nesta versão
+Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sistemas operacionais para os quais é possível desenvolver dentro do android studio. No momento, a versão mais recente do android é a 11.0, portanto, os exemplos criados aqui serão desenvolvidos nesta versão.
 
 
 <h2>Configurando Android SDK</h2>
@@ -104,10 +104,10 @@ A instalação de plugins torna muito mais viável a compilação e desenvolvime
 </div>
 
 
-<h2>Atualizando Path</h2>
+<h2>Atualizando Path II</h2>
 
 
-Como foi definido, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
+Como dito anteriormente, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
 
 - Torne a acessar o menu SDK Manager
 - Copie o caminho correspondente ao Android SDK Location
@@ -117,7 +117,7 @@ Após isso, será criada uma nova variável de ambiente, específica para o aces
     Nome da Variável: ANDROID_HOME
     Valor da Variável: Android SDK Location (C:\...\...)
 
-Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de ambiente. Dessa vez correspondentes a variável ANDROID_HOME anteriormente criada:
+Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de ambiente. Dessa vez correspondentes a variável ANDROID_HOME há pouco criada:
 
     %ANDROID_HOME%\tools\bin
     
@@ -125,7 +125,10 @@ Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas a
 
     %ANDROID_HOME%\platform-tools
 
-Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
+
+<div align="center">
+  Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
+</div>
 
 
 <h2>jdk8</h2>
@@ -161,7 +164,7 @@ Obs: É extremamente importante que a versão instalada seja a 1.8.0_211, isso g
 
 Sendo o último passo da preparação do ambiente android, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
 
-Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir
+Tendo seguido as indicações da documentação, é possível verificar a instalação do emulador criado através do comando a seguir:
 
     flutter emulators
 
@@ -183,7 +186,7 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
 <h2>Dispositivo Real</h2>
 
 
-Há casos em que desenvolver utilizando um emulador se torna inviável devido a limitações no hardware do desenvolvedor. Essa falta pode ser resolvida com o uso de um dispositivo em alternativa. A execução de aplicações em Smartphones é um recurso disponibilizado em qualquer aparelho android moderno, sendo possível ativa-lo caso o mesmo já não esteja ativo. A seguir estão descritos os passos para a ativações, podendo variar de dispositivos para dispositivos:
+Há casos em que desenvolver utilizando um emulador se torna inviável devido a limitações no hardware do desenvolvedor. Essa falta pode ser resolvida com o uso de um dispositivo em alternativa. A execução de aplicações em Smartphones é um recurso disponibilizado em qualquer aparelho android moderno, sendo possível ativa-lo caso o mesmo já não esteja ativo. A seguir estão descritos os passos para as ativações, podendo variar de dispositivos para dispositivos:
 
 - Acesse as configurações do dispositivo
 - Ative o modo de desenvolvedor atráves do build number, clicando multiplas vezes no mesmo até ativar a função
@@ -193,13 +196,13 @@ Em seguida é possível ter acesso as configurações de desenvolvedor no dispos
 - Permanecer Ativo
 - Depuração USB
 
-A primeira opção define que o aparelho não irá se desligar enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código será feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real
+A primeira opção define que o aparelho não irá se desligar enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código será feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real.
 
 
 <h2>VSCode</h2>
 
 
-Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir
+Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir:
 
 
 <h2>Plugins</h2>
@@ -235,60 +238,28 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 <h2>Primeiro Projeto</h2>
 
 
-Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação, execução e configuração de um projeto será visto a frente, além de um overview dos arquivos que são gerados na criação
+Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação, execução e configuração de um projeto será visto a frente, além de um overview dos arquivos que são gerados na criação.
 
 
 <h2>Gerando um Projeto Flutter</h2>
 
 
-Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, em seguida abra o VSCode. Com o terminal aberto, acesse o diretório criado e executando o seguinte comando:
+Para gerar um novo projeto, crie um diretório no qual o projeto será alocado, e em seguida abra o VSCode. Com o terminal aberto, acesse o diretório criado e execute o seguinte comando:
+
 
     flutter create primeiro_projeto
 
-Após a execução, uma série de arquivos referentes ao primeiro_projeto serão gerados em uma pasta de mesmo nome, sendo esta a file geral do projeto. Estes arquivos consitem em:
+
+Após a execução, uma série de pastas com arquivos referentes ao primeiro_projeto serão gerados em uma pasta de mesmo nome, sendo esta a folder geral do projeto. Estes arquivos e pastas consitem em:
 
 
-<h2>Executando no Emulador</h2>
+<h2>.dart_tool</h2>
 
+<h2>build</h2>
 
-Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em um dipositivo real. O primeiro passo é executar o emulador definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de comando, o que acaba sendo custoso em tempo, tendo formas mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+<h2>ios</h2>
 
-- Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120896193-dddff200-c5f6-11eb-88d3-7977f0806e41.png">
-</div>
-
-<br>
-
-Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é o seguinte:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
-</div>
-
-<br>
-
-Um app padão é executado como resposta, sendo possível customizá-lo e ver o resultado ser compilado em tela após o save de forma instantânea. Nele é possível ver a definição de alguns Widgets, esctruturas base de uma aplicação Flutter, as quais serão mais bem abordadas no futuro
-
-
-<h2>Executando no Dispositivo Real</h2>
-
-
-O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, e assim podendo acessá-lo no menu de Devices de forma imediata: 
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
-</div>
-
-<br>
-
-O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device
-
+<h2>lib</h2>
 
 <h2>Main.dart</h2>
 
@@ -368,6 +339,103 @@ A estrutura padão no main.dar consiste em:
 <div align="center">
  Os demais componetes do código presentes no main.dart são específicos da estrutura criada por padrão. Os mesmos serão mais bem abordados futuramente
 </div>
+
+
+<h2>.flutter-plugins</h2>
+
+<h2>.metadata</h2>
+
+<h2>.packages</h2>
+
+<h2>flutter_native_splash.yaml</h2>
+
+<h2>pubspec.lock</h2>
+
+<h2>pubspec.yaml</h2>
+
+
+<h2>Executando no Emulador</h2>
+
+
+Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em um dipositivo real. O primeiro passo é executar o emulador definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de comando, o que acaba sendo custoso em tempo; além de existirem meios mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+
+- Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120896193-dddff200-c5f6-11eb-88d3-7977f0806e41.png">
+</div>
+
+<br>
+
+Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. 
+
+Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é o seguinte:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
+</div>
+
+<br>
+
+Um app padão é executado como resposta, sendo possível customizá-lo e ver o resultado ser compilado em tela após o save de forma instantânea. Nele é possível ver a definição de alguns Widgets, estruturas base de uma aplicação Flutter, as quais serão mais bem abordadas a frente.
+
+
+<h2>Executando no Dispositivo Real</h2>
+
+
+O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, e assim podendo acessá-lo no menu de Devices de forma imediata: 
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
+</div>
+
+<br>
+
+O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device.
+
+
+<h2>Conectando Device (WI-FI)</h2>
+
+
+Uma das dificuldades de utilizar um aparelho real como substituto de um device emulator é a necessidade de conexão via USB. Essa barreira pode ser quebrada graças ao recurso de conexão WI-FI, o qual discarta o uso de qualquer conexão física entre o ambiente de desenvolvimento e o aparelho. Para fazer uso do recurso, siga os passos a diante:
+
+
+No terminal, execute os comandos a seguir:
+
+
+    adb devices
+
+
+<div align="center">
+  <h5>Detecta os devices conectados a sua máquina</h5>
+</div>
+
+
+    adb tcpip 5555
+
+
+<div align="center">
+  <h5>Reinicializa a porta de conexão tcpip 5555</h5>
+</div>
+
+
+O próximo passso é acessar seu smartphone e verificar o endereço de IP correspondente ao roteador ou modem WI-FI que cria a sua rede. Em seguida execute o comando a seguir:
+
+
+    adb connect 000.000.0.000:5555
+
+
+<div align="center">
+  <h5>Cria uma conexão entre os devices conectados, sua máquina e a rede na porta 5555</h5>
+</div>
+
+
+Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
+
   
 <br>
 
@@ -375,7 +443,7 @@ A estrutura padão no main.dar consiste em:
 
 <br>
 
-Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Este conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso, contando com uma arquitetura concentrada baseada em widgets
+Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Esse conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso, contando com uma arquitetura concentrada baseada em widgets.
 
 
 <h2>Widgets</h2>
@@ -396,11 +464,11 @@ Widgets visuais, comportamentais e de movimento que implementam as diretrizes do
 A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
 
     Scaffold(
-      appBar: AppBar( ),
-      body: Container( ),
-      drawer: Drawer( ),
-      floatingActionButton: FloatingActionButton( ),
-      bottomNavigationBar: BottomAppBar( )
+      appBar: AppBar(),
+      body: Container(),
+      drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(),
+      bottomNavigationBar: BottomAppBar()
     )
 
 
@@ -416,7 +484,7 @@ O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Fl
 <h2>Appbar</h2>
 
 
-Um Appbar consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. Também é comumente usado em conjunto com a propriedade appBar do Widger Scaffold, que será explicado mais a frente.  A seguir temos um exemplo de uso da Appbar:
+Um <b><i>Appbar</i></b> consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. A seguir temos um exemplo de uso da Appbar:
 
 
     @override
@@ -456,7 +524,78 @@ Os principais atributos da BottomNavigationBar são:
 <h2>Body</h2>
 
 
+O <b><i>body</i></b> é o principal conteúdo de um Scaffold, pondendo ser basicamente qualquer Widget do catálogo.
+
+
 <h2>Drawer</h2>
+
+
+O <b><i>Drawer</i></b> é um painel exibido na lateral do body, bastante comum em aplicações mobile. É ativado, na maioria das vezes, pela ação de drag da esquerda para a direita ou da direita para a esquerda no body, ou por um menu button na AppBar. Também é associado a opções de navegação ou a um menu de opções que surge com a diminuição da escala dos aparelhos. A seguir temos um exemplo de uso do Drawer:
+
+    ...
+    
+    class MyDrawer extends StatefulWidget {
+      @override
+      State<MyDrawer> createState() => _MyDrawerState();
+    }
+    
+    class _MyDrawerState extends State<MyDrawer> {
+    
+      final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+      void _openDrawer() {
+        _scaffoldKey.currentState!.openDrawer();
+      }
+    
+      void _closeDrawer() {
+        Navigator.of(context).pop();
+      }
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                _openDrawer();
+              },
+            ),
+            title: Text('Drawer'),
+          ),
+          drawer: Drawer(
+            child: Center(  
+              child: ElevatedButton(  
+                child: Text('Close Drawer'),
+                onPressed: () {
+                  _closeDrawer();
+                },
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+
+O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um AppBar com um munu button, e enfem, o Drawer. Também conta com dois métodos, um de ativação e um de desativação do Drawer. Além disso, conta com _scaffoldKey: variável que carrega uma GlobalKey que gerencia o state do Scaffold e de suas propriedades ou children, incluindo o Drawer. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129577392-a74b1175-57ed-4afb-9371-34d8b03cb065.png">
+</div>
+
+
+O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>.
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129577496-111c6648-93d8-4d71-9deb-91621e8a8463.png">
+</div>
+
+
+O Drawer, assim como a body property, pode conter basicamente qualquer Widget do catálogo como child. No exemplo, o Drawer possui um ElevatedButton como child, este sendo reaponsável por chamar o _closeDrawer method, que por sua vez fecha o Drawer.
 
 
 <h2>BottomNavigationBar</h2>
