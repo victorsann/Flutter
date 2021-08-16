@@ -795,6 +795,7 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
        )
      ]),
     )
+    
 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
@@ -849,6 +850,7 @@ Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Nor
       ]),
     )
 
+
 Um TextButton é bastante parecido com os demais tipos, onde também é possível torná-lo disabled atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
@@ -862,6 +864,7 @@ Um TextButton é bastante parecido com os demais tipos, onde também é possíve
 
 Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
 
+
     Center(
       child: Container(
         alignment: Alignment.center,
@@ -874,6 +877,7 @@ Um Container é um Widget de estruturação que combina widgets comuns de pintin
         padding: const EdgeInsets.all(10),
       ),
     )
+
 
 Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
 
@@ -909,6 +913,7 @@ O decoration é uma propriedade do Container que define uma camada de style ante
 
 Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. A seguir há um exemplo de declaração de uma Column:
 
+
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
@@ -937,8 +942,8 @@ Uma Column é definida como um Widget de estruturação, cuja função é agrupa
           child: Container(...),
         )
        ], // <Widget>[]
-
     ) // Column
+
 
 O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo irá se comportar:
 
@@ -959,6 +964,7 @@ Há uma série de Widgets que podem ser associados a uma Column. A seguir estão
 
 Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. A seguir há um exemplo de declaração de uma Row:
 
+
     Row(
       children: <Widget>[
        Flexible(
@@ -972,6 +978,7 @@ Uma Row também é definida como um Widget de estruturação, cuja função é a
         ),
       ], // <Widget>[]
     ) 
+
 
 Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo irá se comportar:
 
@@ -991,12 +998,14 @@ Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associad
 
 Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependências tanto do Material design(android) quanto do cupertino(ios). Exemplo:
 
+
     flutter:
       uses-material-design: true
      // Para adicionar assets a sua aplicação, crie uma assets section:
       assets:
         - assets/images/
         - assets/icons/
+
 
 É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets:  
 
@@ -1006,11 +1015,13 @@ Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual c
 
 O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
 
+
     Image(
       image: NetworkImage(
         'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'
       ),
     )
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121402504-58c74680-c930-11eb-8427-0d367448f900.png">
@@ -1049,6 +1060,7 @@ Basicamente todos possuem as mesmas propriedades de definição de imagem, excet
 
 O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
 
+
     Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: const <Widget>[
@@ -1067,8 +1079,8 @@ O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do
           color: Colors.blue,
           size: 50.0,
         ),
-      ],
-    )
+      ])
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121428625-67bbf200-c94c-11eb-8258-bcf069060e71.png">
@@ -1087,6 +1099,7 @@ Os icons são definidos em um proporção customizavel, mas são renderizados em
 
 O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
 
+
     Text(
      'Children',
      textDirection: TextDirection.rtl,
@@ -1096,6 +1109,7 @@ O Widget Text exibe um string com um single style. Um string pode sofrer um brea
        color: Colors.blue[900],
      ),
     )
+
 
 A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
 
@@ -1122,18 +1136,18 @@ Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design
 
 A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
 
+
     Column(
      children: <Widget>[
        Container(
-         height: 100,
-         width: 150,
-         child: Align(
-           alignment: Alignment.topLeft,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-         ),
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.topLeft,
+         child: Text(
+           'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
          decoration: BoxDecoration(color: Colors.white),
          margin: EdgeInsets.all(10.0),
        ),
@@ -1141,56 +1155,51 @@ A definição de alinhamento de um Widget é feita de várias formas, uma delas 
          height: 100,
          width: 150,
          child: Align(
-           alignment: Alignment.topRight,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-         ),
+          alignment: Alignment.topRight,
+          child: Text(
+            'Child',
+            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
          decoration: BoxDecoration(color: Colors.white),
          margin: EdgeInsets.all(10.0),
        ),
        Container(
-         height: 100,
-         width: 150,
-         child: Align(
-           alignment: Alignment.center,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-         ),
+        height: 100,
+        width: 150,
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            'Child',
+            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
+        decoration: BoxDecoration(color: Colors.white),
+        margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.bottomLeft,
+         child: Text(
+          'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+         )),
          decoration: BoxDecoration(color: Colors.white),
          margin: EdgeInsets.all(10.0),
        ),
        Container(
-         height: 100,
-         width: 150,
-         child: Align(
-           alignment: Alignment.bottomLeft,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-         ),
-         decoration: BoxDecoration(color: Colors.white),
-         margin: EdgeInsets.all(10.0),
-       ),
-       Container(
-         height: 100,
-         width: 150,
-         child: Align(
-           alignment: Alignment.bottomRight,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-           ),
-         ),
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.bottomRight,
+         child: Text(
+           'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+         )),
          decoration: BoxDecoration(color: Colors.white),
          margin: EdgeInsets.all(10.0),
        )
-     ],
-    )
+     ])
      
 
 O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
@@ -1218,12 +1227,11 @@ Essas posições são definidas a partir da classe Alignment, e são atribuidas 
 Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
 
     Align(
-      alignment: Alignment(0.2, 0.6),
-      child: Text(
-        'Child', 
-        style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-      ),
-    )
+     alignment: Alignment(0.2, 0.6),
+     child: Text(
+       'Child', 
+       style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+     ))
 
 As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo irá se comportar: 
 
@@ -1238,16 +1246,15 @@ As coordenadas são definidas em um eixo horizontal/vertical, correspondendo res
 O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
 
     AspectRatio(
-      aspectRatio: 2 / 3,
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(color: Colors.yellow),
-        child: Text(
-          'Child',
-          style: TextStyle(color: Colors.blue[800], fontSize: 20),
-        ),
-      ),
-    )
+     aspectRatio: 2 / 3,
+     child: Container(
+       alignment: Alignment.center,
+       decoration: BoxDecoration(color: Colors.yellow),
+       child: Text(
+         'Child',
+         style: TextStyle(color: Colors.blue[800], fontSize: 20),
+       ),
+     ))
 
 Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo irá se comportar:
 
@@ -1256,6 +1263,7 @@ Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele se
 </div>
 
 O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
+
 
     AspectRatio(
       aspectRatio: 0.6,
@@ -1266,33 +1274,33 @@ O AspectRatio também pode ser definido diretamente pela razão entre os dois va
           'Child',
           style: TextStyle(color: Colors.blue[800], fontSize: 20),
         ),
-      ),
-    )
+      ))
+
 
 <h2>ConstrainedBox</h2>
 
 
 Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
 
+
     ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
-        child: Container(
-          color: Colors.yellow,
-          padding: EdgeInsets.all(10),
-          alignment: Alignment.center,
-          child: Text.rich(TextSpan(children: <TextSpan>[
-            TextSpan(
-              text: 'Some text that you want to',
-              style: TextStyle(fontSize: 20)),
-            TextSpan(
-              text: ' break',
-               style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold))
-              ]
-            )
-          ),
-        ),
-      )
+     constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
+     child: Container(
+       color: Colors.yellow,
+       padding: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: Text.rich(TextSpan(children: <TextSpan>[
+       TextSpan(
+         text: 'Some text that you want to',
+         style: TextStyle(fontSize: 20)),
+       TextSpan(
+         text: ' break',
+          style: TextStyle(
+           fontSize: 20, fontWeight: FontWeight.bold))
+         ])
+       ),
+     ))
+
 
 O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
@@ -1304,24 +1312,24 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 
 
     ConstrainedBox(
-       constraints: BoxConstraints.expand(),
-       child: Container(
-         color: Colors.yellow,
-         padding: EdgeInsets.all(10),
-         alignment: Alignment.center,
-         child: Text.rich(TextSpan(children: <TextSpan>[
-           TextSpan(
-             text: 'Some text that you want to',
-             style: TextStyle(fontSize: 20)),
-           TextSpan(
-             text: ' break',
-             style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold))
-            ]
-          )
-        ),
-      ),
-    )
+     constraints: BoxConstraints.expand(),
+     child: Container(
+       color: Colors.yellow,
+       padding: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: Text.rich(
+        TextSpan(
+         children: <TextSpan>[
+          TextSpan(
+            text: 'Some text that you want to',
+            style: TextStyle(fontSize: 20)),
+          TextSpan(
+            text: ' break',
+            style: TextStyle(
+             fontSize: 20, fontWeight: FontWeight.bold))
+          ])
+         ),
+       ))
 
 
 <div align="center">
@@ -1334,28 +1342,28 @@ Outra situação em que é possível aplicar o ConstraintBox é quando um Widget
 
 O já mencionado Expanded é um Widget de definição de dimenções, normalmente associado a um Widget Multi-child, como uma Column ou row. Ele basicamente indica qual dos Widgets do vetor devem ocupar mais espaço em relação aos demias. A seguir há um exemplo de uso do Expanded:
 
+
     Center(
-      child: Column(
-        children: <Widget>[
-          Container(
-            color: Colors.blue,
-            height: 150,
-            width: 500,
-          ),
-          Expanded(
-            child: Container(
-              color: Colors.amber,
-              width: 500,
-            ),
-          ),
-          Container(
-            color: Colors.blue,
-            height: 150,
-            width: 500,
-          ),
-        ],
-      ),
+     child: Column(
+      children: <Widget>[
+        Container(
+          color: Colors.blue,
+          height: 150,
+          width: 500,
+        ),
+        Expanded(
+         child: Container(
+           color: Colors.amber,
+           width: 500,
+        )),
+        Container(
+          color: Colors.blue,
+          height: 150,
+          width: 500,
+        ),
+      ]),
     )
+
 
 Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
@@ -1366,27 +1374,28 @@ Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widge
 
 Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
 
+
     Row(
-      children: <Widget>[
-        Expanded(
-            flex: 1,
-            child: Container(
-              color: Colors.blue,
-              height: 100,
-            )),
-        Container(
-          color: Colors.yellow,
+     children: <Widget>[
+       Expanded(
+        flex: 1,
+        child: Container(
+          color: Colors.blue,
           height: 100,
-          width: 70,
-        ),
-        Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.blue,
-              height: 100,
-            )),
-         ],
-      )
+        )),
+       Container(
+         color: Colors.yellow,
+         height: 100,
+         width: 70,
+       ),
+       Expanded(
+         flex: 2,
+         child: Container(
+           color: Colors.blue,
+           height: 100,
+         )),
+       ] 
+
 
 O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
@@ -1400,79 +1409,75 @@ O flex factor define uma ordem de grandeza, e por consequência, de prioridade p
 
 Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou mesmo postos um dentro do outro. O FittedBox age quando o espaço correspondente a um Widget é diferente de seu child, com isso é possível adaptar o espaço que o child oculpa. Há uma série de opções de 'encaixe', as quais podem ser definidas na principal propriedade do FittedBox Widget, a fit, que recebe um Boxfit como valor. A seguir temos exemplos de uso do FittedBox:
 
+
     Container(
      width: 500,
      decoration: BoxDecoration(color: Colors.blue[800]),
      child: Column(
-       mainAxisAlignment: MainAxisAlignment.center,
-       children: <Widget>[
-         Container(
-           color: Colors.white,
-           height: 100,
-           width: 100,
-           margin: EdgeInsets.all(10),
-           child: FittedBox(
-             fit: BoxFit.cover,
-             child: Text(
-               'Child',
-               style: TextStyle(fontSize: 20),
-             ),
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+       Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.cover,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
            ),
-         ),
-         Container(
-           color: Colors.white,
-           height: 100,
-           width: 100,
-           margin: EdgeInsets.all(10),
-           child: FittedBox(
-             fit: BoxFit.fill,
-             child: Text(
-               'Child',
-               style: TextStyle(fontSize: 20),
-             ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fill,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
            ),
-         ),
-         Container(
-           color: Colors.white,
-           height: 20,
-           width: 100,
-           margin: EdgeInsets.all(10),
-           child: FittedBox(
-             fit: BoxFit.fitHeight,
-             child: Text(
-               'Child',
-               style: TextStyle(fontSize: 20),
-             ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 20,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fitHeight,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
            ),
-         ),
-         Container(
-           color: Colors.white,
-           height: 100,
-           width: 50,
-           margin: EdgeInsets.all(10),
-           child: FittedBox(
-             fit: BoxFit.fitWidth,
-             child: Text(
-               'Child',
-               style: TextStyle(fontSize: 20),
-             ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 50,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fitWidth,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
            ),
-         ),
-         Container(
-           color: Colors.white,
-           height: 100,
-           width: 100,
-           margin: EdgeInsets.all(10),
-           child: FittedBox(
-             fit: BoxFit.none,
-             child: Text(
-               'Child',
-               style: TextStyle(fontSize: 20),
-             ),
-           ),
-         )
-       ],
-     )
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.none,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+            ),
+          ))
+        ])
+
 
 O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em diversas situações. A imagem a seguir mostra como o exemplo irá se comportar:
 
@@ -1503,38 +1508,35 @@ A seguir estão as descritas cada propriedade do BoxFit:
 O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
 
     Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          color: Colors.white,
-          height: 200,
-          width: 200,
-          margin: EdgeInsets.all(10),
-          alignment: Alignment.center,
-          child: FractionallySizedBox(
-            heightFactor: 1.0,
-            widthFactor: 0.6,
-            child: Container(
-              decoration: BoxDecoration(color: Colors.yellow),
-            ),
+     mainAxisAlignment: MainAxisAlignment.center,
+     children: <Widget>[
+      Container(
+       color: Colors.white,
+       height: 200,
+       width: 200,
+       margin: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: FractionallySizedBox(
+         heightFactor: 1.0,
+         widthFactor: 0.6,
+         child: Container(
+           decoration: BoxDecoration(color: Colors.yellow),
+         ),
+       )),
+       Container(
+        color: Colors.white,
+        height: 200,
+        width: 200,
+        margin: EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: FractionallySizedBox(
+          heightFactor: 0.6,
+          widthFactor: 1.0,
+          child: Container(
+            decoration: BoxDecoration(color: Colors.yellow),
           ),
-        ),
-        Container(
-          color: Colors.white,
-          height: 200,
-          width: 200,
-          margin: EdgeInsets.all(10),
-          alignment: Alignment.center,
-          child: FractionallySizedBox(
-            heightFactor: 0.6,
-            widthFactor: 1.0,
-            child: Container(
-              decoration: BoxDecoration(color: Colors.yellow),
-            ),
-          ),
-        )
-      ],
-    )
+        ))
+      ])
 
 O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% dos 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
 
@@ -1554,15 +1556,15 @@ Os principais Factores da classe FractionallySizedBox() são:
 Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
 
     ListView(
-      children: [
+     children: [
       for (var i = 0; i < 10; i++)
-        LimitedBox(
-          maxHeight: 200,
-          maxWidth: 200,
-          child: Container(
-              margin: EdgeInsets.all(1),
-              decoration: BoxDecoration(color: Colors.white)),
-        )
+       LimitedBox(
+        maxHeight: 200,
+        maxWidth: 200,
+        child: Container(
+         margin: EdgeInsets.all(1),
+         decoration: BoxDecoration(color: Colors.white)),
+      )
     ]
 
 O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagems a seguir ilustram como o exemplo irá se comportar:
@@ -1724,16 +1726,18 @@ Define o espaçamento vertical e horizontalmente:
 Define um espaçamento único para cada direção:
 
     Container(
-       height: 90,
-       width: 200,
-       color: Colors.yellow,
-       margin: EdgeInsets.all(10),
-       padding: EdgeInsets.fromLTRB(10, 30, 50, 90),
-       child: Container(
-         color: Colors.orange,
-         alignment: Alignment.center,
-         child: Text('Symmetric', style: TextStyle(fontSize: 20)),
-       )),
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.fromLTRB(10, 30, 50, 90),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('Symmetric', style: TextStyle(fontSize: 20)),
+     )
+    ),
+
 
 Cada definição aceita números inteiros e decimais como valor de espaçamento, sendo esses definidos em pixels
 
@@ -1742,6 +1746,7 @@ Cada definição aceita números inteiros e decimais como valor de espaçamento,
 
 
 O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
+
 
     SizedBox(
         width: 300.0,
@@ -1763,6 +1768,7 @@ O Widget Transform aplica uma série de efeitos sobre seu child antes da renderi
 
 Principal constructor da classe, cuja principal propriedade é a transform e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
 
+
     Transform(
        transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
        child: Container(
@@ -1771,6 +1777,7 @@ Principal constructor da classe, cuja principal propriedade é a transform e est
          color: Colors.white,
        ),
      )
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121811712-96331900-cc3b-11eb-9f44-9a9f0cb5c112.png">
@@ -1782,6 +1789,7 @@ Principal constructor da classe, cuja principal propriedade é a transform e est
 
 O rotate, cuja principal propriedade é o angle, recebe um ângulo de definição que rotaciona o Widget. O ângulo é dado pela razão entre dois valore ou pelo resultado da operação. A seguir temos um exemplo de uso do Transform.rotate():
 
+
     Transform.rotate(
       angle: 3 / 4, // 45 deg)
       child: Container(
@@ -1790,6 +1798,7 @@ O rotate, cuja principal propriedade é o angle, recebe um ângulo de definiçã
         color: Colors.white,
       ),
     ),
+
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/121811740-aa771600-cc3b-11eb-8daa-778835fed838.png">
@@ -1808,6 +1817,7 @@ Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegaçã
 
 
 O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
+
 
     ListView(
      children: <Widget>[
@@ -1840,6 +1850,7 @@ O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lis
        ))
      ])
 
+
 O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
@@ -1853,6 +1864,7 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 
 O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
 
+
     class MyHomePage extends StatelessWidget {
       final List<String> children = <String>['First', 'Second', 'Third'];
       final List<int> colorCodes = <int>[600, 700, 800];
@@ -1860,26 +1872,26 @@ O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo 
       @override
       Widget build(BuildContext context) {
         return Scaffold(
-            body: Container(
-                height: 1000,
-                width: 500,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(color: Colors.blue[800]),
-                child: ListView.builder(
-                    padding: const EdgeInsets.all(8),
-                    itemCount: children.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Container(
-                        height: 100,
-                        color: Colors.orange[colorCodes[index]],
-                        child: Center(child: Text('${children[index]}')),
-                      );
-                    }
-                  )
-                )
-              );
-            }
+          body: Container(
+            height: 1000,
+            width: 500,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(color: Colors.blue[800]),
+            child: ListView.builder(
+              padding: const EdgeInsets.all(8),
+              itemCount: children.length,
+              itemBuilder: (BuildContext context, int index) {
+               return Container(
+                 height: 100,
+                 color: Colors.orange[colorCodes[index]],
+                 child: Center(child: Text('${children[index]}')),
+               );
+              }
+            ))
+           );
           }
+        }
+
 
 O exemplo acima gera uma lista de três items, estes sendo definidos em um String List, e os valores correspondentes as cores definidos em um List a parte. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a cor correspondente a sua posição equivalente na List colorCodes. A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -1894,6 +1906,7 @@ O exemplo acima gera uma lista de três items, estes sendo definidos em um Strin
 
 Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
 
+
     ListView.separated(
       padding: const EdgeInsets.all(8),
       itemCount: children.length,
@@ -1907,6 +1920,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
       }
     )
 
+
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
 </div>
@@ -1917,19 +1931,20 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
 
 O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo determinar quantos Widgets por eixo transversal a lista irá exibir. É normalmente utilizado o GridView em conjunto com o constructor count. A seguir temos um exemplo de uso do GridView.count():
 
-    GridView.count(
-          crossAxisCount: 4,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text('first'),
-              color: Colors.orange[100],
-            ),
 
-            ...
-            
-          ],
+    GridView.count(
+     crossAxisCount: 4,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          child: Text('first'),
+          color: Colors.orange[100],
         )
+        ...
+        
+      ],
+    )
+    
 
 Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
