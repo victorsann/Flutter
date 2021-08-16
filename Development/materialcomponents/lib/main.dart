@@ -111,6 +111,102 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: const Icon(Icons.add),
+        backgroundColor: Colors.red,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 20),
+              child: DropdownButton<String>(
+               hint: Text('DropdownButton'),
+               icon: const Icon(Icons.arrow_drop_down),
+               iconSize: 24,
+               elevation: 16,
+               style: const TextStyle(color: Colors.deepPurple),
+               underline: null,
+               onChanged: (_) {},
+               items: <String>['One', 'Two', 'Free', 'Four'].map<DropdownMenuItem<String>>((String value) {
+                 return DropdownMenuItem<String>(
+                   value: value,
+                   child: Text(value),
+                 );
+               }).toList(),
+              )
+             ),
+             Container(
+               child: Column(
+                 children: [
+                  ElevatedButton(
+                   onPressed: null,
+                   child: Text('ElevatedButton'),
+                  ),
+                  ElevatedButton(
+                   onPressed: () {},
+                   child: Text('ElevatedButton'),
+                  ),
+                 ],
+               ),
+             ),
+             Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                 IconButton(
+                   color: Colors.pink,
+                   icon: Icon(Icons.favorite),
+                   onPressed: () {},
+                 ),
+                 IconButton(
+                  color: Colors.blue,
+                  icon: Icon(Icons.cancel),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  color: Colors.black,
+                  icon: Icon(Icons.add),
+                  onPressed: () {},
+                )
+               ],
+              ),
+            ),
+            Container(
+              child: OutlinedButton(
+               onPressed: () {},
+               child: const Text('OutlinedButton'),
+             ),
+            ),
+            Container(
+              margin: EdgeInsets.only(bottom: 20),
+              child: Column(  
+                children: [
+                 TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: null,
+                  child: const Text('Disabled'),
+                ),
+                const SizedBox(height: 30),
+                TextButton(
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(fontSize: 20),
+                  ),
+                  onPressed: () {},
+                  child: const Text('Enabled'),
+                 )
+               ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }

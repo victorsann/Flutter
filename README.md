@@ -601,8 +601,10 @@ O Drawer, assim como a body property, pode conter basicamente qualquer Widget do
 <h2>BottomNavigationBar</h2>
 
 
-Um widget de material que é exibido na parte inferior de um aplicativo para selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos um exemplo de uso da BottomNavigationBar:
+Um <b><i>BottomNavigationBar</i></b> é um widget de navegação exibido na parte inferior da tela, onde é possível  selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos há um exemplo de uso da BottomNavigationBar:
 
+
+    ...
 
     class MyBottomNavigationBar extends StatefulWidget {
       @override
@@ -678,20 +680,70 @@ Os principais atributos da BottomNavigationBar são:
 <h2>Buttons</h2>
 
 
-<h2>ElevatedButtons</h2>
+<h3>DropdownButton</h3>
 
 
-Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
+O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número definido de opções, podendo ter resultados distintos a cada opção selecionada. A seguir há um exemplo de uso do DropdownButton:
+
+
+    DropdownButton<String>(
+      hint: Text('DropdownButton'),
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: null,
+      onChanged: (_) {},
+      items: <String>['One', 'Two', 'Free', 'Four'].map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    )
+
+
+O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada), um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h3>FloatingActionButton</h3>
+
+
+Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no canto inferior direito da tela. Ele provê uma ação primária dentro da aplicação. Também é uma propriedade do Scaffold e é bastante associado a ele. A seguir há um exemplo de uso do FloatingActionButton:
+
+
+    Scaffold(
+     
+     ...
+ 
+     floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: const Icon(Icons.navigation),
+        backgroundColor: Colors.green,
+      )
+    )
+
+
+<h3>ElevatedButtons</h3>
+
+
+Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
+
 
     Column(
       children: <Widget>[
         ElevatedButton(
-        style: ButtonStyle( ... ),
         onPressed: null,
         child: Text('ElevatedButton'),
        ),
         ElevatedButton(
-        style: ButtonStyle( ... ),
         onPressed: () {},
         child: Text('ElevatedButton'),
        )
@@ -699,8 +751,10 @@ Um ElevatedButton é um rótulo child exibido em um Material Widget cujo Materia
     )
 
 
+A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
+
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121429593-78b93300-c94d-11eb-9709-493825aa44d8.png">
+  <img src="">
 </div>
 
 Apesar de não ser a única definição de button disponibilizada pelo MaterialApp, o Widget ElevatedButton é bastante utilizado. A seguir estão alguns dos atributos aceitos por ele:
@@ -709,6 +763,95 @@ Apesar de não ser a única definição de button disponibilizada pelo MaterialA
 * <strong>child</strong> - Elemento cintido dentro do ElevaitedButton, seja um texto ou icon
 * <strong>onPressed</strong> - Define uma chamada quando o botão é clicado
 * <strong>onLongPressed</strong> - Define uma chamda quando o botão é precionado por muito tempo
+
+
+<h3>IconButton</h3>
+
+
+Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que reage ao toque, possuindo um efeito associado a uma cor como reação padrão. A seguir temos alguns exemplos de uso do IconButton:
+
+
+    Container(
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+        IconButton(
+          color: Colors.pink,
+          icon: Icon(Icons.favorite),
+          onPressed: () {},
+        ),
+        IconButton(
+         color: Colors.blue,
+         icon: Icon(Icons.cancel),
+         onPressed: () {},
+       ),
+       IconButton(
+         color: Colors.black,
+         icon: Icon(Icons.add),
+         onPressed: () {},
+       )
+     ]),
+    )
+
+Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h3>OutlinedButton</h3>
+
+
+Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferença de possuir uma borda por padrão. Um OutlinedButton possui actions importantes, mas não são a uma primary action em um app. A seguir há um exemplo de uso de um OutlinedButton:
+
+
+    Container(
+      child: OutlinedButton(
+       onPressed: () {},
+       child: const Text('OutlinedButton'),
+     ),
+    )
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h3>TextButton</h3>
+
+
+Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Normalmente é utilizado em dialogs, em um inline ou em qualquer como parte de um Widget que não dispõe de muito espaço disponível. A seguir há alguns exemplos de uso do TextButton:
+
+
+    Container(
+     child: Column(  
+       children: [
+        TextButton(
+         style: TextButton.styleFrom(
+           textStyle: const TextStyle(fontSize: 20),
+         ),
+         onPressed: null,
+         child: const Text('Disabled'),
+       ),
+       const SizedBox(height: 30),
+       TextButton(
+         style: TextButton.styleFrom(
+           textStyle: const TextStyle(fontSize: 20),
+         ),
+         onPressed: () {},
+         child: const Text('Enabled'),
+        )
+      ]),
+    )
+
+Um TextButton é bastante parecido com os demais tipos, onde também é possível desabilitá-lo atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
 
 
 <h2>Container</h2>
