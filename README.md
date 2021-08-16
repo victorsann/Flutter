@@ -507,7 +507,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/126220250-929ef219-8699-4449-b157-12fe5a6f99aa.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129609463-94f9cfbb-1925-4866-a128-425d059da2b8.png">
 </div>
 
 
