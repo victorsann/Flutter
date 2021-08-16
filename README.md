@@ -583,7 +583,7 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/129577941-4f086aa0-85bf-4740-994d-645b16998694.png">
 </div>
 
 
