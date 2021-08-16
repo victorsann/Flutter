@@ -795,7 +795,7 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
        )
      ]),
     )
-    
+
 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
@@ -1955,19 +1955,18 @@ Os elementos children do GridView são alinhados de acordo com o valor int de el
 Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
 
     GridView.count(
-          crossAxisCount: 4,
-          mainAxisSpacing: 20.0,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text('first'),
-              color: Colors.orange[100],
-            ),
-
-            ...
-            
-          ],
-        )
+      crossAxisCount: 4,
+      mainAxisSpacing: 20.0,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          child: Text('first'),
+          color: Colors.orange[100],
+        ),
+        ...
+        
+      ],
+    )
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818644-d8218680-cc5e-11eb-9e07-bb7b760e4545.png">
@@ -1976,19 +1975,18 @@ Também é possível definir um espaçamento padrão para cada eixo. O espaçame
 O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
 
      GridView.count(
-          crossAxisCount: 4,
-          crossAxisSpacing: 20.0,
-          children: <Widget>[
-            Container(
-              alignment: Alignment.center,
-              child: Text('first'),
-              color: Colors.orange[100],
-            ),
-
-            ...
-            
-          ],
-        )
+       crossAxisCount: 4,
+       crossAxisSpacing: 20.0,
+       children: <Widget>[
+         Container(
+           alignment: Alignment.center,
+           child: Text('first'),
+           color: Colors.orange[100],
+         ),
+         ...
+         
+       ],
+     )
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818847-28e5af00-cc60-11eb-8730-92d04cfbc3be.png">
@@ -2010,30 +2008,29 @@ O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste 
     class MyHomePage extends StatelessWidget {
       @override
       Widget build(BuildContext context) {
-        final PageController controller = PageController(initialPage: 0);
-        return PageView(
-          scrollDirection: Axis.horizontal,
-          controller: controller,
-          children: <Widget>[
-            Container(
-              color: Colors.blue[700],
-              alignment: Alignment.center,
-              child: Text('First Page'),
-            ),
-            Container(
-              color: Colors.blue[800],
-              alignment: Alignment.center,
-              child: Text('Second Page'),
-            ),
-            Container(
-              color: Colors.blue[900],
-              alignment: Alignment.center,
-              child: Text('Third Page'),
-            )
-          ],
-        );
-      }
-    }
+       final PageController controller = PageController(initialPage: 0);
+       return PageView(
+         scrollDirection: Axis.horizontal,
+         controller: controller,
+         children: <Widget>[
+           Container(
+             color: Colors.blue[700],
+             alignment: Alignment.center,
+             child: Text('First Page'),
+           ),
+           Container(
+             color: Colors.blue[800],
+             alignment: Alignment.center,
+             child: Text('Second Page'),
+           ),
+           Container(
+             color: Colors.blue[900],
+             alignment: Alignment.center,
+             child: Text('Third Page'),
+           )
+         ]);
+       }
+     }
 
 
 Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padrão, neste caso sendo retornado pela principal classe da main.dart file. Também é importante observar o PageController(initialPage: 0);, que trata de aplicar a posição que dever ser exibida primeiro. A imagem a seguir ilustra como o exemplo acima irá se comportar:
