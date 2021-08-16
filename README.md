@@ -1810,29 +1810,35 @@ Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegaçã
 O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
 
     ListView(
-       children: <Widget>[
-         Container(
-             height: 100,
-             color: Colors.orange[500],
-             alignment: Alignment.center,
-             child: Text('Child', style: TextStyle(fontSize: 20))),
-         Container(
-             height: 100,
-             color: Colors.orange[600],
-             alignment: Alignment.center,
-             child: Text('Child', style: TextStyle(fontSize: 20))),
-         Container(
-             height: 100,
-             color: Colors.orange[700],
-             alignment: Alignment.center,
-             child: Text('Child', style: TextStyle(fontSize: 20))),
-         Container(
-             height: 100,
-             color: Colors.orange[800],
-             alignment: Alignment.center,
-             child: Text('Child', style: TextStyle(fontSize: 20)))
-       ],
-     )
+     children: <Widget>[
+       Container(
+         height: 100,
+         color: Colors.orange[500],
+         alignment: Alignment.center,
+         child: Text('Child', style: TextStyle(fontSize: 20)
+        )
+       ),
+       Container(
+         height: 100,
+         color: Colors.orange[600],
+         alignment: Alignment.center,
+         child: Text('Child', style: TextStyle(fontSize: 20)
+        )
+       ),
+       Container(
+         height: 100,
+         color: Colors.orange[700],
+         alignment: Alignment.center,
+         child: Text('Child', style: TextStyle(fontSize: 20)
+        )
+       ),
+       Container(
+        height: 100,
+        color: Colors.orange[800],
+        alignment: Alignment.center,
+        child: Text('Child', style: TextStyle(fontSize: 20)
+       ))
+     ])
 
 O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
 
