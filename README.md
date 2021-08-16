@@ -530,7 +530,7 @@ O <b><i>body</i></b> é o principal conteúdo de um Scaffold, pondendo ser basic
 <h2>Drawer</h2>
 
 
-O <b><i>Drawer</i></b> é um painel exibido na lateral do body, bastante comum em aplicações mobile. É ativado, na maioria das vezes, pela ação de drag da esquerda para a direita ou da direita para a esquerda no body, ou por um menu button na AppBar. Também é associado a opções de navegação ou a um menu de opções que surge com a diminuição da escala dos aparelhos. A seguir temos um exemplo de uso do Drawer:
+O <b><i>Drawer</i></b> é um painel exibido na lateral do body e é bastante comum em aplicações mobile. É ativado, na maioria das vezes, pela ação de drag da esquerda para a direita ou da direita para a esquerda no body, ou por um menu button na AppBar. Também é associado a opções de navegação ou a um menu de opções que surge com a diminuição da escala dos aparelhos. A seguir temos um exemplo de uso do Drawer:
 
     ...
     
@@ -583,7 +583,7 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129577392-a74b1175-57ed-4afb-9371-34d8b03cb065.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129577941-4f086aa0-85bf-4740-994d-645b16998694.png">
 </div>
 
 
