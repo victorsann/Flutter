@@ -1,6 +1,6 @@
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120003533-38040600-bfac-11eb-9ead-49cf1dc50c62.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129893950-22b6828d-88e8-4243-b818-69cff755111b.png">
 </div>
 <br>
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
@@ -2235,46 +2235,42 @@ A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo p
     
       @override
       Widget build(BuildContext context) {
-        return Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  height: 100,
-                  width: 300,
-                  padding: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(color: Colors.black),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          IconButton(
-                              color: Colors.pink,
-                              onPressed: () {
-                                setState(() {
-                                  _favorite++;
-                                });
-                              },
-                              icon: Icon(
-                                Icons.favorite,
-                                size: 40.0,
-                              )),
-                          Text(
-                            '$_favorite',
-                            style: TextStyle(color: Colors.pink),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
+       return Scaffold(
+        body: Center(
+         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+          Container(
+           height: 100,
+           width: 300,
+           padding: EdgeInsets.all(20),
+           alignment: Alignment.center,
+           decoration: BoxDecoration(color: Colors.black),
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: <Widget>[
+              Row(
+               children: <Widget>[
+                 IconButton(
+                  color: Colors.pink,
+                  onPressed: () {
+                    setState(() {
+                      _favorite++;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 40.0,
+                  )),
+                 Text(
+                  '$_favorite',
+                  style: TextStyle(color: Colors.pink),
+                 )
+               ])
+             ]),
+            )
+          ]),
+        ));
       }
     }
 
