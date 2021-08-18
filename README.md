@@ -96,24 +96,23 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 #Markdown
 
 - [x] Android SDK Build-Tools 31-rc4
-- [ ]
-- [x]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [x]
-- [ ]
-- [x]
-- [ ]
-- [ ]
-- [ ]
-- [x]
-- [x]
-- [ ]
-- [x]
-- [ ]
-- [ ]
+- [ ] NDK (Side by side)
+- [x] Android SDK Command-line Tools (latest)
+- [ ] CMake
+- [ ] Android Auto API Simulators
+- [ ] Android Auto Desktop Head Unit Emulator
+- [x] Android Emulator
+- [ ] Android Emulator Hypervisor Driver for AMD Processors (installer)
+- [x] Android SDK Platform-Tools
+- [ ] Google Play APK Expansion library
+- [ ] Google Play Instant Development SDK
+- [ ] Google Play Licensing Library
+- [x] Google Play services 
+- [x] Google USB Driver
+- [ ] Google Web Driver
+- [x] Intel x86 Emulator Accelerator (HAXM installer)
+- [ ] Layout Inspector image server for API 29-30
+- [ ] Layout Inspector image server for API S
 
 <h2>Flutter Plugin</h2>
 
