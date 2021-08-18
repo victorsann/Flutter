@@ -760,7 +760,7 @@ A imagem a seguir ilustra o como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129611402-7edd1d60-f5d6-4b56-a420-e13cce1b9ee7.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129896922-31a74c99-9a84-4be2-9be2-29da9cce1d56.png">
 </div>
 
 
@@ -787,7 +787,7 @@ Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widge
 A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129608336-7ec18571-a507-4eb7-9664-aa98e7d9aa0d.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129897067-cb75d437-f953-4b50-a620-89bbd718c255.png">
 </div>
 
 
@@ -823,7 +823,7 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129608463-64e97bac-75b4-4581-a547-b55dbdb82c96.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129897182-bc55468f-e3f5-43f4-90be-4a7551ab4b2d.png">
 </div>
 
 
@@ -842,7 +842,7 @@ Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferen
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129608775-c0789ff6-290f-4270-8b66-43b697b32a07.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129897309-77feff48-1ee2-437a-ba20-e7c84bdecbf6.png">
 </div>
 
 
@@ -878,7 +878,7 @@ Um TextButton é bastante parecido com os demais tipos, onde também é possíve
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129608831-5aa7fb6b-e8ec-4442-88a3-b9fc2abf2463.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129897444-7a982a92-a335-42b6-8ee4-6238ed66c46c.png">
 </div>
 
 
