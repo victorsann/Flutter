@@ -93,8 +93,6 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
   <img src="https://user-images.githubusercontent.com/61476935/120892355-41acef80-c5e4-11eb-9a47-2e9468d74e65.png">
 </div> -->
 
-#Markdown
-
 - [x] Android SDK Build-Tools 31-rc4
 - [ ] NDK (Side by side)
 - [x] Android SDK Command-line Tools (latest)
@@ -113,6 +111,7 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 - [x] Intel x86 Emulator Accelerator (HAXM installer)
 - [ ] Layout Inspector image server for API 29-30
 - [ ] Layout Inspector image server for API S
+
 
 <h2>Flutter Plugin</h2>
 
@@ -603,7 +602,7 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129577941-4f086aa0-85bf-4740-994d-645b16998694.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129896131-839434aa-a118-499b-b93c-c6e9ef787f94.png">
 </div>
 
 
@@ -611,7 +610,7 @@ O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129577496-111c6648-93d8-4d71-9deb-91621e8a8463.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129896245-ac303563-615d-4d86-912c-916fbd007181.png">
 </div>
 
 
@@ -684,7 +683,7 @@ O exemplo acima consiste na definição básica de uso de uma BottomNavigationBa
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/126219865-efd7587e-e51c-413e-80ac-755fdbc74051.png">
+  <img src="https://user-images.githubusercontent.com/61476935/129896372-7901691e-3c83-4ea8-ae11-de52ed4b20c2.png">
 </div>
 
 
@@ -729,8 +728,12 @@ O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número d
 O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada)a um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
-<div align="center">
+<!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/129608258-d4388c13-9b15-4140-b9b2-54d8349d49ac.png">
+</div> -->
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129896685-d641d11b-1ca0-46ee-a810-aaa1ac2b48da.png">
 </div>
 
 
