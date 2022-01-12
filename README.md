@@ -39,7 +39,7 @@ Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sis
     Nome da Variável: FLUTTER_HOME
     Valor da Variável: C:\src\flutter
 
-A variável criada serve como um caminho padrão de acesso aos recursos Flutter, como por exemplo a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha:
+A variável criada serve como um caminho padrão de acesso aos recursos Flutter, como por exemplo, a pasta bin. A declaração de um path irá definir o acesso a esta pasta em específico. Ainda nas variáveis de ambiente do Windows, e em Path, selecione a opção editar e adicione a seguinte linha:
 
     %FLUTTER_HOME%\bin
 
@@ -75,7 +75,7 @@ Tendo o Flutter instalado, agora é preciso preparar o ambiente de desenvolvimen
 <h2>Android Studio</h2>
 
 
-O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento, devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta:
+O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo que será visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta:
 
 
 <h2>SDK Platforms</h2>
@@ -126,17 +126,17 @@ A instalação de plugins torna muito mais viável a compilação e desenvolvime
 <h2>Atualizando Path II</h2>
 
 
-Como dito anteriormente, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja replicado. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
+Como dito anteriormente, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja seguido. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
 
 - Torne a acessar o menu SDK Manager
 - Copie o caminho correspondente ao Android SDK Location
 
-Após isso, será criada uma nova variável de ambiente, específica para o acesso às SDK Tools
+Após isso, será criada uma nova variável de ambiente, específica para o acesso às SDK Tools:
 
     Nome da Variável: ANDROID_HOME
     Valor da Variável: Android SDK Location (C:\...\...)
 
-Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de ambiente. Dessa vez correspondentes a variável ANDROID_HOME há pouco criada:
+Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas atualizações no path das variáveis de ambiente. Dessa vez correspondentes a variável ANDROID_HOME, há pouco criada:
 
     %ANDROID_HOME%\tools\bin
     
@@ -159,7 +159,7 @@ Qualquer aplicação android depende essencialmente de um Java Development Kit o
 <h2>Chocolatey</h2>
 
 
-O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. Para instalá-lo execute o PowerShell como administrador e efetue o seguinte comando:
+O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. Para instalá-lo, execute o PowerShell como administrador e efetue o seguinte comando:
 
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]     ::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
@@ -167,7 +167,7 @@ Para verificar a instalação execute:
 
     choco --version
   
-Tendo a versão retornada é possível confirmar a instalação. Em seguida, instale o jdk com o seguinte comando: 
+Tendo a versão retornada, confirma-se a instalação. Em seguida, instale o jdk com o seguinte comando: 
 
     choco install jdk8 
 
@@ -221,7 +221,7 @@ A primeira opção define que o aparelho não irá se desligar enquanto a aplica
 <h2>VSCode</h2>
 
 
-Assim como o Android Studio, o VSCode possibilida a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir:
+Assim como o Android Studio, o VSCode possibilita a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir:
 
 
 <h2>Plugins</h2>
@@ -390,7 +390,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. 
 
-Após executar o android device, vá até a pasta lib dos arquivos do projeto e execute o projeto com F5. O resultado é o seguinte:
+Após executar o android device, vá até a main file e execute o projeto com F5. O resultado é o seguinte:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
@@ -2355,7 +2355,7 @@ Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as m
     flutter packages get  
 
 
-Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criarmos o exemplo observe os passos a seguir:
+Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criarmos o exemplo, observe os passos a seguir:
 
 Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
 
@@ -2468,7 +2468,7 @@ Os observables representam o reactive-state da aplicação. Eles são responsáv
     var counter = Observable(0);
 
 
-O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual é incrementado
+O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual é incrementado.
 
 
 <h2>Reactions</h2>
@@ -2709,7 +2709,7 @@ Por fim, faremos a chamada de um print, tendo um resultado semelhante ao do auto
 <h2>MobX Computed Observables</h2>
 
 
-Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
+Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName, por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
 
 Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. A seguir temos um exemplo de declaração do Computed Observable:
 
@@ -3623,7 +3623,7 @@ Cria um novo repository com o comando slidy generate repository:
     slidy g r manager/product/repositories/product
 
 
-<h2>Controller Manager</h2>
+<!-- <h2>Controller Manager</h2>
 
 
 Como já foi dito, a estrutura modular conta com a preseça do MobX e seus controllers. Portanto, o slidy também conta com uma automatização do porcesso que gera os códigos responsáveis por gerenciar os states da aplicação. Para isso, usa-se o comando:
@@ -3632,13 +3632,13 @@ Como já foi dito, a estrutura modular conta com a preseça do MobX e seus contr
     slidy run mobx_build_clean
 
 
-Ele é responsável por verificar todos os módulos do projeto, detectando modificações na controller.dart file e as aplicando na controller.g.dart.
+Ele é responsável por verificar todos os módulos do projeto, detectando modificações na controller.dart file e as aplicando na controller.g.dart. -->
 
 
 <h2>Repository Pattern</h2>
 
 
-O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o cosumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Services possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
+O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o consumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Service possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
 
 O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http, dio, além de outras como http_parser, http_cliente etc.
 
