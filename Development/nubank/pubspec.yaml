@@ -17,17 +17,45 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
+# Slidy Scripts
+vars: 
+    clean: flutter clean
+    get: flutter pub get
+    runner: flutter pub run build_runner
+scripts: 
+    mobx_build: $runner build
+    mobx_watch: $clean & $get & $runner watch
+    mobx_build_clean: $clean & $get & $runner build --delete-conflicting-outputs
+
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  flutter_modular: ^4.0.0+7
+  mobx: ^2.0.4
+  mobx_codegen: ^2.0.0
+  flutter_mobx: ^2.0.0
+  build_runner: ^1.12.2
+  flutter_native_splash: ^1.2.3
+  flutter_launcher_icons: ^0.9.2
+  shimmer: ^2.0.0
+  flutter_svg: ^0.22.0
+  intl: ^0.17.0
+  auto_size_text: ^3.0.0
+  
+flutter_native_splash:
+  color: "#830AD1"
+  image: "lib/assets/logo_nubank.png"
+  android: true
+
+flutter_icons:
+  image_path: "lib/assets/nubank-logo-icon.png"
+  android: "louncher_icon"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "lib/assets/nubank-logo-icon.png"
 
 dev_dependencies:
   flutter_test:
@@ -46,8 +74,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-   - assets/images/
-   - assets/icons/
+    - lib/assets/icons/
+    - lib/assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,20 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nubank/constants.dart';
-import 'package:nubank/screens/home-screen/main.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:nubank/app/app_module.dart';
+import 'package:nubank/app/app_widget.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Nubank',
-      theme: ThemeData(
-          primaryColor: NprimaryColor, scaffoldBackgroundColor: NprimaryColor),
-      home: HomeScrren(),
-    );
-  }
+  runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }
