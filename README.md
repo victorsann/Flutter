@@ -6,7 +6,7 @@
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
 
-O Flutter é um conjunto de ferramentas para o desenvolvimento de User Interfaces(Ui), criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
+O Flutter é um conjunto de ferramentas para o desenvolvimento de interfaces de usuário, criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
 Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, e um código fonte único.
 
@@ -22,7 +22,7 @@ Outras características do Flutter são:
 <h2>Instalação</h2>
 
 
-Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, porém, há formas mais recomendadas que evitam um maior número de erros durante a execução; os passos aqui descritos são os mais recomendados pela documentação e comunidade Flutter. Para instalar e usar o Flutter, é preciso seguir alguns passos:
+Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, que variam de acordo com sistema operacional. A descrição a seguir mostra o processo de instalação no Windows:
 
 - Crie uma pasta src no disco local da sua máquina
 - Acesse [Flutter.dev](https://flutter.dev/docs/get-started/install/windows) e copie o Flutter repo Link
@@ -113,14 +113,14 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 - [ ] Layout Inspector image server for API S
 
 
-<h2>Flutter Plugin</h2>
+<!-- <h2>Flutter Plugin</h2>
 
 
 A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120892754-2fcc4c00-c5e6-11eb-9d3e-c5cff646e9f7.png">
-</div>
+</div> -->
 
 
 <h2>Atualizando Path II</h2>
@@ -215,7 +215,7 @@ Em seguida é possível ter acesso as configurações de desenvolvedor no dispos
 - Permanecer Ativo
 - Depuração USB
 
-A primeira opção define que o aparelho não irá se desligar enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código será feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real.
+A primeira opção define que o aparelho não irá bloquear a tela enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código pode ser feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real.
 
 
 <h2>VSCode</h2>
@@ -376,7 +376,7 @@ A estrutura padão no main.dar consiste em:
 <h2>Executando no Emulador</h2>
 
 
-Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em um dipositivo real. O primeiro passo é executar o emulador definido nas configurações do ambiente android. Como foi já foi mostrado, é possível executar o emulador através da linha de comando, o que acaba sendo custoso em tempo; além de existirem meios mais simples de efetuar a inicialização. Para tal, o VSCode permite executar qualquer device no ambinte de desenvolvimento da seguinte forma:
+Como foi dito anteriormente, agora veremos o processo de execução do projeto tanto no emulador quanto em um dipositivo real. O primeiro passo é executar o emulador definido nas configurações do ambiente android. Como já foi mostrado, é possível executar o emulador através da linha de comando, não sendo a única forma:
 
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
@@ -390,7 +390,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. 
 
-Após executar o android device, vá até a main file e execute o projeto com F5. O resultado é o seguinte:
+Após executar o android device, vá até a main file e execute o projeto com ```F5```. O resultado é o seguinte:
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
@@ -404,7 +404,7 @@ Um app padão é executado como resposta, sendo possível customizá-lo e ver o 
 <h2>Executando no Dispositivo Real</h2>
 
 
-O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, e assim podendo acessá-lo no menu de Devices de forma imediata: 
+O processo de execução da app em um dispositivo real é semelhante ao anteriomente descrito. Somente diferenciando na necessidade de conectar o aparelho via cabo USB, para asssim poder acessá-lo no menu de Devices de forma imediata: 
 
 <br>
 
@@ -442,7 +442,7 @@ No terminal, execute os comandos a seguir:
 </div>
 
 
-O próximo passso é acessar seu smartphone e verificar o endereço de IP correspondente ao roteador ou modem WI-FI que cria a sua rede. Em seguida execute o comando a seguir:
+O próximo passso é acessar seu smartphone e verificar o endereço de IP correspondente ao roteador ou modem WI-FI da sua rede. Em seguida, execute o comando abaixo:
 
 
     adb connect 000.000.0.000:5555
@@ -468,13 +468,13 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 <h2>Widgets</h2>
 
 
-Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
+Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas, quase sempre retornando um outro Widget. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
 <h2>Material Components</h2>
 
 
-Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes esssa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes essa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
 
 
 <h2>Scaffold</h2>
@@ -1586,9 +1586,11 @@ Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitand
         maxWidth: 200,
         child: Container(
          margin: EdgeInsets.all(1),
-         decoration: BoxDecoration(color: Colors.white)),
-      )
-    ]
+         decoration: BoxDecoration(color: Colors.white),
+       ),
+      ),
+     ],
+    )
 
 O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagems a seguir ilustram como o exemplo irá se comportar:
 
