@@ -383,7 +383,7 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120896193-dddff200-c5f6-11eb-88d3-7977f0806e41.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
 </div>
 
 <br>
@@ -526,7 +526,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129609463-94f9cfbb-1925-4866-a128-425d059da2b8.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175196-4ccda1c1-f433-4c4d-9866-7020438fb3ca.png">
 </div>
 
 
@@ -602,7 +602,7 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129896131-839434aa-a118-499b-b93c-c6e9ef787f94.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175361-75c2db92-2cc0-4d83-b75b-51623fb73038.gif">
 </div>
 
 
@@ -683,7 +683,7 @@ O exemplo acima consiste na definição básica de uso de uma BottomNavigationBa
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129896372-7901691e-3c83-4ea8-ae11-de52ed4b20c2.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175551-1bad26fc-0843-4b9e-b4ca-a9c8da390154.gif">
 </div>
 
 
@@ -733,7 +733,7 @@ O DropdownButton possui definições variadas, desde um hint(que identifica o bo
 </div> -->
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129896685-d641d11b-1ca0-46ee-a810-aaa1ac2b48da.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175734-12f6c969-866e-440c-82af-e27da68b192a.gif">
 </div>
 
 
@@ -760,7 +760,7 @@ A imagem a seguir ilustra o como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129896922-31a74c99-9a84-4be2-9be2-29da9cce1d56.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175824-76c7042e-18c3-485f-b691-97aafaf66a4b.gif">
 </div>
 
 
@@ -787,7 +787,7 @@ Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widge
 A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129897067-cb75d437-f953-4b50-a620-89bbd718c255.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151175944-1800451f-7281-4cd0-91fd-06bd082c2086.gif">
 </div>
 
 
@@ -823,7 +823,7 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129897182-bc55468f-e3f5-43f4-90be-4a7551ab4b2d.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151176007-da33e554-19cf-48af-a903-18df41b3b03f.gif">
 </div>
 
 
@@ -842,7 +842,7 @@ Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferen
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129897309-77feff48-1ee2-437a-ba20-e7c84bdecbf6.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151176099-8c8c48b6-5e32-4291-8a8e-76074aa0e44f.gif">
 </div>
 
 
@@ -878,7 +878,7 @@ Um TextButton é bastante parecido com os demais tipos, onde também é possíve
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129897444-7a982a92-a335-42b6-8ee4-6238ed66c46c.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151176882-488a146f-b67a-4c95-beb7-7ed341dd1ce4.gif">
 </div>
 
 
@@ -1880,7 +1880,7 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121813717-ad760480-cc43-11eb-83ba-2cc9214680c4.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151177205-d5f2cd4b-3ba7-4cb6-97e9-c9b24602fce8.gif">
 </div>
 
 
@@ -1974,7 +1974,7 @@ O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo 
 Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818118-a955e100-cc5b-11eb-9c6f-f73cddebccbc.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151177391-48cbad0d-33b5-41b7-afc6-1db2df87172c.gif">
 </div>
 
 Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
@@ -2063,9 +2063,7 @@ Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padr
 <br>
 
 <div align="center">
-  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820950-f5a91d00-cc6b-11eb-9dc8-efce54a64b9b.png">
-  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820575-09ec1a80-cc6a-11eb-9358-fec289c9cb05.png">
-  <img width="28%" src="https://user-images.githubusercontent.com/61476935/121820683-9bf42300-cc6a-11eb-91f8-c957d3266887.png">
+  <img src="https://user-images.githubusercontent.com/61476935/151177649-48069171-1659-4f87-ad36-db7f49339849.gif">
 </div>
 
 <br>
