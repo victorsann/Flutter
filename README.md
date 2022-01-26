@@ -380,20 +380,14 @@ Como foi dito anteriormente, agora veremos o processo de execução do projeto t
 
 - Na lista de ferramentas executáveis do VSCode é possível acessar o menu de Devices
 
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
-</div>
-
-<br>
-
 Nele é possível acessar o emulador anteriomente instalado e configurado, sendo possível identificar o AVD Name, tambem já mencionado. Além disso, também estão o Chrome, o Edge, e também há a opção de criação de uma novo emulador. 
 
 Após executar o android device, vá até a main file e execute o projeto com ```F5```. O resultado é o seguinte:
 
+<br>
+
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120896767-48922d00-c5f9-11eb-82f6-dbc288132c1e.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
 </div>
 
 <br>
@@ -409,7 +403,7 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 <br>
 
 <div align="center">
-  <img width="70%" src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
+  <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
 </div>
 
 <br>
