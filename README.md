@@ -409,7 +409,7 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
+  <img width="70%" src="https://user-images.githubusercontent.com/61476935/120897316-d4a55400-c5fb-11eb-8e3f-e93e9b0c9ee8.png">
 </div>
 
 <br>
