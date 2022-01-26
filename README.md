@@ -520,7 +520,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175196-4ccda1c1-f433-4c4d-9866-7020438fb3ca.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175196-4ccda1c1-f433-4c4d-9866-7020438fb3ca.png">
 </div>
 
 
@@ -596,17 +596,11 @@ O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um App
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175361-75c2db92-2cc0-4d83-b75b-51623fb73038.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175361-75c2db92-2cc0-4d83-b75b-51623fb73038.gif">
 </div>
 
 
-O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>. A imagem a seguir mostra como a drag action funciona:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129896245-ac303563-615d-4d86-912c-916fbd007181.png">
-</div>
-
+O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>. 
 
 O Drawer, assim como a body property, pode conter basicamente qualquer Widget do catálogo como child. No exemplo, o Drawer possui um ElevatedButton como child, este sendo reaponsável por chamar o _closeDrawer method, que por sua vez fecha o Drawer.
 
@@ -677,7 +671,7 @@ O exemplo acima consiste na definição básica de uso de uma BottomNavigationBa
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175551-1bad26fc-0843-4b9e-b4ca-a9c8da390154.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175551-1bad26fc-0843-4b9e-b4ca-a9c8da390154.gif">
 </div>
 
 
@@ -722,12 +716,8 @@ O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número d
 O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada)a um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
-<!-- <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129608258-d4388c13-9b15-4140-b9b2-54d8349d49ac.png">
-</div> -->
-
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175734-12f6c969-866e-440c-82af-e27da68b192a.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175734-12f6c969-866e-440c-82af-e27da68b192a.gif">
 </div>
 
 
@@ -754,7 +744,7 @@ A imagem a seguir ilustra o como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175824-76c7042e-18c3-485f-b691-97aafaf66a4b.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175824-76c7042e-18c3-485f-b691-97aafaf66a4b.gif">
 </div>
 
 
@@ -781,7 +771,7 @@ Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widge
 A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151175944-1800451f-7281-4cd0-91fd-06bd082c2086.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175944-1800451f-7281-4cd0-91fd-06bd082c2086.gif">
 </div>
 
 
@@ -817,7 +807,7 @@ Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que 
 Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151176007-da33e554-19cf-48af-a903-18df41b3b03f.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176007-da33e554-19cf-48af-a903-18df41b3b03f.gif">
 </div>
 
 
@@ -836,7 +826,7 @@ Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferen
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151176099-8c8c48b6-5e32-4291-8a8e-76074aa0e44f.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176099-8c8c48b6-5e32-4291-8a8e-76074aa0e44f.gif">
 </div>
 
 
@@ -872,7 +862,7 @@ Um TextButton é bastante parecido com os demais tipos, onde também é possíve
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151176882-488a146f-b67a-4c95-beb7-7ed341dd1ce4.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176882-488a146f-b67a-4c95-beb7-7ed341dd1ce4.gif">
 </div>
 
 
@@ -1567,7 +1557,7 @@ Os principais Factores da classe FractionallySizedBox() são:
 * <strong>widthFactor</strong> - Fator de largura
 
 
-<h2>LimitedBox</h2>
+<!-- <h2>LimitedBox</h2>
 
 
 Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
@@ -1600,7 +1590,7 @@ O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gera
 O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListView, isso é possível graças aos atributos a seguir:
 
 * <strong>maxHeight</strong> - Altura máximo de um child
-* <strong>maxWidth</strong> - Largura máxima de um child
+* <strong>maxWidth</strong> - Largura máxima de um child -->
 
 
 <h2>Padding</h2>
@@ -1837,44 +1827,25 @@ Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegaçã
 
 O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
 
-
     ListView(
-     children: <Widget>[
-       Container(
-         height: 100,
-         color: Colors.orange[500],
-         alignment: Alignment.center,
-         child: Text('Child', style: TextStyle(fontSize: 20)
-        )
+     children: [
+      for (var i = 0; i < 10; i++)
+       LimitedBox(
+        maxHeight: 200,
+        maxWidth: 200,
+        child: Container(
+         margin: EdgeInsets.all(1),
+         decoration: BoxDecoration(color: Colors.white),
        ),
-       Container(
-         height: 100,
-         color: Colors.orange[600],
-         alignment: Alignment.center,
-         child: Text('Child', style: TextStyle(fontSize: 20)
-        )
-       ),
-       Container(
-         height: 100,
-         color: Colors.orange[700],
-         alignment: Alignment.center,
-         child: Text('Child', style: TextStyle(fontSize: 20)
-        )
-       ),
-       Container(
-        height: 100,
-        color: Colors.orange[800],
-        alignment: Alignment.center,
-        child: Text('Child', style: TextStyle(fontSize: 20)
-       ))
-     ])
-
+      ),
+     ],
+    )
 
 O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151177205-d5f2cd4b-3ba7-4cb6-97e9-c9b24602fce8.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177205-d5f2cd4b-3ba7-4cb6-97e9-c9b24602fce8.gif">
 </div>
 
 
@@ -1884,43 +1855,41 @@ O exemplo define uma sequência de Widgets child, cada um oculpando determinado 
 O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
 
 
-    class MyHomePage extends StatelessWidget {
-      final List<String> children = <String>['First', 'Second', 'Third'];
-      final List<int> colorCodes = <int>[600, 700, 800];
-    
+    class _MyHomePageState extends State<MyHomePage> {
+
+     final List<String> children = <String>['First', 'Second', 'Third', 'Four', 'Fifth', 'Sixth'];
+        
       @override
       Widget build(BuildContext context) {
-        return Scaffold(
-          body: Container(
-            height: 1000,
-            width: 500,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(color: Colors.blue[800]),
-            child: ListView.builder(
-              padding: const EdgeInsets.all(8),
-              itemCount: children.length,
-              itemBuilder: (BuildContext context, int index) {
-               return Container(
-                 height: 100,
-                 color: Colors.orange[colorCodes[index]],
-                 child: Center(child: Text('${children[index]}')),
-               );
-              }
-            ))
-           );
-          }
-        }
+       return Scaffold(
+        body: Container(
+          alignment: Alignment.center,
+          child: ListView.builder(
+            itemCount: children.length,
+            itemBuilder: (BuildContext context, int index) {
+             return Container(
+               height: 200,
+               width: 200,
+               margin: EdgeInsets.only(bottom: 1),
+               decoration: BoxDecoration(color: Colors.blue[800]),
+               child: Center(child: Text('${children[index]}'),
+              ),
+            );
+          }),
+        ));
+       }
+     }
 
 
-O exemplo acima gera uma lista de três items, estes sendo definidos em um String List, e os valores correspondentes as cores definidos em um List a parte. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a cor correspondente a sua posição equivalente na List colorCodes. A imagem a seguir ilustra como o exemplo irá se comportar:
+O exemplo acima gera uma lista de seis items, estes sendo definidos em um String List. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a string correspondente a sua posição equivalente na lista children. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121814251-60476200-cc46-11eb-9afd-8f44f8a0b639.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151181779-65d1b9d4-e22f-469e-863a-e5afef762b80.gif">
 </div>
 
 
-<h2>ListView.separated()</h2>
+<!-- <h2>ListView.separated()</h2>
 
 
 Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
@@ -1942,7 +1911,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
-</div>
+</div> -->
 
 
 <h2>GridView</h2>
@@ -1968,7 +1937,7 @@ O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo 
 Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151177391-48cbad0d-33b5-41b7-afc6-1db2df87172c.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177391-48cbad0d-33b5-41b7-afc6-1db2df87172c.gif">
 </div>
 
 Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
@@ -2057,7 +2026,7 @@ Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padr
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/151177649-48069171-1659-4f87-ad36-db7f49339849.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177649-48069171-1659-4f87-ad36-db7f49339849.gif">
 </div>
 
 <br>

@@ -30,50 +30,26 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  @override
-  Widget build(BuildContext context) {
-   final PageController controller = PageController(initialPage: 0);
-   return PageView(
-     scrollDirection: Axis.horizontal,
-     controller: controller,
-     children: <Widget>[
-       Container(
-         color: Colors.blue[700],
+ final List<String> children = <String>['First', 'Second', 'Third', 'Four', 'Fifth', 'Sixth'];
+    
+   @override
+   Widget build(BuildContext context) {
+     return Scaffold(
+       body: Container(
          alignment: Alignment.center,
-         child: Text(
-           'First Page',
-           style: TextStyle(
-            color: Colors.black,
-            fontSize: 25,
-            decoration: TextDecoration.none
-           ),
-         ),
-       ),
-       Container(
-         color: Colors.blue[800],
-         alignment: Alignment.center,
-         child: Text(
-          'Second Page',
-           style: TextStyle(
-            color: Colors.black,
-            fontSize: 25,
-            decoration: TextDecoration.none
-           ),
-         ),
-       ),
-       Container(
-         color: Colors.blue[900],
-         alignment: Alignment.center,
-         child: Text(
-           'Third Page',
-           style: TextStyle(
-            color: Colors.black,
-            fontSize: 25,
-            decoration: TextDecoration.none
-           ),
-         ),
-       ),
-     ],
-   );
-  }
+         child: ListView.builder(
+           itemCount: children.length,
+           itemBuilder: (BuildContext context, int index) {
+            return Container(
+              height: 200,
+              width: 200,
+              margin: EdgeInsets.only(bottom: 1),
+              decoration: BoxDecoration(color: Colors.blue[800]),
+              child: Center(child: Text('${children[index]}')),
+            );
+           }
+         ))
+        );
+       }
+        
 }
