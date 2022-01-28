@@ -465,7 +465,7 @@ Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma bibl
 Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas, quase sempre retornando um outro Widget. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
 
 
-<h2>Material Components</h2>
+<!-- <h2>Material Components</h2>
 
 
 Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes essa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
@@ -1557,7 +1557,7 @@ Os principais Factores da classe FractionallySizedBox() são:
 * <strong>widthFactor</strong> - Fator de largura
 
 
-<!-- <h2>LimitedBox</h2>
+<h2>LimitedBox</h2>
 
 
 Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
@@ -1590,7 +1590,7 @@ O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gera
 O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListView, isso é possível graças aos atributos a seguir:
 
 * <strong>maxHeight</strong> - Altura máximo de um child
-* <strong>maxWidth</strong> - Largura máxima de um child -->
+* <strong>maxWidth</strong> - Largura máxima de um child
 
 
 <h2>Padding</h2>
@@ -1889,7 +1889,7 @@ O exemplo acima gera uma lista de seis items, estes sendo definidos em um String
 </div>
 
 
-<!-- <h2>ListView.separated()</h2>
+<h2>ListView.separated()</h2>
 
 
 Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
@@ -1911,7 +1911,7 @@ Além disso, também é possível tratar o espaçamento entre cada índice da li
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
-</div> -->
+</div>
 
 
 <h2>GridView</h2>
@@ -2041,13 +2041,13 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
         ...
 
       ],
-    );
+    ); -->
 
 
 <h1>Flutter State Management</h1>
 
 
-A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre influencia de formas deversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o State para uma aplicação Flutter:
+A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre influencia de formas diversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o State para uma aplicação Flutter:
 
 
 <div align="center">
@@ -2055,7 +2055,7 @@ A programação reativa gerencia o fluxo de dados e a propagação de mudanças 
 </div>
 
 
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na User Interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados. Perceba também que aqui as informações são atualizadas ou realocada.
+A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados. Perceba também que aqui as informações são atualizadas ou realocadas.
 
 
 <h2>Programação Declarativa</h2>
@@ -2069,13 +2069,13 @@ Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter perm
 </div>
 
 
-Quando o estado do app muda (por exemplo, o usuário ativa um botão na tela de configurações), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI - o estado é alterado e a UI é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui, e com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
+Quando o estado do app muda(o usuário ativa um botão na tela de configurações, por exemplo), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI - o estado é alterado e a UI é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui, e com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
 
 
 <h2>StateLessWidget</h2>
 
 
-Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou seja, características neles declaradas não podem ser alteradas se não manualmente, portanto não possuem um controle ou mesmo definição de State. Os Widgets que não possuem uma definição de estado são utilizados para estruturar a aplicação em partes não afetadas pela mudanço no State. A seguir há um exemplo de declaração de um StateLessWidget:
+StateLessWidget recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State ou padrões da interface. Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de cofgiguração do objeto e do BuildContext, sobre o qual falaremos a seguir:
 
 
     class MeuWidget extends StatelessWidget {
@@ -2086,10 +2086,15 @@ Os Widgets que herdam de uma StateLessWidget são definidos como imutáveis, ou 
     }
 
 
+O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context do widget, que identifica o widget em questão dentro da widget tree, além de carregar o
+
+
 <h2>StatefulWidget</h2>
 
 
-Sendo o oposto dos StatelessWidget, herdam da classe StatefulWidget a mutabilidade do State e são utilizados de forma recorrente em paralelo aos StatelessWidget. Tabém utilizam uma estrutura de classes e métodos específicos para tratar 
+Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. Stateful widgets são usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente.
+
+Sendo o oposto dos StatelessWidget, os Stateful herdam da classe StatefulWidget a mutabilidade do State e são utilizados de forma recorrente em paralelo aos StatelessWidgets. Tabém utilizam uma estrutura de classes e métodos específicos para tratar 
 a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidget:
 
 
