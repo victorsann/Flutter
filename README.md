@@ -449,20 +449,1756 @@ O próximo passso é acessar seu smartphone e verificar o endereço de IP corres
 
 Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
 
+
+<h1>Widgets</h1>
+
+
+Buscando inspiração em ferramentas como o React e o [Material Design](https://material.io/design), o Flutter permite criar interfaces com base em uma estrutura hierarquica de classes Dart chamada de Widget Tree. Um widget descreve como a interface irá se parecer com base em suas configurações, já como ela irá se comportar é definido por seu estado.  
+
+Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar a interface. Como já foi dito, um Widget em si é uma classe, ou conjunto de classes, estas possuindo propriedades próprias capazes de redefinir a informação de diversas formas.
+
+
+<h2>Hello world</h2>
+
+
+A forma mais simples de criar um app flutter é retornar um widget atravez da função ```runApp()```:
+
+
+    void main() {
+      runApp(
+        const Center(
+          child: Text{
+            'Hello, world!',
+            textDirection: TextDirection.ltr,
+          },
+        ),
+      );
+    }
+
+
+A função ```runApp()``` define o widget a ela dado como base para a Widget Tree, fazendo com que ele preencha a totalidade da tela. No caso acima, é definido que o widget <i>Center()</i>, cuja função é alinhar todos os elementos que ele contém no centro do espaço disponível, seja a base para os próximos elementos que irão compor a UI. Dadas as devidas exceções, todos os widgets possuem a propriedade child, a qual retorna um outro widget que irá obedecer as regras definidas pela configuração do seu widget parent. Porém, para entender como a estrutura de uma aplicação Flutter é gerada, precisamos ir um pouco mais a fundo.
+
+No processo de desenvolvimento de um app, você normalmente criará novos widgets que serão subclasses tanto de StatelessWidgets quanto de StatefulWidgets.
+Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essa estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvilvimento de apps:
+
+
+<h1>Flutter State Management</h1>
+
+
+O Flutter possui uma gama gigantesca de ferramentas com diferentes métodos para gerenciar o estado da interface, possuindo uma abordagem distinta das ferramentas de desenvolvimento nativas quando se trata de reatividade. Tendo adotato um modelo declarativo, o Flutter permite criar a interface com base em seu estado atual, além de aplicar mudanças em partes específicas da interface de forma rápida, levando em conta cada frame.
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
+</div>
+
+
+<h2>O Conceito de State</h2>
+
+
+Definindo de forma simples, o state é composto por todas as características da aplicação(ou parte dela) em determinado momento do processo de run. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade. Porém, o state não se limita a essa definição:
+
+
+<h2>Ephemeral State</h2>
+
+
+Também chamado de UI state ou local state, é o estado que um widget teria, sendo ele próprio o responsável por tratá-lo e reagir a sua mudança. Em outras palavras, as mudanças nas características desse elemento não afetariam diretamente a aplicação como um todo. Pode-se citar como exemplo:
+
+
+    class MyHomepage extends StatefulWidget {
+      const MyHomepage({Key? key}) : super(key: key);
+    
+      @override
+      _MyHomepageState createState() => _MyHomepageState();
+    }
+    
+    class _MyHomepageState extends State<MyHomepage> {
+      int _index = 0;
+    
+      @override
+      Widget build(BuildContext context) {
+        return BottomNavigationBar(
+          currentIndex: _index,
+          onTap: (newIndex) {
+            setState(() {
+              _index = newIndex;
+            });
+          },
+          // ... items ...
+        );
+      }
+    }
+
+
+Deixando de lado boa parte do que é mostrado no exemplo, já que tais conceitos serão mais bem abordados em seguida, é possível destacar o elemento correspondente ao ephemeral state:
+
+    int _index = 0;
+
+Aqui a variável index possui a tarefa de definir a seleção de determinada posição na bottomNavigationBar, característica restrita ao elemento que a contém. Por mais que a mudança na seleção permita acessar um outro ponto da aplicação, amenos que seja declado, o único state que sofrerá mundaças é o da própria bottomNavigationBar, o que consiste em um local state. 
+
+Um detalhe importante a se ater é que a definição inicial de um state sempre será retomada quando a aplicação iniciar, ou seja, um state é por essência imutável. Sendo zero a posição inicial, sempre que o widget for renderizado, a posição selecionada será 0. Esse recurso é bastante útil quando há uma quantidade previsível de possíveis estados.
+
+
+<h2>App State</h2>
+
+
+O App State, ou shared state, corresponde as informações que se mantém entre as sessões de acesso do usuário, possuindo maior escalabilidade em relação ao ephemeral state, sendo compartilhada por toda a aplicação. Exemplos claros de um shared state são:
+
+
+- Informações de login
+- Preferências do usuário
+- Notificações ou mensagens não lidas 
+- Dandos de uma compra, como um carrinho ou lista de desejos 
+
+
+Divergindo do estado restrito a um único elemento da interface, o App State demanda o uso de uma ou mais ferramentas de gerenciamento que variam de acaordo com a robusteis e o tipo de aplicação que será criada. Tais ferramentas serão mais detalhados nos próximos passos. Agora que definimos o que é o state para o Flutter, iremos entender como e quando utilizá-lo na estruturação da interface.
+
+Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
+</div>
+
+
+<h2>StateLessWidget</h2>
+
+
+Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StateLessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State, ou padrões da interface. Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
+
+
+    class MeuWidget extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+
+O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context do widget, que identifica o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
+
+
+<h2>StatefulWidget</h2>
+
+
+Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não uma. A classe inicial define uma instância da StatefulWidget e nela é criado o estado associado a uma subclasse, esta por sua vez renderiza os elementos que o compõem através do build method: 
+
+
+
+    class MyStatefulWidget extends StatefulWidget {
+      
+      const MyStatefulWidget({Key? key, required this.title}) : super(key: key);
+
+      @override
+      State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+    }
+    
+    class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+
+Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distinto. Widgets são objetos temporários, utilizados para construir a aplicação em seu estado atual. O State, por outro lado, persiste entre as chamadas do build() method, o que os permite conservar informações durante seu ciclo de vida.
+
+
+<h2>createState Method</h2>
+
+
+O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
+
+
+<h2>State Class</h2>
+
+
+A classe State define o comportamento da interface de acordo com o estado atual do mesmo, ela é responsável por definir o State e fazer um rebuild a cada mudança.
+
+
+<h1>Usando Material Components</h1>
+
+
+
+
+
+<h1>Abordagens de Gerenciamento</h1>
+
+
+O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de estado de uma aplicação:
+
+
+<h2>setState</h2>
+
+
+O setState, ou gerência de estado implícita, é um low-level approach, normalmente utilizado para tratar ephemeral states. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
+
+
+    setState(() { _myState = newValue; });
+
+
+A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo princípio de increment que o Flutter disponibiliza em seus modelos:
+
+
+    import 'package:flutter/material.dart';
+    
+    class SetState extends StatefulWidget {
+      @override
+      _MyState createState() => _MyState();
+    }
+    
+    class _MyState extends State<SetState> {
+      int _favorite = 0;
+    
+      @override
+      Widget build(BuildContext context) {
+       return Scaffold(
+        body: Center(
+         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+          Container(
+           height: 100,
+           width: 300,
+           padding: EdgeInsets.all(20),
+           alignment: Alignment.center,
+           decoration: BoxDecoration(color: Colors.black),
+           child: Row(
+             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+             children: <Widget>[
+              Row(
+               children: <Widget>[
+                 IconButton(
+                  color: Colors.pink,
+                  onPressed: () {
+                    setState(() {
+                      _favorite++;
+                    });
+                  },
+                  icon: Icon(
+                    Icons.favorite,
+                    size: 40.0,
+                  )),
+                 Text(
+                  '$_favorite',
+                  style: TextStyle(color: Colors.pink),
+                 )
+               ])
+             ]),
+            )
+          ]),
+        ));
+      }
+    }
+
+
+O exemplo utiliza o setState method para simular um favorite, recurso muito comum em redes sociais. Um detalhe importante aqui é que o setState pode ser utilizado de formas distintas, sendo neste caso chamado diretamente pelo onPress do IconButton. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123119216-b3c16900-d419-11eb-8e69-3894993fca6c.png">
+</div>
+
+
+<h2>InheritedWidget & InheritedModel</h2>
+
+
+Também definidos como um low-level approach, o uso dos InheritedWidget & InheritedModel volta o State Management para a comunicação entre Widgets hierarquicamente ligados, também chamados de ancestors e children. 
+
+
+<h2>Provider</h2>
+
+
+<h2>Redux</h2>
+
+
+<h2>Fish-Redux</h2>
+
+
+<h2>BLoC / Rx</h2>
+
+
+<h2>GetIt</h2>
+
+
+<h2>MobX</h2>
+
+
+O MobX é uma biblioteca de State Management que facilita o processo de interação entre os dados de uma aplicação e sua UI de forma reativa, gerenciando tanto estados locais quanto globais. Ele possui uma tríade de conseitos básicos essenciais que juntos formam um escopo fechado de gerenciamento. 
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123152016-7ae5bc00-d43a-11eb-8318-8904605b1dea.png">
+</div>
+
+
+A seguir veremos esses conceitos de forma mais aprofundada associados a um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçôes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+
+No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
+
+
+    mobx: ^2.0.0
+    flutter_mobx: ^2.0.0
+
+
+O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira se assegurar de estar utilizando as versões mais recentes no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
+
+Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconheça as alterações, rode o seguinte comando na pasta do projeto:
+
+
+    flutter packages get  
+
+
+Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criarmos o exemplo, observe os passos a seguir:
+
+Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    class Controller {
+      var counter = Observable(0);
+    
+      late Action increment;
+    
+      Controller() {
+        increment = Action(_increment);
+      }
+    
+      _increment() => counter.value++;
+    }
+
+
+Em uma file própria, crie a classe na qual iremos definir a estrutura e a chamada do Controller criado:
+
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_mobx/flutter_mobx.dart';
+    import 'package:mobx_aula/controller.dart';
+    
+    class Home extends StatefulWidget {
+      @override
+      _HomeState createState() => _HomeState();
+    }
+    
+    class _HomeState extends State<Home> {
+    
+      Controller controller = Controller();
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Observer(
+                    builder: (_) {
+                      return Text(
+                        '${controller.counter.value}',
+                        style: TextStyle(color: Colors.black, fontSize: 80),
+                      );
+                    },
+                  )),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.increment();
+                    },
+                    child: Text('Incrementar'),
+                  )
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+
+
+Tendo concluído esses passos, a seguir veremos a definição dos conceitos do MobX e quais partes do código correspondem a cada um deles: 
+
+
+<h2>Actions</h2>
+
+
+ Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste em um dos conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
+
+
+    late Action increment;
+    
+    Controller() {
+      increment = Action(_increment);
+    }
   
+    _increment() => counter.value++;
+
+
+No exemplo é criado um atributo do tipo Action, o qual é associado a um método que retorna o incremento do valor dado. Esse método é chamado quando o botão "Incrementar" é clicado:
+ 
+    ...
+
+    Controller controller = Controller();
+
+    ...
+
+    ElevatedButton(
+      onPressed: () {
+        controller.increment();
+      },
+      child: Text('Incrementar'),
+    )
+
+
+<h2>Observables</h2>
+
+
+Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de notificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
+
+
+    var counter = Observable(0);
+
+
+O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual é incrementado.
+
+
+<h2>Reactions</h2>
+
+
+Por último, mas não menos importante, está o responsável por completar a tríade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
+
+
+    ...
+
+    Controller controller = Controller();
+
+    ...
+
+    Observer(
+      builder: (_) {
+        return Text(
+          '${controller.counter.value}',
+          style: TextStyle(color: Colors.black, fontSize: 80),
+        );
+      },
+    )
+
+
+A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
+</div>
+
+
+<h2>Gerando Códigos MobX</h2>
+
+
+Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo, só são utilizadas no processo de desenvolvimento.
+
+No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
+
+
+    mobx_codegen: ^2.0.0
+    build_runner: ^1.12.2
+
+
+Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. No arquivo controller, crie as seguintes modificações:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    class Controller = ControllerBase with _$Controller;
+    
+    // O mixin Store é utilizado na geração do código
+    abstract class ControllerBase with Store {
+    
+      @observable
+      int counter = 0;
+    
+      @action
+      increment() {
+        counter++;
+      }
+    }
+
+
+Uma classe abstract é definida como base para a execução da gerência do State. Essa classe possui um Mixin atribuido a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também serão atribuidos dois membros:
+
+    @observable
+
+<div align="center">
+  <h5>Um annotation que identifica o atributo counter como um observable</h5>
+</div>
+   
+    @action
+
+<div align="center">
+  <h5>Um annotation que identifica o método increment() como uma action </h5>
+</div>
+
+
+Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada age como um Mixin e é definida com o uso de _$, sendo gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
+
+Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos gerados. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de "controller" neste caso, separada da terminação .dart pelo marcador .g:
+
+
+    part 'controller.g.dart';
+ 
+
+Após esse processo, é preciso gerar a classe associada. Para isso existem dois possiveis comandos:
+
+
+    flutter pub run build_runner watch
+
+
+<div align="center">
+  <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
+</div>
+
+
+    flutter pub run build_runner build
+
+
+<div align="center">
+  <h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
+</div>
+
+
+Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
+
+
+    // GENERATED CODE - DO NOT MODIFY BY HAND
+    
+    part of 'controller.dart';
+    
+    // **************************************************************************
+    // StoreGenerator
+    // **************************************************************************
+    
+    // ignore_for_file: non_constant_identifier_names,
+    // unnecessary_brace_in_string_interps, 
+    // unnecessary_lambdas,
+    // prefer_expression_function_bodies,
+    // lines_longer_than_80_chars,
+    // avoid_as,avoid_annotating_with_dynamic
+    
+    mixin _$Controller on ControllerBase, Store {
+      final _$counterAtom = Atom(name: 'ControllerBase.counter');
+    
+      @override
+      int get counter {
+        _$counterAtom.reportRead();
+        return super.counter;
+      }
+    
+      @override
+      set counter(int value) {
+        _$counterAtom.reportWrite(value, super.counter, () {
+          super.counter = value;
+        });
+      }
+    
+      final _$ControllerBaseActionController =
+          ActionController(name: 'ControllerBase');
+    
+      @override
+      dynamic increment() {
+        final _$actionInfo = _$ControllerBaseActionController.startAction(
+            name: 'ControllerBase.increment');
+        try {
+          return super.increment();
+        } finally {
+          _$ControllerBaseActionController.endAction(_$actionInfo);
+        }
+      }
+    
+      @override
+      String toString() {
+        return '''
+    counter: ${counter}
+        ''';
+      }
+    }
+
+
+Perceba que tanto o atributo counter quanto o método increment sofrem um @override, tornando suas novas definições as responsáveis por tratar o state. Também é muito importante não modificar este arquivo, sendo uma indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
+</div>
+
+
+<h2>Auto Run</h2>
+
+
+O autorun() é um método definido como o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva determinado valor assim que um classe sofre um rebuild. O exemplo a seguir explica de forma mais detalhada.
+
+Ainda no arquivo controller.dart do exemplo anterior, faça a seguinte alteração:
+
+    ControllerBase() {
+       autorun((_) {
+         print(counter);
+       });
+     }
+
+O constructor da classe ControllerBase define um autorun method, o qual faz um print do valor contido no atributo counter a cada mudança de State. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123450593-49443080-d5b3-11eb-80a3-38dbf7628af3.png">
+</div>
+
+
+A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assim é possível verificar se um valor é de fato recebido.
+
+
+<h2>reaction()</h2>
+
+
+Assim como o autorun, o reaction method monitora mudanças nos observables da store, porém, só é de fato chamado quando um determinado valor é alterado. A ele está associado uma execução de monitoramento e efeito, onde uma função fn() define o observable a ser monitorado, e caso haja alguma alteração, uma função effect executa uma reação.
+
+    ReactionDisposer reaction<T>(T Function(Reaction) fn, void Function(T) effect)
+
+Um reaction method pode ser utilizado tando na controller.dart file, quanto na view, e para exemplificar seu uso, é onde iremos tratá-lo. Para isso é preciso definir o seguinte método na classe de State da tela:
+
+
+    @override
+    void didChangeDependencies() {
+      super.didChangeDependencies();
+    }
+
+
+Ele é importante pois define que o gerenciamento de state irá ocorrer fora do Widget correspondente, e assim como um autorun, ele é chamado a cada atualização do estado. Dentro dele iremos declarar o reaction method:
+
+
+    reaction(fn, effect);
+
+
+Por fim, faremos a chamada de um print, tendo um resultado semelhante ao do autorun anterior:
+
+
+    Controller controller = Controller();
+   
+     @override
+     void didChangeDependencies() {
+       super.didChangeDependencies();
+   
+       reaction((_) => controller.counter, (valor) {
+         print(valor);
+       });
+     }
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123561221-8b20d280-d77d-11eb-8f11-ee7bba6852c6.png">
+</div>
+
+
+<h2>MobX Computed Observables</h2>
+
+
+Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName, por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
+
+Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. A seguir temos um exemplo de declaração do Computed Observable:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    part 'contact.g.dart';
+    
+    class Contact = ContactBase with _$Contact;
+    
+    abstract class ContactBase with Store {
+      @observable
+      String firstName;
+    
+      @observable
+      String lastName;
+    
+      @computed
+      String get fullName => '$firstName, $lastName';
+    
+    }
+
+
+Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar uma action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
+
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_mobx/flutter_mobx.dart';
+    
+    class Computed extends StatefulWidget {
+      @override
+      _ComputedState createState() => _ComputedState();
+    }
+    
+    class _ComputedState extends State<Computed> {
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          body: Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    decoration: InputDecoration(labelText: "Email"),
+                    onChanged: (_) {},
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: TextField(
+                    decoration: InputDecoration(labelText: "Senha"),
+                    onChanged: (_) {},
+                  ),
+                ),
+                Padding(padding: EdgeInsets.all(16), child: Text('Campos Inválidos')),
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text('Login'),
+                  )
+                ),
+              ],
+            ),
+          ),
+        );
+      }
+    }
+
+
+Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a valiação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
+
 <br>
 
-<h1>Catálogo de Widgets</h1>
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123656241-1e054f80-d806-11eb-9b75-5fe15262736c.png">
+</div>
+
+<br>
+
+Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta, crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
+
+
+    import 'package:mobx/mobx.dart';
+    
+    part 'controller.g.dart';
+    
+    class Controller = ControllerBase with _$Controller;
+    
+    abstract class ControllerBase with Store {}
+
+
+Como já foi visto anteriormente, essa estrutura será a base para o run de um arquivo no qual o state será gerenciado. Para criar este arquivo e monitorar suas atualizações, rode o seguinte comando no diretório do formulário:
+
+    
+    flutter pub run build_runner watch
+
+
+Agora que a base de gerenciamento foi criada, vamos fazer algumas alterações nos arquivos computed.dart e controller.dart.
+
+No arquivo computed.dart defina o acesso a classe Controller:
+
+
+    class _ComputedState extends State<Computed> {
+      
+      Controller controller = Controller();
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+           ...
+        );
+      }
+
+
+Posteriormente, agora no arquivo controller.dart, defina os observables e as actions referentes aos campos do formulário:
+
+
+    abstract class ControllerBase with Store {
+      @observable
+      String email = '';
+    
+      @observable
+      String senha = '';
+    
+      @action
+      void setEmail(valor) => email = valor;
+    
+      @action
+      void setSenha(valor) => senha = valor;
+    }
+
+
+Em seguida vamos associar cada campo a sua respectiva action:
+
+
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: TextField(
+        decoration: InputDecoration(labelText: "Email"),
+        onChanged: controller.setEmail,
+      ),
+    ),
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: TextField(
+        decoration: InputDecoration(labelText: "Senha"),
+        onChanged: controller.setSenha,
+      ),
+    )
+
+
+Para verificar o recebimento dos valores do formulário, vamos utilizar o já visto autorun() method. No arquivo controller.dart faça a seguinte alteração:
+
+
+    Controller() {
+      autorun((_) {
+        print(email);
+        print(senha);
+      });
+    }
+
+
+ Criamos um autorun() method no constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextField, já que a chamada das actions é feita através do atributo onChanged. 
+
+Após a mudança, se a execução tiver sido interrompida, torne a rodar o comando a seguir na pasta que contém a file do formulário:
+
+
+    flutter pub run build_runner watch
+
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h2>@computed</h2>
+
+
+ Como já foi dito, um Computed Observable ou Computed Propertie é um derived-state, ou seja, ele deriva de um core-state ou de outro derived-state, porém, pode ser aplicado de formas distintas, como veremos a seguir. No arquivo controller.dart crie a seguinte alteração:
+  
+
+    @computed
+    bool get formularioValidado => email.length >= 5 && senha.length >= 5;
+
+
+O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retorna true caso os valores sejam correspondentes. O próximo passo é definir o consumo deste computed diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
+
+   
+     Padding(
+      padding: EdgeInsets.all(16),
+      child: Observer(
+        builder: (_) {
+          return Text.rich(TextSpan(children: [
+            TextSpan(
+                text: controller.formularioValidado
+                    ? 'Campos Válidos'
+                    : '',
+                style: TextStyle(color: Colors.green)),
+            TextSpan(
+                text: controller.formularioValidado
+                    ? ''
+                    : 'Campos Inválidos',
+                style: TextStyle(color: Colors.red))
+          ]));
+        },
+      )),
+      Padding(
+          padding: EdgeInsets.all(16),
+          child: Observer(builder: (_) {
+            return ElevatedButton(
+              onPressed: controller.formularioValidado ? () {} : null,
+              child: Text('Login'),
+            );
+          }))
+
+
+O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional, resultando no retorno do string 'Campos Válidos' caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123559218-1d6ea980-d771-11eb-9f72-167ab05018b5.png">
+</div>
+
+<br>
+
+
+<h2>Auth Simulation</h2>
+
+
+Como foi visto anteriormente, é possível definir a gerência de determinado State através do método reaction, que executa um effect após verificar uma mudança no observable definido. Neste caso, iremos aplicar algumas mudanças no formulário anterior, aplicando o reaction para simular uma autenticação dos dados do usuário. 
+
+O primeiro passo será criar uma nova action, esta sendo referente ao login em si, e também alguns observables, os quais irão servir como forma de validação. Na file controller.dart faça as seguintes alterações:
+
+
+     @observable
+     bool usuarioLogado = false;
+   
+     @observable
+     bool carregando = false;
+   
+     @action
+     Future<void>logar() async {
+       carregando = true;
+   
+       await Future.delayed(Duration(seconds: 3));
+   
+       carregando = false;
+
+       usuarioLogado = true;
+
+     }
+
+
+As novas definições consistem em um método que é chamado no onPress do botão de login, ou seja, apenas se os dados do usuário forem correspondentes aos parâmetros anteriormente definidos. Esse método, chamado de logar, possui um método delayed, cuja função é simular o carregamento de um select na base por exemplo, e a ele é atribuída a duração de 3 segundos. Em seguida, definimos que o usuário foi autenticado por meio do bool 'usuarioLogado'; assim seria possível chamar a tela subsequente após o carregamento. Carregamento este que é atribuído ao bool 'carregando', o qual é setado para true quando o método logar é chamado, e após o delayed, torna a ser false.
+
+Tendo concluído as alterações no controller.dart, torne a fazer o build com o comando a seguir:
+
+
+    flutter pub run build_runner watch
+
+
+Após o fim da execução, vamos partir para as próximas alteração. Elas consistem em:
+   
+
+    Controller controller = Controller();
+      
+    late ReactionDisposer reactionDisposer;
+
+    @override
+      void didChangeDependencies() {
+        super.didChangeDependencies();
+    
+        reactionDisposer = reaction((_) => controller.usuarioLogado, (valor) {
+          print(valor);
+        });
+      }
+
+     @override
+     void dispose() {
+       reactionDisposer();
+       super.dispose();
+     }
+
+
+Dentro do método didChangeDependencies() iremos definir o reaction method, o qual recebe o observable 'usuarioLogado' como monitorado, e define um print do seu valor no Debug Console caso haja uma mudança no mesmo. Além disso, é definido um ReactionDisposer e um override da classe dispose, evitando a chamda constante do reaction method. Em seguida:    
+  
+
+    TextSpan(
+      text: controller.formularioValidado && !controller.carregando
+          ? 'Campos Válidos' : '',
+      style: TextStyle(color: Colors.green))
+
+
+Essa alteração define que o text 'Campos Válidos' só será aparente caso o processo de carregamento não estiver ocorrendo. Em seguida:
+
+
+    Padding(
+      padding: EdgeInsets.all(16),
+      child: Observer(builder: (_) {
+        return ElevatedButton(
+          onPressed: controller.formularioValidado ? () {
+              controller.logar();
+            } : null,
+          child: controller.carregando ? CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation(Colors.white),
+            ) : Text('Login')
+          );
+        }
+      )
+    )
+
+
+Definimos a chamada do método logar no onPress, além de um CircularProgressIndicator, que indica o tempo de carregamento definido anteriormente. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123563343-844c8c80-d78a-11eb-8157-7decc8762387.png">
+</div>
+
+<br>
+
+
+<h2>ObservableList</h2>
+
+
+O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um item seja adicionado, removido ou modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar o exemplo anterior e complementá-lo.
+
+Ainda na file computed.dart, faça a seguinte alteração:
+
+
+    @override
+     void didChangeDependencies() {
+       super.didChangeDependencies();
+   
+       reactionDisposer = reaction((_) => controller.usuarioLogado,
+       (usuarioLogado) {
+         if (controller.usuarioLogado) {
+           Navigator.of(context)
+               .pushReplacement(MaterialPageRoute(builder: (_) => List()));
+         }
+       });
+     }
+
+
+Após a alteração, quando efetuada a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
+
+Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de listController.dart, corresponde a aonde o ObservableList será gerenciado.
+
+Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
+
+
+    _dialog() {
+      showDialog(
+        context: context,
+        builder: (_) {
+          return AlertDialog(
+            title: Text("Adicionar item"),
+            content: TextField(
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: "Digite uma descrição..."),
+              onChanged: (valor) {},
+            ),
+            actions: [
+              TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text(
+                    "Cancelar",
+                    style: TextStyle(color: Colors.red),
+                  )),
+              TextButton(onPressed: () {}, child: Text("Salvar"))
+            ],
+          );
+        });
+      }
+
+
+A primeira inclusão é um dialog, o qual será utilizado para adiministrar os itens da lista. A seguir iremos incluir um ListView.builder, que irá gerar os itens necessários:
+
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: ListView.builder(
+          itemCount: 10,
+          itemBuilder: (_, indice) {
+            return ListTitle(
+              title: Text("Item $indice"),
+              onTap: () {},
+            );
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () {
+            _dialog();
+          },
+        ),
+      );
+    }
+
+
+A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123576967-53c81b00-d7a9-11eb-845a-989b4c47b270.png">
+</div>
+
+<br>
+
+
+Tendo a estrutura criada, vamos definir como os states da lista serão gerenciados. Na file listController.dart, faça as seguintes alterações:
+
+
+    abstract class ListControllerBase with Store {
+      @observable
+      late String newItem = '';
+    
+      @action
+      void setNewItem(String value) => newItem = value;
+    }
+
+
+É criado um observable referente a mensagem inserida no processo de adição de um novo item, além de uma action referente a atribuição dessa mensagem ao mesmo. Em seguida iremos consumir esses membros da classe ListControllerBase. Na file List.dart crie:
+
+
+    ...
+    
+    ListController _listController = ListController();
+
+    ...
+    
+    content: TextField(
+      decoration: InputDecoration(
+       border: OutlineInputBorder(),
+       labelText: "Digite uma descrição..."),
+       onChanged: _listController.setNewItem,
+    )
+  
+    ...
+    
+
+Uma instância da classe ListController é criada, permitindo o acesso a action setNewItem, que é atribuída a ação de onChange do TextField Widget. Após esse processo, a informação que o usuário insere já pode ser armazenada:
+
+
+    ObservableList<String> itemList = ObservableList();
+  
+    @action
+    void addItem() {
+      itemList.add(newItem);
+    }
+
+
+O ObservableList itemList define um List que armazena cada descrição de item criado, criando um novo espaço na memória a cada inserção, não sendo necessário atribuir um annotation @abservable a ela. Essa descrição é inserida no ObservableList através da action addItem. Por sua vez, a action addItem será chamada na ação de save no dialog anteriormente criado:
+
+
+    TextButton(
+      onPressed: () {
+        _listController.addItem();
+      },
+      child: Text("Salvar"))
+
+
+Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próximo passo é fazer a exibição dos itens dessa lista. No ListView.builder faça as alterações a seguir:
+
+
+    body: Observer(
+        builder: (_) {
+          return ListView.builder(
+            itemCount: _listController.itemList.length,
+            itemBuilder: (_, indice) {
+              return ListTitle(
+                title: Text(_listController.itemList[indice]),
+                onTap: () {},
+              );
+            },
+          );
+        },
+      )
+
+O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu length como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTitle. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123577429-30ea3680-d7aa-11eb-9602-c634d4279554.png">
+</div>
+
+
+<h2>Tratando Itens de Uma Lista</h2>
+
+
+Os exemplos anteriores focam no monitoramento de uma lista, gerenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
+
+A ela iremos adicionar as seguintes linhas de código:
+
+
+    import 'package:mobx/mobx.dart';
+
+    part 'itemController.g.dart';
+    
+    class ItemController = ItemControllerBase with _$ItemController;
+    
+    abstract class ItemControllerBase with Store {
+      ItemControllerBase(this.titulo);
+    
+      final String titulo;
+    
+      @observable
+      bool marked = false;
+
+    }
+
+
+Basicamente criamos dois atributos, um referente a descrição dada a cada item, aqui chamada de "titulo"; o outro membro criado é um observable, este definindo o status do item que foi marcado. 
+
+Agora, para que o State de cada item possa ser monitorado pelo novo controller, vamos fazer uma alteração na file listController.dart:
+
+    
+    ...
+
+    import 'package: .../item/itemController.dart';
+
+    ...
+
+    ObservableList<ItemController> itemList = ObservableList<ItemController>();
+
+    @action
+    void addItem() {
+      itemList.add(ItemController(newItem));
+    }
+
+
+O valor definido como o tipo da ObservableList passa a ser a classe ItemController, e por consequência, também é definido como o tipo que será adicionado, declarado na action addItem. Em seguida iremos atualizar a file List.dart:
+
+
+    body: Observer(
+        builder: (_) {
+          return ListView.builder(
+            itemCount: _listController.itemList.length,
+            itemBuilder: (_, indice) {
+              var item = _listController.itemList[indice];
+              return Observer(builder: (_) {
+                return ListTitle(
+                 title: Text(
+                 item.titulo,
+                   style: TextStyle(
+                    decoration: item.marked 
+                     ? TextDecoration.lineThrough
+                     : null
+                    )),
+                  onTap: () {
+                    item.marked = !item.marked;
+                  },
+                );
+              });
+            },
+          );
+        },
+      ),
+
+
+Antes de mais nada, definimos um novo Observer como retorno do ListView.Builder, ele será responsável por monitorar as mudanças no state de cada item. O title da ListTitle, que antes consistia no _listController.itemList, passa a ser o novo atributo titulo, criado na file itemController.dart. Também definimos que ao clicar em um item da lista, o atributo bool marked passa a ser false.
+
+Como último alteração, iremos definir que ao salvar um item na lista o dialog 'Adicionar Item' será fechado. Faremos isso adicionando um Navigator.pop no atributo onPressed do TextButton "Salvar". 
+
+
+    TextButton(
+     onPressed: () {
+       _listController.addItem();
+       Navigator.pop(context);
+     },
+     child: Text("Salvar")
+
+
+Com isso o State de cada item da lista é gerenciado individualmente. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123654100-2066aa00-d804-11eb-9a07-442e83b2b2b3.png">
+</div>
+
+<br>
+
+
+<h2>Flutter Commands</h2>
+
+
+<h2>Binder</h2>
+
+
+<h2>GetX</h2>
+
+
+<h2>Riverpod</h2>
+
+
+<!-- <h2>Flutter Modular</h2> -->
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123717717-d1e0fc00-d853-11eb-833f-f389d9af8548.png">
+</div>
+
+
+Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular é uma arquitetura que provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
+
+Estes são os principais aspectos em que o Flutter Modular foca:
+
+
+- Gerenciamento de Memória Automático.
+- Injeção de Dependências.
+- Gestão de Roteamento Dinâmico e Relativo.
+- Modularização do Código.
+
+
+<h2>Modular Structure</h2>
+
+
+A estrutura modular consiste em módulos desacoplados e independentes que representam as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
+
+Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muito mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
+
+
+<h2>Instalação</h2>
+
+
+Para criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione o flutter_modular como uma dependência:
+
+
+    dependencies:
+      flutter_modular: any
+
+
+Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. É o que iremos abordar a seguir.
+
+
+<h2>Dividindo o Projeto em Módulos</h2>
+
+
+Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro é referemte a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
+
+
+<h2>Estrutura Recomendada</h2>
+
+
+Por ter a modularização como principal aspecto da arquitetura modular, cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. No Flutter Modular há também uma forte presença do MobX, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
+
+Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplica o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
+
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/123803022-4783b100-d8c2-11eb-8d8a-89c3bfa95bae.png">
+</div>
+
+
+Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. As mudanças iniciam na lib folder, que consiste em um app folder e na main.dart file:
+
+
+<h2>main.dart</h2>
+
+
+A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
+
+
+    import 'package:exemplo/lib/app/app_module.dart';
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter_modular/flutter_modular.dart';
+
+    void main() => runApp(ModularApp(module: AppModule()));
+
+
+
+Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura, um módulo consite em basicamente três arquivos:
+
+
+<h2>app_controller.dart</h2>
+
+
+Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um .g(generate) após o nome.
+
+
+<h2>app_module.dart</h2>
+
+
+A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declarados os Binds e as rotas que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file app_module.dart:
+
+
+<h3>MainModule</h3>
+
+
+O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O MainModule é criado da seguinte forma:
+
+
+    // extend from MainModule
+    class AppModule extends MainModule {
+    
+      // Provide a list of dependencies to inject into your project
+      @override
+      List<Bind> get binds => [];
+    
+      // Provide all the routes for your module
+      @override
+      List<ModularRoute> get routes => [];
+
+      // add your main widget here
+      @override
+      Widget get bootstrap => AppWidget();
+    
+    }
+
+
+Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Eles são:
+
+
+<h3>Binds</h3>
+
+
+É basicamente um List proveniente de um override da propriedade binds, cuja função é guardar as principais classes das quais a aplicação depende, sendo possível recuparar esses Binds em qualquer parte do app. A seguir há um exemplo de declaração de dependências utilizada como modelo na estrutura Modular:
+
+
+    @override
+    List<Bind> get binds => [
+          Bind((i) => AppController()),
+          Bind((i) => HomeController()),
+          Bind((i) => ProfileController()),
+        ];
+
+
+A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso, as dependências são os controllers de três páginas distintas. 
+
+    Bind((i) => MyClass())
+
+O Bind possui essa estrutura pois pode receber a injeção durante a chamada da classe, além de proporcionar o "Lazy Loading", ou seja, a classe só é instanciada quando chamada pela primeira vez, em seguida passa a obedecer certos parâmetros, que por padrão a tornam Singleton durante a vida útil do módulo do qual ela implementa.
+
+
+<h3>Routes</h3>
+
+
+List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e associá-las as telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
+
+
+    @override
+     List<ModularRoute> get routes => [
+           ChildRoute('/', child: (_, args) => HomePage()),
+           ChildRoute('/profile', child: (_, args) => ProfilePage()),
+     ];
+
+
+A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
+como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim, é definida a classe correspondente a tela acessada através da rota declarada.
+
+
+<!-- <h3>Bootstrap</h3>
+
+
+Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
+ -->
+
+
+<h2>app_widget.dart</h2>
+
+
+A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada.
+
+A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
+
+
+    //  app_widget.dart
+    import 'package:flutter/material.dart';
+    import 'package:flutter_modular/flutter_modular.dart';
+    
+    class AppWidget extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          initialRoute: "/",
+        ).modular();
+      }
+    }
+
+
+Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do .modular(). 
+
+
+<h2>pages</h2>
+
+
+A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo o módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
+
+
+<h2>Slidy</h2>
+
+
+O Slidy é um package manager que automatiza o processo de criação de um projeto Modular. Com ele é possível gerar templates, gerenciar Modules, Pages, Widgets, BLoCs, Controllers, tests e mais. Sua principal função é permitir a estruturação padronizada de projetos, organizando sua aplicação em _Modules_ formados por pages, repositories, widgets, BLoCs, e também criar testes de unidade automaticamente. Além disso, o Slidy dá ao desenvolvedor um caminho mais fácil para injetar dependências e instalar pacotes, fazer updates ou removê-los. Isso tudo é feito com o run de comandos simples.
+
+
+<h2>Instalação</h2>
+
+
+O Slidy pode ser instalado de formas distintas:
+
+
+<h3>Flutter/Dart directly</h3>
+
+
+    dart pub global activate slidy
+
+
+<h3>choco (only windows)</h3>
+
+
+    choco install slidy
+
+
+<h3>Homebrew (macos and linux)</h3>
+
+
+    brew install slidy
+
+
+<h2>Comandos</h2>
+  
+
+<h3>Start</h3>
+
+
+O comando _Start_ cria uma estrutura básica de projeto(comfirme que a folder lib está vazia):
+
+    
+    slidy start
+
+
+<h3>Run</h3>
+
+
+O comando _run_ executa scripts alocados no parâmetro "scripts" na pubséc.yaml:
+
+
+    slidy run open_folder
+
+
+<h3>Install</h3>
+
+
+O comando _install_(ou update) instala novos pacotes:
+
+
+    slidy install mockito dio modular
+
+
+Também é possível instalar um package como dev_dependency utilizando a flag --dev:
+
+
+    slidy i flutter_launcher_icons --dev
+
+
+<h2>Generate</h2>
+
+
+Os comandos _gererate_ criam módulos, pages, widgets ou repositórios de acordo com o comando especificado.
+
+
+<h3>Module</h3>
+
+
+Cria um novo módulo com o comando slidy generate module:
+
+
+    slidy generate module manager/product
+
+  
+<h3>Page</h3>
+
+
+Cria uma nova page com o comando slidy generate page:
+
+
+    slidy generate page manager/product/pages/add_product
+
+  
+<h3>Widget</h3>
+
+
+Cria um novo widget com o comando slidy generate widget:
+
+
+    slidy generate widget manager/product/widgets/product_detail
+
+
+<h3>Repository</h3>
+
+
+Cria um novo repository com o comando slidy generate repository:
+
+
+    slidy g r manager/product/repositories/product
+
+
+<!-- <h2>Controller Manager</h2>
+
+
+Como já foi dito, a estrutura modular conta com a preseça do MobX e seus controllers. Portanto, o slidy também conta com uma automatização do porcesso que gera os códigos responsáveis por gerenciar os states da aplicação. Para isso, usa-se o comando:
+
+
+    slidy run mobx_build_clean
+
+
+Ele é responsável por verificar todos os módulos do projeto, detectando modificações na controller.dart file e as aplicando na controller.g.dart. -->
+
+
+<h2>Repository Pattern</h2>
+
+
+O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o consumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Service possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
+
+O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http, dio, além de outras como http_parser, http_cliente etc.
+
+Para exemplificar o uso do pattern, iremos criar uma aplicação simples que consome uma API externa e lista uma série de pokemons. Nela iremos aplicar os conceitos mais básicos da estrutura. Além de entender como o conceito de repository se complementa com o uso de uma lib Http client.
+
+<br>
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/61476935/124007846-269a8900-d9b2-11eb-8c37-eb6ae8b7a03f.png">
+</div>
+<br>
+
+O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou até mais que a já citada Http library.
+
+
+<h3>Get Started</h3>
+
+
+Para fazer uso da library é preciso adiciar uma nova dependencie na file pubspec.yaml da base do projeto:
+
+
+    dependencies:
+      dio: ^4.0.0
+
+
+Obs: A versão indicada é a mais atual neste momento, caso você queira se assegurar de estar utilizando a versão mais recentes, verifique em [pub.dev/packages/dio](https://pub.dev/packages/dio).
+
+
+<h2>Entendendo a Estrutura</h2>
+
+
+Em um novo projeto, após instalar o dio, crie uma nova pasta chamada _repositories_ na lib folder. Na nova pasta iremos criar um interface para agrupar todos os métodos do repository. Em uma file definida como poke_repository_interface.dart, crie as seguintes linhas de código:
+
+
+    import 'package:exemple/models/poke_model.dart';
+
+    abstract class IPokeRepository {
+      Future<List<PokeModel>> getAllPokemons();
+    }
+
+
+
+Na classe criada teremos apenas um método, a qual irá retornar um List de PokeModel. PokeModel será uma classe que irá representar o modelo de dados, ou seja, irá representar cada pokemon na list.
+
+Ainda na lib folder, crie uma nova pasta chamada de _models_. Nela iremos criar uma file poke_model.dart que irá conter a classe PokeModel:
+
+
+    class PokeModel {
+      var name;
+    
+      PokeModel({this.name});
+    
+      PokeModel.fromJson(Map<String, dynamic> json) {
+        name = json['name'];
+      }
+    }
+
+
+A classe terá uma variável "name" que será responsável por guardar o nome do pokemon, além de um método para converter o json retornado pela API em um objeto de PokeModel.
+
+Após criar o model e a interface, iremos criar a implementação do repository. Na repositories folder, crie uma file poke_repository.dart e nela crie a regra de negócio para chamar a API especificada:
+
+
+    import 'package:exemple/repositories/poke_repository_interface.dart';
+    import 'package:exemplo/models/poke_model.dart';
+    
+    import 'package:dio/dio.dart';
+    
+    class PokeRepository implements IPokeRepository {
+      final Dio _dio;
+    
+      PokeRepository(this._dio);
+    
+      @override
+      Future<List<PokeModel>> getAllPokemons() async {
+        List<PokeModel> pokemons = [];
+    
+        var response = await _dio.get("https://pokeapi.co/api/v2/pokemon/");
+    
+        response.data['results'].map((pokemon) {
+          pokemons.add(PokeModel.fromJson(pokemon));
+        }).toList();
+    
+        return pokemons;
+      }
+    }
+
+
+A classe PokeRepository define um implements da anteriormente criada IPokeRepository, fazendo um override nos métodos da interface. Tendo isso definido, foi criada uma chamada do Client Http _Dio_, que passa a ser injetado no contructor da classe PokeRepository e se torna responsável por fazer o GET resquest na API. 
+
+Em seguida, o método getAllPokemons retorna um List chamado de pokemons, que é iniciado como um array vazio, mas é retornado com todos nomes de pokemons vindos da API, esta sendo definida pela URL https://pokeapi.co/api/v2/pokemon. O valor de retorno, um Json, é atribuído a variável response.
+
+O próximo passo é acessar os dados armazenados em response e itrubuí-los à variável pokemons. Caso você não tenha verificado, o retorno da API é Map Json. Com isso, um map method é utilizado para extrair os objetos pokemon e armazená-los na variável na List criada. Por fim, o método map recebe um ToList() method, convertendo os valores no type desejado.
+
+
+<h2>Listando Pokemons</h2>
+
+
+Com o model e o repostory concluídos, podes de fato listar os valores retornados. Porém, antes de partirmos para a interface, criaremos um "Controller" para receber o repository da aplicação como boa prática. Na lib folder, criaremos uma file home_controller.dart. Nela adicione as seguintes linhas de código:
+
+
+    import 'package:repositorypattern/models/poke_model.dart';
+    
+    import 'package:dio/dio.dart';
+    
+    class HomeController {
+      final IPokeRepository _pokeRepository = PokeRepository(Dio());
+    
+      Future<List<PokeModel>> fetchPokemons() {
+        return _pokeRepository.getAllPokemons();
+      }
+    }
+
+
+A classe HomeController recebe o repository criado, além de uma intância do Http Client Dio. 
+
+
+Por último, iremos criar uma UI simples, cuja função é apenas listar o retorno da API. Com isso, na main.dart file, crie os Widget abaixo:
+
+
+    import 'package:repositorypattern/models/poke_model.dart';
+    import 'package:repositorypattern/home_controller.dart';
+    import 'package:flutter/material.dart';
+    
+    ...
+
+    class HomePage extends StatelessWidget {
+      final HomeController _homeController = HomeController();
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+            appBar: AppBar(title: Text('Lista de Pokemons')),
+            body: FutureBuilder<List<PokeModel>>(
+              future: _homeController.fetchPokemons(),
+              builder: (context, snapshot) {
+                var pokemons = snapshot.data;
+                if (pokemons == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                return ListView.builder(
+                 itemCount: pokemons.length,
+                 itemBuilder: (context, index) {
+                   return ListTitle(
+                    title: Text(pokemons[index].name),
+                );
+             });
+           },
+        ));
+      }
+    }
+
+
+A interface consiste um StatelessWidget que instancia a classe HomeController e um Future Builder que irá chamar o método do controller. Além disso, uma condicional gera um CircularProgressIndicator caso a API retorne null, e caso seja diferente de null, gera um ListView.bulder com todos os nomes do pokemons. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+
+<div align="center">
+ <img src="https://user-images.githubusercontent.com/61476935/124005193-2c429f80-d9af-11eb-9d92-cc1e9a059359.png">
+</div>
+
+
+<!-- <h1>Catálogo de Widgets</h1>
 
 <br>
 
 Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Esse conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso, contando com uma arquitetura concentrada baseada em widgets.
 
-
-<h2>Widgets</h2>
-
-
-Baseados no [Material Design](https://material.io/design), os Widgets são a base de desenvolvimento do Flutter. Cada estrutura que compõe a tela de uma aplicação Flutter é ou faz parte de um Widget. Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar sua aplicação. Um Widget em si é uma classe, ou conjunto de classes, esta possuindo propriedades e métodos usuais, capazes de redefinir a informação de formas diversas, quase sempre retornando um outro Widget. Para entender o conceito de Widget é importante entender sua estrutura e formas de uso. Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
+Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos: -->
 
 
 <!-- <h2>Material Components</h2>
@@ -2042,1725 +3778,3 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
       ],
     ); -->
-
-
-<h1>Flutter State Management</h1>
-
-
-A programação reativa gerencia o fluxo de dados e a propagação de mudanças em uma aplicação, também chamados de estado da aplicação. A forma como o fluxo de dados ocorre influencia de formas diversas, definindo um melhor ou pior desempenho, dependendo de como é aplicada. Com o Flutter é possível abordar o gerenciamento de estado de diversas formas, mas antes de entrarmos nesses tópicos, vamos entender melhor o que é o State para uma aplicação Flutter:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122956044-0c7bfd80-d357-11eb-901c-86ac2c9a830d.png">
-</div>
-
-
-A imagem acima ilustra o fluxo de dados entre diferentes partes de uma aplicação, definindo mundaças diretas na interface e consequentemente atualizando seu estado. Um item que passa a ser listado no carrinho de compras possui um novo estado, assim como o próprio carrinho. Caso um item seja excluído, ambos os estados, do carrinho e do item, são atualizados. Perceba também que aqui as informações são atualizadas ou realocadas.
-
-
-<h2>Programação Declarativa</h2>
-
-
-Diferente de outros frameworks como o Android SDK ou o IOS UIKit, o Flutter permite desenvolver aplicações de forma declarativa, onde partes da aplicação podem sofrer um rebuild do zero sem a necessidade de modificação. O que significa que o Flutter constroi a interface para refletir o atual estado do app:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
-</div>
-
-
-Quando o estado do app muda(o usuário ativa um botão na tela de configurações, por exemplo), você altera o estado e isso aciona um redraw da interface do usuário. Não há nenhuma mudança imperativa da própria UI - o estado é alterado e a UI é reconstruída do zero. A programação declarativa traz muitos beneficios, normalmente há apenas um caminho para cada state da Ui, e com isso é possível descrever como a Ui irá se comportar em cada estado declarado. A seguir veremos as definições básicas de interface para gerenciamento de um State:
-
-
-<h2>StateLessWidget</h2>
-
-
-StateLessWidget recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State ou padrões da interface. Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de cofgiguração do objeto e do BuildContext, sobre o qual falaremos a seguir:
-
-
-    class MeuWidget extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return Container();
-      }
-    }
-
-
-O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context do widget, que identifica o widget em questão dentro da widget tree, além de carregar o
-
-
-<h2>StatefulWidget</h2>
-
-
-Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. Stateful widgets são usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente.
-
-Sendo o oposto dos StatelessWidget, os Stateful herdam da classe StatefulWidget a mutabilidade do State e são utilizados de forma recorrente em paralelo aos StatelessWidgets. Tabém utilizam uma estrutura de classes e métodos específicos para tratar 
-a mudança de estado. A seguir há um exemplo de declaração de um StateFulWidget:
-
-
-    class MeuWidget extends StatefulWidget {
-      @override
-
-      _MeuWidgetState createState() => _MeuWidgetState();
-    }
-    
-    class _MeuWidgetState extends State<MeuWidget> {
-      @override
-      Widget build(BuildContext context) {
-        return Container();
-      }
-    }
-
-
-<div align="center">
-  <h5>Um exemplo básico de uso do StatefulWidget é o app padrão que o Flutter cria, onde há um counter e o mesmo é incrementado com o click de um FloatingActionButton.</h5>
-</div>
-
-
-<h2>createState Method</h2>
-
-
-O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na árvore em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da árvore e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
-
-
-<h2>State Class</h2>
-
-
-A classe State define o comportamento da interface de acordo com o estado atual do mesmo, ela é responsável por definir o State e fazer um rebuild a cada mudança. O build ou rebuild é feito através do método build, o qual será visto a seguir.
-
-
-<h2>build Method</h2>
-
-
-Tanto as classes que hendam da classe StatefulWidget quanto StatelessWidget herdam o método build. O método build, definido como Widget type(retona um Widget), é o responsável por criar um valor de retorno que será alocado na árvore de Widgets a cada atualização do State. Nele é declarado um BuildContext, uma classe que identifica a localização de um widget na árvore de widgets. O exemplo a seguir mostra a relação entre o context e o Widget de retorno:
-
-
-    Widget build(BuildContext context) {
-      // here, Container.of(context) returns null
-        return Container();
-      }
-
-
-Tendo definido o que é um State para o Flutter, é importante entender o mesmo conceito, porém, observando a real arquitetura de um app. Em uma aplicação real, as definições de State são tidas pelas informações que permanecem contidas em apenas um Widget e as que trafegam entre os demais. Elas são respectivamente:
-
-
-<h2>Ephemeral State</h2>
-
-
-Algumas definições simplistas de Ephemeral States são a página padrão de um ListView, o progresso atual de uma animação ou a atual guia selecionada em uma BottomNavigationBar. Nesses casos, todos os estados são definidos no próprio Widget, em outras palavras, não é preciso utilizar o state management para tratá-los. No exemplo a seguir vemos como a seleção padrão em uma bottom navigation bar é armazenada no campo _index da classe _MyHomepageState, sendo este um exemplo de Ephemeral state:
-
-
-    class MyHomepage extends StatefulWidget {
-      @override
-      _MyHomepageState createState() => _MyHomepageState();
-    }
-    
-    class _MyHomepageState extends State<MyHomepage> {
-      int _index = 0;
-    
-      @override
-      Widget build(BuildContext context) {
-        return BottomNavigationBar(
-
-          // Atributo que recebe o índice padrão
-
-          currentIndex: _index,
-
-          onTap: (newIndex) {
-            setState(() {
-              _index = newIndex;
-            });
-          },
-          // ... items ...
-        );
-      }
-    }
-
-
-<div align="center">
-  <h5>Com este exemplo é possível ver que o State nele declarado(_index) não é importante para outros Widgets, o definindo como um Ephemeral State.</h5>
-</div>
-
-
-<h2>App State</h2>
-
-
-O App State, tabém chamado de shared state, se caracteriza pelo compartilhamento do mesmo entre os demais Widgets ou partes da aplicação. Alguns exemplos simplórios de App States são as user preferences, informações de login, notificações em apps de redes sociais, um carrinho de compras em um e-commerce e entre outros. 
-
-
-Contudo, é importante ter em mente que ambos podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
-</div>
-
-
-<h2>Abordagens de Gerenciamento</h2>
-
-
-O Flutter possui uma série de abordagens do state management, cada uma com suas pecularidades e formas de uso, além de compatibilidade com uma série de bibliotecas cujas funções são proporcionar um uso mais coerente e favorável do recurso ao desenvolvedor. A seguir entraremos em contato com as principais ferramentas que o Flutter disponibiliza para fins de gerenciamento de estado de uma aplicação:
-
-
-<h2>setState</h2>
-
-
-O setState, ou gerência de estado implícita, é um low-level approach, normalmente utilizado para tratar ephemeral states. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
-
-
-    setState(() { _myState = newValue; });
-
-
-A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo princípio de increment que o Flutter disponibiliza em seus exemplos:
-
-
-    import 'package:flutter/material.dart';
-    
-    class SetState extends StatefulWidget {
-      @override
-      _MyState createState() => _MyState();
-    }
-    
-    class _MyState extends State<SetState> {
-      int _favorite = 0;
-    
-      @override
-      Widget build(BuildContext context) {
-       return Scaffold(
-        body: Center(
-         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-          Container(
-           height: 100,
-           width: 300,
-           padding: EdgeInsets.all(20),
-           alignment: Alignment.center,
-           decoration: BoxDecoration(color: Colors.black),
-           child: Row(
-             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-             children: <Widget>[
-              Row(
-               children: <Widget>[
-                 IconButton(
-                  color: Colors.pink,
-                  onPressed: () {
-                    setState(() {
-                      _favorite++;
-                    });
-                  },
-                  icon: Icon(
-                    Icons.favorite,
-                    size: 40.0,
-                  )),
-                 Text(
-                  '$_favorite',
-                  style: TextStyle(color: Colors.pink),
-                 )
-               ])
-             ]),
-            )
-          ]),
-        ));
-      }
-    }
-
-
-O exemplo utiliza o setState method para simular um favorite, recurso muito comum em redes sociais. Um detalhe importante aqui é que o setState pode ser utilizado de formas distintas, sendo neste caso chamado diretamente pelo onPress do IconButton. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123119216-b3c16900-d419-11eb-8e69-3894993fca6c.png">
-</div>
-
-
-<h2>InheritedWidget & InheritedModel</h2>
-
-
-Também definidos como um low-level approach, o uso dos InheritedWidget & InheritedModel volta o State Management para a comunicação entre Widgets hierarquicamente ligados, também chamados de ancestors e children. 
-
-
-<h2>Provider</h2>
-
-
-<h2>Redux</h2>
-
-
-<h2>Fish-Redux</h2>
-
-
-<h2>BLoC / Rx</h2>
-
-
-<h2>GetIt</h2>
-
-
-<h2>MobX</h2>
-
-
-O MobX é uma biblioteca de State Management que facilita o processo de interação entre os dados de uma aplicação e sua UI de forma reativa, gerenciando tanto estados locais quanto globais. Ele possui uma tríade de conseitos básicos essenciais que juntos formam um escopo fechado de gerenciamento. 
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123152016-7ae5bc00-d43a-11eb-8318-8904605b1dea.png">
-</div>
-
-
-A seguir veremos esses conceitos de forma mais aprofundada associados a um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçôes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
-
-No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
-
-
-    mobx: ^2.0.0
-    flutter_mobx: ^2.0.0
-
-
-O primeiro package é referente ao MobX em si, já o segundo define o acesso a um Widget específico e muito importante para a criação e uso das reactions. As versões indicadas são as mais atuais neste momento, caso você queira se assegurar de estar utilizando as versões mais recentes no momento em que está lendo, verifique em [MobX.dart](https://mobx.netlify.app/getting-started). 
-
-Após criar as dependências e salvar o arquivo, o próprio Flutter detecta as mudanças e passa a disponibilizá-las. Mas, caso seu app não reconheça as alterações, rode o seguinte comando na pasta do projeto:
-
-
-    flutter packages get  
-
-
-Em seguida já é possível gerenciar o State do counter app utilizando o MobX. Agora, para criarmos o exemplo, observe os passos a seguir:
-
-Na pasta lib do projeto, crie uma nova file chamada controller. Ela irá conter a Action e o Observable do app counter:
-
-
-    import 'package:mobx/mobx.dart';
-    
-    class Controller {
-      var counter = Observable(0);
-    
-      late Action increment;
-    
-      Controller() {
-        increment = Action(_increment);
-      }
-    
-      _increment() => counter.value++;
-    }
-
-
-Em uma file própria, crie a classe na qual iremos definir a estrutura e a chamada do Controller criado:
-
-
-    import 'package:flutter/material.dart';
-    import 'package:flutter_mobx/flutter_mobx.dart';
-    import 'package:mobx_aula/controller.dart';
-    
-    class Home extends StatefulWidget {
-      @override
-      _HomeState createState() => _HomeState();
-    }
-    
-    class _HomeState extends State<Home> {
-    
-      Controller controller = Controller();
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          body: Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Observer(
-                    builder: (_) {
-                      return Text(
-                        '${controller.counter.value}',
-                        style: TextStyle(color: Colors.black, fontSize: 80),
-                      );
-                    },
-                  )),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      controller.increment();
-                    },
-                    child: Text('Incrementar'),
-                  )
-                ),
-              ],
-            ),
-          ),
-        );
-      }
-    }
-
-
-Tendo concluído esses passos, a seguir veremos a definição dos conceitos do MobX e quais partes do código correspondem a cada um deles: 
-
-
-<h2>Actions</h2>
-
-
- Como já foi visto nos exemplos anteriores, é necessário desencadear uma mudança para que ela seja visualizada; é o que o setState method faz e também consiste em um dos conceito mais básico da programação reativa: tudo acontece mediante uma ação. Por possuir forte influência da progração reativa, o MobX usa das actions como ponto de partida para gerar uma nova definição de State.
-
-
-    late Action increment;
-    
-    Controller() {
-      increment = Action(_increment);
-    }
-  
-    _increment() => counter.value++;
-
-
-No exemplo é criado um atributo do tipo Action, o qual é associado a um método que retorna o incremento do valor dado. Esse método é chamado quando o botão "Incrementar" é clicado:
- 
-    ...
-
-    Controller controller = Controller();
-
-    ...
-
-    ElevatedButton(
-      onPressed: () {
-        controller.increment();
-      },
-      child: Text('Incrementar'),
-    )
-
-
-<h2>Observables</h2>
-
-
-Os observables representam o reactive-state da aplicação. Eles são responsáveis por tornar o app reativo a mudanças de state, refletindo essa atualização nas demais partes do escopo por meio de notificações. A relação entre os observables e as actions é direta, onde as actions são as responsáveis por mutar os observables.
-
-
-    var counter = Observable(0);
-
-
-O Observable aqui é uma variável que guarda o valor inicial do counter, sendo este o State padrão do counter Widget. Ele é o valor dado ao método associado a Action, o qual é incrementado.
-
-
-<h2>Reactions</h2>
-
-
-Por último, mas não menos importante, está o responsável por completar a tríade do MobX. As reactions agem como observers do sistema reativo, sendo notificadas sempre que houver uma mudança nos Observables que elas acompanham.
-
-
-    ...
-
-    Controller controller = Controller();
-
-    ...
-
-    Observer(
-      builder: (_) {
-        return Text(
-          '${controller.counter.value}',
-          style: TextStyle(color: Colors.black, fontSize: 80),
-        );
-      },
-    )
-
-
-A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
-</div>
-
-
-<h2>Gerando Códigos MobX</h2>
-
-
-Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo, só são utilizadas no processo de desenvolvimento.
-
-No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
-
-
-    mobx_codegen: ^2.0.0
-    build_runner: ^1.12.2
-
-
-Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. No arquivo controller, crie as seguintes modificações:
-
-
-    import 'package:mobx/mobx.dart';
-    
-    class Controller = ControllerBase with _$Controller;
-    
-    // O mixin Store é utilizado na geração do código
-    abstract class ControllerBase with Store {
-    
-      @observable
-      int counter = 0;
-    
-      @action
-      increment() {
-        counter++;
-      }
-    }
-
-
-Uma classe abstract é definida como base para a execução da gerência do State. Essa classe possui um Mixin atribuido a si, este sendo o responsável por detectar e gerar o código de acordo com as definições de observable e action. A esta classe também serão atribuidos dois membros:
-
-    @observable
-
-<div align="center">
-  <h5>Um annotation que identifica o atributo counter como um observable</h5>
-</div>
-   
-    @action
-
-<div align="center">
-  <h5>Um annotation que identifica o método increment() como uma action </h5>
-</div>
-
-
-Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada age como um Mixin e é definida com o uso de _$, sendo gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
-
-Primeiro é preciso definir uma chamada para o arquivo que será criado e que irá conter os códigos gerados. Essa chamada segue a sintaxe padrão do nome do arquivo que contém as definições de observable e action; chamado de "controller" neste caso, separada da terminação .dart pelo marcador .g:
-
-
-    part 'controller.g.dart';
- 
-
-Após esse processo, é preciso gerar a classe associada. Para isso existem dois possiveis comandos:
-
-
-    flutter pub run build_runner watch
-
-
-<div align="center">
-  <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
-</div>
-
-
-    flutter pub run build_runner build
-
-
-<div align="center">
-  <h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
-</div>
-
-
-Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
-
-
-    // GENERATED CODE - DO NOT MODIFY BY HAND
-    
-    part of 'controller.dart';
-    
-    // **************************************************************************
-    // StoreGenerator
-    // **************************************************************************
-    
-    // ignore_for_file: non_constant_identifier_names,
-    // unnecessary_brace_in_string_interps, 
-    // unnecessary_lambdas,
-    // prefer_expression_function_bodies,
-    // lines_longer_than_80_chars,
-    // avoid_as,avoid_annotating_with_dynamic
-    
-    mixin _$Controller on ControllerBase, Store {
-      final _$counterAtom = Atom(name: 'ControllerBase.counter');
-    
-      @override
-      int get counter {
-        _$counterAtom.reportRead();
-        return super.counter;
-      }
-    
-      @override
-      set counter(int value) {
-        _$counterAtom.reportWrite(value, super.counter, () {
-          super.counter = value;
-        });
-      }
-    
-      final _$ControllerBaseActionController =
-          ActionController(name: 'ControllerBase');
-    
-      @override
-      dynamic increment() {
-        final _$actionInfo = _$ControllerBaseActionController.startAction(
-            name: 'ControllerBase.increment');
-        try {
-          return super.increment();
-        } finally {
-          _$ControllerBaseActionController.endAction(_$actionInfo);
-        }
-      }
-    
-      @override
-      String toString() {
-        return '''
-    counter: ${counter}
-        ''';
-      }
-    }
-
-
-Perceba que tanto o atributo counter quanto o método increment sofrem um @override, tornando suas novas definições as responsáveis por tratar o state. Também é muito importante não modificar este arquivo, sendo uma indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123297452-f5bbdf00-d4ed-11eb-8306-b44e68f3cf22.png">
-</div>
-
-
-<h2>Auto Run</h2>
-
-
-O autorun() é um método definido como o primeiro método a ser executado na chamada da classe que o contém. Com isso, é possível definir que ele devolva determinado valor assim que um classe sofre um rebuild. O exemplo a seguir explica de forma mais detalhada.
-
-Ainda no arquivo controller.dart do exemplo anterior, faça a seguinte alteração:
-
-    ControllerBase() {
-       autorun((_) {
-         print(counter);
-       });
-     }
-
-O constructor da classe ControllerBase define um autorun method, o qual faz um print do valor contido no atributo counter a cada mudança de State. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123450593-49443080-d5b3-11eb-80a3-38dbf7628af3.png">
-</div>
-
-
-A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assim é possível verificar se um valor é de fato recebido.
-
-
-<h2>reaction()</h2>
-
-
-Assim como o autorun, o reaction method monitora mudanças nos observables da store, porém, só é de fato chamado quando um determinado valor é alterado. A ele está associado uma execução de monitoramento e efeito, onde uma função fn() define o observable a ser monitorado, e caso haja alguma alteração, uma função effect executa uma reação.
-
-    ReactionDisposer reaction<T>(T Function(Reaction) fn, void Function(T) effect)
-
-Um reaction method pode ser utilizado tando na controller.dart file, quanto na view, e para exemplificar seu uso, é onde iremos tratá-lo. Para isso é preciso definir o seguinte método na classe de State da tela:
-
-
-    @override
-    void didChangeDependencies() {
-      super.didChangeDependencies();
-    }
-
-
-Ele é importante pois define que o gerenciamento de state irá ocorrer fora do Widget correspondente, e assim como um autorun, ele é chamado a cada atualização do estado. Dentro dele iremos declarar o reaction method:
-
-
-    reaction(fn, effect);
-
-
-Por fim, faremos a chamada de um print, tendo um resultado semelhante ao do autorun anterior:
-
-
-    Controller controller = Controller();
-   
-     @override
-     void didChangeDependencies() {
-       super.didChangeDependencies();
-   
-       reaction((_) => controller.counter, (valor) {
-         print(valor);
-       });
-     }
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123561221-8b20d280-d77d-11eb-8f11-ee7bba6852c6.png">
-</div>
-
-
-<h2>MobX Computed Observables</h2>
-
-
-Para o MobX, um state consiste em core-states e derived-satates. O core-state é o estado inerente ao domínio com o qual você está lidando, já um derived-state herda de um core-state. Por exemplo, em uma entidade Contact, o firstName e o lastName formam o core-state Contact. Logo, uma entidade fullName, por exemplo, obtida a partir da combinação entre firstName e lastName, é um derived-state.
-
-Derived states, os quais dependem de um core-state ou de outro derived-state para serem criados, são chamados de Computed Observables ou Computed Properties. A seguir temos um exemplo de declaração do Computed Observable:
-
-
-    import 'package:mobx/mobx.dart';
-    
-    part 'contact.g.dart';
-    
-    class Contact = ContactBase with _$Contact;
-    
-    abstract class ContactBase with Store {
-      @observable
-      String firstName;
-    
-      @observable
-      String lastName;
-    
-      @computed
-      String get fullName => '$firstName, $lastName';
-    
-    }
-
-
-Para exemplificar o uso do recurso, vamos criar uma tela semelhante a uma tela de login, com campos referentes a email e senha, além de um botão para executar uma action. Crie uma file chamada computed.dart e a ela adicione as seguintes linhas de código:
-
-
-    import 'package:flutter/material.dart';
-    import 'package:flutter_mobx/flutter_mobx.dart';
-    
-    class Computed extends StatefulWidget {
-      @override
-      _ComputedState createState() => _ComputedState();
-    }
-    
-    class _ComputedState extends State<Computed> {
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          body: Container(
-            padding: EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: TextField(
-                    decoration: InputDecoration(labelText: "Email"),
-                    onChanged: (_) {},
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: TextField(
-                    decoration: InputDecoration(labelText: "Senha"),
-                    onChanged: (_) {},
-                  ),
-                ),
-                Padding(padding: EdgeInsets.all(16), child: Text('Campos Inválidos')),
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text('Login'),
-                  )
-                ),
-              ],
-            ),
-          ),
-        );
-      }
-    }
-
-
-Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes a email e senha. Perceba que um child Text também foi definido na estrutura; a ele será aplicada a valiação de State do formulário. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123656241-1e054f80-d806-11eb-9b75-5fe15262736c.png">
-</div>
-
-<br>
-
-Após criar a View, iremos definir a estrutura do controller para gerenciar o state do formulário. Na mesma pasta, crie uma file chamada de controller.dart e adicione as seguintes linhas de código:
-
-
-    import 'package:mobx/mobx.dart';
-    
-    part 'controller.g.dart';
-    
-    class Controller = ControllerBase with _$Controller;
-    
-    abstract class ControllerBase with Store {}
-
-
-Como já foi visto anteriormente, essa estrutura será a base para o run de um arquivo no qual o state será gerenciado. Para criar este arquivo e monitorar suas atualizações, rode o seguinte comando no diretório do formulário:
-
-    
-    flutter pub run build_runner watch
-
-
-Agora que a base de gerenciamento foi criada, vamos fazer algumas alterações nos arquivos computed.dart e controller.dart.
-
-No arquivo computed.dart defina o acesso a classe Controller:
-
-
-    class _ComputedState extends State<Computed> {
-      
-      Controller controller = Controller();
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-           ...
-        );
-      }
-
-
-Posteriormente, agora no arquivo controller.dart, defina os observables e as actions referentes aos campos do formulário:
-
-
-    abstract class ControllerBase with Store {
-      @observable
-      String email = '';
-    
-      @observable
-      String senha = '';
-    
-      @action
-      void setEmail(valor) => email = valor;
-    
-      @action
-      void setSenha(valor) => senha = valor;
-    }
-
-
-Em seguida vamos associar cada campo a sua respectiva action:
-
-
-    Padding(
-      padding: EdgeInsets.all(16),
-      child: TextField(
-        decoration: InputDecoration(labelText: "Email"),
-        onChanged: controller.setEmail,
-      ),
-    ),
-    Padding(
-      padding: EdgeInsets.all(16),
-      child: TextField(
-        decoration: InputDecoration(labelText: "Senha"),
-        onChanged: controller.setSenha,
-      ),
-    )
-
-
-Para verificar o recebimento dos valores do formulário, vamos utilizar o já visto autorun() method. No arquivo controller.dart faça a seguinte alteração:
-
-
-    Controller() {
-      autorun((_) {
-        print(email);
-        print(senha);
-      });
-    }
-
-
- Criamos um autorun() method no constructor da class Controller, o qual cria um print dos valores correspondentes a email e senha passados no formulário. Lembrando que essa verificação é feita a cada mudança no Widget TextField, já que a chamada das actions é feita através do atributo onChanged. 
-
-Após a mudança, se a execução tiver sido interrompida, torne a rodar o comando a seguir na pasta que contém a file do formulário:
-
-
-    flutter pub run build_runner watch
-
-
-A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="">
-</div>
-
-
-<h2>@computed</h2>
-
-
- Como já foi dito, um Computed Observable ou Computed Propertie é um derived-state, ou seja, ele deriva de um core-state ou de outro derived-state, porém, pode ser aplicado de formas distintas, como veremos a seguir. No arquivo controller.dart crie a seguinte alteração:
-  
-
-    @computed
-    bool get formularioValidado => email.length >= 5 && senha.length >= 5;
-
-
-O computed criado basicamente age como uma validação, definindo um número mínimo de caracteres para que cada campo possa ser validado, e retorna true caso os valores sejam correspondentes. O próximo passo é definir o consumo deste computed diretamente no formulário. Com isso, crie as seguintes modificações no arquivo computed.dart:
-
-   
-     Padding(
-      padding: EdgeInsets.all(16),
-      child: Observer(
-        builder: (_) {
-          return Text.rich(TextSpan(children: [
-            TextSpan(
-                text: controller.formularioValidado
-                    ? 'Campos Válidos'
-                    : '',
-                style: TextStyle(color: Colors.green)),
-            TextSpan(
-                text: controller.formularioValidado
-                    ? ''
-                    : 'Campos Inválidos',
-                style: TextStyle(color: Colors.red))
-          ]));
-        },
-      )),
-      Padding(
-          padding: EdgeInsets.all(16),
-          child: Observer(builder: (_) {
-            return ElevatedButton(
-              onPressed: controller.formularioValidado ? () {} : null,
-              child: Text('Login'),
-            );
-          }))
-
-
-O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional, resultando no retorno do string 'Campos Válidos' caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123559218-1d6ea980-d771-11eb-9f72-167ab05018b5.png">
-</div>
-
-<br>
-
-
-<h2>Auth Simulation</h2>
-
-
-Como foi visto anteriormente, é possível definir a gerência de determinado State através do método reaction, que executa um effect após verificar uma mudança no observable definido. Neste caso, iremos aplicar algumas mudanças no formulário anterior, aplicando o reaction para simular uma autenticação dos dados do usuário. 
-
-O primeiro passo será criar uma nova action, esta sendo referente ao login em si, e também alguns observables, os quais irão servir como forma de validação. Na file controller.dart faça as seguintes alterações:
-
-
-     @observable
-     bool usuarioLogado = false;
-   
-     @observable
-     bool carregando = false;
-   
-     @action
-     Future<void>logar() async {
-       carregando = true;
-   
-       await Future.delayed(Duration(seconds: 3));
-   
-       carregando = false;
-
-       usuarioLogado = true;
-
-     }
-
-
-As novas definições consistem em um método que é chamado no onPress do botão de login, ou seja, apenas se os dados do usuário forem correspondentes aos parâmetros anteriormente definidos. Esse método, chamado de logar, possui um método delayed, cuja função é simular o carregamento de um select na base por exemplo, e a ele é atribuída a duração de 3 segundos. Em seguida, definimos que o usuário foi autenticado por meio do bool 'usuarioLogado'; assim seria possível chamar a tela subsequente após o carregamento. Carregamento este que é atribuído ao bool 'carregando', o qual é setado para true quando o método logar é chamado, e após o delayed, torna a ser false.
-
-Tendo concluído as alterações no controller.dart, torne a fazer o build com o comando a seguir:
-
-
-    flutter pub run build_runner watch
-
-
-Após o fim da execução, vamos partir para as próximas alteração. Elas consistem em:
-   
-
-    Controller controller = Controller();
-      
-    late ReactionDisposer reactionDisposer;
-
-    @override
-      void didChangeDependencies() {
-        super.didChangeDependencies();
-    
-        reactionDisposer = reaction((_) => controller.usuarioLogado, (valor) {
-          print(valor);
-        });
-      }
-
-     @override
-     void dispose() {
-       reactionDisposer();
-       super.dispose();
-     }
-
-
-Dentro do método didChangeDependencies() iremos definir o reaction method, o qual recebe o observable 'usuarioLogado' como monitorado, e define um print do seu valor no Debug Console caso haja uma mudança no mesmo. Além disso, é definido um ReactionDisposer e um override da classe dispose, evitando a chamda constante do reaction method. Em seguida:    
-  
-
-    TextSpan(
-      text: controller.formularioValidado && !controller.carregando
-          ? 'Campos Válidos' : '',
-      style: TextStyle(color: Colors.green))
-
-
-Essa alteração define que o text 'Campos Válidos' só será aparente caso o processo de carregamento não estiver ocorrendo. Em seguida:
-
-
-    Padding(
-      padding: EdgeInsets.all(16),
-      child: Observer(builder: (_) {
-        return ElevatedButton(
-          onPressed: controller.formularioValidado ? () {
-              controller.logar();
-            } : null,
-          child: controller.carregando ? CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation(Colors.white),
-            ) : Text('Login')
-          );
-        }
-      )
-    )
-
-
-Definimos a chamada do método logar no onPress, além de um CircularProgressIndicator, que indica o tempo de carregamento definido anteriormente. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123563343-844c8c80-d78a-11eb-8157-7decc8762387.png">
-</div>
-
-<br>
-
-
-<h2>ObservableList</h2>
-
-
-O ObservableList é um recurso utilizado para monitorar o State de listas de Widgets. Com um ObservableList é possível ter um nível mais profundo de observação em uma lista de valores, onde os observers são notificados caso um item seja adicionado, removido ou modificado. Ou seja, o ObservableList fica atento a qualquer mudança significativa na lista. Para melhor exemplificar, vamos retomar o exemplo anterior e complementá-lo.
-
-Ainda na file computed.dart, faça a seguinte alteração:
-
-
-    @override
-     void didChangeDependencies() {
-       super.didChangeDependencies();
-   
-       reactionDisposer = reaction((_) => controller.usuarioLogado,
-       (usuarioLogado) {
-         if (controller.usuarioLogado) {
-           Navigator.of(context)
-               .pushReplacement(MaterialPageRoute(builder: (_) => List()));
-         }
-       });
-     }
-
-
-Após a alteração, quando efetuada a validação dos dados, o clique no buttom 'login' executa a chamada de um navigator para a tela de listagem, a qual será criada em sequência.
-
-Em uma pasta a parte, adicione dois arquivos. O primeiro, chamado de List.dart será a tela em si, já o segundo, este chamado de listController.dart, corresponde a aonde o ObservableList será gerenciado.
-
-Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
-
-
-    _dialog() {
-      showDialog(
-        context: context,
-        builder: (_) {
-          return AlertDialog(
-            title: Text("Adicionar item"),
-            content: TextField(
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: "Digite uma descrição..."),
-              onChanged: (valor) {},
-            ),
-            actions: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Text(
-                    "Cancelar",
-                    style: TextStyle(color: Colors.red),
-                  )),
-              TextButton(onPressed: () {}, child: Text("Salvar"))
-            ],
-          );
-        });
-      }
-
-
-A primeira inclusão é um dialog, o qual será utilizado para adiministrar os itens da lista. A seguir iremos incluir um ListView.builder, que irá gerar os itens necessários:
-
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        body: ListView.builder(
-          itemCount: 10,
-          itemBuilder: (_, indice) {
-            return ListTitle(
-              title: Text("Item $indice"),
-              onTap: () {},
-            );
-          },
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            _dialog();
-          },
-        ),
-      );
-    }
-
-
-A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123576967-53c81b00-d7a9-11eb-845a-989b4c47b270.png">
-</div>
-
-<br>
-
-
-Tendo a estrutura criada, vamos definir como os states da lista serão gerenciados. Na file listController.dart, faça as seguintes alterações:
-
-
-    abstract class ListControllerBase with Store {
-      @observable
-      late String newItem = '';
-    
-      @action
-      void setNewItem(String value) => newItem = value;
-    }
-
-
-É criado um observable referente a mensagem inserida no processo de adição de um novo item, além de uma action referente a atribuição dessa mensagem ao mesmo. Em seguida iremos consumir esses membros da classe ListControllerBase. Na file List.dart crie:
-
-
-    ...
-    
-    ListController _listController = ListController();
-
-    ...
-    
-    content: TextField(
-      decoration: InputDecoration(
-       border: OutlineInputBorder(),
-       labelText: "Digite uma descrição..."),
-       onChanged: _listController.setNewItem,
-    )
-  
-    ...
-    
-
-Uma instância da classe ListController é criada, permitindo o acesso a action setNewItem, que é atribuída a ação de onChange do TextField Widget. Após esse processo, a informação que o usuário insere já pode ser armazenada:
-
-
-    ObservableList<String> itemList = ObservableList();
-  
-    @action
-    void addItem() {
-      itemList.add(newItem);
-    }
-
-
-O ObservableList itemList define um List que armazena cada descrição de item criado, criando um novo espaço na memória a cada inserção, não sendo necessário atribuir um annotation @abservable a ela. Essa descrição é inserida no ObservableList através da action addItem. Por sua vez, a action addItem será chamada na ação de save no dialog anteriormente criado:
-
-
-    TextButton(
-      onPressed: () {
-        _listController.addItem();
-      },
-      child: Text("Salvar"))
-
-
-Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próximo passo é fazer a exibição dos itens dessa lista. No ListView.builder faça as alterações a seguir:
-
-
-    body: Observer(
-        builder: (_) {
-          return ListView.builder(
-            itemCount: _listController.itemList.length,
-            itemBuilder: (_, indice) {
-              return ListTitle(
-                title: Text(_listController.itemList[indice]),
-                onTap: () {},
-              );
-            },
-          );
-        },
-      )
-
-O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu length como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTitle. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123577429-30ea3680-d7aa-11eb-9602-c634d4279554.png">
-</div>
-
-
-<h2>Tratando Itens de Uma Lista</h2>
-
-
-Os exemplos anteriores focam no monitoramento de uma lista, gerenciando seu state e apenas isso. Porém, as informações de uma lista normalmente também possuem um State próprio, que as define no contexto da lista como um todo. A seguir continuaremos a compor a ObservableList, porém, na escala dos itens. Para isso iremos criar uma nova file chamada de itemController.dart em uma pasta chamada Item, esta referente ao gerenciamento de cada item.
-
-A ela iremos adicionar as seguintes linhas de código:
-
-
-    import 'package:mobx/mobx.dart';
-
-    part 'itemController.g.dart';
-    
-    class ItemController = ItemControllerBase with _$ItemController;
-    
-    abstract class ItemControllerBase with Store {
-      ItemControllerBase(this.titulo);
-    
-      final String titulo;
-    
-      @observable
-      bool marked = false;
-
-    }
-
-
-Basicamente criamos dois atributos, um referente a descrição dada a cada item, aqui chamada de "titulo"; o outro membro criado é um observable, este definindo o status do item que foi marcado. 
-
-Agora, para que o State de cada item possa ser monitorado pelo novo controller, vamos fazer uma alteração na file listController.dart:
-
-    
-    ...
-
-    import 'package: .../item/itemController.dart';
-
-    ...
-
-    ObservableList<ItemController> itemList = ObservableList<ItemController>();
-
-    @action
-    void addItem() {
-      itemList.add(ItemController(newItem));
-    }
-
-
-O valor definido como o tipo da ObservableList passa a ser a classe ItemController, e por consequência, também é definido como o tipo que será adicionado, declarado na action addItem. Em seguida iremos atualizar a file List.dart:
-
-
-    body: Observer(
-        builder: (_) {
-          return ListView.builder(
-            itemCount: _listController.itemList.length,
-            itemBuilder: (_, indice) {
-              var item = _listController.itemList[indice];
-              return Observer(builder: (_) {
-                return ListTitle(
-                 title: Text(
-                 item.titulo,
-                   style: TextStyle(
-                    decoration: item.marked 
-                     ? TextDecoration.lineThrough
-                     : null
-                    )),
-                  onTap: () {
-                    item.marked = !item.marked;
-                  },
-                );
-              });
-            },
-          );
-        },
-      ),
-
-
-Antes de mais nada, definimos um novo Observer como retorno do ListView.Builder, ele será responsável por monitorar as mudanças no state de cada item. O title da ListTitle, que antes consistia no _listController.itemList, passa a ser o novo atributo titulo, criado na file itemController.dart. Também definimos que ao clicar em um item da lista, o atributo bool marked passa a ser false.
-
-Como último alteração, iremos definir que ao salvar um item na lista o dialog 'Adicionar Item' será fechado. Faremos isso adicionando um Navigator.pop no atributo onPressed do TextButton "Salvar". 
-
-
-    TextButton(
-     onPressed: () {
-       _listController.addItem();
-       Navigator.pop(context);
-     },
-     child: Text("Salvar")
-
-
-Com isso o State de cada item da lista é gerenciado individualmente. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123654100-2066aa00-d804-11eb-9a07-442e83b2b2b3.png">
-</div>
-
-<br>
-
-
-<h2>Flutter Commands</h2>
-
-
-<h2>Binder</h2>
-
-
-<h2>GetX</h2>
-
-
-<h2>Riverpod</h2>
-
-
-<!-- <h2>Flutter Modular</h2> -->
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123717717-d1e0fc00-d853-11eb-833f-f389d9af8548.png">
-</div>
-
-
-Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular é uma arquitetura que provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
-
-Estes são os principais aspectos em que o Flutter Modular foca:
-
-
-- Gerenciamento de Memória Automático.
-- Injeção de Dependências.
-- Gestão de Roteamento Dinâmico e Relativo.
-- Modularização do Código.
-
-
-<h2>Modular Structure</h2>
-
-
-A estrutura modular consiste em módulos desacoplados e independentes que representam as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
-
-Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muito mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
-
-
-<h2>Instalação</h2>
-
-
-Para criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione o flutter_modular como uma dependência:
-
-
-    dependencies:
-      flutter_modular: any
-
-
-Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. É o que iremos abordar a seguir.
-
-
-<h2>Dividindo o Projeto em Módulos</h2>
-
-
-Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro é referemte a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
-
-
-<h2>Estrutura Recomendada</h2>
-
-
-Por ter a modularização como principal aspecto da arquitetura modular, cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. No Flutter Modular há também uma forte presença do MobX, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
-
-Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplica o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123803022-4783b100-d8c2-11eb-8d8a-89c3bfa95bae.png">
-</div>
-
-
-Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. As mudanças iniciam na lib folder, que consiste em um app folder e na main.dart file:
-
-
-<h2>main.dart</h2>
-
-
-A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp. No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
-
-
-    import 'package:exemplo/lib/app/app_module.dart';
-
-    import 'package:flutter/material.dart';
-    import 'package:flutter_modular/flutter_modular.dart';
-
-    void main() => runApp(ModularApp(module: AppModule()));
-
-
-
-Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura, um módulo consite em basicamente três arquivos:
-
-
-<h2>app_controller.dart</h2>
-
-
-Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um .g(generate) após o nome.
-
-
-<h2>app_module.dart</h2>
-
-
-A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declarados os Binds e as rotas que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file app_module.dart:
-
-
-<h3>MainModule</h3>
-
-
-O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O MainModule é criado da seguinte forma:
-
-
-    // extend from MainModule
-    class AppModule extends MainModule {
-    
-      // Provide a list of dependencies to inject into your project
-      @override
-      List<Bind> get binds => [];
-    
-      // Provide all the routes for your module
-      @override
-      List<ModularRoute> get routes => [];
-
-      // add your main widget here
-      @override
-      Widget get bootstrap => AppWidget();
-    
-    }
-
-
-Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Eles são:
-
-
-<h3>Binds</h3>
-
-
-É basicamente um List proveniente de um override da propriedade binds, cuja função é guardar as principais classes das quais a aplicação depende, sendo possível recuparar esses Binds em qualquer parte do app. A seguir há um exemplo de declaração de dependências utilizada como modelo na estrutura Modular:
-
-
-    @override
-    List<Bind> get binds => [
-          Bind((i) => AppController()),
-          Bind((i) => HomeController()),
-          Bind((i) => ProfileController()),
-        ];
-
-
-A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso, as dependências são os controllers de três páginas distintas. 
-
-    Bind((i) => MyClass())
-
-O Bind possui essa estrutura pois pode receber a injeção durante a chamada da classe, além de proporcionar o "Lazy Loading", ou seja, a classe só é instanciada quando chamada pela primeira vez, em seguida passa a obedecer certos parâmetros, que por padrão a tornam Singleton durante a vida útil do módulo do qual ela implementa.
-
-
-<h3>Routes</h3>
-
-
-List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e associá-las as telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
-
-
-    @override
-     List<ModularRoute> get routes => [
-           ChildRoute('/', child: (_, args) => HomePage()),
-           ChildRoute('/profile', child: (_, args) => ProfilePage()),
-     ];
-
-
-A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
-como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim, é definida a classe correspondente a tela acessada através da rota declarada.
-
-
-<!-- <h3>Bootstrap</h3>
-
-
-Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
- -->
-
-
-<h2>app_widget.dart</h2>
-
-
-A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada.
-
-A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
-
-
-    //  app_widget.dart
-    import 'package:flutter/material.dart';
-    import 'package:flutter_modular/flutter_modular.dart';
-    
-    class AppWidget extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return MaterialApp(
-          initialRoute: "/",
-        ).modular();
-      }
-    }
-
-
-Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do .modular(). 
-
-
-<h2>pages</h2>
-
-
-A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo o módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
-
-
-<h2>Slidy</h2>
-
-
-O Slidy é um package manager que automatiza o processo de criação de um projeto Modular. Com ele é possível gerar templates, gerenciar Modules, Pages, Widgets, BLoCs, Controllers, tests e mais. Sua principal função é permitir a estruturação padronizada de projetos, organizando sua aplicação em _Modules_ formados por pages, repositories, widgets, BLoCs, e também criar testes de unidade automaticamente. Além disso, o Slidy dá ao desenvolvedor um caminho mais fácil para injetar dependências e instalar pacotes, fazer updates ou removê-los. Isso tudo é feito com o run de comandos simples.
-
-
-<h2>Instalação</h2>
-
-
-O Slidy pode ser instalado de formas distintas:
-
-
-<h3>Flutter/Dart directly</h3>
-
-
-    dart pub global activate slidy
-
-
-<h3>choco (only windows)</h3>
-
-
-    choco install slidy
-
-
-<h3>Homebrew (macos and linux)</h3>
-
-
-    brew install slidy
-
-
-<h2>Comandos</h2>
-  
-
-<h3>Start</h3>
-
-
-O comando _Start_ cria uma estrutura básica de projeto(comfirme que a folder lib está vazia):
-
-    
-    slidy start
-
-
-<h3>Run</h3>
-
-
-O comando _run_ executa scripts alocados no parâmetro "scripts" na pubséc.yaml:
-
-
-    slidy run open_folder
-
-
-<h3>Install</h3>
-
-
-O comando _install_(ou update) instala novos pacotes:
-
-
-    slidy install mockito dio modular
-
-
-Também é possível instalar um package como dev_dependency utilizando a flag --dev:
-
-
-    slidy i flutter_launcher_icons --dev
-
-
-<h2>Generate</h2>
-
-
-Os comandos _gererate_ criam módulos, pages, widgets ou repositórios de acordo com o comando especificado.
-
-
-<h3>Module</h3>
-
-
-Cria um novo módulo com o comando slidy generate module:
-
-
-    slidy generate module manager/product
-
-  
-<h3>Page</h3>
-
-
-Cria uma nova page com o comando slidy generate page:
-
-
-    slidy generate page manager/product/pages/add_product
-
-  
-<h3>Widget</h3>
-
-
-Cria um novo widget com o comando slidy generate widget:
-
-
-    slidy generate widget manager/product/widgets/product_detail
-
-
-<h3>Repository</h3>
-
-
-Cria um novo repository com o comando slidy generate repository:
-
-
-    slidy g r manager/product/repositories/product
-
-
-<!-- <h2>Controller Manager</h2>
-
-
-Como já foi dito, a estrutura modular conta com a preseça do MobX e seus controllers. Portanto, o slidy também conta com uma automatização do porcesso que gera os códigos responsáveis por gerenciar os states da aplicação. Para isso, usa-se o comando:
-
-
-    slidy run mobx_build_clean
-
-
-Ele é responsável por verificar todos os módulos do projeto, detectando modificações na controller.dart file e as aplicando na controller.g.dart. -->
-
-
-<h2>Repository Pattern</h2>
-
-
-O Repository Pattern é uma camada de abstração ao acesso de serviços externos em uma aplicação. Serviços como o consumo de uma Rest API ou de uma base de dados são tratados em classes específicas, gerando uma estrutura fácil de manutenir e controlar. Essa divisão permite que um Web Service possa ser consumido, atualizado, ou mesmo descartado com muito mais facilidade, o que torna o processo de desenvolvimento mais rápido e eficiente.
-
-O Repository Pattern pode ser utilizado em conjunto com algumas das mais conhecidas HTTP libraries do dart, como própria Http, dio, além de outras como http_parser, http_cliente etc.
-
-Para exemplificar o uso do pattern, iremos criar uma aplicação simples que consome uma API externa e lista uma série de pokemons. Nela iremos aplicar os conceitos mais básicos da estrutura. Além de entender como o conceito de repository se complementa com o uso de uma lib Http client.
-
-<br>
-<div align="center">
- <img src="https://user-images.githubusercontent.com/61476935/124007846-269a8900-d9b2-11eb-8c37-eb6ae8b7a03f.png">
-</div>
-<br>
-
-O dio é um poderoso Http client criado para o dart, o qual suporta Interceptors, Global configuration, FormData, Reques Cancellation, File downloading, Timeout e entre outros recusos. Possui, segundo a pub.dev, 100% de popularidade na comunidade de desenvolvedores Flutter, tão popular ou até mais que a já citada Http library.
-
-
-<h3>Get Started</h3>
-
-
-Para fazer uso da library é preciso adiciar uma nova dependencie na file pubspec.yaml da base do projeto:
-
-
-    dependencies:
-      dio: ^4.0.0
-
-
-Obs: A versão indicada é a mais atual neste momento, caso você queira se assegurar de estar utilizando a versão mais recentes, verifique em [pub.dev/packages/dio](https://pub.dev/packages/dio).
-
-
-<h2>Entendendo a Estrutura</h2>
-
-
-Em um novo projeto, após instalar o dio, crie uma nova pasta chamada _repositories_ na lib folder. Na nova pasta iremos criar um interface para agrupar todos os métodos do repository. Em uma file definida como poke_repository_interface.dart, crie as seguintes linhas de código:
-
-
-    import 'package:exemple/models/poke_model.dart';
-
-    abstract class IPokeRepository {
-      Future<List<PokeModel>> getAllPokemons();
-    }
-
-
-
-Na classe criada teremos apenas um método, a qual irá retornar um List de PokeModel. PokeModel será uma classe que irá representar o modelo de dados, ou seja, irá representar cada pokemon na list.
-
-Ainda na lib folder, crie uma nova pasta chamada de _models_. Nela iremos criar uma file poke_model.dart que irá conter a classe PokeModel:
-
-
-    class PokeModel {
-      var name;
-    
-      PokeModel({this.name});
-    
-      PokeModel.fromJson(Map<String, dynamic> json) {
-        name = json['name'];
-      }
-    }
-
-
-A classe terá uma variável "name" que será responsável por guardar o nome do pokemon, além de um método para converter o json retornado pela API em um objeto de PokeModel.
-
-Após criar o model e a interface, iremos criar a implementação do repository. Na repositories folder, crie uma file poke_repository.dart e nela crie a regra de negócio para chamar a API especificada:
-
-
-    import 'package:exemple/repositories/poke_repository_interface.dart';
-    import 'package:exemplo/models/poke_model.dart';
-    
-    import 'package:dio/dio.dart';
-    
-    class PokeRepository implements IPokeRepository {
-      final Dio _dio;
-    
-      PokeRepository(this._dio);
-    
-      @override
-      Future<List<PokeModel>> getAllPokemons() async {
-        List<PokeModel> pokemons = [];
-    
-        var response = await _dio.get("https://pokeapi.co/api/v2/pokemon/");
-    
-        response.data['results'].map((pokemon) {
-          pokemons.add(PokeModel.fromJson(pokemon));
-        }).toList();
-    
-        return pokemons;
-      }
-    }
-
-
-A classe PokeRepository define um implements da anteriormente criada IPokeRepository, fazendo um override nos métodos da interface. Tendo isso definido, foi criada uma chamada do Client Http _Dio_, que passa a ser injetado no contructor da classe PokeRepository e se torna responsável por fazer o GET resquest na API. 
-
-Em seguida, o método getAllPokemons retorna um List chamado de pokemons, que é iniciado como um array vazio, mas é retornado com todos nomes de pokemons vindos da API, esta sendo definida pela URL https://pokeapi.co/api/v2/pokemon. O valor de retorno, um Json, é atribuído a variável response.
-
-O próximo passo é acessar os dados armazenados em response e itrubuí-los à variável pokemons. Caso você não tenha verificado, o retorno da API é Map Json. Com isso, um map method é utilizado para extrair os objetos pokemon e armazená-los na variável na List criada. Por fim, o método map recebe um ToList() method, convertendo os valores no type desejado.
-
-
-<h2>Listando Pokemons</h2>
-
-
-Com o model e o repostory concluídos, podes de fato listar os valores retornados. Porém, antes de partirmos para a interface, criaremos um "Controller" para receber o repository da aplicação como boa prática. Na lib folder, criaremos uma file home_controller.dart. Nela adicione as seguintes linhas de código:
-
-
-    import 'package:repositorypattern/models/poke_model.dart';
-    
-    import 'package:dio/dio.dart';
-    
-    class HomeController {
-      final IPokeRepository _pokeRepository = PokeRepository(Dio());
-    
-      Future<List<PokeModel>> fetchPokemons() {
-        return _pokeRepository.getAllPokemons();
-      }
-    }
-
-
-A classe HomeController recebe o repository criado, além de uma intância do Http Client Dio. 
-
-
-Por último, iremos criar uma UI simples, cuja função é apenas listar o retorno da API. Com isso, na main.dart file, crie os Widget abaixo:
-
-
-    import 'package:repositorypattern/models/poke_model.dart';
-    import 'package:repositorypattern/home_controller.dart';
-    import 'package:flutter/material.dart';
-    
-    ...
-
-    class HomePage extends StatelessWidget {
-      final HomeController _homeController = HomeController();
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(title: Text('Lista de Pokemons')),
-            body: FutureBuilder<List<PokeModel>>(
-              future: _homeController.fetchPokemons(),
-              builder: (context, snapshot) {
-                var pokemons = snapshot.data;
-                if (pokemons == null) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                return ListView.builder(
-                 itemCount: pokemons.length,
-                 itemBuilder: (context, index) {
-                   return ListTitle(
-                    title: Text(pokemons[index].name),
-                );
-             });
-           },
-        ));
-      }
-    }
-
-
-A interface consiste um StatelessWidget que instancia a classe HomeController e um Future Builder que irá chamar o método do controller. Além disso, uma condicional gera um CircularProgressIndicator caso a API retorne null, e caso seja diferente de null, gera um ListView.bulder com todos os nomes do pokemons. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
- <img src="https://user-images.githubusercontent.com/61476935/124005193-2c429f80-d9af-11eb-9d92-cc1e9a059359.png">
-</div>
