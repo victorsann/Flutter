@@ -581,7 +581,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 <h2>App State</h2>
 
 
-O App State, ou shared state, corresponde as informações que se mantém entre as sessões de acesso do usuário, possuindo maior escalabilidade em relação ao ephemeral state, sendo compartilhada por toda a aplicação. Exemplos claros de um shared state são:
+O App State, ou shared state, corresponde as informações que se mantém entre as sessões de acesso do usuário, possuindo maior escalabilidade em relação ao ephemeral state e sendo compartilhada por toda a aplicação. Exemplos claros de um shared state são:
 
 
 - Informações de login
@@ -606,7 +606,7 @@ Agora que definimos o que é o state para o Flutter, iremos entender como e quan
 <h2>StatelessWidget</h2>
 
 
-Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StateLessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State, ou padrões da interface. Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
+Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State, ou em padrões da interface. Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
 
 
     class MeuWidget extends StatelessWidget {
@@ -617,7 +617,7 @@ Um StatelessWidget é um widget que descreve parte de uma interface criando um c
     }
 
 
-O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context do widget, que identifica o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
+O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
 
 
 <h2>StatefulWidget</h2>
@@ -649,7 +649,7 @@ Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distin
 <h2>createState Method</h2>
 
 
-O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos State.
+O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando seu ciclo de vida.
 
 
 <h2>State Class</h2>
@@ -659,6 +659,78 @@ A classe State define o comportamento da interface de acordo com o estado atual 
 
 
 <h1>Usando Material Components</h1>
+
+
+O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas é o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório, mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
+
+
+    name: my_app
+    flutter:
+      uses-material-design: true
+
+
+Além disso, o Flutter dispõe da [MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html) class, que agrupa uma série de widgets normalmente utilizados e necessários em um Material design app. Seu uso inicia com o ```Material App``` widget, que permite criar uma base para a widget tree:
+
+
+    void main() {
+      runApp(const MyApp());
+    }
+    
+    class MyApp extends StatelessWidget {
+      const MyApp({Key? key}) : super(key: key);
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+      }
+    }
+
+
+Nela serão definidos o title que identifica o app, o color theme, a página inicial e entre outros. A seguir estão dispostos os atributos da class MaterialApp, dos quais serão destacados os mais importantes:
+
+
+    (new) MaterialApp MaterialApp({
+      Key? key,
+      GlobalKey<NavigatorState>? navigatorKey,
+      GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+      Widget? home,
+      Map<String, Widget Function(BuildContext)> routes = const <String, WidgetBuilder>{},
+      String? initialRoute,
+      Route<dynamic>? Function(RouteSettings)? onGenerateRoute,
+      List<Route<dynamic>> Function(String)? onGenerateInitialRoutes,
+      Route<dynamic>? Function(RouteSettings)? onUnknownRoute,
+      List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
+      Widget Function(BuildContext, Widget?)? builder,
+      String title = '',
+      String Function(BuildContext)? onGenerateTitle,
+      Color? color,
+      ThemeData? theme,
+      ThemeData? darkTheme,
+      ThemeData? highContrastTheme,
+      ThemeData? highContrastDarkTheme,
+      ThemeMode? themeMode = ThemeMode.system,
+      Locale? locale,
+      Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
+      Locale? Function(List<Locale>?, Iterable<Locale>)? localeListResolutionCallback,
+      Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback,
+      Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
+      bool debugShowMaterialGrid = false,
+      bool showPerformanceOverlay = false,
+      bool checkerboardRasterCacheImages = false,
+      bool checkerboardOffscreenLayers = false,
+      bool showSemanticsDebugger = false,
+      bool debugShowCheckedModeBanner = true,
+      Map<ShortcutActivator, Intent>? shortcuts,
+      Map<Type, Action<Intent>>? actions,
+      String? restorationScopeId,
+      ScrollBehavior? scrollBehavior,
+      bool useInheritedMediaQuery = false,
+    })
 
 
 
