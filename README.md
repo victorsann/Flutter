@@ -6,9 +6,9 @@
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
 
-O Flutter é um conjunto de ferramentas para o desenvolvimento de interfaces de usuário, criado e mantido pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
+O Flutter é um framework para o desenvolvimento híbrido de aplicativos, criada e mantida pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de desenvolvimento. Além disso, outra característica muito importante da ferramenta é sua capacidade de criar aplicações híbridas, mantendo uma performance nativa independente do sistema operacional, e um código fonte único.
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de programação. Além disso, outra característica muito importante da ferramenta é sua capacidade de manter uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
 
 Outras características do Flutter são:
 
@@ -476,12 +476,12 @@ A forma mais simples de criar um app flutter é retornar um widget atravez da fu
     }
 
 
-A função ```runApp()``` define o widget a ela dado como base para a Widget Tree, fazendo com que ele preencha a totalidade da tela. No caso acima, é definido que o widget <i>Center()</i>, cuja função é alinhar todos os elementos que ele contém no centro do espaço disponível, seja a base para os próximos elementos que irão compor a UI. 
+A função ```runApp()``` define o widget a ela dado como base para a Widget Tree, fazendo com que ele preencha a totalidade da tela. No caso acima, é definido que o widget <i>Center()</i>(cuja função é alinhar todos os elementos que ele contém no centro do espaço disponível) seja a base para os próximos elementos que irão compor a UI. 
 
 Dadas as devidas exceções, todos os widgets possuem a propriedade child, a qual retorna um outro widget que irá obedecer as regras definidas pela configuração do seu widget parent. Porém, para entender como a estrutura de uma aplicação Flutter é gerada, precisamos ir um pouco mais a fundo.
 
 No processo de desenvolvimento de um app, você normalmente criará novos widgets que serão subclasses tanto de StatelessWidgets quanto de StatefulWidgets.
-Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essa estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvolvimento de apps:
+Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essas estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvolvimento de apps:
 
 
 <h1>State Management</h1>
@@ -592,7 +592,7 @@ O App State, ou shared state, corresponde as informações que se mantém entre 
 
 Divergindo do estado restrito a um único elemento da interface, o App State demanda o uso de uma ou mais ferramentas de gerenciamento que variam de acordo com a robusteis e o tipo de aplicação que será criada. Tais ferramentas serão mais detalhados nos próximos passos. 
 
-Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar, o diagarama a seguir ilustra as formas mais comuns de uso:
+Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar e quando, o diagarama a seguir ilustra as formas mais comuns de uso:
 
 
 <div align="center">
@@ -617,13 +617,13 @@ Um StatelessWidget é um widget que descreve parte de uma interface criando um c
     }
 
 
-O método build define o que será renderizado com a intância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
+O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
 
 
 <h2>StatefulWidget</h2>
 
 
-Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não uma. A classe inicial define uma instância da StatefulWidget e nela é criado o estado associado a uma subclasse, esta por sua vez renderiza os elementos que o compõem através do build method: 
+Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não uma. A classe inicial define uma instância da StatefulWidget e nela é criado o estado associado a uma subclasse, esta por sua vez renderiza os elementos que a compõem através do build method: 
 
 
 
@@ -661,7 +661,7 @@ A classe State define o comportamento da interface de acordo com o estado atual 
 <h1>Usando Material Components</h1>
 
 
-O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas é o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório, mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
+O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
 
 
     name: my_app
@@ -732,6 +732,76 @@ Nela serão definidos o title que identifica o app, o color theme, a página ini
       bool useInheritedMediaQuery = false,
     })
 
+
+<h2>debugShowCheckedModeBanner</h2>
+
+
+Um Flutter App é criado por padrão em modo de debug, e um dos sinais dessa definição é a propriedade debugShowCheckedModeBanner, cuja função é criar uma barra que intica o modo de depuração do app, o que não é utilizidado em desenvovlimento e muito menos em produção. O exemplo a seguir desabilita o banner de debug em toda a aplicação:
+
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    )
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h2>theme</h2>
+
+
+A propriedade theme permite definir um padrão de cores para os material widgets em toda a aplicação, como appBars, drawers e entre outros. O exemplo a seguir define como utilizar a prorpiedade theme de forma simplória: 
+
+
+    MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.blueGrey
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('MaterialApp Theme'),
+        ),
+      ),
+    )
+
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h2>supportedLocales</h2>
+
+
+A propriedade supportedLocales define uma lista de localidades nas quais o app pretende entrar em operação. Por padrão, apenas o inglês americano é suportado, tendo como valor padrão [const Locale('en', 'US')], sendo necessário declarar quais locais serão suportados. A ordem de definição dos elementos é importante para o funcionamento. O exemplo a seguir mostra o padrão de supportedLocales utilizados em apps brasileiros:
+
+
+    MaterialApp(
+      
+      ...
+
+      supportedLocales: [const Locale('pt'), const Locale('en')],
+
+      ...
+
+    );
+
+
+<h2>initialRoute</h2>
+
+
+The name of the first route to show, if a [Navigator] is built.
+
+Defaults to [dart:ui.PlatformDispatcher.defaultRouteName], which may be overridden by the code that launched the application.
+
+If the route name starts with a slash, then it is treated as a "deep link", and before this route is pushed, the routes leading to this one are pushed also. For example, if the route was /a/b/c, then the app would start with the four routes /, /a, /a/b, and /a/b/c loaded, in that order. Even if the route was just /a, the app would start with / and /a loaded. You can use the [onGenerateInitialRoutes] property to override this behavior.
 
 
 
