@@ -3989,9 +3989,9 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
 - Nele acesse a aba <i>Launcher icon generator</i>
 - Defina o app icon a partir de uma imagem de sua preferência:
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/152217240-d8d1baee-a5a3-460f-9844-f04dafca4c04.gif">
-</div> -->
+</div>
 
 Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagans irão substituir as imagens geradas na criação do app da seguinte forma:
 
