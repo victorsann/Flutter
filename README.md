@@ -3968,5 +3968,29 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
   <img src="https://user-images.githubusercontent.com/61476935/152078245-cbc28c12-3e43-4e39-b748-42775853f45a.png">
 </div> 
 
+<br>
 
-Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo, o de dar uso a o que foi desenvolvido. O processo de deployment é um dois pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa exeperiência define o sucesso do app. Durante o ciclo de desenvolvimento,
+Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo: dar uso a o que foi desenvolvido. O processo de deployment é um dos pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa exeperiência define o sucesso do app. Neste ponto serão abordados em detalhes como se dá o processo de publicação de releases, tanto na Play Store quanto na App Store:
+
+
+<h1>Play Store</h1>
+
+
+Quando o projeto antinge determinada proporção, a forma mais lógica de testá-lo é através do método de acesso que qualquer usuária terá quando o app for publicado. A publicação de app Android demanda uma série de requisitos e acompanhamentos de processos, alguns bastante demorados. A seguir será descrito o passo a passo para assinar, configurar, testar e publicar a aplicação:
+
+
+<h2>Adicionando um Launcher Icon</h2>
+
+
+Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve como adicionar um launcher icon ao seu Flutter app:
+
+
+- Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
+- Nele acesse a aba <i>Launcehr icon generator</i>:
+- Defina o app icon a partir de uma imagem de sua preferência 
+
+<div align="center">
+  <img src="">
+</div>
+
+- Adicione a imagem como um assets element
