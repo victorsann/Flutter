@@ -3966,5 +3966,5 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/152077045-429f5919-ae1b-411d-8698-0e87b81a4377.png">
-</div>
+</div> 
 
