@@ -3971,7 +3971,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
 <br>
 
-Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo: dar uso a o que foi desenvolvido. O processo de deployment é um dos pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa exeperiência define o sucesso do app. Neste ponto serão abordados em detalhes como se dá o processo de publicação de releases, tanto na Play Store quanto na App Store:
+Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo: dar uso a o que foi desenvolvido. O processo de deployment é um dos pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa experiência define o sucesso do app. Neste ponto serão abordados em detalhes como se dá o processo de publicação de um release app, tanto na Play Store quanto na App Store:
 
 
 <h1>Play Store</h1>
@@ -3994,4 +3994,60 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
   <img src="">
 </div>
 
-- Adicione a imagem como um assets element
+- Defina a imagem como um assets element
+
+Em seguida, adicione o flutter launcher icons a file pubspec.yaml:
+
+
+    flutter_icons:
+       android: true
+       ios: true
+       image_path: "assets/icon_name.png"
+
+
+Após salvar a alteração, faça o run do comando a seguir para atualizar o launcher icon do seu projeto:
+
+    
+    flutter pub run flutter_launcher_icons:main
+
+
+Como resultado, temos um novo launcher icon para o projeto:
+
+<div align="center">
+  <img src="">
+</div>
+
+
+<h2>Criando um Exclusive Id</h2>
+
+
+A publicação na Google Play demanda que a aplicação possua uma identificação padrão exclusiva, também chamada de application ID. O Flutter cria essa identificação por padrão quando o app é criado, sendo encontrada no path <i>android/app/build.gradle</i> na propriedade ```applicationId```:
+
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID.
+        applicationId "com.example.app_name"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+
+Para entender um pouco mais sobre o application ID e qual é a sua função dentro da Google Play Store, o tema é abordado pela Android Developer Platform com uma maior riqueza de detalhes: [Configure the app module]((https://developer.android.com/studio/build/application-id.html).). Mas, de forma resumida, o ID de uma aplicação Android o identifica tanto no device em uso quanto na Google Play. Uma vez que o app foi publicado, esse ID o identifica e apenas a ele, não podendo ser modificado posteriormente. O application ID também será utilizado ao fazer o upload de uma nova versão do app, se um ID diferente for utilizado, a Google Play irá tratar a atualização como um app distinto da versão anterior. 
+
+A identificação também demanda certa atenção, já que possui alguns critérios para ser considerada válida e sendo um pouco restritiva:
+
+- Cada identificação deve possuir no mínimo dois segmentos separados por um ou mais pontos
+- Cada segmento deve ser iniciado por uma letra
+- Todos os caracteres devem ser alfanuméricos ou um sublinhado [a-zA-Z0-9_]
+
+A forma mais simples de modificar esse ID é sobrescreve-lo manualmente. Porém, é recomendado utilizar o comando a seguir para garantir que a atualização ocorreu em toda a aplicação:
+
+
+    pub global run rename --bundleId com.domain.appName
+
+
+Por ser um identificador exclusivo, é recomendado que o application ID seja domain name da sua aplicação, sendo escrito revertido(com.domain).
+
+
