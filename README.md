@@ -3971,7 +3971,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
 <br>
 
-Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo: dar uso a o que foi desenvolvido. O processo de deployment é um dos pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa experiência define o sucesso do app. Neste ponto serão abordados em detalhes como se dá o processo de publicação de um release app, tanto na Play Store quanto na App Store:
+Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo: dar uso a o que foi desenvolvido. O processo de deployment é um dos pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa é uma das experiências que definem o sucesso do app. Neste ponto serão abordados em detalhes como se dá o processo de publicação de um release app, tanto na Play Store quanto na App Store:
 
 
 <h1>Play Store</h1>
@@ -4132,7 +4132,7 @@ Em seguida substitua o trecho contendo os <i>bildTypes</i> pelas seguintes infor
         }
     }
 
- Após salvar o arquivo, faça o run do comando flutter clean para evitar que as compilações em cache afetem o processo de signing. Com isso, todos os builds de release gerados a partir do seu projeto serão assinados eidentificados como seu app automaticamente.
+ Após salvar o arquivo, faça o run do comando flutter clean para evitar que as compilações em cache afetem o processo de signing. Com isso, todos os builds de release gerados a partir do seu projeto serão assinados e identificados como seu app automaticamente.
 
 
  <h2>Gerando App Bundle</h2>
