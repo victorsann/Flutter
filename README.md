@@ -3992,21 +3992,19 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
 - Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
 - Defina o app icon a partir de uma imagem de sua preferência:
 
+<br>
+
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/152217240-d8d1baee-a5a3-460f-9844-f04dafca4c04.gif">
 </div>
+
+<br>
 
 Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagans irão substituir as imagens geradas na criação do app da seguinte forma:
 
 - Acessa a pasta res baixada e copie seu conteúdo
 - Em seguida, em seu projeto, acesse [project]/android/app/src/main/res
 - Substitua os arquivos contidos nela pelos que foram copiados
-
-Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152220530-7a423d00-d006-4a2c-a93d-f554993c90e5.gif">
-</div>
 
 
 <h3>Flutter Launcher Icons</h3>
@@ -4034,7 +4032,7 @@ Após salvar io arquivo, faça o run do comando a seguir:
 Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152220530-7a423d00-d006-4a2c-a93d-f554993c90e5.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
 </div>
 
 
