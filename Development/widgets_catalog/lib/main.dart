@@ -30,25 +30,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
- final List<String> children = <String>['First', 'Second', 'Third', 'Four', 'Fifth', 'Sixth'];
-    
    @override
    Widget build(BuildContext context) {
      return Scaffold(
-       body: Container(
-         alignment: Alignment.center,
-         child: ListView.builder(
-           itemCount: children.length,
-           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 200,
-              width: 200,
-              margin: EdgeInsets.only(bottom: 1),
-              decoration: BoxDecoration(color: Colors.blue[800]),
-              child: Center(child: Text('${children[index]}')),
-            );
-           }
-         ))
+       body: Center(child: Text('Home Page'))
         );
        }
         
