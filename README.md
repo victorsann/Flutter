@@ -3983,10 +3983,13 @@ Quando o projeto antinge determinada proporção, a forma mais lógica de testá
 <h2>Adicionando um Launcher Icon</h2>
 
 
-Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve como adicionar um launcher icon ao seu Flutter app:
+Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve duas formas de como adicionar um launcher icon ao seu Flutter app:
+
+
+<h3>Manualmente</h3>
+
 
 - Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
-- Nele acesse a aba <i>Launcher icon generator</i>
 - Defina o app icon a partir de uma imagem de sua preferência:
 
 <div align="center">
@@ -3998,6 +4001,35 @@ Um zip contendo uma pasta res será baixado, com ele virão uma série de adapta
 - Acessa a pasta res baixada e copie seu conteúdo
 - Em seguida, em seu projeto, acesse [project]/android/app/src/main/res
 - Substitua os arquivos contidos nela pelos que foram copiados
+
+Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152220530-7a423d00-d006-4a2c-a93d-f554993c90e5.gif">
+</div>
+
+
+<h3>Flutter Launcher Icons</h3>
+
+
+Obtenha a imagem desejata no formato adequado, em seguida, defina a imagem escolhida como um assets element. Tendo isto feito, define o flutter launcher icons  como dev_dependencie na file pubspec.yaml
+
+    dev_dependencies:
+      flutter_launcher_icons: "^0.9.2"
+
+Em seguida defina o script correspondente a criação da imagem a referenciando na propriedade <i>image_path</i>:
+
+    flutter_icons:
+       android: true
+       ios: true
+       image_path: "assets/icon_name.png"
+
+
+Após salvar io arquivo, faça o run do comando a seguir:
+
+    
+    flutter pub run flutter_launcher_icons:main
+
 
 Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
