@@ -3990,26 +3990,19 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
 - Defina o app icon a partir de uma imagem de sua preferência:
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/152217240-d8d1baee-a5a3-460f-9844-f04dafca4c04.gif">
 </div>
 
-- Defina a imagem como um assets element
+Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagans irão substituir as imagens geradas na criação do app da seguinte forma:
 
-Em seguida, adicione o flutter launcher icons a file pubspec.yaml:
+- Acessa a pasta res baixada e copie seu conteúdo
+- Em seguida, em seu projeto, acesse [project]/android/app/src/main/res
+- Substitua os arquivos contidos nela pelos que foram copiados
 
-    flutter_icons:
-       android: true
-       ios: true
-       image_path: "assets/icon_name.png"
-
-Após salvar a alteração, faça o run do comando a seguir para atualizar o launcher icon do seu projeto:
-    
-    flutter pub run flutter_launcher_icons:main
-
-Como resultado, temos um novo launcher icon para o projeto:
+Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
 <div align="center">
-  <img src="">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152220530-7a423d00-d006-4a2c-a93d-f554993c90e5.gif">
 </div>
 
 
