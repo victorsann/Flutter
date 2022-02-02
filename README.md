@@ -4051,3 +4051,25 @@ A forma mais simples de modificar esse ID é sobrescreve-lo manualmente. Porém,
 Por ser um identificador exclusivo, é recomendado que o application ID seja domain name da sua aplicação, sendo escrito revertido(com.domain).
 
 
+<h2>Signing</h2>
+
+
+Sempre uma versão da sua aplicação sofre um up, seja em fases de teste(sobre as quais falaremos posteriormente), seja na Play Store, é necessário identificar que o bundle ou apk enviado corresponde a uma versão do seu app. Com isso, é necessário definir uma assinatura que irá identificar cada versão como sendopoveninte do app desenvolvido. Essa assinatura é definida duas keys:
+
+
+<h3>Deployment Key</h3>
+
+
+A Deployment, ou <i>app signing</i> key, assina a versão do app baixada pelo usuário final. Sendo parte do modelo de segurança de update do Android, a signing key jamais será alterada durante o tempo de vida da aplicação e deve ser mantida em sigilo.
+
+
+<h3>Upload Key</h3>
+
+
+A upload Key é utilizada para autenticar o .aab(Android App Bundle) ou .apk enviados pelo desenvolvedor, sendo substituída pela deployment key quando o upload é concluído. Também deve ser mantida em sigilo.
+
+O ciclo de uso das chaves de assinatura da aplicação pode ser melhor entendido através da descrição a seguir:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/152183508-4a29b4a8-922b-4573-9ac6-5a86fc50652c.png">
+</div>
