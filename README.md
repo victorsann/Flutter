@@ -4089,8 +4089,8 @@ O arquivo será gerado em um diretório local da sua máquina, este sendo defini
 
 Com a keystore criada, crie um novo aquivo na Adroid folder da aplicação chamado de key.properties, a qual irá referenciar a keystore anteriormente crida. No arquivo, defina as chaves da aplicação seguindo o modelo abaixo:
 
-    storePassword=<password from previous step>
-    keyPassword=<password from previous step>
+    storePassword=<password do passo anterior>
+    keyPassword=<password do passo anterior>
     keyAlias=upload
     storeFile=<local decriação da key store. Por exemplo: /Users/<user name>/upload-keystore.jks>
 
