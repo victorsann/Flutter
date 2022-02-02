@@ -3965,6 +3965,8 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/152077045-429f5919-ae1b-411d-8698-0e87b81a4377.png">
+  <img src="https://user-images.githubusercontent.com/61476935/152078245-cbc28c12-3e43-4e39-b748-42775853f45a.png">
 </div> 
 
+
+Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apresentadas e aprofundadas, é o momento de entender como dar o próximo passo, o de dar uso a o que foi desenvolvido. O processo de deployment é um dois pontos mais importantes para um mobile developer e para o projeto em si. É através do acesso em lojas de aplicativos que o usuário final terá o primeiro contato com o que foi desenvolvido, e essa exeperiência define o sucesso do app. Durante o ciclo de desenvolvimento,
