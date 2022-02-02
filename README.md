@@ -3963,6 +3963,7 @@ Também é possível redefinir a direção do scroll, que por padrão é Axis.ho
       ],
     ); -->
 
+<br>
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/152078245-cbc28c12-3e43-4e39-b748-42775853f45a.png">
@@ -3986,8 +3987,8 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
 
 
 - Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
-- Nele acesse a aba <i>Launcehr icon generator</i>:
-- Defina o app icon a partir de uma imagem de sua preferência 
+- Nele acesse a aba <i>Launcher icon generator</i>
+- Defina o app icon a partir de uma imagem de sua preferência:
 
 <div align="center">
   <img src="">
