@@ -3984,10 +3984,13 @@ Quando o projeto antinge determinada proporção, a forma mais lógica de testá
 <h2>Adicionando um Launcher Icon</h2>
 
 
-Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve duas formas de como adicionar um launcher icon ao seu Flutter app:
+Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve como adicionar um launcher icon ao seu Flutter app:
 
 
-<h3>Manualmente</h3>
+<h3>Android</h3>
+
+
+A forma mais fácil de adionar um launcher icon no android app do seu Flutter Project é manualmente, seguindo a descrição abaixo: 
 
 
 - Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
@@ -4001,39 +4004,73 @@ Caso não tenha sido feito durante o desenvolvimento, este é o momento de defin
 
 <br>
 
-Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagans irão substituir as imagens geradas na criação do app da seguinte forma:
+Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagens irão substituir as imagens geradas na criação do app da seguinte forma:
 
-- Acessa a pasta res baixada e copie seu conteúdo
-- Em seguida, em seu projeto, acesse [project]/android/app/src/main/res
-- Substitua os arquivos contidos nela pelos que foram copiados
-
-
-<h3>Flutter Launcher Icons</h3>
+- Copie a pasta res
+- Em seguida, em seu projeto, acesse [project]/android/app/src/main
+- Após acessar, subistitua a file res padão pela que foi copiada
 
 
-Obtenha a imagem desejata no formato adequado, em seguida, defina a imagem escolhida como um assets element. Tendo isto feito, define o flutter launcher icons  como dev_dependencie na file pubspec.yaml
+<h3>IOS</h3>
+
+
+Obtenha a imagem desejata no formato adequado, em seguida, defina a imagem escolhida como um assets element. Tendo isto feito, define o flutter launcher icons como dev_dependencie na file pubspec.yaml
 
     dev_dependencies:
-      flutter_launcher_icons: "^0.9.2"
+      flutter_launcher_icons: ^0.9.2
 
 Em seguida defina o script correspondente a criação da imagem a referenciando na propriedade <i>image_path</i>:
 
     flutter_icons:
-       android: true
+       android: false
        ios: true
        image_path: "assets/icon_name.png"
 
+Após salvar as alterações, faça o run do comando a seguir:
 
-Após salvar io arquivo, faça o run do comando a seguir:
-
-    
     flutter pub run flutter_launcher_icons:main
-
 
 Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
+</div>
+
+
+<h2>Renomeando o App</h2>
+
+
+Com a conclusão do desenvolvimento é possível que haja a necessidade de alterar o nome do projeto criado, já que muitas vezes, o nome do app nas lojas de aplicativo ou mesmo no device não é levado em conta no momento de criação de um app flutter, cujo padão utiliza underline e etc. Para fazer essa alteração, existem duas alternativas:
+
+
+<h3>Manualmente</h3>
+
+
+A forma mais simple de alterar o nome da aplicação é sobrescrever o nome dado na criação do app nos arquivos das versões de Android e IOS, que são encontrados respectivamente em:
+
+- [project]/android/app/src/main/AndroidManifest.xml: android;label="app_name"
+- [project]/ios/Runner/Info.plist:
+
+        <Key>CFBundleName</Key>
+        <string>App_name</string>
+
+
+<h3>Rename Package</h3>
+
+
+Outra forma de renomear o app é através do package Rename. Para obtê-lo, faça o run do comando a seguir no principal diretório da aplicação:
+
+    pub global activate rename
+
+Após tê-lo instalado, faça a o run do comando a seguir contendo o novo nome da aplicação:
+
+    pub global run name --appname "new name"
+
+Após recarrer o app, como resultado, temos o app renomeado:
+
+
+<div align="center">
+  <img width="50%" src="">
 </div>
 
 
@@ -4059,7 +4096,7 @@ A identificação também demanda certa atenção, já que possui alguns critér
 - Cada segmento deve ser iniciado por uma letra
 - Todos os caracteres devem ser alfanuméricos ou um sublinhado [a-zA-Z0-9_]
 
-A forma mais simples de modificar esse ID é sobrescreve-lo manualmente. Porém, é recomendado utilizar o comando a seguir para garantir que a atualização ocorreu em toda a aplicação:
+A forma mais simples de modificar esse ID é sobrescreve-lo manualmente. Porém, é recomendado utilizar o Rename Package e o comando a seguir para garantir que a atualização ocorreu em toda a aplicação:
 
     pub global run rename --bundleId com.domain.appName
 
