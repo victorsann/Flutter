@@ -902,6 +902,9 @@ Também definidos como um low-level approach, o uso dos InheritedWidget & Inheri
 <h2>BLoC / Rx</h2>
 
 
+
+
+
 <h2>GetIt</h2>
 
 
@@ -916,7 +919,7 @@ O MobX é uma biblioteca de State Management que facilita o processo de interaç
 </div>
 
 
-A seguir veremos esses conceitos de forma mais aprofundada associados a um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definiçôes, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
+A seguir veremos esses conceitos de forma mais aprofundada associados a um exemplo prático. O app será semelhante ao app de counter disponibilizado pelo Flutter e que usa os conceitos do setState method. Neste caso, iremos aplicar parte da tríade individualmente, mostrando o resultado da junção de todos ao fim. Porém, antes de prosseguir com as definições, é preciso ter o mobx package alocado nas dependências do novo projeto. Portanto, siga os passos abaixo:
 
 No arquivo pubspec.yaml, logo após cupertino_icons, defina as seguintes dependências:
 
@@ -1082,16 +1085,14 @@ A classe Observer é disponibilizada pelo flutter_mobx package, anteriormente me
 <h2>Gerando Códigos MobX</h2>
 
 
-Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX. Portanto, a escrita de todas essas linhas de código passa a ser meramente explicativa, já que o MobX permite ter o mesmo desempenho de forma muito mais simples, e para isso a lib disponibiliza alguns pacotes. Estes por sua vez são tratados como dev_dependencies, logo, só são utilizadas no processo de desenvolvimento.
-
-No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
+Todo o processo visto anteriormente exemplifica o uso e as definições da tríade do MobX de forma simples no mérito explicativo. Com algumas adições, o MobX permite ter o mesmo desempenho de forma muito mais simples. No arquivo pubspec.yaml, logo após dev_dependencies, defina as seguintes dependências de desenvolvimento:
 
 
     mobx_codegen: ^2.0.0
     build_runner: ^1.12.2
 
 
-Após definir as novas dependências, vamos modificar o código do exemplo anterior e adequá-lo para uma versão mais usual. No arquivo controller, crie as seguintes modificações:
+Após definir as novas dependências, será necessário adequar o exemplo anterior a um modelo favoravel ao seu uso. No arquivo controller, crie as seguintes modificações:
 
 
     import 'package:mobx/mobx.dart';
@@ -1115,15 +1116,15 @@ Uma classe abstract é definida como base para a execução da gerência do Stat
 
     @observable
 
-<div align="center">
+<!-- <div align="center"> -->
   <h5>Um annotation que identifica o atributo counter como um observable</h5>
-</div>
+<!-- </div> -->
    
     @action
 
-<div align="center">
+<!-- <div align="center"> -->
   <h5>Um annotation que identifica o método increment() como uma action </h5>
-</div>
+<!-- </div> -->
 
 
 Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada age como um Mixin e é definida com o uso de _$, sendo gerada em arquivo a parte. Para que isso aconteça é preciso seguir mais alguns passos.
@@ -1140,17 +1141,17 @@ Após esse processo, é preciso gerar a classe associada. Para isso existem dois
     flutter pub run build_runner watch
 
 
-<div align="center">
+<!-- <div align="center"> -->
   <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
-</div>
+<!-- </div> -->
 
 
     flutter pub run build_runner build
 
 
-<div align="center">
+<!-- <div align="center"> -->
   <h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
-</div>
+<!-- </div> -->
 
 
 Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
