@@ -1471,37 +1471,35 @@ O computed criado basicamente age como uma validação, definindo um número mí
         builder: (_) {
           return Text.rich(TextSpan(children: [
             TextSpan(
-                text: controller.formularioValidado
-                    ? 'Campos Válidos'
-                    : '',
-                style: TextStyle(color: Colors.green)),
+             text: controller.formularioValidado
+              ? 'Campos Válidos'
+              : '',
+             style: TextStyle(color: Colors.green)),
             TextSpan(
-                text: controller.formularioValidado
-                    ? ''
-                    : 'Campos Inválidos',
-                style: TextStyle(color: Colors.red))
+             text: controller.formularioValidado
+              ? ''
+              : 'Campos Inválidos',
+             style: TextStyle(color: Colors.red))
           ]));
         },
       )),
       Padding(
-          padding: EdgeInsets.all(16),
-          child: Observer(builder: (_) {
-            return ElevatedButton(
-              onPressed: controller.formularioValidado ? () {} : null,
-              child: Text('Login'),
-            );
-          }))
+       padding: EdgeInsets.all(16),
+       child: Observer(builder: (_) {
+         return ElevatedButton(
+           onPressed: controller.formularioValidado ? () {} : null,
+           child: Text('Login'),
+         );
+       })
+      )
 
 
 O Widget Text recebe a validação de formularioValidado, que é avaliado por uma expressão condicional, resultando no retorno do string 'Campos Válidos' caso seja true, ou do string 'Campos Inválidos', caso seja false. Além disso, a mesma validação acontece no botão, que passa a ser ativo caso a validação retorne true. A imagem a seguir ilustra como o exemplo irá se comportar:
 
-<br>
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164062323-d91bc520-6300-4672-b428-5a32e22f9b9e.gif">
 </div>
-
-<br>
 
 
 <h2>Auth Simulation</h2>
@@ -1592,13 +1590,10 @@ Essa alteração define que o text 'Campos Válidos' só será aparente caso o p
 
 Definimos a chamada do método logar no onPress, além de um CircularProgressIndicator, que indica o tempo de carregamento definido anteriormente. A imagem a seguir ilustra como o exemplo irá se comportar:
 
-<br>
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164062534-a27778d7-9842-4619-9068-820da0001257.gif">
 </div>
-
-<br>
 
 
 <h2>ObservableList</h2>
@@ -1654,11 +1649,10 @@ Na file List.dart, em um StatefulWidget, faça as seguintes inclusões:
             ),
            TextButton(onPressed: () {}, child: Text("Salvar"),
            ),
-          ],
-         );
-        }
+         ],
        );
-      }
+     });
+    }
 
 
 A primeira inclusão é um dialog, o qual será utilizado para adiministrar os itens da lista. A seguir iremos incluir um ListView.builder, que irá gerar os itens necessários:
@@ -1691,13 +1685,9 @@ A primeira inclusão é um dialog, o qual será utilizado para adiministrar os i
 A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além dos itens, a nova tela conta com um FloatingActionButton, cuja função aqui é acessar o dialog, permitindo a inclusão de um item. A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
-<br>
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
 </div>
-
-<br>
 
 
 Tendo a estrutura criada, vamos definir como os states da lista serão gerenciados. Na file listController.dart, faça as seguintes alterações:
@@ -1756,18 +1746,18 @@ Neste ponto, cada item adicionado passa a fazer parte da lista criada. O próxim
 
 
     body: Observer(
-        builder: (_) {
-          return ListView.builder(
-            itemCount: _listController.itemList.length,
-            itemBuilder: (_, indice) {
-              return ListTitle(
-                title: Text(_listController.itemList[indice]),
-                onTap: () {},
-              );
-            },
-          );
-        },
-      )
+      builder: (_) {
+        return ListView.builder(
+          itemCount: _listController.itemList.length,
+          itemBuilder: (_, indice) {
+            return ListTitle(
+              title: Text(_listController.itemList[indice]),
+              onTap: () {},
+            );
+          },
+        );
+      },
+    )
 
 O Observer adicionado ao body permite acessar as mudanças na ObservableList. Também é possível utilizar seu length como definição de tamanho da ListView.builder, além de definir a descrição de cada item com title da ListTitle. A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -1825,29 +1815,29 @@ O valor definido como o tipo da ObservableList passa a ser a classe ItemControll
 
 
     body: Observer(
-        builder: (_) {
-          return ListView.builder(
-            itemCount: _listController.itemList.length,
-            itemBuilder: (_, indice) {
-              var item = _listController.itemList[indice];
-              return Observer(builder: (_) {
-                return ListTitle(
-                 title: Text(
-                 item.titulo,
-                   style: TextStyle(
-                    decoration: item.marked 
-                     ? TextDecoration.lineThrough
-                     : null
-                    )),
-                  onTap: () {
-                    item.marked = !item.marked;
-                  },
-                );
-              });
-            },
-          );
-        },
-      ),
+     builder: (_) {
+       return ListView.builder(
+         itemCount: _listController.itemList.length,
+         itemBuilder: (_, indice) {
+           var item = _listController.itemList[indice];
+           return Observer(builder: (_) {
+             return ListTitle(
+              title: Text(
+              item.titulo,
+                style: TextStyle(
+                 decoration: item.marked 
+                  ? TextDecoration.lineThrough
+                  : null
+                 ),
+               ),
+               onTap: () {
+                 item.marked = !item.marked;
+               },
+             );
+           });
+          },
+        );
+      }),
 
 
 Antes de mais nada, definimos um novo Observer como retorno do ListView.Builder, ele será responsável por monitorar as mudanças no state de cada item. O title da ListTitle, que antes consistia no _listController.itemList, passa a ser o novo atributo titulo, criado na file itemController.dart. Também definimos que ao clicar em um item da lista, o atributo bool marked passa a ser false.
