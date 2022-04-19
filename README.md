@@ -311,35 +311,25 @@ O arquivo main.dart executa uma aplicação padrão, criada como base de qualque
 
 A estrutura padão no main.dar consiste em:
 
->import 'package:flutter/material.dart';
+    import 'package:flutter/material.dart';
 
-<div align="center">
- <h5>Define o acesso a classes e métodos essenciais para gerar e rodar uma aplicação;</h5></h5>
-</div>
+Define o acesso a classes e métodos essenciais para gerar e rodar uma aplicação.
 
->void main() {}
+    void main() {}
 
-<div align="center">
- <h5>Principal método do projeto;</h5>
-</div>
+Principal método do projeto.
 
->runApp();
+    runApp();
 
-<div align="center">
- <h5>infla o widget fornecido e o anexa à tela;</h5>
-</div>
+Método que infla o widget fornecido e o anexa à tela.
 
->MyApp
+    MyApp
 
-<div align="center">
- <h5>Class correspondente a toda a aplicação, onde features padão são definidas;</h5>
-</div>
+Class correspondente a toda a aplicação, onde features padão são definidas.
 
->Widget build(BuildContext context) {}
+    Widget build(BuildContext context) {}
 
-<div align="center">
- <h5>Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp</h5>
- </div>
+Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp.
 
     MaterialApp(
       title: 'Flutter Demo',
@@ -350,9 +340,7 @@ A estrutura padão no main.dar consiste em:
     );
 
 <div align="center">
-  <h5>
   Instância da classe MaterialApp, responsável por gerar os Widgets e customizá-los em projetos baseados em Widgets. O  MaterialApp é uma classe de definição de layout baseada no Material Design do Google. Ele possui uma série de atributos que definem características gerais da aplicação. Os atributos do exemplo correspondem a um title do projeto, uma definição de tema e tela inicial, definida como home.
-  </h5>
 </div>
 
 <div align="center">
