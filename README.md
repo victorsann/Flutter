@@ -1195,7 +1195,7 @@ Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível te
 
 Perceba que tanto o atributo counter quanto o método increment sofrem um @override, tornando suas novas definições as responsáveis por tratar o state. Também é muito importante não modificar este arquivo, sendo uma indicação da própria ferramenta. A imagem a seguir ilustra como o exemplo irá se comportar:
 
-
+<br>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164061862-36a421b0-e73c-47dc-9547-16370fc961d8.gif">
 </div>
@@ -1216,10 +1216,11 @@ Ainda no arquivo controller.dart do exemplo anterior, faça a seguinte alteraç�
 
 O constructor da classe ControllerBase define um autorun method, o qual faz um print do valor contido no atributo counter a cada mudança de State. A imagem a seguir ilustra como o exemplo irá se comportar:
 
-
+<br>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164061981-62066124-6f28-4401-b4f9-bb20183cd7b3.gif">
 </div>
+<br>
 
 
 A cada clique o valor do atributo counter, ou seu novo state, é retornado. Assim é possível verificar se um valor é de fato recebido.
