@@ -8,7 +8,7 @@
 
 O Flutter é um framework para o desenvolvimento híbrido de aplicativos, criada e mantida pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como linguagem de programação. Além disso, outra característica muito importante da ferramenta é sua capacidade de manter uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
+Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language. Além disso, outra característica muito importante da ferramenta é sua capacidade de manter uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
 
 Outras características do Flutter são:
 
@@ -34,7 +34,7 @@ A partir deste ponto, as ferramentas que o Flutter disponibiliza já estão inst
 <h2>Atualizando Path I</h2>
 
 
-Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em Variáveis de usuário crie uma nova variável com as seguintes definições:
+Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em ```Variáveis de usuário```, crie uma nova variável com as seguintes definições:
 
     Nome da Variável: FLUTTER_HOME
     Valor da Variável: C:\src\flutter
@@ -47,18 +47,18 @@ Após esse processo é possível executar o Flutter no cmd do Windows. E para ve
 
     flutter doctor
 
-O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambiente criado, definindo se ele está ou não dentro do esperado. Nesse ponto, é provável que o retorno seja algo parecido com o seguinte:
+O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambiente criado, definindo se ele está ou não dentro do esperado. Neste ponto é provável que o retorno seja algo parecido com o seguinte:
 
-    [√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)
-    [!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
-        ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
-    [√] Chrome - develop for the web
-    [!] Android Studio (not installed)
-    [!] VS Code (not installed)
-    [!] Connected device 
-        ! no devices available
-    
-    ! Doctor found issues in 4 categories.
+>[√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)<br>
+>[!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)<br>
+>    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses<br>
+>[√] Chrome - develop for the web<br>
+>[!] Android Studio (not installed)<br>
+>[!] VS Code (not installed)<br>
+>[!] Connected device<br> 
+>    ! no devices available<br>
+>
+>! Doctor found issues in 4 categories.
 
 Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas.
 
