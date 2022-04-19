@@ -60,8 +60,7 @@ class _ComputedState extends State<Computed> {
                   builder: (_) {
                     return Text.rich(TextSpan(children: [
                       TextSpan(
-                          text: controller.formularioValidado &&
-                                  !controller.carregando
+                          text: controller.formularioValidado && !controller.carregando
                               ? 'Campos Válidos'
                               : '',
                           style: TextStyle(color: Colors.green)),
@@ -74,20 +73,23 @@ class _ComputedState extends State<Computed> {
                   },
                 )),
             Padding(
-                padding: EdgeInsets.all(16),
-                child: Observer(builder: (_) {
-                  return ElevatedButton(
-                      onPressed: controller.formularioValidado
-                          ? () {
-                              controller.logar();
-                            }
-                          : null,
-                      child: controller.carregando
-                          ? CircularProgressIndicator(
-                              valueColor: AlwaysStoppedAnimation(Colors.white),
-                            )
-                          : Text('Login'));
-                })),
+             padding: EdgeInsets.all(16),
+             child: Observer(builder: (_) {
+               return ElevatedButton(
+                   onPressed: controller.formularioValidado
+                    ? () {
+                       controller.logar();
+                      }
+                    : null,
+                   child: controller.carregando
+                   ? CircularProgressIndicator(
+                       valueColor: AlwaysStoppedAnimation(Colors.white),
+                     )
+                   : Text('Login')
+                  );
+                }
+              ),
+            ),
           ],
         ),
       ),

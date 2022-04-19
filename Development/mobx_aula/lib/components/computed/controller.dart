@@ -28,11 +28,8 @@ abstract class ControllerBase with Store {
   @action
   Future<void> logar() async {
     carregando = true;
-
     await Future.delayed(Duration(seconds: 3));
-
     carregando = false;
-
     usuarioLogado = true;
   }
 

@@ -42,6 +42,30 @@ class _List extends State<List> {
         });
   }
 
+
+//   @override
+//   Widget build(BuildContext context) {
+//   return Scaffold(
+//     appBar: AppBar(
+//       title: Text('ObservableList'),
+//     ),
+//     body: ListView.builder(
+//       itemCount: 10,
+//       itemBuilder: (_, index) {
+//         return ListTile(
+//           title: Text("Item $index")
+//         );
+//       },
+//     ),
+//     floatingActionButton: FloatingActionButton(
+//       child: Icon(Icons.add),
+//       onPressed: () {
+//         _dialog();
+//       },
+//     ),
+//   );
+// }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,4 +101,5 @@ class _List extends State<List> {
       ),
     );
   }
+
 }

@@ -17,7 +17,7 @@ class MyHomePage extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       controller: controller,
       children: <Widget>[
-        Scaffold(appBar: AppBar(title: Text('SetState')), body: Home()),
+        Scaffold(appBar: AppBar(title: Text('Auto Run')), body: Home()),
         Scaffold(
           appBar: AppBar(title: Text('Computed Observables')),
           body: Computed(),
