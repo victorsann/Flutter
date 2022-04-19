@@ -49,16 +49,16 @@ Após esse processo é possível executar o Flutter no cmd do Windows. E para ve
 
 O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambiente criado, definindo se ele está ou não dentro do esperado. Neste ponto é provável que o retorno seja algo parecido com o seguinte:
 
->[√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)<br>
->[!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)<br>
->    ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses<br>
->[√] Chrome - develop for the web<br>
->[!] Android Studio (not installed)<br>
->[!] VS Code (not installed)<br>
->[!] Connected device<br> 
->    ! no devices available<br>
->
->! Doctor found issues in 4 categories.
+    [√] Flutter (Channel stable, 2.2.1, on Microsoft Windows [versÃ£o 10.0.19042.985], locale pt-BR)
+    [!] Android toolchain - develop for Android devices (Android SDK version 30.0.3)
+        ! Some Android licenses not accepted.  To resolve this, run: flutter doctor --android-licenses
+    [√] Chrome - develop for the web
+    [!] Android Studio (not installed)
+    [!] VS Code (not installed)
+    [!] Connected device 
+        ! no devices available
+    
+    ! Doctor found issues in 4 categories.
 
 Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas.
 
@@ -163,7 +163,7 @@ O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. 
 
     Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]     ::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
-Para verificar a instalação execute:
+Para verificar a instalação, execute:
 
     choco --version
   
@@ -171,7 +171,7 @@ Tendo a versão retornada, confirma-se a instalação. Em seguida, instale o jdk
 
     choco install jdk8 
 
-Para verificar a instalaçao execute:
+Para verificar a instalaçao, execute:
 
     java -version
 
@@ -215,7 +215,7 @@ Em seguida é possível ter acesso as configurações de desenvolvedor no dispos
 - Permanecer Ativo
 - Depuração USB
 
-A primeira opção define que o aparelho não irá bloquear a tela enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código pode ser feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device, quanto em um dispositivo real.
+A primeira opção define que o aparelho não irá bloquear a tela enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código pode ser feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device quanto em um dispositivo real.
 
 
 <h2>VSCode</h2>
@@ -311,31 +311,31 @@ O arquivo main.dart executa uma aplicação padrão, criada como base de qualque
 
 A estrutura padão no main.dar consiste em:
 
-    import 'package:flutter/material.dart';
+>import 'package:flutter/material.dart';
 
 <div align="center">
  <h5>Define o acesso a classes e métodos essenciais para gerar e rodar uma aplicação;</h5></h5>
 </div>
 
-    void main() {}
+>void main() {}
 
 <div align="center">
  <h5>Principal método do projeto;</h5>
 </div>
 
-    runApp();
+>runApp();
 
 <div align="center">
  <h5>infla o widget fornecido e o anexa à tela;</h5>
 </div>
 
-    MyApp
+>MyApp
 
 <div align="center">
  <h5>Class correspondente a toda a aplicação, onde features padão são definidas;</h5>
 </div>
 
-    Widget build(BuildContext context) {}
+>Widget build(BuildContext context) {}
 
 <div align="center">
  <h5>Descreve a parte da interface do usuário representada pelo widget, retornando uma instância da classe MaterialApp</h5>
