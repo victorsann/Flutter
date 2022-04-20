@@ -1499,7 +1499,7 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164062323-d91bc520-6300-4672-b428-5a32e22f9b9e.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062323-d91bc520-6300-4672-b428-5a32e22f9b9e.gif">
 </div>
 
 
@@ -1593,7 +1593,7 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164062534-a27778d7-9842-4619-9068-820da0001257.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062534-a27778d7-9842-4619-9068-820da0001257.gif">
 </div>
 
 
@@ -1687,7 +1687,7 @@ A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além d
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
 </div>
 
 
@@ -1764,7 +1764,7 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164062895-5f39e65b-a9b4-483b-897d-4c4b14df25d0.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062895-5f39e65b-a9b4-483b-897d-4c4b14df25d0.gif">
 </div>
 
 
@@ -1860,7 +1860,7 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164063010-6c67e686-6114-4cbb-98b4-53829ad00266.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164063010-6c67e686-6114-4cbb-98b4-53829ad00266.gif">
 </div>
 
 <br>
