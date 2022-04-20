@@ -791,7 +791,7 @@ O nome da primeira rota a ser exibida, se um Navigator for construído.
 
 O padrão é <i>dart:ui.PlatformDispatcher.defaultRouteName</i> que pode ser substituído pelo código que iniciou a aplicação.
 
-Se o nome da rota começar com uma barra, ele será tratado como um "deep link" e, antes que essa rota seja enviada, as rotas que levam a essa também serão enviadas. Por exemplo, se a rota fosse ```/a/b/c```, o aplicativo começaria com as quatro rotas ```/, /a, /a/b e /a/b/c``` carregadas, nessa ordem. Mesmo que a rota fosse apenas ```/a```, o aplicativo começaria com ```/``` e ```/a``` carregado. é possível utilizar a propriedade <i>onGenerateInitialRoutes</i> para substituir esse comportamento.
+Se o nome da rota começar com uma barra, ele será tratado como um "deep link" e, antes que essa rota seja enviada, as rotas que levam a essa também serão enviadas. Por exemplo, se a rota fosse ```/a/b/c```, o aplicativo começaria com as quatro rotas ```/, /a, /a/b``` e ```/a/b/c``` carregadas, nessa ordem. Mesmo que a rota fosse apenas ```/a```, o aplicativo começaria com ```/``` e ```/a``` carregado. é possível utilizar a propriedade <i>onGenerateInitialRoutes</i> para substituir esse comportamento.
 
 
 <h1>Abordagens de Gerenciamento</h1>
@@ -1349,7 +1349,7 @@ Uma classe StatefulWidget foi criada e a ela foram atribuidos campos referentes 
 <br>
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164062118-7455dc2d-f477-4ffc-b4c7-9b87952234fc.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062118-7455dc2d-f477-4ffc-b4c7-9b87952234fc.png">
 </div>
 
 <br>
