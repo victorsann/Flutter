@@ -1689,7 +1689,7 @@ A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além d
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
 </div>
-
+<br>
 
 Tendo a estrutura criada, vamos definir como os states da lista serão gerenciados. Na file listController.dart, faça as seguintes alterações:
 
