@@ -739,7 +739,7 @@ Um Flutter App é criado por padrão em modo de debug, e um dos sinais dessa def
 
 
 <div align="center">
-  <img src="">
+  <img src="https://user-images.githubusercontent.com/61476935/164480100-f3215b57-b277-4116-b58a-8e689fa11eb7.gif">
 </div>
 
 
@@ -763,7 +763,7 @@ A propriedade theme permite definir um padrão de cores para os material widgets
 
 
 <div align="center">
-  <img src="">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
 </div>
 
 
