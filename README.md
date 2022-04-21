@@ -2010,10 +2010,10 @@ Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModul
 
     @override
     List<Bind> get binds => [
-          Bind((i) => AppController()),
-          Bind((i) => HomeController()),
-          Bind((i) => ProfileController()),
-        ];
+      Bind((i) => AppController()),
+      Bind((i) => HomeController()),
+      Bind((i) => ProfileController()),
+    ];
 
 
 A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso, as dependências são os controllers de três páginas distintas. 
@@ -2031,8 +2031,8 @@ List proveniente de um override da propriedade routes, cuja função é registra
 
     @override
      List<ModularRoute> get routes => [
-           ChildRoute('/', child: (_, args) => HomePage()),
-           ChildRoute('/profile', child: (_, args) => ProfilePage()),
+       ChildRoute('/', child: (_, args) => HomePage()),
+       ChildRoute('/profile', child: (_, args) => ProfilePage()),
      ];
 
 
