@@ -737,7 +737,9 @@ Um Flutter App é criado por padrão em modo de debug, e um dos sinais dessa def
       debugShowCheckedModeBanner: false,
     )
 
+Como resuultado, temos:
 
+<br>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164480100-f3215b57-b277-4116-b58a-8e689fa11eb7.gif">
 </div>
