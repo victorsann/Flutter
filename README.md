@@ -1068,7 +1068,7 @@ Por último, mas não menos importante, está o responsável por completar a tr�
 
 A classe ```Observer``` é disponibilizada pelo flutter_mobx package, anteriormente mencionado. Ela possui um atributo chamado builder, que é responsável por retornar o Widget Text() caso haja uma mundança no valor passado. Neste caso o valor da variável counter, tida como o Observable. A imagem a seguir ilustra como o exemplo irá se comportar:
 
-
+<br>
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164483567-cfc0dcd6-a369-456c-89c6-76b2c34faf0d.png">
 </div>
