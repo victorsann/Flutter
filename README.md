@@ -1267,9 +1267,9 @@ Por fim, faremos a chamada de um print, tendo um resultado semelhante ao do auto
      }
 
 
-<div align="center">
+<!-- <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/123561221-8b20d280-d77d-11eb-8f11-ee7bba6852c6.png">
-</div>
+</div> -->
 
 
 <h2>MobX Computed Observables</h2>
