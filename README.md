@@ -1072,7 +1072,7 @@ A classe ```Observer``` é disponibilizada pelo flutter_mobx package, anteriorme
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/164483567-cfc0dcd6-a369-456c-89c6-76b2c34faf0d.png">
 </div>
-
+<br>
 
 <h2>Gerando Códigos MobX</h2>
 
