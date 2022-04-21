@@ -815,8 +815,6 @@ O setState, ou gerência de estado implícita, é um low-level approach, normalm
 A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo princípio de increment que o Flutter disponibiliza em seus modelos:
 
 
-    import 'package:flutter/material.dart';
-    
     class SetState extends StatefulWidget {
       @override
       _MyState createState() => _MyState();
@@ -854,13 +852,16 @@ A seguir temos um exemplo de declaração e uso do seState, utilizando o mesmo p
                     Icons.favorite,
                     size: 40.0,
                   )),
-                 Text(
-                  '$_favorite',
-                  style: TextStyle(color: Colors.pink),
-                 )
+                 Visibility(
+                   visible: _favorite > 0,
+                   child: Text(
+                    '$_favorite',
+                    style: TextStyle(color: Colors.pink, fontSize: 20),
+                   ),
+                 ),
                ])
              ]),
-            )
+            ),
           ]),
         ));
       }
@@ -871,7 +872,7 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123119216-b3c16900-d419-11eb-8e69-3894993fca6c.png">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164482072-3761d1ad-8ecf-4110-b294-9c0e4ece88da.gif">
 </div>
 
 
