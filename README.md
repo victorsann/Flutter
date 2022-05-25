@@ -375,7 +375,7 @@ Após executar o android device, vá até a main file e execute o projeto com ``
 <br>
 
 <div align="center">
-  <img width="80%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
 </div>
 
 <br>
