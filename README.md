@@ -4021,7 +4021,7 @@ Após salvar as alterações, faça o run do comando a seguir:
 Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
 </div>
 
 
