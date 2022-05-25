@@ -375,7 +375,7 @@ Após executar o android device, vá até a main file e execute o projeto com ``
 <br>
 
 <div align="center">
-  <img width="90%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
 </div>
 
 <br>
@@ -562,7 +562,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
 </div>
 
 
@@ -770,7 +770,7 @@ A propriedade theme permite definir um padrão de cores para os material widgets
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
 </div>
 
 
@@ -876,7 +876,7 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164482072-3761d1ad-8ecf-4110-b294-9c0e4ece88da.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164482072-3761d1ad-8ecf-4110-b294-9c0e4ece88da.gif">
 </div>
 
 
@@ -1507,7 +1507,7 @@ O Widget Text recebe a validação de formularioValidado, que é avaliado por um
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062323-d91bc520-6300-4672-b428-5a32e22f9b9e.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164062323-d91bc520-6300-4672-b428-5a32e22f9b9e.gif">
 </div>
 
 
@@ -1601,7 +1601,7 @@ Definimos a chamada do método logar no onPress, além de um CircularProgressInd
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062534-a27778d7-9842-4619-9068-820da0001257.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164062534-a27778d7-9842-4619-9068-820da0001257.gif">
 </div>
 
 
@@ -1695,7 +1695,7 @@ A princípio a lista contém 10 itens definidos pelo atributo itemCount. Além d
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164062770-3f07cda5-e541-4869-bf7d-1aade726a5dd.gif">
 </div>
 <br>
 
@@ -1772,7 +1772,7 @@ O Observer adicionado ao body permite acessar as mudanças na ObservableList. Ta
 
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164062895-5f39e65b-a9b4-483b-897d-4c4b14df25d0.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164062895-5f39e65b-a9b4-483b-897d-4c4b14df25d0.gif">
 </div>
 
 
@@ -1868,7 +1868,7 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 <br>
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164063010-6c67e686-6114-4cbb-98b4-53829ad00266.gif">
+  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164063010-6c67e686-6114-4cbb-98b4-53829ad00266.gif">
 </div>
 
 <br>
