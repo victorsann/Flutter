@@ -375,7 +375,7 @@ Após executar o android device, vá até a main file e execute o projeto com ``
 <br>
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
+  <img src="https://user-images.githubusercontent.com/61476935/151175041-627c1299-c046-4cf3-8170-b1e81af3ed52.gif">
 </div>
 
 <br>
@@ -594,7 +594,7 @@ Agora que definimos o que é o state para o Flutter, iremos entender como e quan
 <h2>StatelessWidget</h2>
 
 
-Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança no State, ou em padrões da interface. 
+Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State. 
 
 Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
 
@@ -613,7 +613,9 @@ O método build define o que será renderizado com a instância da classe que o 
 <h2>StatefulWidget</h2>
 
 
-Um StatefulWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não uma. A classe inicial define uma instância da StatefulWidget e nela é criado o estado associado a uma subclasse, esta por sua vez renderiza os elementos que a compõem através do build method: 
+Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma. 
+
+A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, sendo responsável por criar o widget em questão. Já a segunda classe consiste em uma subclasse da <i>State Class</i>, cuja função é conter o state do widget e executar o <i>build()</i> method:
 
 
 
@@ -639,13 +641,15 @@ Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distin
 <h2>createState Method</h2>
 
 
+O método <i>createState</i> é chamado sempre que o widget for criado, retornando uma instância da classe que faz o build do widget com base em seu State atual. No exemplo acima, a classe retorna é a <i>_MyStatefulWidgetState</i>. 
+
 O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando seu ciclo de vida.
 
 
 <h2>State Class</h2>
 
 
-A classe State define o comportamento da interface de acordo com o estado atual da mesma, ela é responsável por definir o State e fazer um rebuild a cada mudança.
+Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança.
 
 
 <h1>Usando Material Components</h1>
@@ -806,7 +810,7 @@ O Flutter possui uma série de abordagens do state management, cada uma com suas
 <h2>setState</h2>
 
 
-O setState, ou gerência de estado implícita, é um low-level approach, normalmente utilizado para tratar ephemeral states. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
+O setState, ou gerência de estado implícita, é um low-level approach, normalmente utilizado para tratar ephemeral states na escala de widgets. Sua principal função no contexto de gerenciamento é notificar o Flutter de que houve uma mudança no internal state do objeto ou Widget, além de definir um novo valor de State. O método setState é estruturado da seguinte forma:
 
 
     setState(() { _myState = newValue; });
