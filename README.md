@@ -1113,11 +1113,11 @@ Uma classe abstract é definida como base para a execução da gerência do Stat
 
 <h5>Um annotation que identifica o atributo counter como um observable</h5>
 
->@observable
+    @observable
 
 <h5>Um annotation que identifica o método increment() como uma action </h5>
 
->@action
+    @action
 
 Além disso, uma class secundária, esta responsável por fazer um Mixin entre a class base e os códigos que serão gerados, é criada. A classe que será gerada age como um Mixin e é definida com o uso do indentificador ```_$```, sendo gerada em um arquivo a parte. Para que isso acontecer é preciso seguir mais alguns passos.
 
@@ -1127,17 +1127,17 @@ Primeiro é preciso definir uma chamada para o arquivo que será criado e que ir
 
 Após esse processo, é preciso gerar a classe associada. Para isso existem dois possiveis comandos:
 
+<br>
+
+<h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
+
     flutter pub run build_runner watch
 
-<div align="center">
-  <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
-</div>
+
+<h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
 
     flutter pub run build_runner build
 
-<div align="center">
-  <h5>Comando que gera a classe apenas uma vez e só a atualiza caso seja executado novamente.</h5>
-</div>
 
 Após o fim do processo, uma nova file foi criada. Ao acessá-la é possível ter um resultado aproximado ao seguinte:
 
