@@ -898,6 +898,57 @@ Também definidos como um low-level approach, o uso dos InheritedWidget & Inheri
 <h2>BLoC / Rx</h2>
 
 
+O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bastante utilizado pela comunidade flutter, sendo um dos primeiros a ser implementado. Com a premissa de separar regra de négocio, UI e gerenciamento de estado, a ferramenta foi desenvolvida com base em três pilares:
+
+
+- <b>Simplicidade</b>: Facilmente aplicável, podendo ser compreendido por desenvolvedores em diferentes fases de aprendizado.
+- <b>Poder</b>: Ajuda a criar aplicações complexas e poderosas as compondo a partir de componentes ainda menores.
+- <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
+
+
+Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base eventos gerados pelo usuário, tratamento de erros e mais. 
+
+A programção assíncrona em Dart se caracteriza pelo uso de ambas as classes ```Future``` e ```Streams```.
+
+Uma Future representa uma computação cuja conclusão não se dá de imediato. Uma função comum retorna o resultado, uma função assíncrona retorna uma Future, que pode eventualmente conter o resultado. A Future em si se responsabilisa por avisar quando o resultado estiver pronto.
+
+Uma Stream é uma sequência de eventos assíncronos. Sendo comparável a um Iterable assíncrono, onde, ao invés de obter o próximo evento quando solicitado, notifica quando o evento estiver disponível. 
+
+
+<h2>Recebendo Stream Events</h2>
+
+
+As Streams podem ser criados de várias maneiras, mas todas podem ser usadas ​​da mesma maneira: o loop for assíncrono (comumente chamado de await for) itera sobre os eventos de uma Stream como o loop for itera sobre um [Iterable](https://api.dart.dev/stable/dart-core/Iterable-class.html). Por exemplo:
+
+
+    Future<int> sumStream(Stream<int> stream) async {
+      var sum = 0;
+      await for (final value in stream) {
+        sum += value;
+      }
+      return sum;
+    }
+
+
+O código acima recebe cada evento de uma Stream de integer events, adiciona-os e retorna(uma Future de) a soma. Quando o corpo do loop termina, a função é pausada até que o próximo evento chegue ou a Stream seja concluído.
+
+
+<h2>Interagindo com um Stream</h2>
+
+
+Sendo comparada a um Iterable, uma Stream pode retornar resultados multiplas vezes, diferente de uma Future, que retorna apenas um resultado por interação. Isso pode ser visto no exemplo a seguir:
+
+
+    Stream<int> countStream(int to) async* {
+      for (int i = 0; i <= to; i++) {
+        yield i;
+      }
+    }
+
+
+Por ser um conjunto de promises, a interação com um Stream demanda o uso da função ```async*```(async generator), além disso, outro aspecto próprio da interação com Streams é o seu retorno, cuja acesso se dá não pela palavra-chave <i>return</i>, mas sim pela palavra-chave ```yield```.
+
+Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
 
 
 
@@ -1127,7 +1178,6 @@ Primeiro é preciso definir uma chamada para o arquivo que será criado e que ir
 
 Após esse processo, é preciso gerar a classe associada. Para isso existem dois possiveis comandos:
 
-<br>
 
 <h5>Comando que gera a classe e monitora as alterações no arquivo controller.</h5>
 
