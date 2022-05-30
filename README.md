@@ -936,7 +936,7 @@ O código acima recebe cada evento de uma Stream de integer events, adiciona-os 
 <h2>Interagindo com um Stream</h2>
 
 
-Sendo comparada a um Iterable, uma Stream pode retornar resultados multiplas vezes, diferente de uma Future, que retorna apenas um resultado por interação. Isso pode ser visto no exemplo a seguir:
+Sendo um Iterable de promises, uma Stream pode retornar resultados multiplas vezes, diferente de uma Future, que retorna apenas um resultado por interação. Isso pode ser visto no exemplo a seguir:
 
 
     Stream<int> countStream(int to) async* {
