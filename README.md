@@ -980,7 +980,7 @@ O exemplo a seguir usa o código do exemplo anterior para gerar uma Stream de in
       print(sum); // 55
     }
 
-Outpt: 
+Output: 
 
 >55
 
@@ -1040,7 +1040,7 @@ Outros metodos que podem ser citados são:
 >Future<T> elementAt(int index);<br>
 >Future<bool> every(bool Function(T element) test);<br>
 >Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});<br>
->Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);<br>
+<!-- >Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);<br> -->
 >Future forEach(void Function(T element) action);<br>
 >Future<String> join([String separator = '']);<br>
 >Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});<br>
