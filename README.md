@@ -920,6 +920,16 @@ Uma Stream é uma sequência de eventos assíncronos. Sendo comparável a um Ite
 - Streams provêm formas de tratar erros.
 - Há dois tipos de Streams: single subscription ou broadcast.
 
+<h2>Single Subscription Streams</h2>
+
+O tipo mais comum de Stream contem uma sequência de eventos que compõem um todo. Tais eventos precisam ser entregues em uma ordem específica, sem que nenhum se perca no processo. Este seria o tipo de Stream obtido a partir da leitura de um arquivo ou de um web request.
+
+Uma Single Subscription Stream pode sofrer um listen uma única vez. Caso sofra novamente posteriormente, os eventos iniciais podem ser sobrescritos ou perdidos, o que torna o restante da Stream sem sentido. Quando o processo de listening se inicia os dados são obtidos e retornados em partes.
+
+<h2>Broadcast Streams</h2>
+
+Uma Broadcast Stream é própria para eventos individuais que serão tratados um por vez, sendo utilizada para responder a mouse events em um navegador, por exemplo. Tais Streams podem sofrer um listen a qualquer momento, e múltiplos listeners podem operar ao mesmo tempo. Além disso, uma Broadcast Stream pode sofrer um listen após o cancelamento da subcription anterior.
+
 <h2>Recebendo Stream Events</h2>
 
 As Streams podem ser criadas de várias maneiras, mas todas podem ser usadas ​​da mesma maneira: o ```loop for``` assíncrono (comumente chamado de await for) intera sobre os eventos de uma Stream como o ```loop for``` intera sobre um [Iterable](https://api.dart.dev/stable/dart-core/Iterable-class.html). Por exemplo:
@@ -1013,14 +1023,61 @@ O exemplo a seguir retorna um erro quando o iterator do loop <i>await for</i> fo
 <h2>Trabalhando com Streams</h2>
 
 
+A classe Stream contém um número de métodos auxiliares que permitem realizar operações comuns em Streams, similarmente aos métodos utilizados para tratar um Iterable. Por exemplo, é possível encontrar o último integer positivo em uma Stream utilizando o método <i>lastWhere()</i>, o qual compõe a Stream API.
+
+    Future<int> lastPositive(Stream<int> stream) => stream.lastWhere((x) => x >= 0);
+
+Outros metodos que podem ser citados são:
+
+>Future<T> get first;<br>
+>Future<bool> get isEmpty;<br>
+>Future<T> get last;<br>
+>Future<int> get length;<br>
+>Future<T> get single;<br>
+>Future<bool> any(bool Function(T element) test);<br>
+>Future<bool> contains(Object? needle);<br>
+>Future<E> drain<E>([E? futureValue]);<br>
+>Future<T> elementAt(int index);<br>
+>Future<bool> every(bool Function(T element) test);<br>
+>Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future<S> fold<S>(S initialValue, S Function(S previous, T element) combine);<br>
+>Future forEach(void Function(T element) action);<br>
+>Future<String> join([String separator = '']);<br>
+>Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future pipe(StreamConsumer<T> streamConsumer);<br>
+>Future<T> reduce(T Function(T previous, T element) combine);<br>
+>Future<T> singleWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future<List<T>> toList();<br>
+>Future<Set<T>> toSet();
+
+Todos os métodos acima, exceto ```drain()``` e ```pipe()```, correspondem a um função similar de Iterable. Cada uma delas pode ser escrita facilmente através de uma função async em conjunto com um <i>await for</i> loop. Alguns exemplos de sua implementação seriam: 
+
+    Future<bool> contains(Object? needle) async {
+      await for (final event in this) {
+        if (event == needle) return true;
+      }
+      return false;
+    }
+    
+    Future forEach(void Function(T element) action) async {
+      await for (final event in this) {
+        action(event);
+      }
+    }
+    
+    Future<List<T>> toList() async {
+      final result = <T>[];
+      await forEach(result.add);
+      return result;
+    }
+    
+    Future<String> join([String separator = '']) async => (await toList()).join(separator);
 
 
 Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
 
 
-
 <h2>GetIt</h2>
-
 
 <h2>MobX</h2>
 
