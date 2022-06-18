@@ -1029,26 +1029,26 @@ A classe Stream contém um número de métodos auxiliares que permitem realizar 
 
 Outros metodos que podem ser citados são:
 
->Future<T> get first;<br>
->Future<bool> get isEmpty;<br>
->Future<T> get last;<br>
->Future<int> get length;<br>
->Future<T> get single;<br>
->Future<bool> any(bool Function(T element) test);<br>
->Future<bool> contains(Object? needle);<br>
->Future<E> drain<E>([E? futureValue]);<br>
->Future<T> elementAt(int index);<br>
->Future<bool> every(bool Function(T element) test);<br>
->Future<T> firstWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future T get first;<br>
+>Future bool get isEmpty;<br>
+>Future T get last;<br>
+>Future int get length;<br>
+>Future T get single;<br>
+>Future bool any(bool Function(T element) test);<br>
+>Future bool  contains(Object? needle);<br>
+>Future E drain E ([E? futureValue]);<br>
+>Future T elementAt(int index);<br>
+>Future bool every(bool Function(T element) test);<br>
+>Future T firstWhere(bool Function(T element) test, {T Function()? orElse});<br>
 >Future fold(S initialValue, S Function(S previous, T element) combine);<br>
 >Future forEach(void Function(T element) action);<br>
->Future<String> join([String separator = '']);<br>
->Future<T> lastWhere(bool Function(T element) test, {T Function()? orElse});<br>
->Future pipe(StreamConsumer<T> streamConsumer);<br>
->Future<T> reduce(T Function(T previous, T element) combine);<br>
->Future<T> singleWhere(bool Function(T element) test, {T Function()? orElse});<br>
->Future<List<T>> toList();<br>
->Future<Set<T>> toSet();
+>Future String join([String separator = '']);<br>
+>Future T lastWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future pipe(StreamConsumer T  streamConsumer);<br>
+>Future T reduce(T Function(T previous, T element) combine);<br>
+>Future T singleWhere(bool Function(T element) test, {T Function()? orElse});<br>
+>Future<List T> toList();<br>
+>Future<Set T> toSet();
 
 Todos os métodos acima, exceto ```drain()``` e ```pipe()```, correspondem a um função similar de Iterable. Cada uma delas pode ser escrita facilmente através de uma função async em conjunto com um <i>await for</i> loop. Alguns exemplos de sua implementação seriam: 
 
