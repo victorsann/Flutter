@@ -906,20 +906,23 @@ O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bas
 - <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
 
 
-Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base eventos gerados pelo usuário, tratamento de erros e mais. 
+Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. A descrição a seguir define o que são Streams e como estas são aplicadas na infraestrutra do BLoC.
 
-A programção assíncrona em Dart se caracteriza pelo uso de ambas as classes ```Future``` e ```Streams```.
+<h2>Stream</h2>
 
-Uma Future representa uma computação cuja conclusão não se dá de imediato. Uma função comum retorna o resultado, uma função assíncrona retorna uma Future, que pode eventualmente conter o resultado. A Future em si se responsabilisa por avisar quando o resultado estiver pronto.
+A programação assíncrona em Dart se caracteriza pelo uso de ambas as classes ```Future``` e ```Streams```. Uma Future representa uma computação cuja conclusão não se dá de imediato. Uma função comum retorna o resultado, uma função assíncrona retorna uma Future, que pode eventualmente conter o resultado. A Future em si se responsabilisa por avisar quando o resultado estiver pronto.
 
-Uma Stream é uma sequência de eventos assíncronos. Sendo comparável a um Iterable assíncrono, onde, ao invés de obter o próximo evento quando solicitado, notifica quando o evento estiver disponível. 
+Uma Stream é uma sequência de eventos assíncronos. Sendo comparável a um Iterable assíncrono, onde, ao invés de obter o próximo evento quando solicitado, notifica quando o evento estiver disponível. Também cabe ressaltar que:
 
+- Streams provêm uma sequência assíncrona de dados.
+- Tais sequências incluem eventos gerados pelo usuário ou por serviços.
+- Uma Stream pode ser processada por um ```await for``` ou pelo método listen().
+- Streams provêm formas de tratar erros.
+- Há dois tipos de Streams: single subscription ou broadcast.
 
 <h2>Recebendo Stream Events</h2>
 
-
-As Streams podem ser criados de várias maneiras, mas todas podem ser usadas ​​da mesma maneira: o loop for assíncrono (comumente chamado de await for) itera sobre os eventos de uma Stream como o loop for itera sobre um [Iterable](https://api.dart.dev/stable/dart-core/Iterable-class.html). Por exemplo:
-
+As Streams podem ser criadas de várias maneiras, mas todas podem ser usadas ​​da mesma maneira: o ```loop for``` assíncrono (comumente chamado de await for) intera sobre os eventos de uma Stream como o ```loop for``` intera sobre um [Iterable](https://api.dart.dev/stable/dart-core/Iterable-class.html). Por exemplo:
 
     Future<int> sumStream(Stream<int> stream) async {
       var sum = 0;
@@ -929,12 +932,9 @@ As Streams podem ser criados de várias maneiras, mas todas podem ser usadas ​
       return sum;
     }
 
-
-O código acima recebe cada evento de uma Stream de integer events, adiciona-os e retorna(uma Future de) a soma. Quando o corpo do loop termina, a função é pausada até que o próximo evento chegue ou a Stream seja concluído.
-
+O código acima recebe cada evento de uma Stream de integer events, adiciona-os e retorna a soma (uma Future). Quando o corpo do loop termina, a função é pausada até que o próximo evento chegue ou a Stream seja concluído.
 
 <h2>Interagindo com um Stream</h2>
-
 
 Sendo um Iterable de promises, uma Stream pode retornar resultados multiplas vezes, diferente de uma Future, que retorna apenas um resultado por interação. Isso pode ser visto no exemplo a seguir:
 
@@ -947,6 +947,73 @@ Sendo um Iterable de promises, uma Stream pode retornar resultados multiplas vez
 
 
 Por ser um conjunto de promises, a interação com um Stream demanda o uso da função ```async*```(async generator), além disso, outro aspecto próprio da interação com Streams é o seu retorno, cuja acesso se dá não pela palavra-chave <i>return</i>, mas sim pela palavra-chave ```yield```.
+
+O exemplo a seguir usa o código do exemplo anterior para gerar uma Stream de integers fazendo uso de uma async generator:
+
+    Future<int> sumStream(Stream<int> stream) async {
+      var sum = 0;
+      await for (final value in stream) {
+        sum += value;
+      }
+      return sum;
+    }
+    
+    Stream<int> countStream(int to) async* {
+      for (int i = 1; i <= to; i++) {
+        yield i;
+      }
+    }
+    
+    void main() async {
+      var stream = countStream(10);
+      var sum = await sumStream(stream);
+      print(sum); // 55
+    }
+
+Outpt: 
+
+>55
+
+<h2>Error Events</h2>
+
+
+Uma Stream é concluída quando todos os eventos nela contidos são executados, e da mesma forma que a Stream notifica a entidade que recebe seus resultados caso um evento seja iniciado, o mesmo ocorre ao finalizá-los. Além dos eventos que retornam informações, Streams podem ter que tratar error events. Quando um erro event ocorre duranto o processo de execução de uma Stream, seja por falha de conexão durante a leitura de dados retornados por um endpoit, ou mesmo bugs no código que executa a Stream, é possível tratá-los da mesma forma que quando utilizamos Futures: ```try-catch```.
+
+O exemplo a seguir retorna um erro quando o iterator do loop <i>await for</i> for igual a 4:
+
+    Future<int> sumStream(Stream<int> stream) async {
+      var sum = 0;
+      try {
+        await for (final value in stream) {
+          sum += value;
+        }
+      } catch (e) {
+        return -1;
+      }
+      return sum;
+    }
+    
+    Stream<int> countStream(int to) async* {
+      for (int i = 1; i <= to; i++) {
+        if (i == 4) {
+          throw Exception('Intentional exception');
+        } else {
+          yield i;
+        }
+      }
+    }
+    
+    void main() async {
+      var stream = countStream(10);
+      var sum = await sumStream(stream);
+      print(sum); // -1
+    }
+
+
+<h2>Trabalhando com Streams</h2>
+
+
+
 
 Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobx_aula/pageView.dart';
 
 void main() {
   runApp(MyApp());
