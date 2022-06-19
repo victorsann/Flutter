@@ -908,7 +908,7 @@ Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart
 
 <h2>Stream</h2>
 
-A programação assíncrona em Dart se caracteriza pelo uso de ambas as classes ```Future``` e ```Stream```. Uma Future representa uma computação cuja conclusão não se dá de imediato. Uma função comum retorna o resultado; uma função assíncrona retorna uma Future que pode eventualmente conter o resultado. A Future em si se responsabilisa por avisar quando o resultado estiver pronto.
+A programação assíncrona em Dart se caracteriza pelo uso de ambas as classes ```Future``` e ```Stream```. Uma Future representa uma computação cuja conclusão não se dá de imediato. Uma função comum retorna o resultado; uma função assíncrona retorna uma Future que pode eventualmente conter o resultado. A Future em si se responsabiliza por avisar quando o resultado estiver pronto.
 
 Uma Stream é uma sequência de eventos assíncronos. Sendo comparável a um Iterable assíncrono, onde, ao invés de obter o próximo evento quando solicitado, notifica quando o evento estiver disponível. Além disso, cabe ressaltar alguns conceitos básicos sobre as Streams:
 
@@ -957,9 +957,9 @@ Output:
 >5<br>
 >Done!
 
-No exemplo, a final streamSubscription recebe uma Stream de cinco integers que são emitidos um por um com o periodo de 1 segundo entre cada. Na mesma final é aplicado um listen method, o qual opera a subscription da final através dos seus manipuladores.
+No exemplo, a final streamSubscription recebe uma Stream de cinco integers que são emitidos um por um em intervalos de 1 segundo. Na mesma final é aplicado um listen method, o qual opera a subscription da final através dos seus manipuladores.
 
-No entanto é importante mencionar que o objeto ```streamSubscription```, assim com a Stream que o origina, também possui métodos bastante usuais, estes que podem ser utilizados durante o processo de listening.
+Além disso, é importante mencionar que o objeto ```streamSubscription```, assim com a Stream que o origina, também possui métodos bastante usuais, estes que podem ser utilizados durante o processo de listening.
 
 Para <i>pausar</i> uma subscription:
 
@@ -967,7 +967,7 @@ Para <i>pausar</i> uma subscription:
     streamSubscription.pause();
     print(streamSubscription.isPaused); // true
 
-Para <i>retomar</i> uma subscriptio:
+Para <i>retomar</i> uma subscription:
 
     // Do some work.
     subscription.resume();
