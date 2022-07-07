@@ -904,9 +904,66 @@ O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bas
 - <b>Poder</b>: Ajuda a criar aplicações complexas e poderosas as compondo a partir de componentes ainda menores.
 - <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
 
-Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. A descrição a seguir define o que são Streams.
+Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams:
+
+    // ignore_for_file: prefer_const_constructors
+    
+    import 'dart:async';
+    
+    import 'package:flutter/material.dart';
+    
+    class StreamCounter extends StatefulWidget {
+    
+      const StreamCounter({Key? key}) : super(key: key);
+    
+      @override
+      State<StreamCounter> createState() => _StreamCounter();
+    }
+    
+    class _StreamCounter extends State<StreamCounter> {
+      
+      final controller = StreamController();
+      int value = 0;
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Streams',
+            ),
+          ),
+          body: Center(  
+            child: StreamBuilder(
+              initialData: value,
+              stream: controller.stream,
+              builder: (context, snapshot) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('You have pushed the button this many times:'),
+                    Text('${snapshot.data}',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(  
+            onPressed: () => controller.add(++value),
+            backgroundColor: Colors.blue,
+            child: Icon(Icons.add),
+          ),
+        );
+      }
+    }
 
 
+A imagem a seguuir iluuustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/177813294-431d48bf-e66c-464c-9131-92e907098d0a.gif">
+</div>
 
 Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
 
