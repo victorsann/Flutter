@@ -562,7 +562,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 
 <div align="center">
-  <img width="85%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
 </div>
 
 
@@ -770,7 +770,7 @@ A propriedade theme permite definir um padrão de cores para os material widgets
 
 
 <div align="center">
-  <img width="55%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
 </div>
 
 
@@ -876,7 +876,7 @@ O exemplo utiliza o setState method para simular um favorite, recurso muito comu
 
 
 <div align="center">
-  <img width="85%" src="https://user-images.githubusercontent.com/61476935/164482072-3761d1ad-8ecf-4110-b294-9c0e4ece88da.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164482072-3761d1ad-8ecf-4110-b294-9c0e4ece88da.gif">
 </div>
 
 
