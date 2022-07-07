@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:async';
+
 import 'package:bloc_app/app/bloc/viaCep/bloc/events.dart';
 import 'package:bloc_app/app/bloc/viaCep/bloc/states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,6 +18,8 @@ class ViaCepPage extends StatefulWidget {
 
 final searchCepBloc = ViaCepController();
 final controller = TextEditingController();
+
+StreamController streamController = StreamController();
 
 class ViaCepPageState extends State<ViaCepPage> {
   @override
