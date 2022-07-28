@@ -904,7 +904,7 @@ O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bas
 - <b>Poder</b>: Ajuda a criar aplicações complexas e poderosas as compondo a partir de componentes ainda menores.
 - <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
 
-Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams:
+Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
 
     // ignore_for_file: prefer_const_constructors
     
@@ -959,7 +959,7 @@ Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart
     }
 
 
-A imagem a seguuir iluuustra como o exemplo irá se comportar:
+A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <div align="center">
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/177813294-431d48bf-e66c-464c-9131-92e907098d0a.gif">
@@ -1946,44 +1946,96 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 <h2>Riverpod</h2>
 
 
-<!-- <h2>Flutter Modular</h2> -->
-
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123717717-d1e0fc00-d853-11eb-833f-f389d9af8548.png">
+  <img src="https://user-images.githubusercontent.com/61476935/181625021-7854476d-4021-4cbd-a595-a16084ce6118.png">
 </div>
 
+Em uma arquitetura monolítica, onde toda uma aplicação se mantem como um único módulo, é possível porjetar um sistema de forma rápida e elegante, aproveitando todos os recursos que o Flutter disponibiliza. No entanto, produzir um aplicativo maior de maneira "monolítica" pode gerar problemáticas que abrangem tanto a manutenção quanto a escalabilidade do projeto. Pensando nisso, os desenvolvedores adotaram estratégias arquiteturais para melhor dividir o código, minimizando os impactos de tais problemas.
 
-Um projeto se torna mais e mais denso e complexo com seu crescimento, o que o torna cada vez mais difícil de manutenir e reutilizar. O Flutter Modular é uma arquitetura que provê uma série de soluções de adequação para lidar com possíveis problemas, como injeção de dependências, sistema de roteamento e um sistema de "singleton descartável".
+Ao dividir melhor o escopo de recursos, se obtem:
 
-Estes são os principais aspectos em que o Flutter Modular foca:
+- Melhor compreensão dos recursos.
+- Redução de falhas nas mudanças.
+- Adição não conflitante de novos recursos.
+- Menos pontos cegos na principal regra de negócio do projeto.
+- Melhor rotatividade de desenvolvedores.
 
+Resumindo, com um código mais legível, estendemos a vida útil do projeto. O Flutter Modular, ou apenas Modular, é um modelo de arquitetura que permite obter os resultados mencionados acima de forma simples, buscando resolver especificamente dois problemas que surgem quando estes são obtidos:
 
-- Gerenciamento de Memória Automático.
-- Injeção de Dependências.
 - Gestão de Roteamento Dinâmico e Relativo.
-- Modularização do Código.
+- Injeção de Dependências.
 
+O Modular faz com que cada escopo do sistema tenha suas próprias rotas e dependências desacoplados de qualquer outro fator na estrutura. Para cada escopo é criada uma classe para agrupar as Rotas e dependências, estas por sua vez sendo chamadas de Módulos.
 
-<h2>Modular Structure</h2>
+<h2>Estrutura Modular</h2>
 
+O <i>flutter_modular</i> foi criado usando o motor do <i>modular_core</i>, que é o responsável pelo sistema de injeção de dependência e gerenciamento de rotas. O sistema de roteamento utilizado no modular emula uma árvore de módulos, o que se assemelha a forma com a qual o Flutter trata sua árvore de widgets. Tal modelagem permite criar uma arquitetura hierárquica onde um módulo pode ser acoplado a outro criando uma ligação entre eles.
 
-A estrutura modular consiste em módulos desacoplados e independentes que representam as funcionalidades da aplicação. Cada módulo está localizado em seu próprio diretório e controla suas próprias dependências, rotas, páginas, widgets e a regra de negócio. Consequentemente, você pode facilmente desanexar um módulo do seu projeto e usá-lo onde quiser. Isso também torna muito mais simples o processo de manutenção de partes específicas do seu sistema e interface, pois cada módulo possui suas particularidades isoladas dos demais.
+<h2>Inspirações do Angular</h2>
 
-Outra vantagem é o modelo de "singleton descartável", que permite gerar uma aplicação sem dúvidas muito mais leve. Isso ocorre graças ao descarte de Binds(injeções), ou seja, quando um módulo não tiver nenhuma tela referente a si ativa, ele será desativado. Com isso é possível manter ocupada somente a quantidade de memória necessária para o funcionamento do sistema, sem excedentes.
+Todo o sistema do flutter modular veio de estudos realizados na arquitetura do [Angular](https://angular.io/), sendo adaptado e posteriormente aplicado ao ecossistema Flutter. Portanto, existem muitas semelhanças entre o flutter modular e o sistema de roteamento e injeção de dependências do Angular.
 
+As rotas são refletidas no aplicativo usando os novos recursos do Navigator 2.0 juntamente com o uso de vários navegadores aninhados. Assim como em Angular, esse recurso é chamado de RouterOutlet.
 
-<h2>Instalação</h2>
+<h2>Criando um Projeto</h2>
 
+Para exemplificar de forma prática cada aspecto do <i>flutter_modular</i>, um projeto sem arquitetura será criado para que posteriormente tenha o modular aplicado a si. 
+
+    flutter create project_name
 
 Para criar um modelo de projeto Modular é preciso declarar sua dependência ao iniciar o desenvolvimento da aplicação. Com isso, após criar o projeto, vá até a pubspec.yaml file e adicione o flutter_modular como uma dependência:
-
 
     dependencies:
       flutter_modular: 
 
+Também é pissível instalar de forma simples cada pacote necessário através de um único comando diponibilizado pela Flutter CLI permite. Para fazê-lo, acesse ```project_name``` e em seguita execute o comando abaixo:
 
-Para se assegurar de estar utilizando a versão mais atual do flutter modular acesse: [flutter_modular](https://pub.dev/packages/flutter_modular).
-Após a declaração da dependência, já é possível utilizar o modelo Flutter Modular como estrutura do projeto criado. É o que iremos abordar a seguir.
+    flutter pub add flutter_modular
+
+Desta forma, já é possível utilizar a arquitetura Modular como estrutura do projeto criado.
+
+<h2>ModularApp</h2>
+
+A classe ModularApp é a primeira classe a ter seu ciclo de vida iniciado quando a aplicação é executada, sendo também a responsável por imbutir o sistema de módulos e a estrutura base com a qual todos os demais widgets serão criados:
+
+    import 'package:flutter/material.dart';
+    
+    void main(){
+      return runApp(ModularApp(module: /*<AppModule>*/, child: /*<AppWidget>*/));
+    }
+
+Sua criação força a inicialização de duas outras classes, a AppModule e AppWidget:
+
+<h2>AppModule</h2>
+
+A classe <i>AppModule</i> é uma extensão da classe Module da biblioteca do flutter_modular, a qual define um módulo como a reunição de todos os Binds e Routes referentes a um contexto, sendo geralmente distribuídos na forma de recursos ou uma representação monolítica do aplicativo. 
+
+- BINDS: Representa e fabrica uma lista de instâncias de classes que podem ser injetadas.
+- ROUTES: Configura uma lista de páginas qualificadas para navegação.
+
+A classe Module permite a criação de tais componentes através de dois getters:
+
+    class AppModule extends Module {
+    
+      @override 
+      List<Bind> get binds => [
+
+      ];
+    
+      @override 
+      List<ModularRoute> get routes => [
+
+      ];
+    }
+
+A descrição ainda destaca que pelo menos um módulo é necessário para iniciar um projeto Modular.
+
+
+
+
+
+<h2>AppWidget</h2>
+
 
 
 <h2>Dividindo o Projeto em Módulos</h2>
