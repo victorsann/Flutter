@@ -2081,7 +2081,7 @@ Antes de concluirmos o exemplo é importante destacar que, em uma situação rea
 O exemplo irá se comportar da seguinte forma:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/181662568-c981882a-8775-4d03-9fbd-3a1caf354c5d.png">
+  <img width="40%" src="https://user-images.githubusercontent.com/61476935/181662568-c981882a-8775-4d03-9fbd-3a1caf354c5d.png">
 </div>
 
 
