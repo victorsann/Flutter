@@ -12,9 +12,7 @@ void main() {
 class AppModule extends Module {
 
   @override 
-  List<Bind> get binds => [
-
-  ];
+  List<Bind> get binds => [];
 
   @override 
   List<ModularRoute> get routes => [

@@ -1950,7 +1950,7 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
   <img src="https://user-images.githubusercontent.com/61476935/181625021-7854476d-4021-4cbd-a595-a16084ce6118.png">
 </div>
 
-Em uma arquitetura monolítica, onde toda uma aplicação se mantem como um único módulo, é possível porjetar um sistema de forma rápida e elegante, aproveitando todos os recursos que o Flutter disponibiliza. No entanto, produzir um aplicativo maior de maneira "monolítica" pode gerar problemáticas que abrangem tanto a manutenção quanto a escalabilidade do projeto. Pensando nisso, os desenvolvedores adotaram estratégias arquiteturais para melhor dividir o código, minimizando os impactos de tais problemas.
+Em uma arquitetura monolítica, onde toda uma aplicação se mantem como um único módulo, é possível projetar um sistema de forma rápida e elegante, aproveitando todos os recursos que o Flutter disponibiliza. No entanto, produzir um aplicativo maior, de maneira "monolítica", pode gerar problemáticas que abrangem tanto a manutenção quanto a escalabilidade do projeto. Pensando nisso, os desenvolvedores adotaram estratégias arquiteturais para melhor dividir o código, minimizando os impactos de tais problemas.
 
 Ao dividir melhor o escopo de recursos, se obtem:
 
@@ -1960,7 +1960,7 @@ Ao dividir melhor o escopo de recursos, se obtem:
 - Menos pontos cegos na principal regra de negócio do projeto.
 - Melhor rotatividade de desenvolvedores.
 
-Resumindo, com um código mais legível, estendemos a vida útil do projeto. O Flutter Modular, ou apenas Modular, é um modelo de arquitetura que permite obter os resultados mencionados acima de forma simples, buscando resolver especificamente dois problemas que surgem quando estes são obtidos:
+Resumindo, com um código mais legível, é possível estender a vida útil do projeto. O Flutter Modular, ou apenas Modular, é um modelo de arquitetura que permite obter os resultados mencionados acima de forma simples, buscando resolver especificamente dois problemas que surgem quando estes são obtidos:
 
 - Gestão de Roteamento Dinâmico e Relativo.
 - Injeção de Dependências.
@@ -1969,7 +1969,7 @@ O Modular faz com que cada escopo do sistema tenha suas próprias rotas e depend
 
 <h2>Estrutura Modular</h2>
 
-O <i>flutter_modular</i> foi criado usando o motor do <i>modular_core</i>, que é o responsável pelo sistema de injeção de dependência e gerenciamento de rotas. O sistema de roteamento utilizado no modular emula uma árvore de módulos, o que se assemelha a forma com a qual o Flutter trata sua árvore de widgets. Tal modelagem permite criar uma arquitetura hierárquica onde um módulo pode ser acoplado a outro criando uma ligação entre eles.
+O <i>flutter_modular</i> foi criado usando o motor do <i>modular_core</i>, que é o responsável pelo sistema de injeção de dependência e gerenciamento de rotas. O sistema de roteamento utilizado no modular emula uma árvore de módulos, o que se assemelha a forma com a qual o Flutter gerencia seus widgets. Tal modelagem permite criar uma arquitetura hierárquica onde um módulo pode ser acoplado a outro criando uma ligação entre eles.
 
 <h2>Inspirações do Angular</h2>
 
@@ -1979,7 +1979,7 @@ As rotas são refletidas no aplicativo usando os novos recursos do Navigator 2.0
 
 <h2>Criando um Projeto</h2>
 
-Para exemplificar de forma prática cada aspecto do <i>flutter_modular</i>, um projeto sem arquitetura será criado para que posteriormente tenha o modular aplicado a si. 
+Para exemplificar de forma prática cada aspecto do <i>flutter_modular</i>, crie um projeto sem arquitetura para que posteriormente tenha o modular aplicado a si. 
 
     flutter create project_name
 
@@ -1988,11 +1988,11 @@ Para criar um modelo de projeto Modular é preciso declarar sua dependência ao 
     dependencies:
       flutter_modular: 
 
-Também é pissível instalar de forma simples cada pacote necessário através de um único comando diponibilizado pela Flutter CLI permite. Para fazê-lo, acesse ```project_name``` e em seguita execute o comando abaixo:
+Também é pissível instalar de forma simples cada pacote necessário através de um único comando diponibilizado pela Flutter CLI. Para fazê-lo, acesse ```project_name``` e em seguita execute o comando abaixo:
 
     flutter pub add flutter_modular
 
-Desta forma, já é possível utilizar a arquitetura Modular como estrutura do projeto criado.
+Desta forma já é possível utilizar a arquitetura Modular como estrutura do projeto criado.
 
 <h2>ModularApp</h2>
 
@@ -2008,7 +2008,7 @@ Sua criação força a inicialização de duas outras classes, a AppModule e App
 
 <h2>AppModule</h2>
 
-A classe <i>AppModule</i> é uma extensão da classe Module da biblioteca do flutter_modular, a qual define um módulo como a reunição de todos os Binds e Routes referentes a um contexto, sendo geralmente distribuídos na forma de recursos ou uma representação monolítica do aplicativo. 
+A classe <i>AppModule</i> é uma extensão da classe Module da biblioteca do flutter_modular, a qual define um módulo como a unição de todos os <i>Binds</i> e <i>Routes</i> referentes a um contexto, sendo geralmente distribuídos na forma de recursos ou uma representação monolítica do aplicativo. 
 
 - BINDS: Representa e fabrica uma lista de instâncias de classes que podem ser injetadas.
 - ROUTES: Configura uma lista de páginas qualificadas para navegação.
@@ -2018,180 +2018,71 @@ A classe Module permite a criação de tais componentes através de dois getters
     class AppModule extends Module {
     
       @override 
-      List<Bind> get binds => [
-
-      ];
-    
-      @override 
-      List<ModularRoute> get routes => [
-
-      ];
-    }
-
-A descrição ainda destaca que pelo menos um módulo é necessário para iniciar um projeto Modular.
-
-
-
-
-
-<h2>AppWidget</h2>
-
-
-
-<h2>Dividindo o Projeto em Módulos</h2>
-
-
-Sendo um dos pilares de sua estrutura, o Modular possui três tipos de Módulos, o MainModule, responsável por tratar toda a aplicação, os ChildModule, responsáveis por tratar os demais Widgets individualmente, com suas próprias rotas e dependências. O terceiro é referente a estruturas de Widgets específicas, como BottomNavigatorBar ou Drawers.
-
-
-<h2>Estrutura Recomendada</h2>
-
-
-Por ter a modularização como principal aspecto da arquitetura modular, cada módulo é responsável por uma ou mais páginas com seu respectivos controllers, services, stores e entre outros. Também é importante citar que o Flutter Modular usa, por padrão, a gerência de state do MobX, por isso o conceito de controller estará bastante presente na estrutura recomendada. Essa junção permite um maior desemponho quando aplicado em uma estrutura que favoreça ambos os conceitos.
-
-Com isso, tendo em mente a importância da estrutura, é recomendado que se siga um padrão estrutural quando se aplica o Flutter Modular em um projeto, estrutura essa que se replica em escalas diferentes:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/123803022-4783b100-d8c2-11eb-8d8a-89c3bfa95bae.png">
-</div>
-
-
-Como a imagem demonstra, cada módulo possui uma repetição da estrutura em uma escala menor. As mudanças iniciam na lib folder, que consiste em um app folder e na main.dart file:
-
-
-<h2>main.dart</h2>
-
-
-A já conhecida main.dart é a file de iniciação do projeto, é nela que declaramos o main method e iniciamos o app através da classe runApp, que normalmente recebe um StatelessWidget como parâmetro, o qual contém a classe de criação MaterialApp.
-
-No caso de uma estrutura modular, a classe runApp recebe um ModularApp, o qual possui a propriedade module. Essa por sua vez recebe uma instância da classe AppModule, aonde definimos as rotas e dependências da aplicação:
-
-
-    import 'package:exemplo/lib/app/app_module.dart';
-
-    import 'package:flutter/material.dart';
-    import 'package:flutter_modular/flutter_modular.dart';
-
-    void main() => runApp(ModularApp(module: AppModule()));
-
-
-Já a estrutura que se repete começa a ser implementada na app folder, e para essa estrutura, um módulo consite em basicamente três arquivos:
-
-
-<h2>app_controller.dart</h2>
-
-
-Com já foi mencionado anteriormente, o MobX está bastante presente na estruturação de um projeto Flutter Modular, inclusive fazendo parte da estrutura padrão recomendada. O MobX também foi bastante abordado aqui, portanto, não será preciso tornar a explicá-lo, mas, um detalhe importante é que, como sabemos, o MobX possui um build_runner que gera um arquivo responsável por de fato tratar o state. Esse arquivo faz parte da estrutura recomendada e normalmente leva a mesma nomenclatura do arquivo controller.dart, com o acréscimo de um .g(generate) após o nome.
-
-
-<h2>app_module.dart</h2>
-
-
-A file app_module.dart corresponde ao MainModule de toda a aplicação. É nela que estão declarados os Binds e as rotas que definem as dependências e a navegação do app respectivamente, e é nela que aplicamos de fato os conceitos do Modular, os quais refletem nas demais partes da aplicação. A seguir veremos de forma detalhada cada componente da file app_module.dart:
-
-
-<h3>MainModule</h3>
-
-
-O MainModule consiste no módulo de gestão de toda a aplicação. Nele são definidas os Binds, ou injeções de dependências, e as rotas, as quais permanecem ativas em toda a aplicação. O MainModule é criado da seguinte forma:
-
-
-    // extend from MainModule
-    class AppModule extends MainModule {
-    
-      // Provide a list of dependencies to inject into your project
-      @override
       List<Bind> get binds => [];
     
-      // Provide all the routes for your module
-      @override
+      @override 
       List<ModularRoute> get routes => [];
-
-      // add your main widget here
-      @override
-      Widget get bootstrap => AppWidget();
-    
     }
 
+A descrição ainda destaca que pelo menos um módulo é necessário para iniciar um projeto Modular. Com isso, para seguirmos com o exemplo, adicione a classe AppModule a main.dart file logo após o main method.
 
-Normalmente chamada de AppModule, classe que herda da MainModule, é a MainModule de um projeto Modular. Nela são criados três overrides com funções específicas. Eles são:
+<h2>Initial Route</h2>
 
+Como mencionado, um app modular precisa possuir pelo menos um módulo. Cada módulo, por sua vez, possui uma rota que é acessada no momento de sua inicialização, podendo apontar para um widget child deste módulo ou, menos comumente, para um outro módulo. 
 
-<h3>Binds</h3>
+Dando continuídade ao exemplo, para criarmos uma rota inicial para a aplicação, crie um StatelessWidget da seguinte forma:
 
-
-É basicamente um List proveniente de um override da propriedade binds, cuja função é guardar as principais classes das quais a aplicação depende, sendo possível recuparar esses Binds em qualquer parte do app. A seguir há um exemplo de declaração de dependências utilizada como modelo na estrutura Modular:
-
-
-    @override
-    List<Bind> get binds => [
-      Bind((i) => AppController()),
-      Bind((i) => HomeController()),
-      Bind((i) => ProfileController()),
-    ];
-
-
-A estrutura consiste em um objeto Bind que recebe uma closure i(Injection) e direciona à classe da qual o módulo principal da aplicação depende. Nesse caso, as dependências são os controllers de três páginas distintas. 
-
-    Bind((i) => MyClass())
-
-O Bind possui essa estrutura pois pode receber a injeção durante a chamada da classe, além de proporcionar o "Lazy Loading", ou seja, a classe só é instanciada quando chamada pela primeira vez, em seguida passa a obedecer certos parâmetros, que por padrão a tornam Singleton durante a vida útil do módulo do qual ela implementa.
-
-
-<h3>Routes</h3>
-
-
-List proveniente de um override da propriedade routes, cuja função é registrar as principais rotas e associá-las as telas do app, também chamadas de rotas nomeadas. A seguir há um exemplo de declaração de roteamento utilizada como modelo na estrutura Modular:
-
-
-    @override
-     List<ModularRoute> get routes => [
-       ChildRoute('/', child: (_, args) => HomePage()),
-       ChildRoute('/profile', child: (_, args) => ProfilePage()),
-     ];
-
-
-A estrutura do routes consiste em um List de tipo variável(no exemplo acima é declarado como ModularRoute) que faz um override da propriedade routes. Ela contem um ou vários objetos declarados, Router ou ChildRoute. Esses recebem um string
-como propriedade de definição da rota, além de uma outra propriedade chamada de child, que recebe uma função anônima com o context e um objeto args como parâmetros. Por fim, é definida a classe correspondente a tela acessada através da rota declarada.
-
-
-<!-- <h3>Bootstrap</h3>
-
-
-Principal Widget da aplicação, normalmente associado ao AppWidget, o qual carrega o MaterialApp da interface.
- -->
-
-
-<h2>app_widget.dart</h2>
-
-
-A file app_widget.dart é a mainFile da aplicação, onde definimos a estrutura base para todos os demais Widgets, ou módulos no caso do Flutter Modular. É nela que declaramos a chamada da rota padrão "/", ou seja, ela será a primeira tela a ser renderizada quando a main.dart file for instanciada.
-
-A seguir temos um exemplo de declaração do uso do Modular como estrutura de uma aplicação: 
-
-
-    //  app_widget.dart
-    import 'package:flutter/material.dart';
-    import 'package:flutter_modular/flutter_modular.dart';
-    
-    class AppWidget extends StatelessWidget {
+    class HomePage extends StatelessWidget {
       @override
-      Widget build(BuildContext context) {
-        return MaterialApp(
-          initialRoute: "/",
-        ).modular();
+      Widget build(BuildContext context){
+        return Scaffold(
+          appBar: AppBar(title: Text('Home Page')),
+          body: Center(
+            child: Text('This is initial page'),
+          ),
+        );
       }
     }
 
+Em seguida, defina na classe AppModule o acesso ao widget criado, o qual corresponde a view inicial do app:
+    
+    ...
 
-Basicamente é preciso fazer um import do package correspondente ao flutter_modular, instalado anteriormente. Logo após, declaramos uma initialRoute dentro do MaterialApp, fazenda a já citada chamada da rota padrão, e após o MaterialApp declaramos a chamada do .modular(). 
+    @override
+    List<ModularRoute> get routes => [
+      ChildRoute('/', child: (context, args) => HomePage()),
+    ];
 
+O acesso é definido no getter <i>routes</i> atráves da classe ChildRoute. Nela são declarados dois parâmetros: um identificador, o qual deve ser exclusivo da ChildRoute em questão; e um child, este que recebe uma função que define o contexto de criação da tela, os argumentos que podem ser passados através do acesso à sua rota, além de retornar uma intância da classe ou widget equivalente a tela, neste caso a <i>HomePage</i>.
 
-<h2>pages</h2>
+Além da ChildRoute, também é possível definir o acesso a um outro módulo, como mencionado. Isso é possível através da classe ModuleRoute, que se comporta de forma parecida com o exemplo anterior:
 
+    ModuleRoute('/', module: ModuleInstance())
+    
+<h2>AppWidget</h2>
 
-A pages folder é definida como parte de módulos que tratam mais de uma tela, como no exemplo da imagem. Nesse exemplo o módulo home possui dois ChildModules: myCart e profiles. Ambos possuiem seus próprios state management controllers, mas têm seus binds e rotas definidos na home_module.dart.
+Tendo criado o escopo básico de roteamento e injeção de dependências da aplicação, é preciso definir a base do design com o qual todos os widgets serão criados. Isso é feito através da classe <i>AppWidget</i>, a qual permite criar a aplicação baseado em um MaterialApp ou em Cupertino App. Dando mais um passo dentro do exemplo, inclua a AppWidget classe logo após a HomePage:
+
+    class AppWidget extends StatelessWidget {
+      Widget build(BuildContext context){
+        return MaterialApp.router(
+          title: 'My Smart App',
+          theme: ThemeData(primarySwatch: Colors.blue),
+          routeInformationParser: Modular.routeInformationParser,
+          routerDelegate: Modular.routerDelegate,
+        ); //added by extension 
+      }
+    }
+
+Dela é importante destacar os atributos ```routeInformationParser``` e ```routerDelegate```, os quais são respectivamente responsáveis por delegar uma rota inicial e criar um widget navegável para a mesma.
+
+Antes de concluirmos o exemplo é importante destacar que, em uma situação real, cada classe mencionada deve ser criada separadamente em arquivos únicos.
+
+O exemplo irá se comportar da seguinte forma:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/181662568-c981882a-8775-4d03-9fbd-3a1caf354c5d.png">
+</div>
 
 
 <h2>Slidy</h2>
