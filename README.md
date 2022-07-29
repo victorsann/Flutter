@@ -2064,6 +2064,7 @@ Além da ChildRoute, também é possível definir o acesso a um outro módulo, c
 Tendo criado o escopo básico de roteamento e injeção de dependências da aplicação, é preciso definir a base do design com o qual todos os widgets serão criados. Isso é feito através da classe <i>AppWidget</i>, a qual permite criar a aplicação baseado em um MaterialApp ou em Cupertino App. Dando mais um passo dentro do exemplo, inclua a AppWidget classe logo após a HomePage:
 
     class AppWidget extends StatelessWidget {
+      @override
       Widget build(BuildContext context){
         return MaterialApp.router(
           title: 'My Smart App',
