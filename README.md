@@ -4053,13 +4053,13 @@ Tendo instalado o plugIn responsável por criar a splash page, é possível defi
       branding_dark: "assets/"
 
 
-<h2>Renomeando o App</h2>
+<h1>Renomeando o App</h1>
 
 
 Com a conclusão do desenvolvimento é possível que haja a necessidade de alterar o nome do projeto criado, já que muitas vezes, o nome do app nas lojas de aplicativo ou mesmo no device não é levado em conta no momento de criação de um app flutter, cujo padão utiliza underline e etc. Para fazer essa alteração, existem duas alternativas:
 
 
-<h3>Manualmente</h3>
+<h2>Manualmente</h2>
 
 
 A forma mais simple de alterar o nome da aplicação é sobrescrever o nome dado na criação do app nos arquivos das versões de Android e IOS, que são encontrados respectivamente em:
@@ -4071,7 +4071,7 @@ A forma mais simple de alterar o nome da aplicação é sobrescrever o nome dado
         <string>App_name</string>
 
 
-<h3>Rename Package</h3>
+<h2>Rename Package</h2>
 
 
 Outra forma de renomear o app é através do package Rename. Para obtê-lo, faça o run do comando a seguir no principal diretório da aplicação:
@@ -4082,16 +4082,7 @@ Após tê-lo instalado, faça a o run do comando a seguir contendo o novo nome d
 
     pub global run name --appname "new name"
 
-Após recarrer o app, como resultado, temos o app renomeado:
-
-
-<div align="center">
-  <img width="50%" src="">
-</div>
-
-
-<h2>Criando um Exclusive Id</h2>
-
+<h1>Exclusive Id</h1>
 
 A publicação na Google Play demanda que a aplicação possua uma identificação padrão exclusiva, também chamada de application ID. O Flutter cria essa identificação por padrão quando o app é criado, sendo encontrada no path <i>android/app/build.gradle</i> na propriedade ```applicationId```:
 
@@ -4118,21 +4109,15 @@ A forma mais simples de modificar esse ID é sobrescreve-lo manualmente. Porém,
 
 Por ser um identificador exclusivo, é recomendado que o application ID seja domain name da sua aplicação, sendo escrito revertido(com.domain).
 
-
-<h2>Signing</h2>
-
+<h1>Signing</h1>
 
 Sempre uma versão da sua aplicação sofre um up, seja em fases de teste(sobre as quais falaremos posteriormente), seja na Play Store, é necessário identificar que o bundle ou apk enviado corresponde a uma versão do seu app. Com isso, é necessário definir uma assinatura que irá identificar cada versão como sendopoveninte do app desenvolvido. Essa assinatura é definida duas keys:
 
-
-<h3>Deployment Key</h3>
-
+<h2>Deployment Key</h2>
 
 A Deployment, ou <i>app signing</i> key, assina a versão do app baixada pelo usuário final. Sendo parte do modelo de segurança de update do Android, a signing key jamais será alterada durante o tempo de vida da aplicação e deve ser mantida em sigilo.
 
-
-<h3>Upload Key</h3>
-
+<h2>Upload Key</h2>
 
 A upload Key é utilizada para autenticar o .aab(Android App Bundle) ou .apk enviados pelo desenvolvedor, sendo substituída pela deployment key quando o upload é concluído. Também deve ser mantida em sigilo.
 
@@ -4144,9 +4129,7 @@ O ciclo de uso das chaves de assinatura da aplicação pode ser melhor entendido
 
 Para criar as repectivas keys para a aplicação, observe os passos a seguir:
 
-
-<h3>Criando uma <i>keystore</i></h3>
-
+<h2>keystore</h2>
 
 No terminal, execute o comando a seguir para gerar o arquivo upload-keystore.jks:
 
@@ -4160,10 +4143,6 @@ No Windows:
 
 O arquivo será gerado em um diretório local da sua máquina, este sendo definido no próprio comando. É extremamente importante mantê-lo em sigilo, já que o arquivo conta com informações relevantes sobre o processo de deploy da sua aplicação. Após o run, algumas informações serão solicitadas, incluindo uma password de acesso a keystore. É importante registrar a password definida no processo, pois apenas ela dará acesso a keystore criada.
 
-
-<h3>Referenciando a keystore</h3>
-
-
 Com a keystore criada, crie um novo aquivo na Adroid folder da aplicação chamado de key.properties, a qual irá referenciar a keystore anteriormente crida. No arquivo, defina as chaves da aplicação seguindo o modelo abaixo:
 
     storePassword=<password do passo anterior>
@@ -4173,9 +4152,7 @@ Com a keystore criada, crie um novo aquivo na Adroid folder da aplicação chama
 
 Tanto <i>storePassword</i> quando <i>keyPassword</i> fazem referência a senha de acesso a keytore, essa que será obtida através do path definido na propriedade <i>storeFile</i>. Assim, as propriedades de definição das keys foram criadas e já têm acesso a keystore. Porém, antes de concluir, é importante grarantir que essas informações permaneçam restrita a deve acessá-las. Portanto, defina ambos os arquivos key.properties e upload-keystore.jks como ignored no arquivo .gitignore da android Folder.
 
-
-<h2>Configurando signing gradle</h2>
-
+<h2>Signing gradle</h2>
 
 Quando uma versão da aplicação é gerada, o sistema android compila todos os recursos e o código fonte em um .aap ou .apk. Esse processo é intermediado pelo Gradle, que é uma ferramenta de automação que permite o gerenciamente e a personalização do build. Para que cada release gerado contenha as respectivas keys, iremos configurar o gradle da seguinte forma:
 
@@ -4211,9 +4188,7 @@ Em seguida substitua o trecho contendo os <i>bildTypes</i> pelas seguintes infor
 
  Após salvar o arquivo, faça o run do comando flutter clean para evitar que as compilações em cache afetem o processo de signing. Com isso, todos os builds de release gerados a partir do seu projeto serão assinados e identificados como seu app automaticamente.
 
-
- <h2>Gerando App Bundle</h2>
-
+ <h2>App Bundle</h2>
 
  O App Bundle ou .aab é um arquivo compactado correspondente ao app android que sofrerá o deploy na Play Store. Para gerar o bundle da aplicação, faça o run do comando a seguir no principal diretório da aplicação:
 
