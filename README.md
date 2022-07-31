@@ -3973,7 +3973,7 @@ Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apre
 Quando o projeto antinge determinada proporção, a forma mais lógica de testá-lo é através do método de acesso que qualquer usuária terá quando o app for publicado. A publicação de app Android demanda uma série de requisitos e acompanhamentos de processos, alguns bastante demorados. A seguir será descrito o passo a passo para assinar, configurar, testar e publicar a aplicação:
 
 
-<h2>Adicionando um Launcher Icon</h2>
+<h2>Launcher Icon</h2>
 
 
 Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve como adicionar um launcher icon ao seu Flutter app:
@@ -4025,8 +4025,41 @@ Após salvar as alterações, faça o run do comando a seguir:
 Após recarrer o app, como resultado, temos um novo launcher icon para o projeto:
 
 <div align="center">
-  <img width="85%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
 </div>
+
+|<h2>Spalsh Page</h2>
+
+Além de um launcher icon, também é possível que seja necessário criar uma splash page para o app, visto que é um recurso bastante comum. Caso não tenha sido criado durante o desenvolvimento, use o passso a passo descrito a seguir para criar e cutomizar uma splash page para seu app.
+
+<h3>flutter_native_splash</h3>
+
+Para iniciar, adiciona a seguinte dependência a sua <i>pubspec.yaml</i> page:
+
+    dependencies:
+      flutter_native_splash: 
+
+Caso prefira fazer instalaçãos através da flutter CLI, execute o comando a seguir no diretório local do seu projeto:
+
+    flutter pub add flutter_native_splash
+
+<h3>Customizando</h3>
+
+Tendo instalado o plugIn responsável por criar a splash page, é possível definir quais características ela terá. Para customizar a splash page criada, o plugIn flutter_native_splash permite as definir algumas configurações:
+    
+    dev_dependencies:
+
+      ...
+
+      flutter_native_splash: 
+
+    flutter_native_splash:
+      color: ""
+      image: "assets/"
+      branding: "assets/"
+      color_dark: ""
+      image_dark: "assets/"
+      branding_dark: "assets/"
 
 
 <h2>Renomeando o App</h2>
