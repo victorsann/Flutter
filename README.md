@@ -3972,18 +3972,13 @@ Agora que o ciclo de desenvolvimento e as várias formas de aborda-lo foram apre
 
 Quando o projeto antinge determinada proporção, a forma mais lógica de testá-lo é através do método de acesso que qualquer usuária terá quando o app for publicado. A publicação de app Android demanda uma série de requisitos e acompanhamentos de processos, alguns bastante demorados. A seguir será descrito o passo a passo para assinar, configurar, testar e publicar a aplicação:
 
-
-<h2>Launcher Icon</h2>
-
+<h1>Launcher Icon</h1>
 
 Caso não tenha sido feito durante o desenvolvimento, este é o momento de definir uma parte importante da identidade visual do app, seu ícone. O ícone de um app o identifica dentre uma infinidade de outros dentro um device, e para destacá-lo, é importante manter a originalidade em algo que represente sua utilidade. O processo a seguir descreve como adicionar um launcher icon ao seu Flutter app:
 
-
-<h3>Android</h3>
-
+<h2>Android</h2>
 
 A forma mais fácil de adionar um launcher icon no android app do seu Flutter Project é manualmente, seguindo a descrição abaixo: 
-
 
 - Acesse [Android Assets Studio](https://romannurik.github.io/AndroidAssetStudio/index.html)
 - Defina o app icon a partir de uma imagem de sua preferência:
@@ -3998,13 +3993,11 @@ A forma mais fácil de adionar um launcher icon no android app do seu Flutter Pr
 
 Um zip contendo uma pasta res será baixado, com ele virão uma série de adaptações da imagem escolhida. Essas imagens irão substituir as imagens geradas na criação do app da seguinte forma:
 
-- Copie a pasta res
-- Em seguida, em seu projeto, acesse [project]/android/app/src/main
-- Após acessar, subistitua a file res padão pela que foi copiada
+- Copie o conteúdo da pasta res
+- Acesse [project]/android/app/src/main/res
+- Subistitua os arquivos originais pelos arquivos copiados
 
-
-<h3>IOS</h3>
-
+<h2>IOS</h2>
 
 Obtenha a imagem desejata no formato adequado, em seguida, defina a imagem escolhida como um assets element. Tendo isto feito, define o flutter launcher icons como dev_dependencie na file pubspec.yaml
 
@@ -4014,7 +4007,7 @@ Obtenha a imagem desejata no formato adequado, em seguida, defina a imagem escol
 Em seguida defina o script correspondente a criação da imagem a referenciando na propriedade <i>image_path</i>:
 
     flutter_icons:
-       android: false
+       android: "launcher_icon"
        ios: true
        image_path: "assets/icon_name.png"
 
@@ -4028,11 +4021,11 @@ Após recarrer o app, como resultado, temos um novo launcher icon para o projeto
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/152223664-02033cee-b44e-41fc-a894-5a948f81fc0b.gif">
 </div>
 
-|<h2>Spalsh Page</h2>
+<h1>Spalsh Page</h1>
 
 Além de um launcher icon, também é possível que seja necessário criar uma splash page para o app, visto que é um recurso bastante comum. Caso não tenha sido criado durante o desenvolvimento, use o passso a passo descrito a seguir para criar e cutomizar uma splash page para seu app.
 
-<h3>flutter_native_splash</h3>
+<h2>flutter_native_splash</h2>
 
 Para iniciar, adiciona a seguinte dependência a sua <i>pubspec.yaml</i> page:
 
@@ -4042,8 +4035,6 @@ Para iniciar, adiciona a seguinte dependência a sua <i>pubspec.yaml</i> page:
 Caso prefira fazer instalaçãos através da flutter CLI, execute o comando a seguir no diretório local do seu projeto:
 
     flutter pub add flutter_native_splash
-
-<h3>Customizando</h3>
 
 Tendo instalado o plugIn responsável por criar a splash page, é possível definir quais características ela terá. Para customizar a splash page criada, o plugIn flutter_native_splash permite as definir algumas configurações:
     
