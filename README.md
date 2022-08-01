@@ -904,7 +904,7 @@ O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bas
 - <b>Poder</b>: Ajuda a criar aplicações complexas e poderosas as compondo a partir de componentes ainda menores.
 - <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
 
-Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
+Além disso, é importante destacar que o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
 
     // ignore_for_file: prefer_const_constructors
     
@@ -958,6 +958,9 @@ Além disso, o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart
       }
     }
 
+Explicando de forma sucinta, um fluxo de informações em stream sempre se inicia a partir de um event source; seja um evento que obtem a informação ou que opera sobre ela. O exemplo acima se comporta de formar reativa pois é possível monitorar caso um evento associado a um stream seja disparado, o que descreve o observer pattern. 
+
+Sendo mais preciso, ao declarar uma instância da classe <i>StreamController</i>, a qual cria uma stream em que é possível monitorar (atraváes do widget StreamBuilder) um fluxo de eventos, nos permite tratar uma ação do usuário (pressionar um botão) como event source. Logo, quando uma ação é realizada, uma reação resultante ocorre, sendo ,neste caso, o encremento da variável <i>value</i>.
 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -966,6 +969,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 </div>
 
 Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
+
 
 
 <h2>GetIt</h2>
