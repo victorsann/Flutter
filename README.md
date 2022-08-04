@@ -904,7 +904,15 @@ O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bas
 - <b>Poder</b>: Ajuda a criar aplicações complexas e poderosas as compondo a partir de componentes ainda menores.
 - <b>Testabilidade</b>: Testa facilmente cada aspecto da aplicação, permitindo uma interação mais confiável.
 
-Além disso, é importante destacar que o BLoC basea seu modelo de gerenciamaneto em [Streams](https://dart.dev/tutorials/language/streams), que consistem em um modelo de programação assíncrona que permite controlar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
+No geral, o Bloc tenta tornar as mudanças de estado previsíveis regulando quando uma mudança de estado pode ocorrer e impondo uma única maneira de alterar o estado em todo o aplicativo.
+
+<h2>Conceitos Básicos</h2>
+
+Existem vários conceitos básicos que são críticos para entender como usar o BLoC. Cada um destes será abordado em detalhes a seguir, bem como analisados e aplicados em exemplos práticos.
+
+<h2>Streams</h2>
+
+Um aspectos que mais chamam atenção no BLoC é a forma com que ele o conceitos de [Streams](https://dart.dev/tutorials/language/streams) para aplicar reatividade ao código Dart. Strems consistem em um modelo de programação assíncrona que permite monitorar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
 
     // ignore_for_file: prefer_const_constructors
     
@@ -960,7 +968,7 @@ Além disso, é importante destacar que o BLoC basea seu modelo de gerenciamanet
 
 Explicando de forma sucinta, um fluxo de informações em stream sempre se inicia a partir de um event source; seja um evento que obtem a informação ou que opera sobre ela. O exemplo acima se comporta de formar reativa pois é possível monitorar caso um evento associado a um stream seja disparado, o que descreve o observer pattern. 
 
-Sendo mais preciso, ao declarar uma instância da classe <i>StreamController</i>, a qual cria uma stream em que é possível monitorar (atraváes do widget StreamBuilder) um fluxo de eventos, nos permite tratar uma ação do usuário (pressionar um botão) como event source. Logo, quando uma ação é realizada, uma reação resultante ocorre, sendo ,neste caso, o encremento da variável <i>value</i>.
+Sendo mais preciso, ao declarar uma instância da classe <i>StreamController</i>, a qual cria uma stream em que é possível monitorar (atraváes do widget StreamBuilder) um fluxo de eventos, nos permite tratar uma ação do usuário (pressionar um botão) como event source. Logo, quando uma ação é realizada, uma reação resultante ocorre, sendo, neste caso, o encremento da variável <i>value</i>.
 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -969,6 +977,95 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 </div>
 
 Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC.
+
+<h2>Cubit</h2>
+
+Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser estendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
+
+>Os estados são o output de um Cubit e representam uma parte do estado de um aplicativo. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
+
+<h2>Criando um Cubit</h2>
+
+Ao criar um Cubit, é preciso definir o tipo de estado que se espera ser gerenciando, este sendo defindo como o tipo T atrelado a classe <i>Cubit</i>. Além disso, é preciso definir um estado inicial para o Cubit em questão, o declarado em um <i>super method</i>:
+
+    class CounterCubit extends Cubit<int> {
+      CounterCubit(int initialState) : super(initialState);
+    }
+
+Também há casos mais complexos em que pode ser necessário usar uma classe em vez de um tipo primitivo, para suprir necessidades específicas da rotina.
+
+<h2>Mudanças de Estado</h2>
+
+Cada Cubit tem a capacidade de emitir um novo estado através do método ```emit()```:
+
+    import 'package:bloc/bloc.dart';
+
+    class CounterCubit extends Cubit<int> {
+    
+      CounterCubit(int initialState) : super(initialState);
+    
+      void increment() => emit(state + 1);
+      
+    }
+
+No trecho acima, a classe CounterCubit está expondo um método público chamado increment que pode ser instanciado e utilizado para notificar o CounterCubit sobre quando incrementar seu estado. Quando o increment é chamado, é possóvel acessar o estado atual do Cubit através do state getter e emitir um novo estado adicionando 1 ao estado atual.
+
+> O método emit é protegido, o que significa que só deve ser usado dentro de um Cubit.
+
+O exemplo a seguir demosntra como o Cubit pode ser utilizado para gerencia o estado de uma parte da interface:
+
+    import 'package:flutter/material.dart';
+
+    class Counter extends StatefulWidget {
+          
+      const Counter({Key? key}) : super(key: key);
+      
+      @override
+      State<Counter> createState() => _CounterState();
+    }
+        
+    class _CounterState extends State<Counter> {
+        
+      final counterCubit = CounterCubit(0);
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('App Cubit'),
+          ),
+          body: Center(  
+            child: StreamBuilder(
+              stream: counterCubit.stream,
+              builder: (context, snapshot) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('You have pushed the button this many times:'),
+                    Text('${counterCubit.state}',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                );
+              },
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(  
+            onPressed: () => counterCubit.increment(),
+            backgroundColor: Colors.blue,
+            child: Icon(Icons.add),
+          ),
+        );
+      }
+    }
+
+Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A partir dela o método increment é disponibilizado, permitindo operar mudanças no estado do Cubit em questão através de uma ação do usuário. Antes de demosntrar o resultado, é importante destacar que, assim como um StreamController, a classe Cubit disponibiliza uma Stream na qual o estado será operado, o que permite o uso de um StreamBuilder que monitora o fluxo de mudanças.
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="">
+</div>
 
 
 

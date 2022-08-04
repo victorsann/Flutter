@@ -4,7 +4,7 @@
 // import 'package:bloc_app/app/bloc/viaCep/via_cep_page.dart';
 
 import 'package:bloc_app/app/stream/stream_page.dart';
-// import 'package:bloc_app/app/cubit/cubit_page.dart';
+import 'package:bloc_app/app/cubit/counter.dart';
 
 import 'package:flutter/material.dart';
 
@@ -22,10 +22,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const MyCubitPage(),
+      home: const Counter(),
       // home: const MyBlocPage(),
       // home: const ViaCepPage(),
-      home: StreamCounter(),
+      // home: StreamCounter(),
     );
   }
 }
