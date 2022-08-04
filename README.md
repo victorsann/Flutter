@@ -982,6 +982,10 @@ Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC
 
 Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser extendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
 
+<div align="center">
+  <img src="">
+</div>
+
 Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
 
 <h2>Criando um Cubit</h2>
@@ -1074,6 +1078,10 @@ A classe Bloc, assim como a Cubit, herda da <i>BlocBase Class</i>, o que signifi
 <h2>Criando um Bloc</h2>
 
 O processo de criação de um Bloc não é muito diferente do utilizado para criar um Cubit, exceto que além de definir o estado que será gerenciando, também é preciso definir o tipo de evento que o Bloc irá processar.
+
+<div align="center">
+  <img src="">
+</div>
 
 Eventos são o input de um Bloc. Eles geralmente são adicionados em resposta a interações do usuário, como pressionamentos de botão ou eventos de ciclo de vida, como carregamentos de uma page.
 
