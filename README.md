@@ -980,9 +980,9 @@ Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC
 
 <h2>Cubit</h2>
 
-Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser estendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
+Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser extendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
 
->Os estados são o output de um Cubit e representam uma parte do estado de um aplicativo. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
+Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
 
 <h2>Criando um Cubit</h2>
 
@@ -992,7 +992,7 @@ Ao criar um Cubit, é preciso definir o tipo de estado que se espera ser gerenci
       CounterCubit(int initialState) : super(initialState);
     }
 
-Também há casos mais complexos em que pode ser necessário usar uma classe em vez de um tipo primitivo, para suprir necessidades específicas da rotina.
+Também há casos mais complexos em que pode ser necessário usar uma classe em vez de um tipo primitivo para suprir necessidades específicas da rotina.
 
 <h2>Mudanças de Estado</h2>
 
@@ -1008,11 +1008,11 @@ Cada Cubit tem a capacidade de emitir um novo estado através do método ```emit
       
     }
 
-No trecho acima, a classe CounterCubit está expondo um método público chamado increment que pode ser instanciado e utilizado para notificar o CounterCubit sobre quando incrementar seu estado. Quando o increment é chamado, é possóvel acessar o estado atual do Cubit através do state getter e emitir um novo estado adicionando 1 ao estado atual.
+No trecho acima, a classe CounterCubit está expondo um método público chamado <i>increment</i> que pode ser instanciado e utilizado para notificar o CounterCubit sobre quando incrementar seu estado. Quando o increment é chamado, é possível acessar o estado atual do Cubit através do state getter e emitir um novo, o que consiste em adicionar 1 ao estado atual.
 
 > O método emit é protegido, o que significa que só deve ser usado dentro de um Cubit.
 
-O exemplo a seguir demosntra como o Cubit pode ser utilizado para gerencia o estado de uma parte da interface:
+O exemplo a seguir demonstra como o Cubit pode ser utilizado para gerencia o estado de uma parte da interface:
 
     import 'package:flutter/material.dart';
 
@@ -1059,7 +1059,7 @@ O exemplo a seguir demosntra como o Cubit pode ser utilizado para gerencia o est
       }
     }
 
-Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A partir dela o método increment é disponibilizado, permitindo operar mudanças no estado do Cubit em questão através de uma ação do usuário. Antes de demosntrar o resultado, é importante destacar que, assim como um StreamController, a classe Cubit disponibiliza uma Stream na qual o estado será operado, o que permite o uso de um StreamBuilder que monitora o fluxo de mudanças.
+Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A partir dela o método increment é disponibilizado, permitindo operar mudanças no estado do Cubit em questão através de uma ação do usuário. Antes de demonstrar o resultado, é importante destacar que, assim como um StreamController, a classe Cubit disponibiliza uma Stream na qual o estado será operado, o que permite o uso de um StreamBuilder que monitora o fluxo de mudanças.
 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -1067,6 +1067,96 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
   <img width="50%" src="">
 </div>
 
+<h2>Bloc</h2>
+
+A classe Bloc, assim como a Cubit, herda da <i>BlocBase Class</i>, o que significa que ambas possuem API's e formas de uso bastante similares. No entanto, em vez de criar uma função que trata as ocorrências de variações de estado, um Bloc recebe eventos de entrada e os converte em estados de saída.
+
+<h2>Criando um Bloc</h2>
+
+O processo de criação de um Bloc não é muito diferente do utilizado para criar um Cubit, exceto que além de definir o estado que será gerenciando, também é preciso definir o tipo de evento que o Bloc irá processar.
+
+Eventos são o input de um Bloc. Eles geralmente são adicionados em resposta a interações do usuário, como pressionamentos de botão ou eventos de ciclo de vida, como carregamentos de uma page.
+
+O exmplo a seguir demonstra a criação de um counter cujo estado será gerenciado por um Bloc:
+
+    import 'package:flutter_bloc/flutter_bloc.dart';
+    
+    abstract class CounterEvents {}
+    
+    class IncrementEvent extends CounterEvents {}
+    
+    class CounterBloc extends Bloc<CounterEvents, int> {
+    
+    }
+
+A classe CounterBloc irá extender da classe Bloc, onde serão declarados o tipo de evento recebido, sendo desta vez uma classe abstrata <i>CounterEvents</i>, cuja classe filha será usada como evento emissor.
+
+O próximo passo é declarar um event handler, o qual será responsável por tratar um tipo específico de evento e somente ele. Para delcarar um event handle, adicione um constructor a classe <i>CounterBloc</i> definindo um <i>initialState</i>, e, posteriormente, o método ```on```:
+
+    CounterBloc(int initialState) : super(initialState) {
+      on<IncrementEvent>((event, emit) {
+        emit(state + 1);
+      });
+    }
+
+O método <i>on</i> recebe o tipo de evento com o qual se responsabilizará. Como parâmetro é declarada uma função anônica, e esta, por sua vez, recebe o evento em si (o qual pode ser acessado a qualquer momento) e um Emitter, cuja função é permitir disparar novos estados a partir do event. 
+
+<h2>Monitorando um Bloc</h2>
+
+Para exemplificar o uso de um Bloc, faremos o mesmo exercício que descreveu o uso da classe CounterCubit, criando uma interface e permitinto o monitoramento do seu estado:
+
+    import 'package:flutter_bloc/flutter_bloc.dart';
+    
+    class Counter extends StatefulWidget {
+    
+      const Counter({Key? key}) : super(key: key);
+    
+      @override
+      State<Counter> createState() => _CounterState();
+    }
+
+    class _CounterState extends State<Counter> {
+  
+      final counterBloc = CounterBloc(0);
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Counter Bloc'),
+          ),
+          body: Center(  
+            child: BlocBuilder<CounterBloc, int>(  
+              bloc: counterBloc,
+              builder: (context, state) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('You have pushed the button this many times:'),
+                    Text('${counterBloc.state}',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
+                  ],
+                );   
+              },
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(  
+            onPressed: () => counterBloc.add(IncrementEvent()),
+            backgroundColor: Colors.blue,
+            child: Icon(Icons.add),
+          ),
+        );
+      }
+    }
+
+O fluxo é semelhante ao descrito anteriormente, exceto pelo uso do BlocBuilder (widget próprio para tratar eventos em <i>Bloc Classes</i>). Nele são definitos os mesmos parâmetros que a classe Bloc recebe quando sofre um extends, sendo esses o tipo de evento monitorado e o tipo de estado emitido. Um BlocBuilder ainda possui as propriedades bloc e builder, que declaram, respectivamente, o Bloc monitorado e o trecho da interface que é atualizada com a mudança de estado.
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="">
+</div>
 
 
 <h2>GetIt</h2>
