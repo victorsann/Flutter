@@ -5,7 +5,6 @@
 <br>
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
-
 O Flutter é um framework para o desenvolvimento híbrido de aplicativos, criada e mantida pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
 
 Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language. Além disso, outra característica muito importante da ferramenta é sua capacidade de manter uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
@@ -18,9 +17,7 @@ Outras características do Flutter são:
 - Utiliza a GPU e permite acesso as API'S das plataformas android e IOS
 - Pode se integrar a aplicações já desenvolvidas
 
-
 <h2>Instalação</h2>
-
 
 Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, que variam de acordo com sistema operacional. A descrição a seguir mostra o processo de instalação no Windows:
 
@@ -30,9 +27,7 @@ Antes de iniciar o processo de instalação, é importante frisar que há mais d
 
 A partir deste ponto, as ferramentas que o Flutter disponibiliza já estão instalas e acessíveis. Porém, antes do processo de desenvolvimento começar é preciso fazer mais alguns ajustes:
 
-
 <h2>Atualizando Path I</h2>
-
 
 Para que as ferramentas do Flutter possam ser acessadas em qualquer lugar do sistema, é preciso criar uma variável de ambiente contendo o caminho para o arquivo bin, contido na pasta flutter. Para isso, acesse as variáveis de ambiente do Windows, e em ```Variáveis de usuário```, crie uma nova variável com as seguintes definições:
 
@@ -62,36 +57,28 @@ O comando acessa a ferramenta de gestão do Flutter, retornando o status do ambi
 
 Os issues encontrados definem o que ainda não foi instalado ou que ainda não foi identificado como instalado. Os próximos passos corrigem estas faltas.
 
-
 <h2>Ambiente de Desenvolvimento</h2>
-
 
 Tendo o Flutter instalado, agora é preciso preparar o ambiente de desenvolvimento, sendo necessário instalar alguns recursos e definir algumas modificações:
 
 - [Android Studio](https://developer.android.com/studio?hl=pt&gclid=Cj0KCQjw78yFBhCZARIsAOxgSx2xS0_FUoAlFg9Z-jqoOf8YJY3ihAhi8Uho_jdZNWmSZgPfLT93FlEaAsJvEALw_wcB&gclsrc=aw.ds)
 - [VScode](https://code.visualstudio.com/) (Recomendado)
 
-
 <h2>Android Studio</h2>
-
 
 O android studio dispõe de recursos essenciais para o desenvolvimento de aplicações android. Apesar de suprir bem estas necessidades, a IDE não será utilizada como exemplo de ambiente de desenvolvimento devido a seu consumo excessivo de mémoria. O recurso visado aqui é a criação e uso de um ou mais emuladores, processo que será visto adiante. Abaixo estão dispostas algumas configurações do ambiente android, sendo econtradas no menu de configurações da ferramenta:
 
-
 <h2>SDK Platforms</h2>
-
 
 Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sistemas operacionais para os quais é possível desenvolver dentro do android studio. No momento, a versão mais recente do android é a 11.0, portanto, os exemplos criados aqui serão desenvolvidos nesta versão.
 
-
 <h2>Configurando Android SDK</h2>
-
 
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120892355-41acef80-c5e4-11eb-9a47-2e9468d74e65.png">
-</div> -->
+</div>
 
 - [x] Android SDK Build-Tools 31-rc4
 - [ ] NDK (Side by side)
