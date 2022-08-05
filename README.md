@@ -76,10 +76,6 @@ Sendo a primeira modificação, o SDK Platform nada mais é que uma lista de sis
 
 O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o android studio disponibiliza para seus usuários. O importante neste ponto é a configuração do SDK Tools, sendo as ferramentas a seguir as mais recomendadas:
 
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120892355-41acef80-c5e4-11eb-9a47-2e9468d74e65.png">
-</div>
-
 - [x] Android SDK Build-Tools 31-rc4
 - [ ] NDK (Side by side)
 - [x] Android SDK Command-line Tools (latest)
@@ -99,19 +95,7 @@ O android SDK, ou Android Development Kit, é um conjunto de ferramentas que o a
 - [ ] Layout Inspector image server for API 29-30
 - [ ] Layout Inspector image server for API S
 
-
-<!-- <h2>Flutter Plugin</h2>
-
-
-A instalação de plugins torna muito mais viável a compilação e desenvolvimento do código e da tecnologia utilizada. O Flutter plugin está disponível no menu de Plugins nas configurações do android studio, tendo como adicional um Dart plugin:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/120892754-2fcc4c00-c5e6-11eb-9d3e-c5cff646e9f7.png">
-</div> -->
-
-
 <h2>Atualizando Path II</h2>
-
 
 Como dito anteriormente, o android studio não será a ferramenta na qual os exemplos serão desenvolvidos, portanto, para que haja uma melhor interação entre os exemplos e os resultados, é recomendável que isto seja seguido. Com isso, para que as ferremantas do SDK que foram instaladas possam ser utilizadas fora do ambiente android, é preciso fazer as seguintes alterações:
 
@@ -131,20 +115,15 @@ Para acessar as ferramentas pré instaladas do SDK, é preciso fazer mais duas a
 
     %ANDROID_HOME%\platform-tools
 
-
 <div align="center">
   Tendo finalizado, já é possível acessar os recursos do SDK fora do ambiente android
 </div>
 
-
 <h2>jdk8</h2>
-
 
 Qualquer aplicação android depende essencialmente de um Java Development Kit ou jdk. Sendo um framework que desenvolve aplicações híbridas, o Flutter não é exceção, sendo estritamente necessário tê-lo instalado e operando. A seguir está listado o processo de instalação do jdk8:
 
-
 <h2>Chocolatey</h2>
-
 
 O [Chocolatey](https://chocolatey.org/) é um gerenciador de pacotes do window. Para instalá-lo, execute o PowerShell como administrador e efetue o seguinte comando:
 
@@ -164,9 +143,7 @@ Para verificar a instalaçao, execute:
 
 Obs: É extremamente importante que a versão instalada seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
 
-
 <h2>Android Device</h2>
-
 
 Sendo o último passo da preparação do ambiente android, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
 
@@ -188,9 +165,7 @@ Com o dispositivo escolhido no exemplo, temos o seguinte resultado:
   <img src="https://user-images.githubusercontent.com/61476935/120123175-c2529280-c183-11eb-92f0-7b6b081ab394.png">
 </div>
 
-
 <h2>Dispositivo Real</h2>
-
 
 Há casos em que desenvolver utilizando um emulador se torna inviável devido a limitações no hardware do desenvolvedor. Essa falta pode ser resolvida com o uso de um dispositivo em alternativa. A execução de aplicações em Smartphones é um recurso disponibilizado em qualquer aparelho android moderno, sendo possível ativa-lo caso o mesmo já não esteja ativo. A seguir estão descritos os passos para as ativações, podendo variar de dispositivos para dispositivos:
 
@@ -204,41 +179,37 @@ Em seguida é possível ter acesso as configurações de desenvolvedor no dispos
 
 A primeira opção define que o aparelho não irá bloquear a tela enquanto a aplicação estiver rodando. Já a segunda opção define que a depuração do código pode ser feita via conexão USB. Adiante será explicado o processo de execução de um projeto tanto no androd device quanto em um dispositivo real.
 
-
 <h2>VSCode</h2>
-
 
 Assim como o Android Studio, o VSCode possibilita a criação de um ambiente de desenvolvimento completo, tendo a vantagem de possuir recursos mais customizáveis e consumir menos memória no processo de execução. O passo a passo da criação do ambiente de desenvolvimento Flutter no VSCode será visto a seguir:
 
-
 <h2>Plugins</h2>
-
 
 Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito mais fácil. Disponibilizadas pelo VSCode, os plugins dão acesso a funcionalidades que compõem o ambiente de desenvolvimento. Eles são:
 
 * <strong>Flutter</strong> - O Flutter plugin adiciona suporte para edição, refatoração, execução e recarga de aplicações mobile Flutter de maneira eficaz, assim como suporte para o Dart
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417267-f7521700-c334-11eb-8ade-49fa71965d84.png">
-</div> -->
+</div>
 
 * <strong>Flutter Widgets Snippets</strong> - Traz um conjunto de Widgets Flutter e Dart úteis para o desenvolvimento de aplicações Flutter
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417507-544dcd00-c335-11eb-8474-4eaf7654bdf7.png">
-</div> -->
+</div>
 
 * <strong>Awesome Flutter Snippets</strong> - O Awesome Flutter Snippets é uma coleção de classes e métodos comumente utilizados no Flutter. Ele aumenta a velocidade de desenvolvimento, eliminando a maior parte do código clichê associado à criação de um widget
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120417751-bd354500-c335-11eb-9516-20ef2ed9d4a0.png">
-</div> -->
+</div>
 
 * <strong>Dart Data Class Generator</strong> - O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código
 
-<!-- <div align="center">
+<div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/120418464-f6ba8000-c336-11eb-855d-f3e4a8da4ec6.png">
-</div> -->
+</div>
 
 
 <h2>Primeiro Projeto</h2>
