@@ -925,7 +925,7 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 A classe Bloc, assim como a Cubit, herda da <i>BlocBase Class</i>, o que significa que ambas possuem API's e formas de uso bastante similares. No entanto, em vez de criar uma função que trata as ocorrências de variações de estado, um Bloc recebe eventos de entrada e os converte em estados de saída.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/183100174-28560971-9f9a-4e9e-9c41-18d0f12205b9.png">
+  <img src="https://user-images.githubusercontent.com/61476935/183108397-4e86c6da-c597-499f-b515-72a111bb545f.png">
 </div>
 
 Eventos são o input de um Bloc. Eles geralmente são adicionados em resposta a interações do usuário, como pressionamentos de botão ou eventos de ciclo de vida, como carregamentos de uma page.
