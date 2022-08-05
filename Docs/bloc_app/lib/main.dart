@@ -2,13 +2,13 @@
 import 'package:flutter/material.dart';
 
 
-import 'package:bloc_app/app/bloc/increment/counter.dart';
+// import 'package:bloc_app/app/bloc/increment/counter.dart';
 
 // import 'package:bloc_app/app/bloc/viaCep/via_cep_page.dart';
 
 // import 'package:bloc_app/app/stream/stream_page.dart';
 
-// import 'package:bloc_app/app/cubit/counter.dart';
+import 'package:bloc_app/app/cubit/counter.dart';
 
 
 void main() {
@@ -25,8 +25,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const Counter(),
       home: const Counter(),
+      // home: const Counter(),
       // home: const ViaCepPage(),
       // home: StreamCounter(),
     );

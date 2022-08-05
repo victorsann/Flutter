@@ -917,7 +917,7 @@ Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/183094863-d71065af-28ee-4c7c-9748-ea8eea90ddb0.gif">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/183095920-ce90a1cb-0d7b-4d41-b2cf-08ee2b8237b1.gif">
 </div>
 
 <h2>Bloc</h2>
@@ -1012,7 +1012,7 @@ O fluxo é semelhante ao descrito anteriormente, exceto pelo uso do BlocBuilder 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <div align="center">
-  <img width="50%" src="">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/183094863-d71065af-28ee-4c7c-9748-ea8eea90ddb0.gif">
 </div>
 
 <h2>GetIt</h2>
