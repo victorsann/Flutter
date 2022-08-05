@@ -832,7 +832,7 @@ Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC
 Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser extendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/183099852-2946834a-904e-4aa7-a086-d8bc160ac1fa.png">
+  <img src="https://user-images.githubusercontent.com/61476935/183109389-4a731f85-08a2-4bcd-af7e-8e82d7fb14a5.png">
 </div>
 
 Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
