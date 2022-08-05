@@ -832,7 +832,7 @@ Tendo entendido o conceito básico de Stream, é possível prosseguir com o BLoC
 Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser extendida para gerenciar qualquer tipo de estado. Isso é feito através da exposição de funções que podem ser invocadas para acionar mudanças de estado.
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/183094863-d71065af-28ee-4c7c-9748-ea8eea90ddb0.gif">
+  <img src="">
 </div>
 
 Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
@@ -917,7 +917,7 @@ Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <div align="center">
-  <img width="50%" src="">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/183094863-d71065af-28ee-4c7c-9748-ea8eea90ddb0.gif">
 </div>
 
 <h2>Bloc</h2>
