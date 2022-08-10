@@ -1015,6 +1015,12 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
   <img width="50%" src="https://user-images.githubusercontent.com/61476935/183094863-d71065af-28ee-4c7c-9748-ea8eea90ddb0.gif">
 </div>
 
+<h2>Bloc Widgets</h2>
+
+
+
+
+
 <h2>GetIt</h2>
 
 <h2>MobX</h2>
@@ -3920,6 +3926,10 @@ Tendo instalado o plugIn responsável por criar a splash page, é possível defi
       color_dark: ""
       image_dark: "assets/"
       branding_dark: "assets/"
+
+Após configurar o flutter native splash, execute o comando a seguir:
+
+    flutter pub run flutter_native_splash:create
 
 <h1>Renomeando o App</h1>
 
