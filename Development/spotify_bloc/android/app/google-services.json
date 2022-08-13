@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "553659498104",
+    "project_id": "spotify-bloc",
+    "storage_bucket": "spotify-bloc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553659498104:android:37b640d891d2069e0ff78d",
+        "android_client_info": {
+          "package_name": "com.example.spotify_bloc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553659498104-aabhksm8unuoi8r8i2fn6snfjigo34q5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJqs8zoPCphBmoq6QXbVHMJgbY3VldJzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553659498104-aabhksm8unuoi8r8i2fn6snfjigo34q5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "553659498104-036m3uus09esegf4n69oku7kjr2mft83.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.spotifyBloc"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
