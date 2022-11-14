@@ -757,11 +757,11 @@ No geral, o Bloc tenta tornar as mudanças de estado previsíveis regulando quan
 
 <h2>Conceitos Básicos</h2>
 
-Existem vários conceitos básicos que são críticos para entender como usar o BLoC. Cada um destes será abordado em detalhes a seguir, bem como analisados e aplicados em exemplos práticos.
+Existem alguns conceitos básicos que são críticos para o entendimento e uso do BLoC. Cada um destes será abordado em detalhes a seguir, bem como analisados e aplicados em exemplos práticos.
 
 <h2>Streams</h2>
 
-Um aspectos que mais chamam atenção no BLoC é a forma com que ele o conceitos de [Streams](https://dart.dev/tutorials/language/streams) para aplicar reatividade ao código Dart. Strems consistem em um modelo de programação assíncrona que permite monitorar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
+Um dos aspectos que mais chamam atenção no BLoC é a forma com que ele utiliza o conceitos de [Streams](https://dart.dev/tutorials/language/streams) para gerar reatividade. Strems consistem em um modelo de programação assíncrona que permite monitorar o fluxo de informações com base em eventos gerados pelo usuário, tratamento de erros e mais. O exemplo a seguir demonstra na prática o uso de streams no flutter:
 
     // ignore_for_file: prefer_const_constructors
     
@@ -815,9 +815,9 @@ Um aspectos que mais chamam atenção no BLoC é a forma com que ele o conceitos
       }
     }
 
-Explicando de forma sucinta, um fluxo de informações em stream sempre se inicia a partir de um event source; seja um evento que obtem a informação ou que opera sobre ela. O exemplo acima se comporta de formar reativa pois é possível monitorar caso um evento associado a um stream seja disparado, o que descreve o observer pattern. 
+Explicando de forma sucinta, um fluxo de informações em stream sempre se inicia a partir de um event source; seja um evento que obtem a informação ou que opera sobre ela. O exemplo acima se comporta de formar reativa pois é possível monitorar caso um evento associado a um stream seja disparado, o que descreve o observer pattern, Disign Pattern bastante associado a programação reativa. 
 
-Sendo mais preciso, ao declarar uma instância da classe <i>StreamController</i>, a qual cria uma stream em que é possível monitorar (atraváes do widget StreamBuilder) um fluxo de eventos, nos permite tratar uma ação do usuário (pressionar um botão) como event source. Logo, quando uma ação é realizada, uma reação resultante ocorre, sendo, neste caso, o encremento da variável <i>value</i>.
+Sendo mais preciso, ao declarar uma instância da classe <i>StreamController</i>, a qual cria uma stream em que é possível monitorar (através do widget StreamBuilder) um fluxo de eventos, estes sendo por sua vez as ações do usuário (pressionar um botão) como event source. Logo, quando uma ação é realizada, uma reação resultante ocorre, sendo, neste caso, o incremento da variável <i>value</i>.
 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -835,11 +835,11 @@ Um Cubit é uma classe herdeira da classe <i>BlocBase</i> e que pode ser extendi
   <img src="https://user-images.githubusercontent.com/61476935/183109389-4a731f85-08a2-4bcd-af7e-8e82d7fb14a5.png">
 </div>
 
-Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesse estados e redesenhar partes de si mesma com base na atualização.
+Os estados são o output de um Cubit e representam uma parte do estado da interface. Os componentes da interface podem ser notificados de alterações nesses estados e redesenhar partes de si mesma com base na atualização.
 
 <h2>Criando um Cubit</h2>
 
-Ao criar um Cubit, é preciso definir o tipo de estado que se espera ser gerenciando, este sendo defindo como o tipo T atrelado a classe <i>Cubit</i>. Além disso, é preciso definir um estado inicial para o Cubit em questão, o declarado em um <i>super method</i>:
+Ao criar um Cubit é preciso definir o tipo de estado que se espera ser gerenciando, este sendo defindo como o tipo T atrelado a classe <i>Cubit</i>. Além disso, é preciso definir um estado inicial para o Cubit em questão, o declarado em um <i>super method</i>:
 
     class CounterCubit extends Cubit<int> {
       CounterCubit(int initialState) : super(initialState);
@@ -865,7 +865,7 @@ No trecho acima, a classe CounterCubit está expondo um método público chamado
 
 > O método emit é protegido, o que significa que só deve ser usado dentro de um Cubit.
 
-O exemplo a seguir demonstra como o Cubit pode ser utilizado para gerencia o estado de uma parte da interface:
+O exemplo a seguir demonstra como o Cubit pode ser utilizado para gerenciar o estado de uma parte da interface:
 
     import 'package:flutter/material.dart';
 
@@ -912,7 +912,7 @@ O exemplo a seguir demonstra como o Cubit pode ser utilizado para gerencia o est
       }
     }
 
-Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A partir dela o método increment é disponibilizado, permitindo operar mudanças no estado do Cubit em questão através de uma ação do usuário. Antes de demonstrar o resultado, é importante destacar que, assim como um StreamController, a classe Cubit disponibiliza uma Stream na qual o estado será operado, o que permite o uso de um StreamBuilder que monitora o fluxo de mudanças.
+Inicialmente, a classe CounterCubit sofre uma instância em um StatefulWidget. A partir dela o método increment é disponibilizado, permitindo operar mudanças no estado do Cubit em questão através de uma ação do usuário. Antes de demonstrar o resultado, é importante destacar que, assim como um StreamController, a classe Cubit disponibiliza uma Stream na qual o estado será operado, o que permite fazer uso de um StreamBuilder para monitorar o fluxo de mudanças.
 
 A imagem a seguir ilustra como o exemplo irá se comportar:
 
@@ -922,19 +922,19 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <h2>Bloc</h2>
 
-A classe Bloc, assim como a Cubit, herda da <i>BlocBase Class</i>, o que significa que ambas possuem API's e formas de uso bastante similares. No entanto, em vez de criar uma função que trata as ocorrências de variações de estado, um Bloc recebe eventos de entrada e os converte em estados de saída.
+A classe Bloc, assim como a Cubit, herda da <i>BlocBase Class</i>, o que significa que ambas possuem API's e formas de uso bastante similares. No entanto, ao invés de criar uma função que trata as ocorrências de variações de estado, um Bloc recebe eventos de entrada e os converte em estados de saída.
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/183108397-4e86c6da-c597-499f-b515-72a111bb545f.png">
 </div>
 
-Eventos são o input de um Bloc. Eles geralmente são adicionados em resposta a interações do usuário, como pressionamentos de botão ou eventos de ciclo de vida, como carregamentos de uma page.
+Eventos são o input de um Bloc. Eles geralmente são adicionados em resposta a interações do usuário, como ações de click ou eventos de ciclo de vida, como a renderização de uma página.
 
 <h2>Criando um Bloc</h2>
 
 O processo de criação de um Bloc não é muito diferente do utilizado para criar um Cubit, exceto que além de definir o estado que será gerenciando, também é preciso definir o tipo de evento que o Bloc irá processar.
 
-O exmplo a seguir demonstra a criação de um counter cujo estado será gerenciado por um Bloc:
+O exemplo a seguir demonstra a criação de um counter cujo estado será gerenciado por um Bloc:
 
     import 'package:flutter_bloc/flutter_bloc.dart';
     
@@ -956,7 +956,7 @@ O próximo passo é declarar um event handler, o qual será responsável por tra
       });
     }
 
-O método <i>on</i> recebe o tipo de evento com o qual se responsabilizará. Como parâmetro é declarada uma função anônica, e esta, por sua vez, recebe o evento em si (o qual pode ser acessado a qualquer momento) e um Emitter, cuja função é permitir disparar novos estados a partir do event. 
+O método <i>on</i> recebe o tipo de evento com pelo qual se responsabilizará. Como parâmetro é declarada uma função anônica, e esta, por sua vez, recebe o evento em si (o qual pode ser acessado a qualquer momento) e um Emitter, cuja função é permitir disparar novos estados a partir do event. 
 
 <h2>Monitorando um Bloc</h2>
 
