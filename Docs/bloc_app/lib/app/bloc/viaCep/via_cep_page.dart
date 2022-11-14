@@ -22,6 +22,7 @@ final controller = TextEditingController();
 StreamController streamController = StreamController();
 
 class ViaCepPageState extends State<ViaCepPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,32 +50,29 @@ class ViaCepPageState extends State<ViaCepPage> {
            BlocBuilder<ViaCepController, SearchCepStates>(
              bloc: searchCepBloc,
              builder: (context, state) {
-
                if(state is Loading) {
                  return Expanded(
                    child: Center(
                      child: CircularProgressIndicator()
                    ),
                  );
-               }
-
-               if(state is Error) {
+               } else if(state is Error) {
                  return Text(state.error);
-               }
-
-               state = state as Success;
-               
-               return Expanded(
-                 child: SizedBox(
-                   width: MediaQuery.of(context).size.width,
-                   child: Text(
-                     ' cep: ${state.address['cep']},\n logradouro: ${state.address['logradouro']},\n complemento: ${state.address['complemento']},\n bairro: ${state.address['bairro']},\n localidade: ${state.address['localidade']},\n uf: ${state.address['uf']},\n ibge: ${state.address['ibge']},\n gia: ${state.address['gia']},\n ddd: ${state.address['ddd']},\n siafi: ${state.address['siafi']} ',
-                     style: TextStyle(  
-                       fontSize: 18
+               } else if(state is Success) {
+                return Expanded(
+                   child: SizedBox(
+                     width: MediaQuery.of(context).size.width,
+                     child: Text(
+                       ' cep: ${state.address['cep']},\n logradouro: ${state.address['logradouro']},\n complemento: ${state.address['complemento']},\n bairro: ${state.address['bairro']},\n localidade: ${state.address['localidade']},\n uf: ${state.address['uf']},\n ibge: ${state.address['ibge']},\n gia: ${state.address['gia']},\n ddd: ${state.address['ddd']},\n siafi: ${state.address['siafi']} ',
+                       style: TextStyle(  
+                         fontSize: 18
+                        ),
                       ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  return SizedBox();
+                }
               },
             ),
           ],

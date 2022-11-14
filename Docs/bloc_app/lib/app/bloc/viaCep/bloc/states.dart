@@ -1,5 +1,7 @@
 abstract class SearchCepStates {} 
 
+class Initial extends SearchCepStates { }
+
 class Success extends SearchCepStates {
   final Map address;
   Success(this.address);

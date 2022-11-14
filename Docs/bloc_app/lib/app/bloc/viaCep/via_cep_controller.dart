@@ -1,14 +1,11 @@
-
-// ignore_for_file: avoid_print
-
 import 'package:bloc_app/app/bloc/viaCep/bloc/events.dart';
 import 'package:bloc_app/app/bloc/viaCep/bloc/states.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:dio/dio.dart';
 
 class ViaCepController extends Bloc<SearchCepEvents, SearchCepStates> {
 
-  ViaCepController() : super(Success({})) {
+  ViaCepController() : super(Initial()) {
     on<SeachEvent>((event, emit) async {
       emit(Loading());
       try {
