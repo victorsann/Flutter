@@ -1,0 +1,71 @@
+- Levantar informação sobre o app:
+- Identifier (com.example.myapp);
+
+- Android:
+  
+  - Criar conta na Google Play Console;
+  - Efeturar Signing do App:
+
+     1° Criar uma upload keystore: 
+
+      keytool -genkey -v -keystore ...\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload; 
+
+      2° Criar key.properties:
+
+      storePassword=<password from previous step> 
+      keyPassword=<password from previous step>
+      keyAlias=upload
+      storeFile=<location of the key store file, such as /Users/<user name>/upload-keystore.jks>
+       
+      3° Configurar signing na file gradle:
+
+      3.1 Acessar [project]/android/app/build.gradl;
+      3.2 Adicione as informações da key.properties antes do bloco android:
+      
+         def keystoreProperties = new Properties()
+         def keystorePropertiesFile = rootProject.file('key.properties')
+         if (keystorePropertiesFile.exists()) {
+            keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+         }
+
+         android {
+             ...
+         }
+
+      3.3 Substitua o bloco "buildTypes" por:
+
+         signingConfigs {
+            release {
+                  keyAlias keystoreProperties['keyAlias']
+                  keyPassword keystoreProperties['keyPassword']
+                  storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                  storePassword keystoreProperties['storePassword']
+             }
+          }
+          buildTypes {
+               release {
+                   signingConfig signingConfigs.release
+               }
+           }
+
+  - Configurar build Gradle:
+         
+     1° [project]/android/app/build.gradle;
+     2° Defina o id da aplicação:
+
+     android {
+         defaultConfig {
+             applicationId = "com.example.myapp"
+             minSdk = 15
+             targetSdk = 24
+             versionCode = 1
+             versionName = "1.0"
+          }
+           ...
+       }
+
+  - Configurar app na GPC;
+
+  
+
+- IOS:

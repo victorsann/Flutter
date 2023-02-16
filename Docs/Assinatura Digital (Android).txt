@@ -1,0 +1,10 @@
+Processo de assinatura:
+
+keytool -genkey -v -keystore  project\android\app\upload-keystore.jks -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 -alias upload
+
+Uma série de dados serão solicitados. É importante anotar a
+senha definida para futuras consultas.
+
+*Acessar Keystore: keytool -list -keystore path\upload-keystore.jks
+
+*Listar Certificados: project\android>  ./gradlew signingReport

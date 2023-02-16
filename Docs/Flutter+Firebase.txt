@@ -1,0 +1,56 @@
+Firebase CLI: 
+
+> npm install -g firebase-tools 
+
+FlutterFire CLI:
+
+> dart pub global activate flutterfire_cli 
+
+Log in and test the Firebase CLI
+
+> firebase login 
+> firebase projects:list 
+
+Configure:  
+
+> flutterfire configure 
+
+1 - Selecting a Firebase project (based on the .firebaserc file or from the Firebase Console).
+2 - Prompt what platforms (e.g. Android, iOS, macOS & web) you would like configuration for.
+3 - Identify which Firebase applications for the chosen platforms should be used to extract 
+     configuration for. By default, the CLI will attempt to automatically match Firebase apps 
+     based on your current project configuration.
+4 - Generate a firebase_options.dart file in your project.
+
+Once complete, you can now import the generated file and provide it to the initializeApp method:
+
+   import 'firebase_options.dart';
+
+After that, you may notice a error at the firebase_options.dart file, to fix it you will need to add the 
+Firebase Core dependency to your project: 
+
+> flutter pub add firebase_core 
+
+InitializeApp:
+
+  lib/main.dart 
+
+  import 'package:firebase_core/firebase_core.dart';
+  import 'firebase_options.dart';
+
+  void main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    runApp(MyApp());
+  }
+
+AUTHENTICATION
+
+
+keytool -list -v -keystore "C:\Users\Victor\.android/debug.keystore" -alias androiddebugkey -storepass android
+
+04:23:66:4D:9A:58:B1:4D:44:B8:0F:B9:AB:50:93:BC:19:3B:26:75
+
+7A:9A:AE:B9:4F:BC:D6:D2:7D:0E:E6:90:64:C5:AD:50:82:BD:37:C7

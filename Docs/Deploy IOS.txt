@@ -1,0 +1,9 @@
+change deploy version
+
+> flutter build ipa
+
+Access Tranporter and log with wictor.dev@gmail.com (find password at "Notes")
+
+Type at the "+" button and submit the generated ipa file;
+
+The app will appear at TestFlight build list after a fill minutes

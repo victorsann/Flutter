@@ -5,17 +5,38 @@
 <br>
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
-O Flutter é um framework para o desenvolvimento híbrido de aplicativos, criada e mantida pela google. Sendo apresentado pela primeira vez em 2015, a ferramenta foi aprimorada desde então, sendo o Flutter 1.0 a sua primeira versão estável, lançada em 2018. 
+O Flutter é um toolkit de desenvolvimento de interfaces multiplataforma projetado pela Google com o intuito de permitir a criação de aplicações de alto desempenho que operem de forma nativa em diferentes plataformas e que interajam diretamente com os serviços de plataforma subjacentes. Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language, sendo apresentado pela primeira vez em 2015 e tendo em 2018 sua primeira versão estável. A ferramenta tem sido aprimorada desde então. 
 
-Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language. Além disso, outra característica muito importante da ferramenta é sua capacidade de manter uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
+Sua popularidade é devida a facilidade que dispõe ao permitir criar interfaces de forma simples e intuitiva, tanto no ambiente web, desktop e principalmente mobile, mantendo uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
 
-Outras características do Flutter são:
+Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca única de widgets customizáveis, que podem ou não possuir um ciclo de vida mediado por suas mudanças de estado. Para controle de estado e portanto, reatividade, o flutter dispõe de uma série de métodos e bibliotecas, sobre as quais este documento irá se aprofundar mais a frente. 
+
+<!-- Outras características do Flutter são:
 
 - Dispõe de um Stateful Hot Reload
 - Utiliza Widgets Reativos Customizaveis
 - É compatível em diversas IDE's
 - Utiliza a GPU e permite acesso as API'S das plataformas android e IOS
-- Pode se integrar a aplicações já desenvolvidas
+- Pode se integrar a aplicações já desenvolvidas -->
+
+<h2>Visão Geral da Arquitetura</h2>
+
+Para entender a utilização de uma ferramenta, seus recursos e soluções, é essencial entender seu funcionamneto mesmo que superficialmente. Neste trecho da documentação iremos entender do que o Flutter é constituído e como o seu funcionamento resulta no que ele propõe. 
+
+Este overview será dividido nas seguintes seções:
+
+- 1. O modelo de arquitetura em camadas: as peças das quais o Flutter é construído.
+- 2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter.
+- 3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter.
+- 4. O processo de renderização: como o Flutter transforma o código da interface do usuário.
+- 5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter.
+- 6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter.
+- 7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador.
+
+<h2>Architectural layers</h2>
+
+
+
 
 <h2>Instalação</h2>
 
