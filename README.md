@@ -95,15 +95,15 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 
 <h1>Reactive UI</h1>
 
-Na superficie, o Flutter é um [Framework pseudo-declarativo reativo](https://docs.flutter.dev/resources/faq#what-programming-paradigm-does-flutters-framework-use), no qual o desenvolvedor fornece um mapeamento dos estados da aplicação para o estado da interface, já o framework se responsabiliza por atualizar a interface em tempo de execução quando ocorre uma mudança de estado. Este modelo é inspirado no React (Framework de UI reativo), que inclui um refinamento de muitos princípios de design tradicionais.
+Na superficie, o Flutter é um [Framework pseudo-declarativo reativo](https://docs.flutter.dev/resources/faq#what-programming-paradigm-does-flutters-framework-use), no qual o desenvolvedor fornece um mapeamento dos estados da aplicação para o estado da interface, sendo responsabilidade do framework atualizar a interface em tempo de execução quando ocorre uma mudança de estado. Este modelo é inspirado no React (Framework de UI reativo), que inclui um refinamento de muitos princípios de design tradicionais.
 
-Na maior parte dos frameworks de UI, o estado inicial da interface do usuário é descrito uma única vex, sendo ataulizado separadamente como resposta a eventos ocorridos em tempo de execução.
+Na maior parte dos frameworks de UI, o estado inicial da interface do usuário é descrito uma única vez, sendo atualizado separadamente como resposta a eventos ocorridos em tempo de execução.
 
-Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexidade, o desenvolvedor precisa estar ciente de como as mudanças de estado se espalham por toda a UI. Por exemplo, considere o seguinte exemplo:
+Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexidade, o desenvolvedor precisa estar ciente de como as mudanças de estado se espalham por toda a UI. Considere o seguinte exemplo:
 
-<img align="right" style="width: 400px;" src="https://docs.flutter.dev/assets/images/docs/arch-overview/color-picker.png">
+<img align="right" style="width: 500px;" src="https://docs.flutter.dev/assets/images/docs/arch-overview/color-picker.png">
 
-Neste exemplo o estado pode ser modificados em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
+Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
 
 Uma solução para isso é a abordagem MVC, onde alterações são enviadas para model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
 
