@@ -62,13 +62,13 @@ A estrutura do Flutter é relativamente pequena; muitos recursos de nível super
 
 <h2>Anatomia de um App Flutter</h2>
 
-O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda abaixo esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.
+O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda abaixo esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219446815-be284749-399d-47e8-95cf-fed836939906.png">
 <h3>Dart App</h3>
 <h3>Framework</h3>
 <h3>Engine</h3>
 <h3>Embedder</h3>
 <h3>Runner</h3>
-<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219446815-be284749-399d-47e8-95cf-fed836939906.png">
+
 
 <h1>Reactive UI</h1>
 
