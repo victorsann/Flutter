@@ -25,13 +25,13 @@ Para entender a utilização de uma ferramenta, seus recursos e soluções, é e
 
 Este overview será dividido nas seguintes seções:
 
-- 1. O modelo de arquitetura em camadas: as peças das quais o Flutter é construído.
-- 2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter.
-- 3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter.
-- 4. O processo de renderização: como o Flutter transforma o código da interface do usuário.
-- 5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter.
-- 6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter.
-- 7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador.
+1. O modelo de arquitetura em camadas: as peças das quais o Flutter é construído.
+2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter.
+3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter.
+4. O processo de renderização: como o Flutter transforma o código da interface do usuário.
+5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter.
+6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter.
+7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador.
 
 <h2>Architectural layers</h2>
 
