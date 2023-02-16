@@ -121,7 +121,6 @@ O método build() é projetado para ser executado rapidamente e deve estar livre
 
 Essa abordagem demanda certas características de um tempo de execução de linguagem (em particular, instanciação e exclusão rápidas de objetos). Felizmente, o [Dart é particularmente adequado para essa tarefa](https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
-
 <h1>Widgets</h1>
 
 
