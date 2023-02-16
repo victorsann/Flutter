@@ -5,7 +5,7 @@
 <br>
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
-O Flutter é um toolkit de desenvolvimento de interfaces multiplataforma projetado pela Google com o intuito de permitir a criação de aplicações de alto desempenho que operem de forma nativa em diferentes plataformas e que interajam diretamente com os serviços de plataforma subjacentes. Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language, sendo apresentado pela primeira vez em 2015 e tendo em 2018 sua primeira versão estável. A ferramenta tem sido aprimorada desde então. 
+O Flutter é um toolkit de desenvolvimento de interfaces multiplataforma projetado pela Google com o intuito de permitir a criação de aplicações de alto desempenho, que operem de forma nativa em diferentes plataformas e que interajam diretamente com os serviços de plataforma subjacentes. Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language, sendo apresentado pela primeira vez em 2015 e tendo em 2018 sua primeira versão estável. A ferramenta tem sido aprimorada desde então. 
 
 Sua popularidade é devida a facilidade que dispõe ao permitir criar interfaces de forma simples e intuitiva, tanto no ambiente web, desktop e principalmente mobile, mantendo uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
 
@@ -21,19 +21,57 @@ Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca
 
 <h2>Visão Geral da Arquitetura</h2>
 
-Para entender a utilização de uma ferramenta, seus recursos e soluções, é essencial entender seu funcionamneto mesmo que superficialmente. Neste trecho da documentação iremos entender do que o Flutter é constituído e como o seu funcionamento resulta no que ele propõe. 
+Para entender a utilização de uma ferramenta, seus recursos e soluções, é essencial entender seu funcionamento mesmo que superficialmente. Neste trecho da documentação iremos entender do que o Flutter é constituído e como o seu funcionamento resulta no que ele propõe. 
 
 Este overview será dividido nas seguintes seções:
 
-1. O modelo de arquitetura em camadas: as peças das quais o Flutter é construído.
-2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter.
-3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter.
-4. O processo de renderização: como o Flutter transforma o código da interface do usuário.
-5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter.
-6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter.
-7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador.
+1. O modelo de arquitetura em camadas: as peças das quais o Flutter é construído
+2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter
+3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter
+4. O processo de renderização: como o Flutter transforma o código da interface do usuário
+5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter
+6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter
+7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador
 
-<h2>Architectural layers</h2>
+<h1>Architectural layers</h1>
+
+O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvivida como opcional e substituível. 
+
+<!-- IMG -->
+
+Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop.
+
+Em cada plataforma o incorporador é escrito em uma linguagem de programação apropirada, como: Java e C++ para Android, Objective-C/Objective-C++ para iOS e macOS e C++ para Windows e Linux. Os incorporadorem também permitem integrar código desenvovolvido em Flutter a um aplicativo existente como um módulo ou todo o contepudo do aplicativo.
+
+Para entender mais sobre incorporadores e como estes operam em conjunto com o Flutter, leia a documentação a seguir: [Flutter on Embedded Devices](https://flutter.dev/multi-platform/embedded).
+
+<h2>Flutter Engine</h2>
+
+No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria escrito em C++ e dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
+
+A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
+
+Normalmente, os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataforma, layout e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
+
+- Classes base ([foundational](https://api.flutter.dev/flutter/foundation/foundation-library.html)) e building block services como [animation](https://api.flutter.dev/flutter/animation/animation-library.html), [painting](https://api.flutter.dev/flutter/painting/painting-library.html), e [gestures](https://api.flutter.dev/flutter/gestures/gestures-library.html)
+- A camada de renderização ([rendering layer](https://api.flutter.dev/flutter/rendering/rendering-library.html)), que fornece uma abstração para lidar com o layout, permite construir uma árvore de objetos renderizáveis que podem ser manipulados dinamicamente
+- A camada de widgets ([widgets layer](https://api.flutter.dev/flutter/widgets/widgets-library.html)), que possui uma classe correspondente para cada objeto na camada de renderização, permite definir combinações reutilizaveis de classes, sendo a camada onde a programação reativa é introduzida
+- O [Material](https://api.flutter.dev/flutter/material/material-library.html) e [Cupertino](https://api.flutter.dev/flutter/cupertino/cupertino-library.html) são bibliotecas que permitem utilizar a camada de widgets para implementar as linguagens de design
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
