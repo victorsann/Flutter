@@ -35,12 +35,11 @@ Este overview será dividido nas seguintes seções:
 
 <h1>Architectural layers</h1>
 
-O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. 
+O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. A imagem a seguir exemplifica a descrição:
 
-<!-- IMG -->
 <img src="https://docs.flutter.dev/assets/images/docs/arch-overview/archdiagram.png">
 
-Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop. A imagem a seguir exemplifica a descrição:
+Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop. 
 
 Em cada plataforma o incorporador é escrito em uma linguagem de programação apropriada, como: Java e C++ para Android, Objective-C/Objective-C++ para iOS e macOS e C++ para Windows e Linux. Os incorporadores também permitem integrar código desenvovolvido em Flutter a um aplicativo existente como um módulo ou todo o conteúdo do aplicativo.
 
@@ -61,18 +60,13 @@ Normalmente, os desenvolvedores interagem com o Flutter por meio do framework pr
 
 A estrutura do Flutter é relativamente pequena; muitos recursos de nível superior que os desenvolvedores podem usar são implementados como pacotes, incluindo plug-ins de plataforma, como câmera e visualização da web, bem como recursos independentes de plataforma, como characters, http e animações que se baseiam nas principais bibliotecas do Dart e do Flutter. Alguns desses pacotes vêm de um ecossistema mais amplo, abrangendo serviços como pagamentos no aplicativo, Apple authentication e animações.
 
+<h2>Anatomia de um App</h2>
 
+O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem.
 
+<img src="https://docs.flutter.dev/assets/images/docs/app-anatomy.svg">
 
-
-
-
-
-
-
-
-
-
+<h1>Reactive UI</h1>
 
 
 
