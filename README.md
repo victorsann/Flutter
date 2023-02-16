@@ -72,19 +72,19 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 
 <h3>Framework</h3>
 
-- Fornece API de nível superior para criar aplicativos de alta qualidade (por exemplo, widgets, hit-testing, detecção de gestos, acessibilidade, entrada de texto).
+- Fornece API de nível superior para criar aplicativos de alta qualidade (widgets, hit-testing, gestos, acessibilidade, input).
 - Compõe a árvore de widgets do aplicativo em um cenário.
 
 <h3>Engine</h3>
 
 - Responsável por rasterizar um cenário.
-- Fornece implementação de baixo nível das principais APIs do Flutter (por exemplo, graphics, layout de texto e runtime do Dart).
+- Fornece implementação de baixo nível das principais APIs do Flutter (graphics, layout de texto e Dart runtime).
 - Expõe sua funcionalidade ao framework através da biblioteca dart:ui.
 - Se integra a uma plataforma específica através da API Embedder da Engine.
 
 <h3>Embedder</h3>
 
-- Interage com o OS subjacente para ter acesso a serviços como superfícies de renderização, acessibilidade e input.
+- Interage com o OS subjacente para ter acesso a serviços como superfícies de renderização.
 - Gerencia o event loop.
 - Expõe a API específica da plataforma para integrar o Embedder aos aplicativos.
 
