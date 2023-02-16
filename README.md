@@ -103,7 +103,9 @@ Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexi
 
 <img align="right" style="width: 500px;" src="https://docs.flutter.dev/assets/images/docs/arch-overview/color-picker.png">
 
-Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
+Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. 
+
+Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
 
 Uma solução para isso é a abordagem MVC, onde alterações são enviadas para model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
 
