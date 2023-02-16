@@ -35,13 +35,13 @@ Este overview será dividido nas seguintes seções:
 
 <h1>Architectural layers</h1>
 
-O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvivida como opcional e substituível. 
+O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. 
 
 <!-- IMG -->
 
-Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop.
+Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop. A imagem a seguir exemplifica a descrição:
 
-Em cada plataforma o incorporador é escrito em uma linguagem de programação apropirada, como: Java e C++ para Android, Objective-C/Objective-C++ para iOS e macOS e C++ para Windows e Linux. Os incorporadorem também permitem integrar código desenvovolvido em Flutter a um aplicativo existente como um módulo ou todo o contepudo do aplicativo.
+Em cada plataforma o incorporador é escrito em uma linguagem de programação apropriada, como: Java e C++ para Android, Objective-C/Objective-C++ para iOS e macOS e C++ para Windows e Linux. Os incorporadores também permitem integrar código desenvovolvido em Flutter a um aplicativo existente como um módulo ou todo o conteúdo do aplicativo.
 
 Para entender mais sobre incorporadores e como estes operam em conjunto com o Flutter, leia a documentação a seguir: [Flutter on Embedded Devices](https://flutter.dev/multi-platform/embedded).
 
@@ -49,7 +49,7 @@ Para entender mais sobre incorporadores e como estes operam em conjunto com o Fl
 
 No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria escrito em C++ e dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
 
-A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
+>A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
 
 Normalmente, os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataforma, layout e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
 
