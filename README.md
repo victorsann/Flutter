@@ -90,12 +90,37 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 
 <h3>Runner</h3>
  
-- Compõe as partes expostas pela API específica da plataforma do Embedder em um pacote de aplicativo executável na plataforma de destino.
-- Parte do modelo de aplicativo gerado pelo <i>flutter create</i>, de propriedade do desenvolvedor do aplicativo.
+- Compõe as partes expostas pela API específica da plataforma do Embedder em um pacote executável na plataforma de destino.
+- Parte do modelo de aplicativo gerado pelo <i>flutter create</i>, de propriedade do desenvolvedor.
 
 <h1>Reactive UI</h1>
 
+Na superficie, o Flutter é um [Framework pseudo-declarativo reativo](https://docs.flutter.dev/resources/faq#what-programming-paradigm-does-flutters-framework-use), no qual o desenvolvedor fornece um mapeamento dos estados da aplicação para o estado da interface, já o framework se responsabiliza por atualizar a interface em tempo de execução quando ocorre uma mudança de estado. Este modelo é inspirado no React (Framework de UI reativo), que inclui um refinamento de muitos princípios de design tradicionais.
 
+Na maior parte dos frameworks de UI, o estado inicial da interface do usuário é descrito uma única vex, sendo ataulizado separadamente como resposta a eventos ocorridos em tempo de execução.
+
+Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexidade, o desenvolvedor precisa estar ciente de como as mudanças de estado se espalham por toda a UI. Por exemplo, considere o seguinte exemplo:
+
+<img align="right" style="width: 400px;" src="https://docs.flutter.dev/assets/images/docs/arch-overview/color-picker.png">
+
+Neste exemplo o estado pode ser modificados em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
+
+Uma solução para isso é a abordagem MVC, onde alterações são enviadas para model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
+
+O Flutter, assim como outros framework reativos, adota uma abordagem alternativa para esse problema, desacoplando explicitamente a interface do usuário de seu estado. Com React-style APIs, só é necessário criar a descrição da interface do usuário e a estrutura se encarrega de usar essa configuração para criar e/ou atualizar a interface do usuário conforme apropriado.
+
+No Flutter, os widgets (semelhantes aos componentes do React) são representados por classes imutáveis ​​que são usadas para configurar uma árvore de objetos. Esses widgets são usados ​​para gerenciar uma árvore separada de objetos para layout, que é usada para gerenciar uma árvore separada de objetos para composição. O Flutter é, em sua essência, uma série de mecanismos para percorrer com eficiência as partes modificadas das árvores, convertendo árvores de objetos em árvores de objetos de nível inferior e propagando alterações nessas árvores.
+
+Um widget declara sua interface de usuário substituindo o método <i><b>build()</b></i>, que é uma função que converte o estado em UI:
+
+> UI = f(state)
+
+O método build() é projetado para ser executado rapidamente e deve estar livre de efeitos colaterais, permitindo que seja chamado pelo framework sempre que necessário (potencialmente tão frequentemente quanto uma vez por quadro renderizado).
+
+Essa abordagem demanda certas características de um tempo de execução de linguagem (em particular, instanciação e exclusão rápidas de objetos). Felizmente, o [Dart é particularmente adequado para essa tarefa](https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
+
+
+<h1>Widgets</h1>
 
 
 <h2>Instalação</h2>
