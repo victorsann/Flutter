@@ -54,11 +54,11 @@ No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria escri
 Normalmente, os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataforma, layout e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
 
 - Classes base ([foundational](https://api.flutter.dev/flutter/foundation/foundation-library.html)) e building block services como [animation](https://api.flutter.dev/flutter/animation/animation-library.html), [painting](https://api.flutter.dev/flutter/painting/painting-library.html), e [gestures](https://api.flutter.dev/flutter/gestures/gestures-library.html)
-- A camada de renderização ([rendering layer](https://api.flutter.dev/flutter/rendering/rendering-library.html)), que fornece uma abstração para lidar com o layout, permite construir uma árvore de objetos renderizáveis que podem ser manipulados dinamicamente
-- A camada de widgets ([widgets layer](https://api.flutter.dev/flutter/widgets/widgets-library.html)), que possui uma classe correspondente para cada objeto na camada de renderização, permite definir combinações reutilizaveis de classes, sendo a camada onde a programação reativa é introduzida
-- O [Material](https://api.flutter.dev/flutter/material/material-library.html) e [Cupertino](https://api.flutter.dev/flutter/cupertino/cupertino-library.html) são bibliotecas que permitem utilizar a camada de widgets para implementar as linguagens de design
+- A camada de renderização ([rendering layer](https://api.flutter.dev/flutter/rendering/rendering-library.html)), que fornece uma abstração para lidar com o layout e permite construir uma árvore de objetos renderizáveis que podem ser manipulados dinamicamente
+- A camada de widgets ([widgets layer](https://api.flutter.dev/flutter/widgets/widgets-library.html)), que possui uma classe correspondente para cada objeto na camada de renderização e permite definir combinações reutilizaveis de classes, sendo a camada onde a programação reativa é introduzida
+- O [Material](https://api.flutter.dev/flutter/material/material-library.html) e [Cupertino](https://api.flutter.dev/flutter/cupertino/cupertino-library.html) são bibliotecas que permitem utilizar a camada de widgets para implementar as linguagens de design que resumem a interface
 
-
+A estrutura do Flutter é relativamente pequena; muitos recursos de nível superior que os desenvolvedores podem usar são implementados como pacotes, incluindo plug-ins de plataforma, como câmera e visualização da web, bem como recursos independentes de plataforma, como characters, http e animações que se baseiam nas principais bibliotecas do Dart e do Flutter. Alguns desses pacotes vêm de um ecossistema mais amplo, abrangendo serviços como pagamentos no aplicativo, Apple authentication e animações.
 
 
 
