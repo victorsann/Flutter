@@ -47,7 +47,7 @@ Para entender mais sobre incorporadores e como estes operam em conjunto com o Fl
 
 <h2>Flutter Engine</h2>
 
-No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria escrito em C++ e dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
+No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria um código C++ que dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
 
 >A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
 
@@ -60,11 +60,11 @@ Normalmente, os desenvolvedores interagem com o Flutter por meio do framework pr
 
 A estrutura do Flutter é relativamente pequena; muitos recursos de nível superior que os desenvolvedores podem usar são implementados como pacotes, incluindo plug-ins de plataforma, como câmera e visualização da web, bem como recursos independentes de plataforma, como characters, http e animações que se baseiam nas principais bibliotecas do Dart e do Flutter. Alguns desses pacotes vêm de um ecossistema mais amplo, abrangendo serviços como pagamentos no aplicativo, Apple authentication e animações.
 
-<h2>Anatomia de um App</h2>
+<h2>Anatomia de um App Flutter</h2>
 
-O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem.
+O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda abaixo esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.
 
-<img src="https://docs.flutter.dev/assets/images/docs/app-anatomy.svg">
+<img src="https://user-images.githubusercontent.com/61476935/219446815-be284749-399d-47e8-95cf-fed836939906.png">
 
 <h1>Reactive UI</h1>
 
