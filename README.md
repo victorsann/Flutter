@@ -17,7 +17,7 @@ Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca
 - Utiliza Widgets Reativos Customizaveis
 - É compatível em diversas IDE's
 - Utiliza a GPU e permite acesso as API'S das plataformas android e IOS
-- Pode se integrar a aplicações já desenvolvidas -->
+- Pode se integrar a aplicações já desenvolvidas --> 
 
 <h2>Visão Geral da Arquitetura</h2>
 
