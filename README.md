@@ -101,7 +101,7 @@ Na maior parte dos frameworks de UI, o estado inicial da interface do usuário �
 
 Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexidade, o desenvolvedor precisa estar ciente de como as mudanças de estado se espalham por toda a UI. Considere o seguinte exemplo:
 
-<img align="left" style="width: 250px;" src="https://user-images.githubusercontent.com/61476935/219458346-8e8f863c-5a2d-4d52-a0ba-e85bffcbd520.png">
+<img align="left" style="width: 255px;" src="https://user-images.githubusercontent.com/61476935/219458346-8e8f863c-5a2d-4d52-a0ba-e85bffcbd520.png">
 
 Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. 
 
