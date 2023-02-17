@@ -45,6 +45,8 @@ Em cada plataforma o incorporador é escrito em uma linguagem de programação a
 
 Para entender mais sobre incorporadores e como estes operam em conjunto com o Flutter, leia a documentação a seguir: [Flutter on Embedded Devices](https://flutter.dev/multi-platform/embedded).
 
+<br>
+
 <h2>Flutter Engine</h2>
 
 No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria um código C++ que dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
