@@ -103,9 +103,9 @@ Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexi
 
 <img align="left" style="width: 255px;" src="https://user-images.githubusercontent.com/61476935/219458346-8e8f863c-5a2d-4d52-a0ba-e85bffcbd520.png">
 
-Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. 
+>Neste caso o estado pode ser modificado em partes distintas da interface. À medida que o usuário interage com a interface, as alterações devem ser refletidas em todos as partes em que o estado é exibido. 
 
-Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
+>Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
 
 Uma solução para isso é a abordagem MVC, onde alterações são enviadas para model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
 
