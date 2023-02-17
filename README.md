@@ -37,7 +37,7 @@ Este overview será dividido nas seguintes seções:
 
 O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. A imagem a seguir exemplifica a descrição:
 
-<img align="left" width="450px" src="https://user-images.githubusercontent.com/61476935/219661407-b616172e-1526-4789-b979-9abfeac61d30.png">
+<img align="left" width="400px" src="https://user-images.githubusercontent.com/61476935/219661407-b616172e-1526-4789-b979-9abfeac61d30.png">
 
 Para o sistema operacional subjacente, os aplicativos Flutter são empacotados da mesma forma que qualquer outro aplicativo nativo. Um incorporador(embedder) específico da plataforma fornece um entrypoint; coordena com o sistema operacional subjacente para dar acesso a serviços como superfícies de renderização, acessibilidade e inputs, além de gerenciar o message event loop. 
 
