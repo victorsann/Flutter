@@ -111,7 +111,7 @@ Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexi
 
 >O Flutter, assim como outros framework reativos, adota uma abordagem alternativa para esse problema, desacoplando explicitamente a interface do usuário de seu estado. Com React-style APIs, só é necessário criar a descrição da interface do usuário e a estrutura se encarrega de usar essa configuração para criar e/ou atualizar a interface do usuário conforme apropriado.
 
->No Flutter, os widgets (semelhantes aos componentes do React) são representados por classes imutáveis ​​que são usadas para configurar uma árvore de objetos. Esses widgets são usados ​​para gerenciar uma árvore separada de objetos para layout, que é usada para gerenciar uma árvore separada de objetos para composição. 
+No Flutter, os widgets (semelhantes aos componentes do React) são representados por classes imutáveis ​​que são usadas para configurar uma árvore de objetos. Esses widgets são usados ​​para gerenciar uma árvore separada de objetos para layout, que é usada para gerenciar uma árvore separada de objetos para composição. 
 
 O Flutter é, em sua essência, uma série de mecanismos para percorrer com eficiência as partes modificadas das árvores, convertendo árvores de objetos em árvores de objetos de nível inferior e propagando alterações nessas árvores.
 
