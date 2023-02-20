@@ -183,7 +183,171 @@ Essa abordagem resulta em certos benefícios:
 
 <h2>A Composição de Um Widget</h2>
 
+Os widgets são normalmente compostos de muitos outros widgets menores e de finalidade única que se combinam para produzir efeitos poderosos.
 
+Sempre que possível, o número de conceitos de design é reduzido ao mínimo, permitindo que o vocabulário total seja grande. Por exemplo, na camada de widgets, o Flutter usa o mesmo conceito central (um Widget) para representar o desenho na tela, layout (posicionamento e dimensionamento), interatividade do usuário, gerenciamento de estado, temas, animações e navegação. Na camada de animação, um par de conceitos, <b>Animações</b> e <b>Interpolações</b>, cobrem a maior parte do espaço de design. Na camada de renderização, <b>RenderObjects</b> são usados ​​para descrever layout, painting, hit testing, e acessibilidade. Em cada um desses casos, o vocabulário correspondente acaba sendo grande: são centenas de widgets e objetos de renderização, além de dezenas de tipos de animação e tween.
+
+A hierarquia de classes é deliberadamente rasa e ampla para maximizar o número possível de combinações, concentrando-se em pequenos widgets que podem ser compostos, cada um fazendo bem uma coisa. Os recursos principais são abstratos, mesmo com recursos básicos como padding e alignment sendo implementados como componentes separados, em vez de serem incorporados ao core(isso também contrasta com APIs mais tradicionais, onde recursos como padding são incorporados ao núcleo comum de cada componente de layout.). Então, por exemplo, para centralizar um widget, em vez de ajustar uma propriedade Align, o widget é envolvido em widget [Center](https://api.flutter.dev/flutter/widgets/Center-class.html).
+
+Existem widgets para padding, alignment, rows, columns, e grids. Esses widgets de layout não possuem uma representação visual própria. Em vez disso, seu único propósito é controlar algum aspecto do layout de outro widget. O Flutter também inclui widgets utilitários que aproveitam essa abordagem de composição.
+
+Por exemplo, o [Container](https://api.flutter.dev/flutter/widgets/Container-class.html), um widget comumente utilizado, é composto por vários widgets responsáveis ​​pelo layout, pintura, posicionamento e dimensionamento. O Container é composto, especificamente, pelos widgets [LimitedBox](https://api.flutter.dev/flutter/widgets/LimitedBox-class.html), [ConstrainBox](https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html), [Align](https://api.flutter.dev/flutter/widgets/Align-class.html), [Padding](https://api.flutter.dev/flutter/widgets/Padding-class.html), [DecoratedBox](https://api.flutter.dev/flutter/widgets/DecoratedBox-class.html) e [Transform](https://api.flutter.dev/flutter/widgets/Transform-class.html). Uma característica definidora do Flutter é que é possível detalhar a origem de qualquer widget e examiná-lo. Portanto, em vez de subclassificar o Container para produzir um efeito personalizado, é possível compô-lo e outros widgets de novas maneiras ou apenas criar um novo widget usando o Container como inspiração.
+
+<h2>Construindo Widgets</h2>
+
+Como mencionado anteriormente, a representação visual de um widget é determinada pelo overriding de um método [build()](https://api.flutter.dev/flutter/widgets/StatelessWidget/build.html), para que este retorne uma nova árvore de elementos. Por exemplo, um widget que descreve uma toolbar deve conter um build method que retorna um [horizontal layout](https://api.flutter.dev/flutter/widgets/Row-class.html) compostos por [text](https://api.flutter.dev/flutter/widgets/Text-class.html) e [buttons](https://api.flutter.dev/flutter/material/PopupMenuButton-class.html). Conforme necessário, o framework solicita recursivamente a cada widget para que execute o método build até que a árvore seja totalmente descrita por [objetos renderizáveis ​​concretos](https://api.flutter.dev/flutter/widgets/RenderObjectWidget-class.html). O framework então une os objetos renderizáveis ​​em uma árvore de objetos renderizáveis.
+
+Em cada quadro renderizado, o Flutter pode recriar apenas as partes da interface do usuário em que o estado foi alterado chamando o método build() desse widget. Portanto, é importante que os métodos de construção retornem rapidamente, e o trabalho computacional pesado seja feito de maneira assíncrona e, em seguida, armazenado como parte do estado a ser usado por um build method.
+
+<h2>O Estado de Um Widget</h2>
+
+
+Como dito anteriormente, o comportamento de uma interface é definido por uma relação de interação e ratividade que é mediada pelo método <b>build()</b>, que resulta na mudança de estado. Definindo de forma simples, o estado, ou state, como iremos chamar daqui em diante; é composto por todas as características da aplicação(ou parte dela) em determinado momento. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade.
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
+</div>
+
+Sendo um pouco mais detalhista, o state no Flutter se divide em dois tipos:
+
+<h2>Ephemeral State</h2>
+
+Também chamado de UI state ou local state, é o estado que um widget teria, sendo ele próprio o responsável por tratá-lo e reagir a sua mudança. Em outras palavras, as mudanças nas características desse elemento não afetam diretamente a aplicação como um todo. Pode-se citar como exemplo:
+
+    class MyHomepage extends StatefulWidget {
+      const MyHomepage({Key? key}) : super(key: key);
+    
+      @override
+      _MyHomepageState createState() => _MyHomepageState();
+    }
+    
+    class _MyHomepageState extends State<MyHomepage> {
+      int _selectedIndex = 0;
+    
+      static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+    
+      List<Widget> _index = <Widget>[
+        Text('Home', style: optionStyle),
+        Text('Search', style: optionStyle),
+        Text('Profile', style: optionStyle),
+      ];
+    
+      void _onItemTapped(int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+
+      @override
+       Widget build(BuildContext context) {
+         return Scaffold(
+           appBar: AppBar(
+             title: Text('BottomNavigationBar'),
+           ),
+           body: Center(child: _index.elementAt(_selectedIndex)),
+           bottomNavigationBar: BottomNavigationBar(
+             items: <BottomNavigationBarItem>[
+               BottomNavigationBarItem(
+                 icon: Icon(Icons.home),
+                 label: 'Home',
+               ),
+               BottomNavigationBarItem(
+                 icon: Icon(Icons.search),
+                 label: 'Search',
+               ),
+               BottomNavigationBarItem(
+                 icon: Icon(Icons.person),
+                 label: 'Profile',
+               ),
+             ],
+             currentIndex: _selectedIndex,
+             selectedItemColor: Colors.blue[800],
+             onTap: _onItemTapped,
+           ), //BottomNavigationBar
+         ); 
+       }
+    }
+
+Deixando de lado boa parte do que é mostrado no exemplo, já que tais conceitos serão mais bem abordados em seguida, é possível destacar o elemento correspondente ao ephemeral state:
+
+    int _selectedIndex = 0;
+
+Aqui a variável <i>_selectedIndex</i> possui a tarefa de definir a seleção de determinada posição na bottomNavigationBar, característica restrita ao elemento que a contém. Por mais que a mudança na seleção permita acessar um outro ponto da aplicação, amenos que seja declado, o único state que sofrerá mundaças é o da própria bottomNavigationBar, o que consiste em um local state. 
+
+Um detalhe importante a se ater é que a definição inicial de um state sempre será retomada quando a aplicação iniciar, ou seja, um state é por essência imutável. Sendo zero a posição inicial, sempre que o widget for renderizado, a posição selecionada será 0. Esse recurso é bastante útil quando há uma quantidade previsível de possíveis estados.
+
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
+</div>
+
+<h2>App State</h2>
+
+O App State, ou shared state, corresponde as informações que se mantém entre as sessões de acesso do usuário, possuindo maior escalabilidade em relação ao ephemeral state e sendo compartilhada por toda a aplicação. Exemplos claros de um shared state são:
+
+- Informações de login
+- Preferências do usuário
+- Notificações ou mensagens não lidas 
+- Dados de uma compra, como um carrinho ou lista de desejos 
+
+Divergindo do estado restrito a um único elemento da interface, o App State demanda o uso de uma ou mais ferramentas de gerenciamento que variam de acordo com a robusteis e o tipo de aplicação que será criada. Tais ferramentas serão mais detalhados nos próximos passos. 
+
+Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar e quando, o diagarama a seguir ilustra as formas mais comuns de uso:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
+</div>
+
+Agora que definimos o que é o state para o Flutter, iremos entender como e quando utilizá-lo na estruturação da interface.
+
+<h2>StatelessWidget</h2>
+
+Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State. 
+
+Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
+
+    class MyWidget extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
+
+<h2>StatefulWidget</h2>
+
+Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma. 
+
+A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, sendo responsável por criar o widget em questão. Já a segunda classe consiste em uma subclasse da <i>State Class</i>, cuja função é conter o state do widget e executar o <i>build()</i> method:
+
+    class MyStatefulWidget extends StatefulWidget {
+      
+      const MyStatefulWidget({Key? key, required this.title}) : super(key: key);
+
+      @override
+      State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+    }
+    
+    class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+      @override
+      Widget build(BuildContext context) {
+        return Container();
+      }
+    }
+
+Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distinto. Widgets são objetos temporários, utilizados para construir a aplicação em seu estado atual. O State, por outro lado, persiste entre as chamadas do build() method, o que o permite conservar informações durante seu ciclo de vida.
+
+<h2>createState Method</h2>
+
+O método <i>createState</i> é chamado sempre que o widget for criado, retornando uma instância da classe que faz o build do widget com base em seu State atual. No exemplo acima, a classe retorna é a <i>_MyStatefulWidgetState</i>. 
+
+O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando seu ciclo de vida.
+
+<h2>State Class</h2>
+
+Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança.
 
 <h2>Instalação</h2>
 
@@ -515,7 +679,7 @@ O próximo passso é acessar seu smartphone e verificar o endereço de IP corres
 </div>
 
 Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
-
+<!-- 
 <h1>Widgets</h1>
 
 Buscando inspiração em ferramentas como o React e o [Material Design](https://material.io/design), o Flutter permite criar interfaces com base em uma estrutura hierarquica de classes Dart chamada de Widget Tree. Um widget descreve como a interface irá se parecer com base em suas configurações, já como ela irá se comportar é definido por seu estado.  
@@ -542,160 +706,10 @@ A função ```runApp()``` define o widget a ela dado como base para a Widget Tre
 Dadas as devidas exceções, todos os widgets possuem a propriedade child, a qual retorna um outro widget que irá obedecer as regras definidas por suas configirações. Porém, para entender como a estrutura de uma aplicação Flutter é gerada, precisamos ir um pouco mais a fundo.
 
 No processo de desenvolvimento de um app, você normalmente criará novos widgets que serão subclasses tanto de StatelessWidgets quanto de StatefulWidgets.
-Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essas estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvolvimento de apps:
+Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essas estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvolvimento de apps: -->
 
-<h1>State Management</h1>
 
-O Flutter possui uma gama gigantesca de ferramentas com diferentes métodos para gerenciar o estado da interface, possuindo uma abordagem distinta das ferramentas de desenvolvimento nativas quando se trata de reatividade. Tendo adotato um modelo declarativo, o Flutter permite criar a interface com base em seu estado atual, além de aplicar mudanças em partes específicas da interface de forma rápida, levando em conta cada frame.
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
-</div>
-
-<h2>O Conceito de State</h2>
-
-Definindo de forma simples, o state é composto por todas as características da aplicação(ou parte dela) em determinado momento do processo de run. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade. Sendo um pouco mais detalhista, o state no Flutter se divide em dois tipos:
-
-<h2>Ephemeral State</h2>
-
-Também chamado de UI state ou local state, é o estado que um widget teria, sendo ele próprio o responsável por tratá-lo e reagir a sua mudança. Em outras palavras, as mudanças nas características desse elemento não afetam diretamente a aplicação como um todo. Pode-se citar como exemplo:
-
-    class MyHomepage extends StatefulWidget {
-      const MyHomepage({Key? key}) : super(key: key);
-    
-      @override
-      _MyHomepageState createState() => _MyHomepageState();
-    }
-    
-    class _MyHomepageState extends State<MyHomepage> {
-      int _selectedIndex = 0;
-    
-      static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-    
-      List<Widget> _index = <Widget>[
-        Text('Home', style: optionStyle),
-        Text('Search', style: optionStyle),
-        Text('Profile', style: optionStyle),
-      ];
-    
-      void _onItemTapped(int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-      }
-
-      @override
-       Widget build(BuildContext context) {
-         return Scaffold(
-           appBar: AppBar(
-             title: Text('BottomNavigationBar'),
-           ),
-           body: Center(child: _index.elementAt(_selectedIndex)),
-           bottomNavigationBar: BottomNavigationBar(
-             items: <BottomNavigationBarItem>[
-               BottomNavigationBarItem(
-                 icon: Icon(Icons.home),
-                 label: 'Home',
-               ),
-               BottomNavigationBarItem(
-                 icon: Icon(Icons.search),
-                 label: 'Search',
-               ),
-               BottomNavigationBarItem(
-                 icon: Icon(Icons.person),
-                 label: 'Profile',
-               ),
-             ],
-             currentIndex: _selectedIndex,
-             selectedItemColor: Colors.blue[800],
-             onTap: _onItemTapped,
-           ), //BottomNavigationBar
-         ); 
-       }
-    }
-
-Deixando de lado boa parte do que é mostrado no exemplo, já que tais conceitos serão mais bem abordados em seguida, é possível destacar o elemento correspondente ao ephemeral state:
-
-    int _selectedIndex = 0;
-
-Aqui a variável <i>_selectedIndex</i> possui a tarefa de definir a seleção de determinada posição na bottomNavigationBar, característica restrita ao elemento que a contém. Por mais que a mudança na seleção permita acessar um outro ponto da aplicação, amenos que seja declado, o único state que sofrerá mundaças é o da própria bottomNavigationBar, o que consiste em um local state. 
-
-Um detalhe importante a se ater é que a definição inicial de um state sempre será retomada quando a aplicação iniciar, ou seja, um state é por essência imutável. Sendo zero a posição inicial, sempre que o widget for renderizado, a posição selecionada será 0. Esse recurso é bastante útil quando há uma quantidade previsível de possíveis estados.
-
-A imagem a seguir ilustra como o exemplo irá se comportar:
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151704415-8a1813f4-ec0c-490a-b1d6-9f32d91f34a3.gif">
-</div>
-
-<h2>App State</h2>
-
-O App State, ou shared state, corresponde as informações que se mantém entre as sessões de acesso do usuário, possuindo maior escalabilidade em relação ao ephemeral state e sendo compartilhada por toda a aplicação. Exemplos claros de um shared state são:
-
-- Informações de login
-- Preferências do usuário
-- Notificações ou mensagens não lidas 
-- Dados de uma compra, como um carrinho ou lista de desejos 
-
-Divergindo do estado restrito a um único elemento da interface, o App State demanda o uso de uma ou mais ferramentas de gerenciamento que variam de acordo com a robusteis e o tipo de aplicação que será criada. Tais ferramentas serão mais detalhados nos próximos passos. 
-
-Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar e quando, o diagarama a seguir ilustra as formas mais comuns de uso:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
-</div>
-
-Agora que definimos o que é o state para o Flutter, iremos entender como e quando utilizá-lo na estruturação da interface.
-
-<h2>StatelessWidget</h2>
-
-Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State. 
-
-Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
-
-    class MyWidget extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return Container();
-      }
-    }
-
-O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
-
-<h2>StatefulWidget</h2>
-
-Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma. 
-
-A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, sendo responsável por criar o widget em questão. Já a segunda classe consiste em uma subclasse da <i>State Class</i>, cuja função é conter o state do widget e executar o <i>build()</i> method:
-
-    class MyStatefulWidget extends StatefulWidget {
-      
-      const MyStatefulWidget({Key? key, required this.title}) : super(key: key);
-
-      @override
-      State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
-    }
-    
-    class _MyStatefulWidgetState extends State<MyStatefulWidget> {
-      @override
-      Widget build(BuildContext context) {
-        return Container();
-      }
-    }
-
-Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distinto. Widgets são objetos temporários, utilizados para construir a aplicação em seu estado atual. O State, por outro lado, persiste entre as chamadas do build() method, o que o permite conservar informações durante seu ciclo de vida.
-
-<h2>createState Method</h2>
-
-O método <i>createState</i> é chamado sempre que o widget for criado, retornando uma instância da classe que faz o build do widget com base em seu State atual. No exemplo acima, a classe retorna é a <i>_MyStatefulWidgetState</i>. 
-
-O Flutter pode chamar esse método várias vezes durante o tempo de vida de um StatefulWidget. Por exemplo, se o widget for inserido na widget tree em vários locais, a estrutura criará um objeto State separado para cada local. Da mesma forma, se o widget for removido da widget tree e posteriormente reinserido, o Flutter irá chamar o createState novamente para criar um novo objeto State, simplificando seu ciclo de vida.
-
-<h2>State Class</h2>
-
-Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança.
-
-<h1>Usando Material Components</h1>
+<h1>Material Components</h1>
 
 O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
 
