@@ -119,7 +119,7 @@ O Flutter é, em sua essência, uma série de mecanismos para percorrer com efic
 
 Um widget declara sua interface de usuário substituindo o método <i><b>build()</b></i>, que é uma função que converte o estado em UI:
 
-    UI = f(state)
+> UI = f(state)
 
 O método build() é projetado para ser executado rapidamente e deve estar livre de efeitos colaterais, permitindo que seja chamado pelo framework sempre que necessário (potencialmente tão frequentemente quanto uma vez por quadro renderizado).
 
@@ -127,7 +127,61 @@ Essa abordagem demanda certas características de um tempo de execução de ling
 
 <h1>Widgets</h1>
 
+Como mencionado, o Flutter dá ênfase aos widgets como uma unidade de sua composição. Widgets são declarações imutáveis de uma parte da interface do usuário, que obedencem uma hierarquia. Cada um deles é aninhado dentro de um widget anterior(parent) na árvore que os detém, e possuem de forma opcional acesso ao context que os envolve. 
 
+Esta estrutura leva até o widget root(o container que hospeda o Flutter app, tipicamente um <i>MaterialApp</i> ou <i>CupertinoApp</i>), como no exemplo abaixo:
+
+    import 'package:flutter/material.dart';
+    import 'package:flutter/services.dart';
+    
+    void main() => runApp(const MyApp());
+    
+    class MyApp extends StatelessWidget {
+      const MyApp({super.key});
+    
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Text('My Home Page'),
+            ),
+            body: Center(
+              child: Builder(
+                builder: (context) {
+                  return Column(
+                    children: [
+                      const Text('Hello World'),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          print('Click!');
+                        },
+                        child: const Text('A button'),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+O código acima, cada classe instanciada é um widget.
+
+Aplicativos atualizam sua UI em resposta a eventos(tais como uma interação do usuário) comunicando o framework para que este substitua um widget na hierarquia por um novo. Em seguida compara ambos(subtituto e substituído) atualizando assim o estado da interface.
+
+O Flutter tem suas próprias implementações de cada controle de interface do usuário, em vez de adiar o uso das fornecidas pelo sistema: por exemplo, há uma [implementação pura do Dart](https://api.flutter.dev/flutter/cupertino/CupertinoSwitch-class.html) equivalente a ambos [IOS Switch control](https://developer.apple.com/design/human-interface-guidelines/ios/controls/switches/) e [Android Switch control](https://m2.material.io/develop/android/components/switches).
+
+Essa abordagem resulta em certos benefícios:
+
+- Fornece extensibilidade ilimitada. Um desenvolvedor que deseja uma variante do controle Switch pode criar um de qualquer maneira arbitrária e não está limitado aos pontos de extensão fornecidos pelo sistema operacional.
+- Evita um gargalo de desempenho significativo, permitindo que o Flutter componha toda o cenário de uma só vez, sem fazer a transição entre o código do Flutter e o código da plataforma.
+- Separa o comportamento do aplicativo de quaisquer dependências do sistema operacional. A aparência do aplicativo é a mesma em todas as versões do sistema operacional, mesmo que o sistema operacional tenha alterado as implementações de seus controles.
+
+<h2>A Composição de Um Widget</h2>
 
 
 
