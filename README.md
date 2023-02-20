@@ -348,6 +348,11 @@ O Flutter pode chamar esse método várias vezes durante o tempo de vida de um S
 
 Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança.
 
+<h1>Rendering e Layout</h1>
+
+
+
+
 <h2>Instalação</h2>
 
 Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, que variam de acordo com sistema operacional. A descrição a seguir mostra o processo de instalação no Windows:
