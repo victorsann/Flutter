@@ -295,7 +295,7 @@ Divergindo do estado restrito a um único elemento da interface, o App State dem
 Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar e quando, o diagarama a seguir ilustra as formas mais comuns de uso:
 
 <div align="center">
-  <img width="500px" src="https://user-images.githubusercontent.com/61476935/220133518-24356aad-011f-4a46-8f81-c71071121a1d.png">
+  <img width="550px" src="https://user-images.githubusercontent.com/61476935/220134419-4bfd28de-0420-4d3e-a345-c4e151910cc2.png">
 </div>
 
 Agora que definimos o que é o state para o Flutter, iremos entender como e quando utilizá-lo na estruturação da interface.
