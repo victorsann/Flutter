@@ -201,12 +201,11 @@ Em cada quadro renderizado, o Flutter pode recriar apenas as partes da interface
 
 <h2>O Estado de Um Widget</h2>
 
-
-Como dito anteriormente, o comportamento de uma interface é definido por uma relação de interação e ratividade que é mediada pelo método <b>build()</b>, que resulta na mudança de estado. Definindo de forma simples, o estado, ou state, como iremos chamar daqui em diante; é composto por todas as características da aplicação(ou parte dela) em determinado momento. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade.
-
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
 </div>
+
+Como dito anteriormente, o comportamento de uma interface é definido por uma relação de interação e ratividade que é mediada pelo método <b>build()</b>, que resulta na mudança de estado. Definindo de forma simples, o estado, ou state, como iremos chamar daqui em diante; é composto por todas as características da aplicação(ou parte dela) em determinado momento. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade.
 
 Sendo um pouco mais detalhista, o state no Flutter se divide em dois tipos:
 
@@ -272,7 +271,7 @@ Deixando de lado boa parte do que é mostrado no exemplo, já que tais conceitos
 
     int _selectedIndex = 0;
 
-Aqui a variável <i>_selectedIndex</i> possui a tarefa de definir a seleção de determinada posição na bottomNavigationBar, característica restrita ao elemento que a contém. Por mais que a mudança na seleção permita acessar um outro ponto da aplicação, amenos que seja declado, o único state que sofrerá mundaças é o da própria bottomNavigationBar, o que consiste em um local state. 
+Aqui, a variável <i>_selectedIndex</i> possui a tarefa de definir a seleção de determinada posição na bottomNavigationBar, característica restrita ao elemento que a contém. Por mais que a mudança na seleção permita acessar um outro parte da interface, amenos que seja declado, o único state que sofrerá mundaças é o da própria bottomNavigationBar, o que consiste em um local state. 
 
 Um detalhe importante a se ater é que a definição inicial de um state sempre será retomada quando a aplicação iniciar, ou seja, um state é por essência imutável. Sendo zero a posição inicial, sempre que o widget for renderizado, a posição selecionada será 0. Esse recurso é bastante útil quando há uma quantidade previsível de possíveis estados.
 
@@ -296,7 +295,7 @@ Divergindo do estado restrito a um único elemento da interface, o App State dem
 Contudo, é importante ter em mente que ambos App e ephemeral state podem ser utilizados da forma que o desenvolvedor bem entender, com suas exceções. Para definir de forma mais lógica qual tipo de State utilizar e quando, o diagarama a seguir ilustra as formas mais comuns de uso:
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122982146-e5322a00-d370-11eb-986c-9ec755ce1197.png">
+  <img src="https://user-images.githubusercontent.com/61476935/220133518-24356aad-011f-4a46-8f81-c71071121a1d.png">
 </div>
 
 Agora que definimos o que é o state para o Flutter, iremos entender como e quando utilizá-lo na estruturação da interface.
