@@ -5,11 +5,11 @@
 <br>
 <img src="https://img.shields.io/static/v1?label=flutter&message=Framework&color=blue&style=for-the-badge&logo=Flutter"/>
 
-O Flutter é um toolkit de desenvolvimento de interfaces multiplataforma projetado pela Google com o intuito de permitir a criação de aplicações de alto desempenho, que operem de forma nativa em diferentes plataformas e que interajam diretamente com os serviços de plataforma subjacentes. Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language, sendo apresentado pela primeira vez em 2015 e tendo em 2018 sua primeira versão estável. A ferramenta tem sido aprimorada desde então. 
+O Flutter é um toolkit para desenvolvimento de interfaces multiplataforma projetado pela Google com o intuito de permitir a criação de aplicações de alto desempenho, que operem de forma nativa em diferentes plataformas e que interajam diretamente com os serviços de plataformas subjacentes. Desenvolvido em C, C++, Dart e Skia Graphics Engine, o Flutter utiliza o [Dart](https://github.com/VictorSantos12/Dart#maps) como prefered language, tendo sido apresentado pela primeira vez em 2015 e tendo, em 2018, sua primeira versão estável. A ferramenta tem sido aprimorada desde então. 
 
-Sua popularidade é devida a facilidade que dispõe ao permitir criar interfaces de forma simples e intuitiva, tanto no ambiente web, desktop e principalmente mobile, mantendo uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
+Sua popularidade é devido a facilidade que dispõe ao permitir criar interfaces de forma simples e intuitiva, tanto no ambiente web, desktop e principalmente mobile, mantendo uma performance nativa tanto no IOS quanto no Android, além de permitir desenvolver em ambas as plataformas utilizando um código fonte único.
 
-Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca única de widgets customizáveis, que podem ou não possuir um ciclo de vida mediado por suas mudanças de estado. Para controle de estado e portanto, reatividade, o flutter dispõe de uma série de métodos e bibliotecas, sobre as quais este documento irá se aprofundar mais a frente. 
+Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca única de widgets customizáveis, que podem ou não possuir um ciclo de vida mediado por suas mudanças de estado. Para controle de estado e portanto, reatividade, o flutter dispõe de uma série de métodos e bibliotecas, sobre as quais este documento irá tratar mais a frente. 
 
 <!-- Outras características do Flutter são:
 
@@ -29,7 +29,7 @@ Este overview será dividido nas seguintes seções:
 2. Interfaces reativas: um conceito central para o desenvolvimento de interface de usuário Flutter
 3. Introdução aos widgets: fundamentos das interfaces de usuário do Flutter
 4. O processo de renderização: como o Flutter transforma o código da interface do usuário
-5. Platform embedders: como sistemas operacionais mobile e de desktop executam um aplicativo Flutter
+5. Platform embedders: como sistemas operacionais mobile e desktop executam um aplicativo Flutter
 6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter
 7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador
 
@@ -49,11 +49,11 @@ Para entender mais sobre incorporadores e como estes operam em conjunto com o Fl
 
 <h2>Flutter Engine</h2>
 
-No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria um código C++ que dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da pricipal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
+No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria um código C++ que dá suporte as primitives necessárias a todas as aplicações Flutter. A engine é a responsável por [rasterizar](https://www.google.com/search?q=rasterizar&rlz=1C1ASUM_enBR992BR992&oq=rasterizar&aqs=chrome.0.69i59j0i512l7j0i10i512j0i512.417j0j7&sourceid=chrome&ie=UTF-8) cenários em que um novo frame precise ser criado. A engine também fornece a implementação de baixo nível da principal API do Flutter, incluíndo um motor gráfico (atráves do [Skia](https://skia.org/)), layout de texto, E/S de arquivos de rede, suporte de acessibilidade, um arquitetura de plug-in, um Dart runtime e ferramentas de compilação.
 
 >A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
 
-Normalmente, os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataforma, layout e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
+Normalmente os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataformas, layouts e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
 
 - Classes base ([foundational](https://api.flutter.dev/flutter/foundation/foundation-library.html)) e building block services como [animation](https://api.flutter.dev/flutter/animation/animation-library.html), [painting](https://api.flutter.dev/flutter/painting/painting-library.html), e [gestures](https://api.flutter.dev/flutter/gestures/gestures-library.html)
 - A camada de renderização ([rendering layer](https://api.flutter.dev/flutter/rendering/rendering-library.html)), que fornece uma abstração para lidar com o layout e permite construir uma árvore de objetos renderizáveis que podem ser manipulados dinamicamente
@@ -64,7 +64,7 @@ A estrutura do Flutter é relativamente pequena; muitos recursos de nível super
 
 <h2>Anatomia de um App Flutter</h2>
 
-O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda abaixo esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219654930-99fdb33a-4038-40cc-acbc-eb66b1b99bdb.png">
+O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda que o acompanha esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219654930-99fdb33a-4038-40cc-acbc-eb66b1b99bdb.png">
 
 <h3>Dart App</h3>
 
@@ -109,9 +109,9 @@ Um desafio dessa abordagem é que, à medida que o aplicativo cresce em complexi
 
 >Pior ainda, a menos que seja tomado cuidado, uma pequena alteração em uma parte da interface pode causar efeitos de ondulação em partes de código aparentemente não relacionadas.
 
->Uma solução para isso é a abordagem MVC, onde alterações são enviadas para model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
+>Uma solução para isso é a abordagem MVC, onde alterações são enviadas para o model através de um controller e, em seguida, o model cria um novo estado para a exibição por meio do controller. No entanto, isso também é problemático, pois criar e atualizar elementos da interface do usuário são duas etapas separadas que podem ficar facilmente fora de sincronia.
 
->O Flutter, assim como outros framework reativos, adota uma abordagem alternativa para esse problema, desacoplando explicitamente a interface do usuário de seu estado. Com React-style APIs, só é necessário criar a descrição da interface do usuário e a estrutura se encarrega de usar essa configuração para criar e/ou atualizar a interface do usuário conforme apropriado.
+>O Flutter, assim como outros frameworks reativos, adota uma abordagem alternativa para esse problema, desacoplando explicitamente a interface do usuário de seu estado. Com React-style APIs, só é necessário criar a descrição da interface do usuário e a estrutura se encarrega de usar essa configuração para criar e/ou atualizar a interface do usuário conforme apropriado.
 
 No Flutter, os widgets (semelhantes aos componentes do React) são representados por classes imutáveis ​​que são usadas para configurar uma árvore de objetos. Esses widgets são usados ​​para gerenciar uma árvore separada de objetos para layout, que é usada para gerenciar uma árvore separada de objetos para composição. 
 
@@ -119,13 +119,16 @@ O Flutter é, em sua essência, uma série de mecanismos para percorrer com efic
 
 Um widget declara sua interface de usuário substituindo o método <i><b>build()</b></i>, que é uma função que converte o estado em UI:
 
-> UI = f(state)
+    UI = f(state)
 
 O método build() é projetado para ser executado rapidamente e deve estar livre de efeitos colaterais, permitindo que seja chamado pelo framework sempre que necessário (potencialmente tão frequentemente quanto uma vez por quadro renderizado).
 
 Essa abordagem demanda certas características de um tempo de execução de linguagem (em particular, instanciação e exclusão rápidas de objetos). Felizmente, o [Dart é particularmente adequado para essa tarefa](https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30).
 
 <h1>Widgets</h1>
+
+
+
 
 
 <h2>Instalação</h2>
