@@ -315,7 +315,7 @@ Um StatelessWidget é um widget que descreve parte de uma interface criando um c
 
 O <i>build()</i> method de um stateless widget é tipicamente chamado apenas em três situações: a primeira vez em que o widget é inserido na widget tree, quando as configurações do parent widget são alteradas, e quando um [inheritedWidget](https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html) do qual ele depende muda. Se tais situações ocorrerem regularmente, é importante otimizar a performance do build method para manter a renderização fluida.
 
-Existem diversas formas de minimização de impacto para se ater quando um stateless widget deve sofrer um rebuilding:
+Existem diversas formas para minimizar o impacto de rebuilding de um stateless widget::
 
 - Minimizar o número de nós criados transitivamente pelo método build e quaisquer widgets que ele criar. Por exemplo, em vez de um arranjo elaborado de Rows, Columns, Paddings e SizedBoxes para posicionar um único filho de uma maneira particularmente sofisticada, considere usar apenas Align ou CustomSingleChildLayout. Em vez de uma intrincada camada de vários Containers e Decorations para desenhar o efeito gráfico certo, considere um único widget [CustomPaint](https://api.flutter.dev/flutter/widgets/CustomPaint-class.html).
 - Declarar widgets como const sempre que possível e fornecer um const construtor para que o widget e seus usuários possam fazer o mesmo.
@@ -325,9 +325,7 @@ Existem diversas formas de minimização de impacto para se ater quando um state
 
 <h2>StatefulWidget</h2>
 
-Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma. 
-
-A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, sendo responsável por criar o widget em questão. Já a segunda classe consiste em uma subclasse da <i>State Class</i>, cuja função é conter o state do widget e executar o <i>build()</i> method:
+Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma:
 
     class MyStatefulWidget extends StatefulWidget {
       
@@ -344,7 +342,27 @@ A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, 
       }
     }
 
+A instância de um StatefulWidget propriamente dita é imutável e seu estado mutável é armazenado em um objeto [State](https://api.flutter.dev/flutter/widgets/State-class.html) que é criado pelo método [createState](https://api.flutter.dev/flutter/widgets/StatefulWidget/createState.html), ou em um objeto sobrescrito pelo State, por exemplo [Stream](https://api.flutter.dev/flutter/dart-async/Stream-class.html) e [ChangeNotifier](https://api.flutter.dev/flutter/foundation/ChangeNotifier-class.html), para o qual as referências são armazenadas em campos final no próprio StatefulWidget.
+
+O framework chama o createState sempre que infla um StatefulWidget, o que significa que vários objetos State podem ser associados ao mesmo StatefulWidget se esse widget tiver sido inserido na árvore em vários locais. Da mesma forma, se um StatefulWidget for removido da árvore e posteriormente reinserido, o createState será chamado novamente para criar um novo objeto State, simplificando o ciclo de vida dos objetos.
+
 Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distinto. Widgets são objetos temporários, utilizados para construir a aplicação em seu estado atual. O State, por outro lado, persiste entre as chamadas do build() method, o que o permite conservar informações durante seu ciclo de vida.
+
+<h2>Considerações de Performance</h2>
+
+Existem duas categorias principais de StatefulWidgets.
+
+A primeira aloca recursos na quando o seu objeto equivalente é inserido na widget tree através da chamada do [State.initState](https://api.flutter.dev/flutter/widgets/State/initState.html) e os dispõe através da chamada do [State.dispose](https://api.flutter.dev/flutter/widgets/State/dispose.html), porém, não depende de InheritedWidgets ou chama o State.setState. Esses widgets são comumente usados ​​na raiz de um aplicativo ou página e se comunicam com subwidgets por meio de ChangeNotifiers, Streams ou outros objetos semelhantes. Os widgets com estado que seguem esse padrão são relativamente menos custosos (em termos de ciclos de CPU e GPU), porque são criados uma vez e nunca são atualizados. Eles podem, portanto, ter build methods um tanto complicados.
+
+A segunda são widgets que usam [State.setState](https://api.flutter.dev/flutter/widgets/State/setState.html) ou dependem de InheritedWidgets. Normalmente, estes sofrem um rebuild várias vezes durante o tempo de vida do aplicativo e, portanto, é importante minimizar o impacto da reconstrução desse widget. Eles também podem usar State.initState ou [State.didChangeDependencies](https://api.flutter.dev/flutter/widgets/State/didChangeDependencies.html) e alocar recursos, mas a parte importante é que eles são reconstruídos.
+
+Existem diversas formas para minimizar o impacto de rebuilding de um stateful widget:
+
+- Empurrar o estado para as folhas. Por exemplo, caso uma página tenha represente a contagem de um relógio, em vez de colocar o estado no topo da página e reconstruir a página inteira cada vez que o relógio mude, é recomendável criar um widget para o relógio, para que este atualize a si mesmo.
+- Minimizar o número de nós criados transitivamente pelo método build e quaisquer widgets que ele crie. Idealmente, um stateful widget criaria apenas um único widget e esse widget seria um [RenderObjectWidget[](https://api.flutter.dev/flutter/widgets/RenderObjectWidget-class.html). Obviamente, isso nem sempre é prático, mas quanto mais próximo um widget chegar desse ideal, mais eficiente ele será.
+- Se uma widget subtree não sofrer alterações, é recomendado armazenar em cache o widget que a representa e reutilize-o sempre que possível, atribuíndo um widget a uma variável de estado final a reutilizando no método build. Outra estratégia de cache consiste em extrair a parte mutável do widget em um StatefulWidget que aceita um parâmetro filho.
+- Usar widgets constantes sempre que possível. (Isso é equivalente a armazenar em cache um widget e reutilizá-lo.)
+- Ao tentar criar uma parte reutilizável da UI, preferir utilizar um widget em vez de um método auxiliar, pois caso uma mudança que envolva apenas esta porção da interface ocorra, o framework seja capaz renderiza-lo isoladamente sem esforço.
 
 <!-- <h2>createState Method</h2>
 
@@ -355,6 +373,60 @@ O Flutter pode chamar esse método várias vezes durante o tempo de vida de um S
 <h2>State Class</h2>
 
 Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança. -->
+
+<h2>BuildContext</h2>
+
+Presente em ambos os tipos de widget, o [BuildContext](https://api.flutter.dev/flutter/widgets/BuildContext-class.html) é o responsável por identificar o widget em questão na widget tree, porém, não apenas isso. Objetos BuildContext são passados ​​para funções WidgetBuilder (como StatelessWidget.build) e estão disponíveis no membro State.context. Algumas funções estáticas (por exemplo, [showDialog](https://api.flutter.dev/flutter/material/showDialog.html), [Theme.of](https://api.flutter.dev/flutter/material/Theme/of.html), [Navigator.of](https://api.flutter.dev/flutter/widgets/Navigator/of.html) e assim por diante) também utilizam build context para que possam agir em nome do widget de chamada ou obter dados especificamente para o contexto fornecido.
+
+Cada widget tem seu próprio BuildContext, que se torna o pai do widget retornado pela função StatelessWidget.build ou State.build. (E da mesma forma, o pai de quaisquer filhos para RenderObjectWidgets.).
+
+Em particular, isso significa que o contexto de criação de um widget não necessariamente é o mesmo que o dos widgets retornados pelo método que o criou. Isso pode levar a alguns casos complicados. Por exemplo, o método Theme.of(context) procura o tema mais próximo do build context fornecido. Se um build method de um widget W incluir um Theme em sua árvore de widgets e tentar utilizar Theme.of passando seu próprio contexto, o build method W não localizará o objeto Theme. Em vez disso, ele encontrará qualquer tema que tenha sido utilizado em um ancestral do widget W. 
+
+Se uma subparte de um widget precisa utilizar o build context em um de seus recursos, um [Builder](https://api.flutter.dev/flutter/widgets/Builder-class.html) pode disponibilizá-lo, logo, o build context utilizado será o da classe Builder.
+
+Por exemplo, no snippet a seguir, o método [ScaffoldState.showBottomSheet](https://api.flutter.dev/flutter/material/ScaffoldState/showBottomSheet.html) é chamado no widget Scaffold. Se um Builder não for utilizado e, em vez disso, o context do próprio build method for utilizado, nenhum Scaffold será encontrado e a função Scaffold.of retornará null.
+
+    @override
+    Widget build(BuildContext context) {
+      // here, Scaffold.of(context) returns null
+      return Scaffold(
+        appBar: AppBar(title: const Text('Demo')),
+        body: Builder(
+          builder: (BuildContext context) {
+            return TextButton(
+              child: const Text('BUTTON'),
+              onPressed: () {
+                Scaffold.of(context).showBottomSheet<void>(
+                  (BuildContext context) {
+                    return Container(
+                      alignment: Alignment.center,
+                      height: 200,
+                      color: Colors.amber,
+                      child: Center(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            const Text('BottomSheet'),
+                            ElevatedButton(
+                              child: const Text('Close BottomSheet'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            );
+          },
+        )
+      );
+    }
+
+
 
 <h1>Rendering e Layout</h1>
 
