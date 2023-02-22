@@ -179,7 +179,7 @@ Essa abordagem resulta em certos benefícios:
 - Evita um gargalo de desempenho significativo, permitindo que o Flutter componha toda o cenário de uma só vez, sem fazer a transição entre o código do Flutter e o código da plataforma.
 - Separa o comportamento do aplicativo de quaisquer dependências do sistema operacional. A aparência do aplicativo é a mesma em todas as versões do sistema operacional, mesmo que o sistema operacional tenha alterado as implementações de seus controles.
 
-<h2>A Composição de Um Widget</h2>
+<h2>Composição</h2>
 
 Os widgets são normalmente compostos de muitos outros widgets menores e de finalidade única que se combinam para produzir efeitos poderosos.
 
@@ -191,13 +191,13 @@ Existem widgets para padding, alignment, rows, columns, e grids. Esses widgets d
 
 Por exemplo, o [Container](https://api.flutter.dev/flutter/widgets/Container-class.html), um widget comumente utilizado, é composto por vários widgets responsáveis ​​pelo layout, pintura, posicionamento e dimensionamento. O Container é composto, especificamente, pelos widgets [LimitedBox](https://api.flutter.dev/flutter/widgets/LimitedBox-class.html), [ConstrainBox](https://api.flutter.dev/flutter/widgets/ConstrainedBox-class.html), [Align](https://api.flutter.dev/flutter/widgets/Align-class.html), [Padding](https://api.flutter.dev/flutter/widgets/Padding-class.html), [DecoratedBox](https://api.flutter.dev/flutter/widgets/DecoratedBox-class.html) e [Transform](https://api.flutter.dev/flutter/widgets/Transform-class.html). Uma característica definidora do Flutter é que é possível detalhar a origem de qualquer widget e examiná-lo. Portanto, em vez de subclassificar o Container para produzir um efeito personalizado, é possível compô-lo e outros widgets de novas maneiras ou apenas criar um novo widget usando o Container como inspiração.
 
-<h2>Construindo Widgets</h2>
+<h2>Build</h2>
 
 Como mencionado anteriormente, a representação visual de um widget é determinada pelo overriding de um método [build()](https://api.flutter.dev/flutter/widgets/StatelessWidget/build.html), para que este retorne uma nova árvore de elementos. Por exemplo, um widget que descreve uma toolbar deve conter um build method que retorna um [horizontal layout](https://api.flutter.dev/flutter/widgets/Row-class.html) compostos por [text](https://api.flutter.dev/flutter/widgets/Text-class.html) e [buttons](https://api.flutter.dev/flutter/material/PopupMenuButton-class.html). Conforme necessário, o framework solicita recursivamente a cada widget para que execute o método build até que a árvore seja totalmente descrita por [objetos renderizáveis ​​concretos](https://api.flutter.dev/flutter/widgets/RenderObjectWidget-class.html). O framework então une os objetos renderizáveis ​​em uma árvore de objetos renderizáveis.
 
 Em cada quadro renderizado, o Flutter pode recriar apenas as partes da interface do usuário em que o estado foi alterado chamando o método build() desse widget. Portanto, é importante que os métodos de construção retornem rapidamente, e o trabalho computacional pesado seja feito de maneira assíncrona e, em seguida, armazenado como parte do estado a ser usado por um build method.
 
-<h2>O Estado de Um Widget</h2>
+<h2>Estado</h2>
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
@@ -300,9 +300,7 @@ Agora que definimos o que é o state para o Flutter, iremos entender como e quan
 
 <h2>StatelessWidget</h2>
 
-Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um state mutável, ou seja, características neles declaradas só podem ser alteradas manualmente ou se as mesmas possuem seu próprio state. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State. 
-
-Uma melhor definição para seu uso é quando um elemento específico depende apenas das informações de configuração do objeto e do BuildContext, sobre o qual falaremos a seguir:
+Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um estado mutável, ou seja, a parte da interface a qual um StatelessWidget corresponde não depende de qualquer elemento externo, exceto as informações informações de configuração do objeto e de um BuildContext. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State:
 
     class MyWidget extends StatelessWidget {
       @override
@@ -311,7 +309,19 @@ Uma melhor definição para seu uso é quando um elemento específico depende ap
       }
     }
 
-O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing.
+<!-- O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing. -->
+
+<h2>Considerações de Performance</h2>
+
+O <i>build()</i> method de um stateless widget é tipicamente chamado apenas em três situações: a primeira vez em que o widget é inserido na widget tree, quando as configurações do parent widget são alteradas, e quando um [inheritedWidget](https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html) do qual ele depende muda. Se tais situações ocorrerem regularmente, é importante otimizar a performance do build method para manter a renderização fluida.
+
+Existem diversas formas de minimização de impacto para se ater quando um stateless widget deve sofrer um rebuilding:
+
+- Minimizar o número de nós criados transitivamente pelo método build e quaisquer widgets que ele criar. Por exemplo, em vez de um arranjo elaborado de Rows, Columns, Paddings e SizedBoxes para posicionar um único filho de uma maneira particularmente sofisticada, considere usar apenas Align ou CustomSingleChildLayout. Em vez de uma intrincada camada de vários Containers e Decorations para desenhar o efeito gráfico certo, considere um único widget [CustomPaint](https://api.flutter.dev/flutter/widgets/CustomPaint-class.html).
+- Declarar widgets como const sempre que possível e fornecer um const construtor para que o widget e seus usuários possam fazer o mesmo.
+- Considerar a substituir widgets sem estado por widgets com estado para que seja possível utilizar algumas de seus recursos, como armazenar em cache partes comuns de subárvores e usar GlobalKeys ao alterar a estrutura da árvore.
+- Caso um widget sofra um rebuilt constantemente devido ao uso de InheritedWidgets, considar substituir o stateless widget por vários widgets, que sofrerão push de quaisquer mudanças que as envolvam individualmente. 
+- Ao tentar criar uma parte reutilizável da UI, preferir utilizar um widget em vez de um método auxiliar, pois caso uma mudança que envolva apenas esta porção da interface ocorra, o framework seja capaz renderiza-lo isoladamente sem esforço.
 
 <h2>StatefulWidget</h2>
 
@@ -336,7 +346,7 @@ A classe inicial nada mais é que uma subclasse da <i>StatefulWidget Class</i>, 
 
 Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distinto. Widgets são objetos temporários, utilizados para construir a aplicação em seu estado atual. O State, por outro lado, persiste entre as chamadas do build() method, o que o permite conservar informações durante seu ciclo de vida.
 
-<h2>createState Method</h2>
+<!-- <h2>createState Method</h2>
 
 O método <i>createState</i> é chamado sempre que o widget for criado, retornando uma instância da classe que faz o build do widget com base em seu State atual. No exemplo acima, a classe retorna é a <i>_MyStatefulWidgetState</i>. 
 
@@ -344,7 +354,7 @@ O Flutter pode chamar esse método várias vezes durante o tempo de vida de um S
 
 <h2>State Class</h2>
 
-Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança.
+Ainda com o último exemplo em mente; a classe <i>_MyStatefulWidgetState</i> armazena as infromações mutáveis que podem vir a mudar no ciclo de vida do widget. A classe State define o comportamento da interface de acordo com esse estado, ela é responsável por redefinir o State e fazer um rebuild a cada mudança. -->
 
 <h1>Rendering e Layout</h1>
 
