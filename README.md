@@ -343,7 +343,7 @@ O próximo passso é acessar seu smartphone e verificar o endereço de IP corres
 Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
  -->
 
-<h2>Visão Geral da Arquitetura</h2>
+<h1>Visão Geral da Arquitetura</h1>
 
 Para entender a utilização de uma ferramenta, seus recursos e soluções, é essencial entender seu funcionamento mesmo que superficialmente. Neste trecho da documentação iremos entender do que o Flutter é constituído e como o seu funcionamento resulta no que ele propõe. 
 
@@ -357,7 +357,7 @@ Este overview será dividido nas seguintes seções:
 6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter
 7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador
 
-<h1>Architectural layers</h1>
+<h2>Architectural layers</h2>
 
 O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. A imagem a seguir exemplifica a descrição:
 
