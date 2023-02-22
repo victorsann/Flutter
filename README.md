@@ -60,6 +60,140 @@ Normalmente os desenvolvedores interagem com o Flutter por meio do framework pro
 
 A estrutura do Flutter é relativamente pequena; muitos recursos de nível superior que os desenvolvedores podem usar são implementados como pacotes, incluindo plug-ins de plataforma, como câmera e visualização da web, bem como recursos independentes de plataforma, como characters, http e animações que se baseiam nas principais bibliotecas do Dart e do Flutter. Alguns desses pacotes vêm de um ecossistema mais amplo, abrangendo serviços como pagamentos no aplicativo, Apple authentication e animações.
 
+<h1>Material Components</h1>
+
+O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
+
+    name: my_app
+    flutter:
+      uses-material-design: true
+
+Além disso, o Flutter dispõe da [MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html) class, que agrupa uma série de widgets normalmente utilizados e necessários em um Material design app. Seu uso inicia com o ```Material App``` widget, que permite criar uma base para a widget tree:
+
+    void main() {
+      runApp(const MyApp());
+    }
+    
+    class MyApp extends StatelessWidget {
+      const MyApp({Key? key}) : super(key: key);
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        );
+      }
+    }
+
+Nela serão definidos o title que identifica o app, o color theme, a página inicial e entre outros. A seguir estão dispostos os atributos da class MaterialApp, dos quais serão destacados os mais importantes:
+
+    (new) MaterialApp MaterialApp({
+      Key? key,
+      GlobalKey<NavigatorState>? navigatorKey,
+      GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
+      Widget? home,
+      Map<String, Widget Function(BuildContext)> routes = const <String, WidgetBuilder>{},
+      String? initialRoute,
+      Route<dynamic>? Function(RouteSettings)? onGenerateRoute,
+      List<Route<dynamic>> Function(String)? onGenerateInitialRoutes,
+      Route<dynamic>? Function(RouteSettings)? onUnknownRoute,
+      List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
+      Widget Function(BuildContext, Widget?)? builder,
+      String title = '',
+      String Function(BuildContext)? onGenerateTitle,
+      Color? color,
+      ThemeData? theme,
+      ThemeData? darkTheme,
+      ThemeData? highContrastTheme,
+      ThemeData? highContrastDarkTheme,
+      ThemeMode? themeMode = ThemeMode.system,
+      Locale? locale,
+      Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
+      Locale? Function(List<Locale>?, Iterable<Locale>)? localeListResolutionCallback,
+      Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback,
+      Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
+      bool debugShowMaterialGrid = false,
+      bool showPerformanceOverlay = false,
+      bool checkerboardRasterCacheImages = false,
+      bool checkerboardOffscreenLayers = false,
+      bool showSemanticsDebugger = false,
+      bool debugShowCheckedModeBanner = true,
+      Map<ShortcutActivator, Intent>? shortcuts,
+      Map<Type, Action<Intent>>? actions,
+      String? restorationScopeId,
+      ScrollBehavior? scrollBehavior,
+      bool useInheritedMediaQuery = false,
+    })
+
+<h2>debugShowCheckedModeBanner</h2>
+
+Um Flutter App é criado por padrão em modo de debug, e um dos sinais dessa definição é a propriedade debugShowCheckedModeBanner, cuja função é criar uma barra que indica o modo de depuração do app, o que não é utilizidado em desenvovimento e muito menos em produção. O exemplo a seguir desabilita o banner de debug em toda a aplicação:
+
+    MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
+      ),
+      debugShowCheckedModeBanner: false,
+    )
+
+Como resultado, temos:
+
+<br>
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/164480100-f3215b57-b277-4116-b58a-8e689fa11eb7.gif">
+</div>
+
+<br>
+
+<h2>theme</h2>
+
+A propriedade theme permite definir um padrão de cores para os material widgets em toda a aplicação, como appBars, drawers e entre outros. O exemplo a seguir define como utilizar a prorpiedade theme de forma simplória: 
+
+    MaterialApp(
+      theme: ThemeData(
+        brightness: Brightness.dark,
+        primaryColor: Colors.blueGrey
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('MaterialApp Theme'),
+        ),
+      ),
+    )
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
+</div>
+
+<h2>supportedLocales</h2>
+
+A propriedade supportedLocales define uma lista de localidades nas quais o app pretende entrar em operação. Por padrão, apenas o inglês americano é suportado, tendo como valor padrão [const Locale('en', 'US')], sendo necessário declarar quais locais serão suportados. A ordem de definição dos elementos é importante para o funcionamento. O exemplo a seguir mostra o padrão de supportedLocales utilizados em apps brasileiros:
+
+    MaterialApp(
+      
+      ...
+
+      supportedLocales: [const Locale('pt'), const Locale('en')],
+
+      ...
+
+    );
+
+<h2>initialRoute</h2>
+
+O nome da primeira rota a ser exibida, se um Navigator for construído.
+
+O padrão é <i>dart:ui.PlatformDispatcher.defaultRouteName</i> que pode ser substituído pelo código que iniciou a aplicação.
+
+Se o nome da rota começar com uma barra, ele será tratado como um "deep link" e, antes que essa rota seja enviada, as rotas que levam a essa também serão enviadas. Por exemplo, se a rota fosse ```/a/b/c```, o aplicativo começaria com as quatro rotas ```/, /a, /a/b``` e ```/a/b/c``` carregadas, nessa ordem. Mesmo que a rota fosse apenas ```/a```, o aplicativo começaria com ```/``` e ```/a``` carregado. é possível utilizar a propriedade <i>onGenerateInitialRoutes</i> para substituir esse comportamento.
+
+
 <h2>Anatomia de um App Flutter</h2>
 
 O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda que o acompanha esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219654930-99fdb33a-4038-40cc-acbc-eb66b1b99bdb.png">
@@ -300,7 +434,7 @@ Agora que definimos o que é o state para o Flutter, iremos entender como e quan
 
 <h2>StatelessWidget</h2>
 
-Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um estado mutável, ou seja, a parte da interface a qual um StatelessWidget corresponde não depende de qualquer elemento externo, exceto as informações informações de configuração do objeto e de um BuildContext. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State:
+Um StatelessWidget é um widget que descreve parte de uma interface criando um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor. StatelessWidgets recebem essa definição por não possuirem um estado mutável, ou seja, a parte da interface a qual estes correspondem não depende de qualquer elemento externo, exceto as informações de configuração do objeto e de um BuildContext. Os Widgets que não possuem uma definição de estado são comumente utilizados para estruturar a aplicação em partes não afetadas pela mudança tanto no Ephemeral State quando no App State:
 
     class MyWidget extends StatelessWidget {
       @override
@@ -309,23 +443,21 @@ Um StatelessWidget é um widget que descreve parte de uma interface criando um c
       }
     }
 
-<!-- O método build define o que será renderizado com a instância da classe que o carrega. Nele é definido o context, que é responsável por identificar o widget em questão dentro da widget tree, além de conter informações relevantes que podem ser utilizadas por widgets nele renderizados, como seu sizing. -->
-
 <h2>Considerações de Performance</h2>
 
 O <i>build()</i> method de um stateless widget é tipicamente chamado apenas em três situações: a primeira vez em que o widget é inserido na widget tree, quando as configurações do parent widget são alteradas, e quando um [inheritedWidget](https://api.flutter.dev/flutter/widgets/InheritedWidget-class.html) do qual ele depende muda. Se tais situações ocorrerem regularmente, é importante otimizar a performance do build method para manter a renderização fluida.
 
 Existem diversas formas para minimizar o impacto de rebuilding de um stateless widget::
 
-- Minimizar o número de nós criados transitivamente pelo método build e quaisquer widgets que ele criar. Por exemplo, em vez de um arranjo elaborado de Rows, Columns, Paddings e SizedBoxes para posicionar um único filho de uma maneira particularmente sofisticada, considere usar apenas Align ou CustomSingleChildLayout. Em vez de uma intrincada camada de vários Containers e Decorations para desenhar o efeito gráfico certo, considere um único widget [CustomPaint](https://api.flutter.dev/flutter/widgets/CustomPaint-class.html).
+- Minimizar o número de nós criados transitivamente pelo método build e quaisquer widgets que ele criar. Por exemplo, em vez de um arranjo elaborado de Rows, Columns, Paddings e SizedBoxes para posicionar um único filho de uma maneira particularmente sofisticada, é recomendado utilizar apenas um [Align](https://api.flutter.dev/flutter/widgets/Align-class.html) ou [CustomSingleChildLayout](https://api.flutter.dev/flutter/widgets/CustomSingleChildLayout-class.html).
 - Declarar widgets como const sempre que possível e fornecer um const construtor para que o widget e seus usuários possam fazer o mesmo.
-- Considerar a substituir widgets sem estado por widgets com estado para que seja possível utilizar algumas de seus recursos, como armazenar em cache partes comuns de subárvores e usar GlobalKeys ao alterar a estrutura da árvore.
+- Considerar substituir widgets sem estado por widgets com estado para que seja possível utilizar algumas de seus recursos, como armazenar em cache partes comuns de subárvores e usar GlobalKeys ao alterar a estrutura da árvore.
 - Caso um widget sofra um rebuilt constantemente devido ao uso de InheritedWidgets, considar substituir o stateless widget por vários widgets, que sofrerão push de quaisquer mudanças que as envolvam individualmente. 
-- Ao tentar criar uma parte reutilizável da UI, preferir utilizar um widget em vez de um método auxiliar, pois caso uma mudança que envolva apenas esta porção da interface ocorra, o framework seja capaz renderiza-lo isoladamente sem esforço.
+- Ao tentar criar uma parte reutilizável da UI, preferir utilizar um widget em vez de um método auxiliar, pois caso uma mudança que envolva apenas esta porção da interface ocorra, o framework será capaz renderiza-lo isoladamente sem esforço.
 
 <h2>StatefulWidget</h2>
 
-Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente. Sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma:
+Um StatefulWidget é um widget que descreve parte de uma interface formada por um conjunto de outros widgets, os quais irão descrever a interface em uma escala menor, podendo ou não possuir seu próprio state. Sendo usualmente utilizados quando a parte da interface em questão possui elementos que mudam dinamicamente, sua estrutura diverge de um StatelessWidget por ser composta por duas classes e não apenas uma:
 
     class MyStatefulWidget extends StatefulWidget {
       
@@ -352,7 +484,7 @@ Essa estrutura foi adotada pois ambas as classes possuem um ciclo de vida distin
 
 Existem duas categorias principais de StatefulWidgets.
 
-A primeira aloca recursos na quando o seu objeto equivalente é inserido na widget tree através da chamada do [State.initState](https://api.flutter.dev/flutter/widgets/State/initState.html) e os dispõe através da chamada do [State.dispose](https://api.flutter.dev/flutter/widgets/State/dispose.html), porém, não depende de InheritedWidgets ou chama o State.setState. Esses widgets são comumente usados ​​na raiz de um aplicativo ou página e se comunicam com subwidgets por meio de ChangeNotifiers, Streams ou outros objetos semelhantes. Os widgets com estado que seguem esse padrão são relativamente menos custosos (em termos de ciclos de CPU e GPU), porque são criados uma vez e nunca são atualizados. Eles podem, portanto, ter build methods um tanto complicados.
+A primeira aloca recursos quando o seu objeto equivalente é inserido na widget tree através da chamada do [State.initState](https://api.flutter.dev/flutter/widgets/State/initState.html) e os descartar através da chamada do [State.dispose](https://api.flutter.dev/flutter/widgets/State/dispose.html), porém, não depende de InheritedWidgets ou chama o State.setState. Esses widgets são comumente usados ​​na raiz de um aplicativo ou página e se comunicam com subwidgets por meio de ChangeNotifiers, Streams ou outros objetos semelhantes. Os widgets com estado que seguem esse padrão são relativamente menos custosos (em termos de ciclos de CPU e GPU), porque são criados uma vez e nunca são atualizados. Eles podem, portanto, ter build methods um tanto complicados.
 
 A segunda são widgets que usam [State.setState](https://api.flutter.dev/flutter/widgets/State/setState.html) ou dependem de InheritedWidgets. Normalmente, estes sofrem um rebuild várias vezes durante o tempo de vida do aplicativo e, portanto, é importante minimizar o impacto da reconstrução desse widget. Eles também podem usar State.initState ou [State.didChangeDependencies](https://api.flutter.dev/flutter/widgets/State/didChangeDependencies.html) e alocar recursos, mas a parte importante é que eles são reconstruídos.
 
@@ -433,7 +565,7 @@ Por exemplo, no snippet a seguir, o método [ScaffoldState.showBottomSheet](http
 
 
 
-<h2>Instalação</h2>
+<!-- <h2>Instalação</h2>
 
 Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, que variam de acordo com sistema operacional. A descrição a seguir mostra o processo de instalação no Windows:
 
@@ -609,9 +741,9 @@ Há uma série de recursos que tornam desenvolver uma aplicação Flutter muito 
 
 * <strong>Awesome Flutter Snippets</strong> - O Awesome Flutter Snippets é uma coleção de classes e métodos comumente utilizados no Flutter. Ele aumenta a velocidade de desenvolvimento, eliminando a maior parte do código clichê associado à criação de um widget
 
-* <strong>Dart Data Class Generator</strong> - O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código
+* <strong>Dart Data Class Generator</strong> - O Dart Data Class Generator cria classes de dados dart com facilidade sem escrever boilerplate ou executar a geração de código -->
 
-<h2>Primeiro Projeto</h2>
+<!-- <h2>Primeiro Projeto</h2>
 
 Tendo configurado o ambiente, é possível gerar um novo projeto Flutter. Todo o passo a passo de criação, execução e configuração de um projeto será visto a frente, além de um overview dos arquivos que são gerados na criação.
 
@@ -763,168 +895,7 @@ O próximo passso é acessar seu smartphone e verificar o endereço de IP corres
 </div>
 
 Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
-<!-- 
-<h1>Widgets</h1>
-
-Buscando inspiração em ferramentas como o React e o [Material Design](https://material.io/design), o Flutter permite criar interfaces com base em uma estrutura hierarquica de classes Dart chamada de Widget Tree. Um widget descreve como a interface irá se parecer com base em suas configurações, já como ela irá se comportar é definido por seu estado.  
-
-Eles possuem um alto nível de customização, dando a liberdade necessária ao desenvolvedor para criar e estilizar a interface. Como já foi dito, um Widget em si é uma classe, ou conjunto de classes, estas possuindo propriedades próprias capazes de redefinir a informação de diversas formas.
-
-<h2>Hello world</h2>
-
-A forma mais simples de criar um app flutter é retornar um widget atravez da função ```runApp()```:
-
-    void main() {
-      runApp(
-        const Center(
-          child: Text{
-            'Hello, world!',
-            textDirection: TextDirection.ltr,
-          },
-        ),
-      );
-    }
-
-A função ```runApp()``` define o widget a ela dado como base para a Widget Tree, fazendo com que ele preencha a totalidade da tela. No caso acima, é definido que o widget <i>Center()</i>(cuja função é alinhar todos os elementos que ele contém no centro do espaço disponível) seja a base para os próximos elementos que irão compor a UI. 
-
-Dadas as devidas exceções, todos os widgets possuem a propriedade child, a qual retorna um outro widget que irá obedecer as regras definidas por suas configirações. Porém, para entender como a estrutura de uma aplicação Flutter é gerada, precisamos ir um pouco mais a fundo.
-
-No processo de desenvolvimento de um app, você normalmente criará novos widgets que serão subclasses tanto de StatelessWidgets quanto de StatefulWidgets.
-Seguindo a lógica de compor a interface, a principal função dessas subclasses será implemantar um ```build()``` method, o que o define em termos de complexidade com relação a lower-level widgets. Tendo como exemplo de lower-level o widget <i>Center()</i>, já que sua função é predefinida e ele normalmente compõem estruturas maiores. No entanto, antes de entendermos como essas estruturas são utilizadas, precisamos abordar um dos assuntos mais importantes quanto ao desenvolvimento de apps: -->
-
-
-<h1>Material Components</h1>
-
-O Flutter conta com uma série de métodos de criação e desenvolvimento de interfaces, sendo uma delas o [Material Design](https://material.io/design). O Material design é uma biblioteca de elementos de interface baseada em widgets, cujo uso não é obrigatório mas consiste em uma boa prática e recomendação padrão do Flutter. Seu uso é definido na file pubspec.yaml como default:
-
-    name: my_app
-    flutter:
-      uses-material-design: true
-
-Além disso, o Flutter dispõe da [MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html) class, que agrupa uma série de widgets normalmente utilizados e necessários em um Material design app. Seu uso inicia com o ```Material App``` widget, que permite criar uma base para a widget tree:
-
-    void main() {
-      runApp(const MyApp());
-    }
-    
-    class MyApp extends StatelessWidget {
-      const MyApp({Key? key}) : super(key: key);
-      @override
-      Widget build(BuildContext context) {
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: const MyHomePage(title: 'Flutter Demo Home Page'),
-        );
-      }
-    }
-
-Nela serão definidos o title que identifica o app, o color theme, a página inicial e entre outros. A seguir estão dispostos os atributos da class MaterialApp, dos quais serão destacados os mais importantes:
-
-    (new) MaterialApp MaterialApp({
-      Key? key,
-      GlobalKey<NavigatorState>? navigatorKey,
-      GlobalKey<ScaffoldMessengerState>? scaffoldMessengerKey,
-      Widget? home,
-      Map<String, Widget Function(BuildContext)> routes = const <String, WidgetBuilder>{},
-      String? initialRoute,
-      Route<dynamic>? Function(RouteSettings)? onGenerateRoute,
-      List<Route<dynamic>> Function(String)? onGenerateInitialRoutes,
-      Route<dynamic>? Function(RouteSettings)? onUnknownRoute,
-      List<NavigatorObserver> navigatorObservers = const <NavigatorObserver>[],
-      Widget Function(BuildContext, Widget?)? builder,
-      String title = '',
-      String Function(BuildContext)? onGenerateTitle,
-      Color? color,
-      ThemeData? theme,
-      ThemeData? darkTheme,
-      ThemeData? highContrastTheme,
-      ThemeData? highContrastDarkTheme,
-      ThemeMode? themeMode = ThemeMode.system,
-      Locale? locale,
-      Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
-      Locale? Function(List<Locale>?, Iterable<Locale>)? localeListResolutionCallback,
-      Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback,
-      Iterable<Locale> supportedLocales = const <Locale>[Locale('en', 'US')],
-      bool debugShowMaterialGrid = false,
-      bool showPerformanceOverlay = false,
-      bool checkerboardRasterCacheImages = false,
-      bool checkerboardOffscreenLayers = false,
-      bool showSemanticsDebugger = false,
-      bool debugShowCheckedModeBanner = true,
-      Map<ShortcutActivator, Intent>? shortcuts,
-      Map<Type, Action<Intent>>? actions,
-      String? restorationScopeId,
-      ScrollBehavior? scrollBehavior,
-      bool useInheritedMediaQuery = false,
-    })
-
-<h2>debugShowCheckedModeBanner</h2>
-
-Um Flutter App é criado por padrão em modo de debug, e um dos sinais dessa definição é a propriedade debugShowCheckedModeBanner, cuja função é criar uma barra que indica o modo de depuração do app, o que não é utilizidado em desenvovimento e muito menos em produção. O exemplo a seguir desabilita o banner de debug em toda a aplicação:
-
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Home'),
-        ),
-      ),
-      debugShowCheckedModeBanner: false,
-    )
-
-Como resultado, temos:
-
-<br>
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/164480100-f3215b57-b277-4116-b58a-8e689fa11eb7.gif">
-</div>
-
-<br>
-
-<h2>theme</h2>
-
-A propriedade theme permite definir um padrão de cores para os material widgets em toda a aplicação, como appBars, drawers e entre outros. O exemplo a seguir define como utilizar a prorpiedade theme de forma simplória: 
-
-    MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.blueGrey
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('MaterialApp Theme'),
-        ),
-      ),
-    )
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/164480197-25969309-e8c4-4825-b00e-2b667d949f5a.gif">
-</div>
-
-<h2>supportedLocales</h2>
-
-A propriedade supportedLocales define uma lista de localidades nas quais o app pretende entrar em operação. Por padrão, apenas o inglês americano é suportado, tendo como valor padrão [const Locale('en', 'US')], sendo necessário declarar quais locais serão suportados. A ordem de definição dos elementos é importante para o funcionamento. O exemplo a seguir mostra o padrão de supportedLocales utilizados em apps brasileiros:
-
-    MaterialApp(
-      
-      ...
-
-      supportedLocales: [const Locale('pt'), const Locale('en')],
-
-      ...
-
-    );
-
-<h2>initialRoute</h2>
-
-O nome da primeira rota a ser exibida, se um Navigator for construído.
-
-O padrão é <i>dart:ui.PlatformDispatcher.defaultRouteName</i> que pode ser substituído pelo código que iniciou a aplicação.
-
-Se o nome da rota começar com uma barra, ele será tratado como um "deep link" e, antes que essa rota seja enviada, as rotas que levam a essa também serão enviadas. Por exemplo, se a rota fosse ```/a/b/c```, o aplicativo começaria com as quatro rotas ```/, /a, /a/b``` e ```/a/b/c``` carregadas, nessa ordem. Mesmo que a rota fosse apenas ```/a```, o aplicativo começaria com ```/``` e ```/a``` carregado. é possível utilizar a propriedade <i>onGenerateInitialRoutes</i> para substituir esse comportamento.
+ -->
 
 <h1>Abordagens de Gerenciamento</h1>
 
