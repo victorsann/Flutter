@@ -519,7 +519,7 @@ Por exemplo, o [Container](https://api.flutter.dev/flutter/widgets/Container-cla
 
 Como mencionado anteriormente, a representação visual de um widget é determinada pelo overriding de um método [build()](https://api.flutter.dev/flutter/widgets/StatelessWidget/build.html), para que este retorne uma nova árvore de elementos. Por exemplo, um widget que descreve uma toolbar deve conter um build method que retorna um [horizontal layout](https://api.flutter.dev/flutter/widgets/Row-class.html) compostos por [text](https://api.flutter.dev/flutter/widgets/Text-class.html) e [buttons](https://api.flutter.dev/flutter/material/PopupMenuButton-class.html). Conforme necessário, o framework solicita recursivamente a cada widget para que execute o método build até que a árvore seja totalmente descrita por [objetos renderizáveis ​​concretos](https://api.flutter.dev/flutter/widgets/RenderObjectWidget-class.html). O framework então une os objetos renderizáveis ​​em uma árvore de objetos renderizáveis.
 
-Em cada quadro renderizado, o Flutter pode recriar apenas as partes da interface do usuário em que o estado foi alterado chamando o método build() desse widget. Portanto, é importante que os métodos de construção retornem rapidamente, e o trabalho computacional pesado seja feito de maneira assíncrona e, em seguida, armazenado como parte do estado a ser usado por um build method.
+Em cada quadro renderizado, o Flutter pode recriar apenas as parte da interface do usuário em que o estado foi alterado chamando o método build() desse widget. Portanto, é importante que os build methods retornem rapidamente, e o trabalho computacional pesado seja feito de maneira assíncrona e, em seguida, armazenado como parte do estado a ser usado por um build method.
 
 <h2>Estado</h2>
 
@@ -527,7 +527,7 @@ Em cada quadro renderizado, o Flutter pode recriar apenas as partes da interface
   <img src="https://user-images.githubusercontent.com/61476935/122969485-13107200-d363-11eb-96f8-e29f6f6c0c2e.png">
 </div>
 
-Como dito anteriormente, o comportamento de uma interface é definido por uma relação de interação e ratividade que é mediada pelo método <b>build()</b>, que resulta na mudança de estado. Definindo de forma simples, o estado, ou state, como iremos chamar daqui em diante; é composto por todas as características da aplicação(ou parte dela) em determinado momento. Isso inclui tudo o que compõe a interface, seja um assets element, uma cor específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade.
+Como dito anteriormente, o comportamento de uma interface é definido por uma relação de interação e reatividade que é mediada pelo método <b>build()</b>, que resulta na mudança de estado. Definindo de forma simples, o estado é composto por todas as características da aplicação(ou parte dela) em determinado momento. Isso inclui tudo o que compõe a interface, seja um assets element, um tema específica, valores atrelados a variáveis, animações, tipos textuais e etc. As mudanças nessas características concluem um state e iniciam outro, o que dá ao Flutter um grande poder em termos de reatividade.
 
 Sendo um pouco mais detalhista, o state no Flutter se divide em dois tipos:
 
@@ -737,6 +737,1430 @@ Por exemplo, no snippet a seguir, o método [ScaffoldState.showBottomSheet](http
         )
       );
     }
+
+<h1>Catálogo de Widgets</h1>
+
+Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas bastante completa. Esse conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso, contando com uma arquitetura concentrada baseada em widgets.
+
+Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos:
+
+<!-- <h2>Material Components</h2>
+
+Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes essa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são: -->
+
+<h2>Scaffold</h2>
+
+A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
+
+    Scaffold(
+      appBar: AppBar(),
+      body: Container(),
+      drawer: Drawer(),
+      floatingActionButton: FloatingActionButton(),
+      bottomNavigationBar: BottomAppBar()
+    )
+
+O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
+
+  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
+  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
+  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
+  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
+  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
+  
+<h2>Appbar</h2>
+
+Um <b><i>Appbar</i></b> consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. A seguir temos um exemplo de uso da Appbar:
+
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {},
+        ),
+        title: Text('AppBar'),
+        actions: [
+          IconButton(
+            onPressed: () {}, 
+            icon: Icon(Icons.notification_add),
+          ),
+        ]),
+      );
+    }
+  
+A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175196-4ccda1c1-f433-4c4d-9866-7020438fb3ca.png">
+</div>
+
+Os principais atributos da BottomNavigationBar são:
+
+* <strong>leading</strong> - Um Widget definido antes do title<br>
+* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
+* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
+* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
+* <strong>bottom</strong> - Define o bottom do Appbar
+
+<h2>Body</h2>
+
+O <b><i>body</i></b> é o principal conteúdo de um Scaffold, pondendo ser basicamente qualquer Widget do catálogo.
+
+<h2>Drawer</h2>
+
+O <b><i>Drawer</i></b> é um painel exibido na lateral do body e é bastante comum em aplicações mobile. É ativado, na maioria das vezes, pela ação de drag da esquerda para a direita ou da direita para a esquerda no body, ou por um menu button na AppBar. Também é associado a opções de navegação ou a um menu de opções que surge com a diminuição da escala dos aparelhos. A seguir temos um exemplo de uso do Drawer:
+
+    ...
+    
+    class MyDrawer extends StatefulWidget {
+      @override
+      State<MyDrawer> createState() => _MyDrawerState();
+    }
+    
+    class _MyDrawerState extends State<MyDrawer> {
+    
+      final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+      void _openDrawer() {
+        _scaffoldKey.currentState!.openDrawer();
+      }
+    
+      void _closeDrawer() {
+        Navigator.of(context).pop();
+      }
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          key: _scaffoldKey,
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                _openDrawer();
+              },
+            ),
+            title: Text('Drawer'),
+          ),
+          drawer: Drawer(
+            child: Center(  
+              child: ElevatedButton(  
+                child: Text('Close Drawer'),
+                onPressed: () {
+                  _closeDrawer();
+                },
+              ),
+            ),
+          ),
+        );
+      }
+    }
+
+O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um AppBar com um munu button, e por fim, o Drawer. Também conta com dois métodos, um de ativação e um de desativação do Drawer. Além disso, conta com _scaffoldKey: variável que carrega uma GlobalKey responsável por gerenciar o state do Scaffold e de suas propriedades, incluindo o Drawer. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175361-75c2db92-2cc0-4d83-b75b-51623fb73038.gif">
+</div>
+
+O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>. 
+
+O Drawer, assim como a body property, pode conter basicamente qualquer Widget do catálogo como child. No exemplo, o Drawer possui um ElevatedButton como child, este sendo reaponsável por chamar o _closeDrawer method, que por sua vez fecha o Drawer.
+
+<h2>BottomNavigationBar</h2>
+
+Um <b><i>BottomNavigationBar</i></b> é um widget de navegação exibido na parte inferior da tela, onde é possível  selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos há um exemplo de uso da BottomNavigationBar:
+
+    ...
+
+    class MyBottomNavigationBar extends StatefulWidget {
+      @override
+      State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
+    }
+    
+    class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
+      int _selectedIndex = 0;
+    
+      static const TextStyle optionStyle =
+          TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+    
+      List<Widget> _index = <Widget>[
+        Text('Home', style: optionStyle),
+        Text('Search', style: optionStyle),
+        Text('Profile', style: optionStyle),
+      ];
+    
+      void _onItemTapped(int index) {
+        setState(() {
+          _selectedIndex = index;
+        });
+      }
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('BottomNavigationBar'),
+          ),
+          body: Center(child: _index.elementAt(_selectedIndex)),
+          bottomNavigationBar: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.search),
+                label: 'Search',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Profile',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.blue[800],
+            onTap: _onItemTapped,
+          ), //BottomNavigationBar
+        ); 
+      }
+    }
+
+O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175551-1bad26fc-0843-4b9e-b4ca-a9c8da390154.gif">
+</div>
+
+Os principais atributos da BottomNavigationBar são:
+
+* <strong>items</strong> - Itens que definem as possíveis seleções<br>
+* <strong>currentIndex</strong> - Define o item de seleção padrão<br>
+* <strong>selectedItemColor</strong> - Cor padrão do item selecionado<br>
+* <strong>onTap</strong> - Define uma reação a cada mudança de seleção<br>
+
+<h2>Buttons</h2>
+
+O Flutter conta com a uma série de opções de buttons herdados do Material Components, elas são:
+
+<h2>DropdownButton</h2>
+
+O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número definido de opções, podendo ter resultados distintos a cada opção selecionada. A seguir há um exemplo de uso do DropdownButton:
+
+    DropdownButton<String>(
+      hint: Text('DropdownButton'),
+      icon: const Icon(Icons.arrow_drop_down),
+      iconSize: 24,
+      elevation: 16,
+      style: const TextStyle(color: Colors.deepPurple),
+      underline: null,
+      onChanged: (_) {},
+      items: <String>['One', 'Two', 'Three', 'Four'].map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+    )
+
+O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada)a um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175734-12f6c969-866e-440c-82af-e27da68b192a.gif">
+</div>
+
+<h2>FloatingActionButton</h2>
+
+Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no canto inferior direito da tela. Ele provê uma ação primária dentro da aplicação. Também é uma propriedade do Scaffold e é bastante associado a ele. A seguir há um exemplo de uso do FloatingActionButton:
+
+
+    Scaffold(
+     
+     ...
+ 
+     floatingActionButton: FloatingActionButton(
+        onPressed: () {
+
+        },
+        child: const Icon(Icons.navigation),
+      );
+    )
+
+A imagem a seguir ilustra o como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175824-76c7042e-18c3-485f-b691-97aafaf66a4b.gif">
+</div>
+
+<h2>ElevatedButtons</h2>
+
+Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
+
+
+    Column(
+      children: <Widget>[
+        ElevatedButton(
+          onPressed: null,
+          child: Text('ElevatedButton'),
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: Text('ElevatedButton'),
+        ),
+      ],
+    )
+
+A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175944-1800451f-7281-4cd0-91fd-06bd082c2086.gif">
+</div>
+
+<h2>IconButton</h2>
+
+Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que reage ao toque, possuindo um efeito associado a uma cor como reação padrão. A seguir temos alguns exemplos de uso do IconButton:
+
+
+    Container(
+     child: Row(
+       mainAxisAlignment: MainAxisAlignment.center,
+       children: [
+        IconButton(
+          color: Colors.pink,
+          icon: Icon(Icons.favorite),
+          onPressed: () {},
+        ),
+        IconButton(
+         color: Colors.blue,
+         icon: Icon(Icons.cancel),
+         onPressed: () {},
+        ),
+        IconButton(
+         color: Colors.black,
+         icon: Icon(Icons.add),
+         onPressed: () {},
+        )
+      ]),
+    )
+
+Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176007-da33e554-19cf-48af-a903-18df41b3b03f.gif">
+</div>
+
+<h2>OutlinedButton</h2>
+
+Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferença de possuir uma borda por padrão. Um OutlinedButton possui actions importantes, mas não uma primary action em um app. A seguir há um exemplo de uso de um OutlinedButton:
+
+
+    Container(
+      child: OutlinedButton(
+       onPressed: () {},
+       child: const Text('OutlinedButton'),
+      ),
+    )
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176099-8c8c48b6-5e32-4291-8a8e-76074aa0e44f.gif">
+</div>
+
+<h2>TextButton</h2>
+
+Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Normalmente é utilizado em dialogs, em um inline ou como parte de um Widget que não dispõe de muito espaço disponível. A seguir há alguns exemplos de uso do TextButton:
+
+    Container(
+     child: Column(  
+       children: [
+        TextButton(
+         style: TextButton.styleFrom(
+           textStyle: const TextStyle(fontSize: 20),
+         ),
+         onPressed: null,
+         child: const Text('Disabled'),
+       ),
+       const SizedBox(height: 30),
+       TextButton(
+         style: TextButton.styleFrom(
+           textStyle: const TextStyle(fontSize: 20),
+         ),
+         onPressed: () {},
+         child: const Text('Enabled'),
+        )
+      ]),
+    )
+
+Um TextButton é bastante parecido com os demais tipos, onde também é possível torná-lo disabled atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176882-488a146f-b67a-4c95-beb7-7ed341dd1ce4.gif">
+</div>
+
+<h2>Container</h2>
+
+Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
+
+    Center(
+      child: Container(
+        alignment: Alignment.center,
+        child: Center(child: Text("Children")),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15), color: Colors.white),
+        height: 300,
+        width: 300,
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+      ),
+    )
+
+Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121446422-d9eeff80-c969-11eb-8dd6-3b1e0d786ed9.png">
+</div>
+
+Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
+
+* <strong>alignment</strong> - Alinhamento do child dentro do Container
+* <strong>child</strong> - Define o child contido
+* <strong>color</strong> - Definição de cor do Container
+* <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
+* <strong>decoration</strong> - Definição de estilo do Container
+* <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
+* <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
+
+<h2>Decoration</h2>
+
+O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização ao container. Algumas delas são: 
+
+* <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
+* <strong>color</strong> - Cor de definição Container
+* <strong>boxShadow</strong> - List de definições de sombreamento do Container
+* <strong>gradient</strong> - Gradiente de preenchimento do container
+* <strong>image</strong> - Definição de uma imagem contida
+
+<h2>Column</h2>
+
+Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. A seguir há um exemplo de declaração de uma Column:
+
+
+    Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Expanded(
+          child: Container(...),
+        ),
+        Expanded(
+          child: Container(...),
+        ),
+        Expanded(
+          child: Row(
+            children:  <Widget> [
+              Flexible(
+               child: Container(...),
+             ),
+              Expanded(
+               child: Container(...),
+             ),
+            ], // <Widget>[]
+          ), // Row
+        ),
+        Flexible(
+          child: Container(...),
+        ),
+        Flexible(
+          child: Container(...),
+        ),
+      ], // <Widget>[]
+    ) // Column
+
+O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121446097-2ede4600-c969-11eb-9f11-ee271e7ae79e.png">
+</div>
+
+Há uma série de Widgets que podem ser associados a uma Column. A seguir estão definidos alguns deles:
+
+* <strong>children</strong> - Lista de Widgets definidos como parte da Column
+* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
+* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
+* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
+
+<h2>Row</h2>
+
+Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. A seguir há um exemplo de declaração de uma Row:
+
+    Row(
+      children: <Widget>[
+       Flexible(
+          child: Container( ... ),
+        ),
+       Expanded(
+          child: Container( ... ),
+        ),
+       Flexible(
+          child: Container( ... ),
+        ),
+      ], // <Widget>[]
+    ) 
+
+Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121446402-cb084d00-c969-11eb-9645-4f8e5c212f9d.png">
+</div>
+
+* <strong>children</strong> - Lista de Widgets definidos como parte da Row
+* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
+* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
+* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
+
+<h2>Assets, Images, Icons e Text</h2>
+
+Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associado a View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais. Para isso o Flutter conta com a Class AssetsBundle, cunja função é gerir uma coleção de recurso usados pela aplicação.
+
+Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependências tanto do Material design(android) quanto do cupertino(ios). Exemplo:
+
+    flutter:
+      uses-material-design: true
+     // Para adicionar assets a sua aplicação, crie uma assets section:
+      assets:
+        - assets/images/
+        - assets/icons/
+
+É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets:  
+
+<h2>Images</h2>
+
+O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
+
+    Image(
+      image: NetworkImage(
+        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'
+      ),
+    )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121402504-58c74680-c930-11eb-8427-0d367448f900.png">
+</div>
+
+
+Além do Image propriamente dito, há uma série de classes(contructors) com definições distintas de fontes de imagens, usadas em situações difentes. A seguir estão algumas delas:
+
+Obter imagens a partir de um asset bundler
+
+    Image.asset(String name, { ... })
+
+Obter imagens a partir de arquivos
+
+    Image.file(File file, { ... })
+
+Obter imagens a partir de um Uint8List
+
+    Image.memory(Uinit8List bytes, { ... })
+
+Obter imagens a partir de um network
+
+    Image.network(String src, { ... })
+
+Basicamente todos possuem as mesmas propriedades de definição de imagem, exceto por especificações relacionadas a obtenção da imagem, sendo um atributo obrigatório definido no inicio da chamada do constructor. Algumas das propriedades comuns a todos são:
+
+* <strong>image</strong> - A imagem que será exibida
+* <strong>width</strong> - Largura da imagem
+* <strong>height</strong> - Altura da imagem
+* <strong>alignment</strong> - Alinhamento da imagem com base nos limites da tela
+* <strong>fit</strong> - Alinhamento da imagen com base em seus limites
+* <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
+
+<h2>Icons</h2>
+
+O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: const <Widget>[
+        Icon(
+          Icons.zoom_out_map_outlined,
+          color: Colors.red,
+          size: 50.0,
+        ),
+        Icon(
+          Icons.hail,
+          color: Colors.green,
+          size: 50.0,
+        ),
+        Icon(
+          Icons.face,
+          color: Colors.blue,
+          size: 50.0,
+        ),
+      ])
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121428625-67bbf200-c94c-11eb-8258-bcf069060e71.png">
+</div>
+
+Os icons são definidos em um proporção customizavel, mas são renderizados em um squared format, evitando erros na forma do icon no processo de loading. Algumas das propriedades do Icon Widget são:
+
+* <strong>icon</strong> - Define style do ElevaitedButton
+* <strong>color</strong> - Cor definida como preenchimento da área correspondente ao icon
+* <strong>sixe</strong> - Tamanho do icon, definido em pixel
+* <strong>icon</strong> - Define style do ElevaitedButton
+
+<h2>Text</h2>
+
+O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
+
+    Text(
+     'Children',
+     textDirection: TextDirection.rtl,
+     style: TextStyle(
+       fontSize: 20,
+       fontWeight: FontWeight.bold,
+       color: Colors.blue[900],
+     ),
+    )
+
+A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121446461-f1c68380-c969-11eb-927f-cac39d52b4a2.png">
+</div>
+
+Alguns dos atributos de um Widget de estilização de texto são:
+
+* <strong>data</strong> - Texto a ser exibido
+* <strong>textDirection</strong> - Direção de exibição do texto
+* <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
+* <strong>style</strong> - Definição de estilo do texto
+
+<h2>Layout</h2>
+
+Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design e as sensações que pretende causar no usuário. Portanto, é muito importante gastar certo tempo pensando em como estruturar o layout da aplicação. Quais Widgets utilizar e como utilizar definem quão harmonioso será o app. Para tal, o Flutter dá ao desenvolvedor uma série de Widgets capazes de criar uma boa experiência para o usuário:
+
+<h2>Aling</h2>
+
+A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
+
+    Column(
+     children: <Widget>[
+       Container(
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.topLeft,
+         child: Text(
+           'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+         height: 100,
+         width: 150,
+         child: Align(
+          alignment: Alignment.topRight,
+          child: Text(
+            'Child',
+            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+        height: 100,
+        width: 150,
+        child: Align(
+          alignment: Alignment.center,
+          child: Text(
+            'Child',
+            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+          )),
+        decoration: BoxDecoration(color: Colors.white),
+        margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.bottomLeft,
+         child: Text(
+          'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+         )),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       ),
+       Container(
+        height: 100,
+        width: 150,
+        child: Align(
+         alignment: Alignment.bottomRight,
+         child: Text(
+           'Child',
+           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+         )),
+         decoration: BoxDecoration(color: Colors.white),
+         margin: EdgeInsets.all(10.0),
+       )
+     ])
+     
+O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
+
+<br> 
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
+</div>
+
+<br> 
+
+Essas posições são definidas a partir da classe Alignment, e são atribuidas a propriedade alignment do Widget Align(). A seguir temos uma lista dessas posições:
+
+* center
+* centerleft
+* centerRight
+* topCenter
+* topLeft
+* topRight
+* bottomCenter
+* bottomLeft
+* bottomRight
+
+Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
+
+    Align(
+     alignment: Alignment(0.2, 0.6),
+     child: Text(
+       'Child', 
+       style: TextStyle(fontSize: 20, color: Colors.blue[800]),
+     ))
+
+As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo irá se comportar: 
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/122596875-e72e7d00-d040-11eb-9f5f-8b544d8cc167.png">
+</div>
+
+<h2>AspectRatio</h2>
+
+O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
+
+    AspectRatio(
+     aspectRatio: 2 / 3,
+     child: Container(
+       alignment: Alignment.center,
+       decoration: BoxDecoration(color: Colors.yellow),
+       child: Text(
+         'Child',
+         style: TextStyle(color: Colors.blue[800], fontSize: 20),
+       ),
+     ))
+
+Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129612249-726555b3-198b-4a9d-a0b3-d7ea3e081df0.png">
+</div>
+
+O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
+
+    AspectRatio(
+      aspectRatio: 0.6,
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(color: Colors.yellow),
+        child: Text(
+          'Child',
+          style: TextStyle(color: Colors.blue[800], fontSize: 20),
+        ),
+      ))
+
+<h2>ConstrainedBox</h2>
+
+Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
+
+    ConstrainedBox(
+     constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
+     child: Container(
+       color: Colors.yellow,
+       padding: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: Text.rich(TextSpan(children: <TextSpan>[
+       TextSpan(
+         text: 'Some text that you want to',
+         style: TextStyle(fontSize: 20)),
+       TextSpan(
+         text: ' break',
+          style: TextStyle(
+           fontSize: 20, fontWeight: FontWeight.bold))
+         ])
+       ),
+     ))
+
+O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129612499-37c5f184-57b3-427b-a300-db53093b01b9.png">
+</div>
+
+Outra situação em que é possível aplicar o ConstraintBox é quando um Widget child precisar oculpar todo o espaço correspondente ao Widget que o carrega. Exemplo:
+
+    ConstrainedBox(
+     constraints: BoxConstraints.expand(),
+     child: Container(
+       color: Colors.yellow,
+       padding: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: Text.rich(
+        TextSpan(
+         children: <TextSpan>[
+          TextSpan(
+            text: 'Some text that you want to',
+            style: TextStyle(fontSize: 20)),
+          TextSpan(
+            text: ' break',
+            style: TextStyle(
+             fontSize: 20, fontWeight: FontWeight.bold))
+          ])
+         ),
+       ))
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129612601-eefea79d-c675-43c9-87eb-7caf93466357.png">
+</div>
+
+<h2>Expanded</h2>
+
+O já mencionado Expanded é um Widget de definição de dimenções, normalmente associado a um Widget Multi-child, como uma Column ou row. Ele basicamente indica qual dos Widgets do vetor devem ocupar mais espaço em relação aos demias. A seguir há um exemplo de uso do Expanded:
+
+    Center(
+     child: Column(
+      children: <Widget>[
+        Container(
+          color: Colors.blue,
+          height: 150,
+          width: 500,
+        ),
+        Expanded(
+         child: Container(
+           color: Colors.amber,
+           width: 500,
+        )),
+        Container(
+          color: Colors.blue,
+          height: 150,
+          width: 500,
+        ),
+      ]),
+    )
+
+Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/129612786-f788767a-27af-4f2c-b415-edf079fa1106.png">
+</div>
+
+Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
+
+    Row(
+     children: <Widget>[
+       Expanded(
+        flex: 1,
+        child: Container(
+          color: Colors.blue,
+          height: 100,
+        )),
+       Container(
+         color: Colors.yellow,
+         height: 100,
+         width: 70,
+       ),
+       Expanded(
+         flex: 2,
+         child: Container(
+           color: Colors.blue,
+           height: 100,
+         )),
+       ] 
+
+O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129612965-76695621-a0a8-4ea8-85a5-af775005ba6f.png">
+</div>
+
+<h2>FittedBox</h2>
+
+Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou mesmo postos um dentro do outro. O FittedBox age quando o espaço correspondente a um Widget é diferente de seu child, com isso é possível adaptar o espaço que o child oculpa. Há uma série de opções de 'encaixe', as quais podem ser definidas na principal propriedade do FittedBox Widget, a fit, que recebe um Boxfit como valor. A seguir temos exemplos de uso do FittedBox:
+
+    Container(
+     width: 500,
+     decoration: BoxDecoration(color: Colors.blue[800]),
+     child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+       Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.cover,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+           ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fill,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+           ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 20,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fitHeight,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+           ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 50,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.fitWidth,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+           ),
+         )),
+        Container(
+         color: Colors.white,
+         height: 100,
+         width: 100,
+         margin: EdgeInsets.all(10),
+         child: FittedBox(
+           fit: BoxFit.none,
+           child: Text(
+             'Child',
+             style: TextStyle(fontSize: 20),
+            ),
+          ))
+        ])
+
+O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em diversas situações. A imagem a seguir mostra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
+</div>
+
+<br>
+
+Como já foi mencionado, o FittedBox conta com a propriedade fit, que define o nível de ajuste de posicionamento do child.Além disso, o FittedBox conta também com a propriedade alignment, qua ajuda no dimensionamento dos Widgets:
+
+* <strong>fit</strong>
+* <strong>alignment</strong>
+
+A seguir estão as descritas cada propriedade do BoxFit:
+
+* <strong>cover</strong> - Torna o espaço oculpado pelo child maior que o disponível 
+* <strong>fill</strong> -  Encaixa o child no espaço disponível sem considerar as proporções
+* <strong>fitHeight</strong> - Adapta o tamanho do child de acordo com a altura do Widget pai
+* <strong>fitWidth</strong> - Adapta o tamanho do child de acordo com a largura do Widget pai
+* <strong>none</strong> - Anula os efeitos do FittedBox
+
+<h2>FractionallySizedBox</h2>
+
+O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
+
+    Row(
+     mainAxisAlignment: MainAxisAlignment.center,
+     children: <Widget>[
+      Container(
+       color: Colors.white,
+       height: 200,
+       width: 200,
+       margin: EdgeInsets.all(10),
+       alignment: Alignment.center,
+       child: FractionallySizedBox(
+         heightFactor: 1.0,
+         widthFactor: 0.6,
+         child: Container(
+           decoration: BoxDecoration(color: Colors.yellow),
+         ),
+       )),
+       Container(
+        color: Colors.white,
+        height: 200,
+        width: 200,
+        margin: EdgeInsets.all(10),
+        alignment: Alignment.center,
+        child: FractionallySizedBox(
+          heightFactor: 0.6,
+          widthFactor: 1.0,
+          child: Container(
+            decoration: BoxDecoration(color: Colors.yellow),
+          ),
+        ))
+      ])
+
+O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% dos 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129613215-bae89f68-51e4-49f9-845e-a2837b19472b.png">
+</div>
+
+Os principais Factores da classe FractionallySizedBox() são:
+
+* <strong>heightFactor</strong> - Fator de altura
+* <strong>widthFactor</strong> - Fator de largura
+
+<h2>LimitedBox</h2>
+
+Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
+
+    ListView(
+     children: [
+      for (var i = 0; i < 10; i++)
+       LimitedBox(
+        maxHeight: 200,
+        maxWidth: 200,
+        child: Container(
+         margin: EdgeInsets.all(1),
+         decoration: BoxDecoration(color: Colors.white),
+       ),
+      ),
+     ],
+    )
+
+O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagems a seguir ilustram como o exemplo irá se comportar:
+
+<br>
+
+<div align="center">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788819-d2686a00-cba6-11eb-8519-6da69e4b19ec.png">
+  <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788837-2410f480-cba7-11eb-90b8-8b8fd48b7264.png">
+</div>
+
+<br>
+
+O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListView, isso é possível graças aos atributos a seguir:
+
+* <strong>maxHeight</strong> - Altura máximo de um child
+* <strong>maxWidth</strong> - Largura máxima de um child
+
+<h2>Padding</h2>
+
+O padding define o espaçamento externo que um Widget terá com relação aos outros elementos da estrutura. Um padding é definido a partir do espaço que um Widget oculpa, diminuindo seu tamanho e substituindo esse espaço por um espaço vazio. A seguir há um exemplo de uso do Widget padding():
+
+    Padding(
+      padding: EdgeInsets.all(100),
+      child: Container(
+        decoration: BoxDecoration(color: Colors.yellow),
+      ),
+    )
+
+Um padding é definido através do atributo padding que recebe um EdgeInsets, Wideget responsável por definir um conjunto imutável de deslocamento em cada uma das quatro direções cardeais. Por isso é possível definir um padding para cada direção individulmente ou para todos igualmente. No exemplo acima, são definidos 100px de espaçamento entre o Widget pai e o child. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/129613351-1d15acfa-cdbb-412a-9910-991b609deb99.png">
+</div>
+
+<h2>EdgeInsets</h2>
+
+Anteriormente mencionado, o EdgeInsets define dimensionamento nas quatro direções existentes em um Widget. É normalmente associado a definição de margins e paddings, e possui atributos especificando para qual direção será aplicado o espaçamento. Estes são:
+
+<h3>EdgeInsets.all(value)</h3>
+
+Define que o espaçamento será aplicado nas quatro direções cardinais:
+
+    Container(
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.all(10),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('All', style: TextStyle(fontSize: 20)),
+     )),
+
+<h3>EdgeInsets.only(left: value)</h3>
+
+Define que o espaçamento será aplicado apenas a esquerda:
+
+    Container(
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.only(left: 140),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('left only', style: TextStyle(fontSize: 20)),
+     )), 
+
+
+<h3>EdgeInsets.only(right: value)</h3>
+
+Define que o espaçamento será aplicado apenas a direita:
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(right: 65),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('right only', style: TextStyle(fontSize: 20)),
+      )),
+
+<h3>EdgeInsets.only(top: value)</h3>
+
+Define que o espaçamento será aplicado apenas no topo:
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(top: 65),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Top only', style: TextStyle(fontSize: 20)),
+      )),
+
+<h3>EdgeInsets.only(bottom: value)</h3>
+
+Define que o espaçamento será aplicado apenas no bottom:
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.only(bottom: 30),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Bottom only', style: TextStyle(fontSize: 20)),
+      )),
+
+<h3>EdgeInsets.symmetric(vertical: value, horizontal: value)</h3>
+
+Define o espaçamento vertical e horizontalmente:
+
+    Container(
+      height: 90,
+      width: 200,
+      color: Colors.yellow,
+      margin: EdgeInsets.all(10),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 55),
+      child: Container(
+        color: Colors.orange,
+        alignment: Alignment.center,
+        child: Text('Symmetric', style: TextStyle(fontSize: 20)),
+      )),
+
+<h3>EdgeInsets.fromLTRB(left, right, top, bottom)</h3>
+
+Define um espaçamento único para cada direção:
+
+    Container(
+     height: 90,
+     width: 200,
+     color: Colors.yellow,
+     margin: EdgeInsets.all(10),
+     padding: EdgeInsets.fromLTRB(10, 30, 50, 90),
+     child: Container(
+       color: Colors.orange,
+       alignment: Alignment.center,
+       child: Text('Symmetric', style: TextStyle(fontSize: 20)),
+     )
+    ),
+
+Cada definição aceita números inteiros e decimais como valor de espaçamento, sendo esses definidos em pixels
+
+<h2>SizedBox</h2>
+
+O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
+
+    SizedBox(
+        width: 300.0,
+        height: 300.0,
+        child: Card(
+          color: Colors.blue[800],
+        ),
+      )
+
+<h2>Transform</h2>
+
+O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estes são:
+
+<h3>Transform()</h3>
+
+Principal constructor da classe, cuja principal propriedade é a transform e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
+
+    Transform(
+       transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
+       child: Container(
+         height: 150,
+         width: 150,
+         color: Colors.white,
+       ),
+     )
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121811712-96331900-cc3b-11eb-9f44-9a9f0cb5c112.png">
+</div>
+
+<h3>Transform.rotate()</h3>
+
+O rotate, cuja principal propriedade é o angle, recebe um ângulo de definição que rotaciona o Widget. O ângulo é dado pela razão entre dois valore ou pelo resultado da operação. A seguir temos um exemplo de uso do Transform.rotate():
+
+    Transform.rotate(
+      angle: 3 / 4, // 45 deg)
+      child: Container(
+        height: 150,
+        width: 150,
+        color: Colors.white,
+      ),
+    ),
+
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/61476935/121811740-aa771600-cc3b-11eb-8daa-778835fed838.png">
+</div>
+
+<h2>Scrolling</h2>
+
+Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegação. O Flutter conta com uma série de tipos e definiçãos de scroll, todos relacionados a classe Scrollable. A classe Scrollable implemanta o modelo de interação para um scrollable Widget, incluindo reconhecimento de gestos, mas não modifica como a janela de visualização, que realmente exibe os children, é construída.
+
+É incomum criar diretamente utilizando a classe Scrollable, no lugar disso considere utilizar um ListView ou GridView, os quais combinam rolagem, janela de visualização e um modelo de layout. Os principais Scrollable Widgets são:
+
+<h2>ListView</h2>
+
+O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
+
+    ListView(
+     children: [
+      for (var i = 0; i < 10; i++)
+       LimitedBox(
+        maxHeight: 200,
+        maxWidth: 200,
+        child: Container(
+         margin: EdgeInsets.all(1),
+         decoration: BoxDecoration(color: Colors.white),
+       ),
+      ),
+     ],
+    )
+
+O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177205-d5f2cd4b-3ba7-4cb6-97e9-c9b24602fce8.gif">
+</div>
+
+<h2>ListView.builder()</h2>
+
+O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
+
+    class _MyHomePageState extends State<MyHomePage> {
+
+     final List<String> children = <String>['First', 'Second', 'Third', 'Four', 'Fifth', 'Sixth'];
+        
+      @override
+      Widget build(BuildContext context) {
+       return Scaffold(
+        body: Container(
+          alignment: Alignment.center,
+          child: ListView.builder(
+            itemCount: children.length,
+            itemBuilder: (BuildContext context, int index) {
+             return Container(
+               height: 200,
+               width: 200,
+               margin: EdgeInsets.only(bottom: 1),
+               decoration: BoxDecoration(color: Colors.blue[800]),
+               child: Center(child: Text('${children[index]}'),
+              ),
+            );
+          }),
+        ));
+       }
+     }
+
+O exemplo acima gera uma lista de seis items, estes sendo definidos em um String List. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a string correspondente a sua posição equivalente na lista children. A imagem a seguir ilustra como o exemplo irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151181779-65d1b9d4-e22f-469e-863a-e5afef762b80.gif">
+</div>
+
+<h2>ListView.separated()</h2>
+
+Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
+
+    ListView.separated(
+      padding: const EdgeInsets.all(8),
+      itemCount: children.length,
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          height: 100,
+          color: Colors.orange[colorCodes[index]],
+          child: Center(child: Text('${children[index]}')),
+        );
+      }
+    )
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
+</div>
+
+<h2>GridView</h2>
+
+O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo determinar quantos Widgets por eixo transversal a lista irá exibir. É normalmente utilizado o GridView em conjunto com o constructor count. A seguir temos um exemplo de uso do GridView.count():
+
+
+    GridView.count(
+     crossAxisCount: 4,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          child: Text('first'),
+          color: Colors.orange[100],
+        )
+        ...
+        
+      ],
+    )
+
+Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177391-48cbad0d-33b5-41b7-afc6-1db2df87172c.gif">
+</div>
+
+Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
+
+    GridView.count(
+      crossAxisCount: 4,
+      mainAxisSpacing: 20.0,
+      children: <Widget>[
+        Container(
+          alignment: Alignment.center,
+          child: Text('first'),
+          color: Colors.orange[100],
+        ),
+        ...
+        
+      ],
+    )
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818644-d8218680-cc5e-11eb-9e07-bb7b760e4545.png">
+</div>
+  
+O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
+
+     GridView.count(
+       crossAxisCount: 4,
+       crossAxisSpacing: 20.0,
+       children: <Widget>[
+         Container(
+           alignment: Alignment.center,
+           child: Text('first'),
+           color: Colors.orange[100],
+         ),
+         ...
+         
+       ],
+     )
+
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818847-28e5af00-cc60-11eb-8730-92d04cfbc3be.png">
+</div>
+
+<h2>PageView</h2>
+
+O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste caso, cada índice da List é forçado a preencher o espaço correspondente a viewport, ou seja, cada índice passa a ser uma página do app. O PageView é definido em conjunto com um PageControll, que por sua vez declara qual das página(índice) será visto primeiro. A seguir temos um exmplo de uso do PageView():
+
+    class MyApp extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+        return MaterialApp(title: "My App", home: Scaffold(body: MyHomePage()));
+      }
+    }
+    
+    class MyHomePage extends StatelessWidget {
+      @override
+      Widget build(BuildContext context) {
+       final PageController controller = PageController(initialPage: 0);
+       return PageView(
+         scrollDirection: Axis.horizontal,
+         controller: controller,
+         children: <Widget>[
+           Container(
+             color: Colors.blue[700],
+             alignment: Alignment.center,
+             child: Text('First Page'),
+           ),
+           Container(
+             color: Colors.blue[800],
+             alignment: Alignment.center,
+             child: Text('Second Page'),
+           ),
+           Container(
+             color: Colors.blue[900],
+             alignment: Alignment.center,
+             child: Text('Third Page'),
+           )
+         ]);
+       }
+     }
+
+Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padrão, neste caso sendo retornado pela principal classe da main.dart file. Também é importante observar o PageController(initialPage: 0);, que trata de aplicar a posição que dever ser exibida primeiro. A imagem a seguir ilustra como o exemplo acima irá se comportar:
+
+<br>
+<div align="center">
+  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177649-48069171-1659-4f87-ad36-db7f49339849.gif">
+</div>
+<br>
+
+Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exemplo:
+
+    PageView(
+      scrollDirection: Axis.vertical,
+      controller: controller,
+      children: <Widget>[
+        
+        ...
+
+      ],
+    );
 
 <h1>Abordagens de Gerenciamento</h1>
 
@@ -2458,1593 +3882,6 @@ A interface consiste um StatelessWidget que instancia a classe HomeController e 
 <div align="center">
  <img src="https://user-images.githubusercontent.com/61476935/124005193-2c429f80-d9af-11eb-9d92-cc1e9a059359.png">
 </div>
-
-<!-- <h1>Catálogo de Widgets</h1>
-
-<br>
-
-Sendo uma ferramenta de construção de interfaces, o Flutter conta com uma biblioteca de recursos de estruturação e customização de interfaces gráficas gigantesca. Esse conjunto gera um ambiente totalmente otimizado para construir interfaces de usuário pensando na experiência decorrente disso, contando com uma arquitetura concentrada baseada em widgets.
-
-Com isso, a seguir estão listados categoricamente widgets visuais, estruturais, de plataforma e interativos, dos mais básicos aos mais complexos: -->
-
-
-<!-- <h2>Material Components</h2>
-
-
-Widgets visuais, comportamentais e de movimento que implementam as diretrizes do Material Design. Diretrizes essa que se baseam em padrões de desenvolvimento e estruturação de aplicações modernas, as quais disponibilizam diferentes formas de interação com a interface. Elas são:
-
-
-<h2>Scaffold</h2>
-
-
-A classe Scaffold, que literalmente significa andaime, é um Widget que permite a criação de uma estrutura de layout baseado no Material Design, disponibilizando style API's que contam com componentes comuns a aplicações mobile. Além disso, conta com propriedades que separam a estrutura em blocos. A seguir há um exemplo de definição do Scaffold:
-
-    Scaffold(
-      appBar: AppBar(),
-      body: Container(),
-      drawer: Drawer(),
-      floatingActionButton: FloatingActionButton(),
-      bottomNavigationBar: BottomAppBar()
-    )
-
-
-O Scaffold é muito utilizado como estrutura padrão de telas em aplicações Flutter, isso graças a sua estrutura, que é bastante eficaz. A seguir estão descritos algumas das pripriedades que compõem o Scaffold Widget:
-
-  * <strong>appBar</strong> - AppBar da tela, exibido no topo do Scaffold
-  * <strong>body</strong> - Primeiro conteúdo a ser exibido no Scaffold
-  * <strong>drawer</strong> - Um painel exibido ao lado do body, acionado por uma ação de swipe
-  * <strong>floatingActionButton</strong> - Botão flutuante exibido sobre o body do Scaffold
-  * <strong>bottomNavigationBar</strong> - Barra de navegação do rodapé do Scaffold
-
-  
-<h2>Appbar</h2>
-
-
-Um <b><i>Appbar</i></b> consiste em um toolbar, Widget comum a muitas aplicações, que pode conter outros Widgets em si. Um Appbar normalmente é associado a ações em conjunto com IconButtons ligados a navegação entre partes da aplicação. A seguir temos um exemplo de uso da Appbar:
-
-
-    @override
-    Widget build(BuildContext context) {
-      return Scaffold(
-        appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
-        ),
-        title: Text('AppBar'),
-        actions: [
-          IconButton(onPressed: () {}, icon: Icon(Icons.notification_add))
-        ],
-      )
-      );
-    }
-  
-A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175196-4ccda1c1-f433-4c4d-9866-7020438fb3ca.png">
-</div>
-
-
-Os principais atributos da BottomNavigationBar são:
-
-
-* <strong>leading</strong> - Um Widget definido antes do title<br>
-* <strong>title</strong> - O primeiro Widget exibido no Appbar<br>
-* <strong>actions</strong> - Uma lista de Widgets agrupados em linha após o title<br>
-* <strong>flexibleSpace</strong> - Trecho entre a toolbar e o bottom da Appbar<br>
-* <strong>bottom</strong> - Define o bottom do Appbar
-
-
-<h2>Body</h2>
-
-
-O <b><i>body</i></b> é o principal conteúdo de um Scaffold, pondendo ser basicamente qualquer Widget do catálogo.
-
-
-<h2>Drawer</h2>
-
-
-O <b><i>Drawer</i></b> é um painel exibido na lateral do body e é bastante comum em aplicações mobile. É ativado, na maioria das vezes, pela ação de drag da esquerda para a direita ou da direita para a esquerda no body, ou por um menu button na AppBar. Também é associado a opções de navegação ou a um menu de opções que surge com a diminuição da escala dos aparelhos. A seguir temos um exemplo de uso do Drawer:
-
-    ...
-    
-    class MyDrawer extends StatefulWidget {
-      @override
-      State<MyDrawer> createState() => _MyDrawerState();
-    }
-    
-    class _MyDrawerState extends State<MyDrawer> {
-    
-      final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-      void _openDrawer() {
-        _scaffoldKey.currentState!.openDrawer();
-      }
-    
-      void _closeDrawer() {
-        Navigator.of(context).pop();
-      }
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          key: _scaffoldKey,
-          appBar: AppBar(
-            leading: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () {
-                _openDrawer();
-              },
-            ),
-            title: Text('Drawer'),
-          ),
-          drawer: Drawer(
-            child: Center(  
-              child: ElevatedButton(  
-                child: Text('Close Drawer'),
-                onPressed: () {
-                  _closeDrawer();
-                },
-              ),
-            ),
-          ),
-        );
-      }
-    }
-
-
-O exemplo consiste em um Statefull Widget padrão, possuindo um Scaffold, um AppBar com um munu button, e por fim, o Drawer. Também conta com dois métodos, um de ativação e um de desativação do Drawer. Além disso, conta com _scaffoldKey: variável que carrega uma GlobalKey responsável por gerenciar o state do Scaffold e de suas propriedades, incluindo o Drawer. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175361-75c2db92-2cc0-4d83-b75b-51623fb73038.gif">
-</div>
-
-
-O menu button faz a chamada do metodo de ativação _openDrawer, que por sua vez acessa o current state do Scaffold e o método openDrawer. O exemplo também permite ativar o Drawer através da ação de drag no body. Essa ação pode ser desativada através da propriedade <b><i>drawerEnableOpenDragGesture: false</i></b>. 
-
-O Drawer, assim como a body property, pode conter basicamente qualquer Widget do catálogo como child. No exemplo, o Drawer possui um ElevatedButton como child, este sendo reaponsável por chamar o _closeDrawer method, que por sua vez fecha o Drawer.
-
-
-<h2>BottomNavigationBar</h2>
-
-
-Um <b><i>BottomNavigationBar</i></b> é um widget de navegação exibido na parte inferior da tela, onde é possível  selecionar entre um pequeno número de visualizações, normalmente entre três e cinco. A seguir temos há um exemplo de uso da BottomNavigationBar:
-
-
-    ...
-
-    class MyBottomNavigationBar extends StatefulWidget {
-      @override
-      State<MyBottomNavigationBar> createState() => _MyBottomNavigationBarState();
-    }
-    
-    class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
-      int _selectedIndex = 0;
-    
-      static const TextStyle optionStyle =
-          TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-    
-      List<Widget> _index = <Widget>[
-        Text('Home', style: optionStyle),
-        Text('Search', style: optionStyle),
-        Text('Profile', style: optionStyle),
-      ];
-    
-      void _onItemTapped(int index) {
-        setState(() {
-          _selectedIndex = index;
-        });
-      }
-    
-      @override
-      Widget build(BuildContext context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: Text('BottomNavigationBar'),
-          ),
-          body: Center(child: _index.elementAt(_selectedIndex)),
-          bottomNavigationBar: BottomNavigationBar(
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.search),
-                label: 'Search',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.blue[800],
-            onTap: _onItemTapped,
-          ), //BottomNavigationBar
-        ); 
-      }
-    }
-
-
-O exemplo acima consiste na definição básica de uso de uma BottomNavigationBar. Nela criamos um statefulWidget onde iremos tratar cada state(item) da barra e a reação a sua seleção. Além disso, criamos um List que define um resultado em tela para cada item selecionado. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175551-1bad26fc-0843-4b9e-b4ca-a9c8da390154.gif">
-</div>
-
-
-Os principais atributos da BottomNavigationBar são:
-
-
-* <strong>items</strong> - Itens que definem as possíveis seleções<br>
-* <strong>currentIndex</strong> - Define o item de seleção padrão<br>
-* <strong>selectedItemColor</strong> - Cor padrão do item selecionado<br>
-* <strong>onTap</strong> - Define uma reação a cada mudança de seleção<br>
-
-
-<h2>Buttons</h2>
-
-
-O Flutter conta com a uma série de opções de buttons herdados do Material Components, elas são:
-
-
-<h2>DropdownButton</h2>
-
-
-O <b><i>DropdownButton</i></b> permite ao usuário selecionar entre um número definido de opções, podendo ter resultados distintos a cada opção selecionada. A seguir há um exemplo de uso do DropdownButton:
-
-
-    DropdownButton<String>(
-      hint: Text('DropdownButton'),
-      icon: const Icon(Icons.arrow_drop_down),
-      iconSize: 24,
-      elevation: 16,
-      style: const TextStyle(color: Colors.deepPurple),
-      underline: null,
-      onChanged: (_) {},
-      items: <String>['One', 'Two', 'Three', 'Four'].map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: Text(value),
-        );
-      }).toList(),
-    )
-
-
-O DropdownButton possui definições variadas, desde um hint(que identifica o botão e pode identificar a opção selecionada)a um icon, o tamanho do dropdown, os items e etc. Os items são basicamente um List onde cada child possui um valor. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175734-12f6c969-866e-440c-82af-e27da68b192a.gif">
-</div>
-
-
-<h2>FloatingActionButton</h2>
-
-
-Um <b><i>FloatingActionButton</i></b> é um circular icon button posicionado no canto inferior direito da tela. Ele provê uma ação primária dentro da aplicação. Também é uma propriedade do Scaffold e é bastante associado a ele. A seguir há um exemplo de uso do FloatingActionButton:
-
-
-    Scaffold(
-     
-     ...
- 
-     floatingActionButton: FloatingActionButton(
-        onPressed: () {
-
-        },
-        child: const Icon(Icons.navigation),
-      )
-    )
-
-
-A imagem a seguir ilustra o como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175824-76c7042e-18c3-485f-b691-97aafaf66a4b.gif">
-</div>
-
-
-<h2>ElevatedButtons</h2>
-
-
-Um <b><i>ElevatedButton</i></b> é um rótulo child exibido em um Material Widget cujo Material.elevation aumenta quando clicado, revelando um efeito de clique. Ele também possui um padrão de estilo que pode ser sobrescrito quando a propriedade style é utilizada. Além disso, uma série de outras propriedades definem a possibilidade de várias outras definições de estilo. A seguir há um exemplo de criação de um ElevatedButton:
-
-
-    Column(
-      children: <Widget>[
-        ElevatedButton(
-        onPressed: null,
-        child: Text('ElevatedButton'),
-       ),
-        ElevatedButton(
-        onPressed: () {},
-        child: Text('ElevatedButton'),
-       )
-      ]
-    )
-
-
-A diferença entre os exemplos é a definição do onPressed, que, quando null, torna o ElevatedButton disabled. A imagem a seguir ilustra como os exemplos irão se comportar:
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151175944-1800451f-7281-4cd0-91fd-06bd082c2086.gif">
-</div>
-
-
-<h2>IconButton</h2>
-
-
-Um <b><i>IconButton</i></b> é basicamente uma imagem em um Material Widget que reage ao toque, possuindo um efeito associado a uma cor como reação padrão. A seguir temos alguns exemplos de uso do IconButton:
-
-
-    Container(
-     child: Row(
-       mainAxisAlignment: MainAxisAlignment.center,
-       children: [
-        IconButton(
-          color: Colors.pink,
-          icon: Icon(Icons.favorite),
-          onPressed: () {},
-        ),
-        IconButton(
-         color: Colors.blue,
-         icon: Icon(Icons.cancel),
-         onPressed: () {},
-       ),
-       IconButton(
-         color: Colors.black,
-         icon: Icon(Icons.add),
-         onPressed: () {},
-       )
-     ]),
-    )
-
-
-Um IconButton possui diversos atributos, mas as definições mas utilizadas são a de icon e onPressed. A imagem a seguir ilustra como os exemplos irão se comportar:
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176007-da33e554-19cf-48af-a903-18df41b3b03f.gif">
-</div>
-
-
-<h2>OutlinedButton</h2>
-
-
-Um <b><i>OutlinedButton</i></b> é semelhante a um ElevatedButton, com a diferença de possuir uma borda por padrão. Um OutlinedButton possui actions importantes, mas não uma primary action em um app. A seguir há um exemplo de uso de um OutlinedButton:
-
-
-    Container(
-      child: OutlinedButton(
-       onPressed: () {},
-       child: const Text('OutlinedButton'),
-     ),
-    )
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176099-8c8c48b6-5e32-4291-8a8e-76074aa0e44f.gif">
-</div>
-
-
-<h2>TextButton</h2>
-
-
-Um <b><i>TextButton</i></b> é bastante simples e seu uso é bastante comum. Normalmente é utilizado em dialogs, em um inline ou como parte de um Widget que não dispõe de muito espaço disponível. A seguir há alguns exemplos de uso do TextButton:
-
-
-    Container(
-     child: Column(  
-       children: [
-        TextButton(
-         style: TextButton.styleFrom(
-           textStyle: const TextStyle(fontSize: 20),
-         ),
-         onPressed: null,
-         child: const Text('Disabled'),
-       ),
-       const SizedBox(height: 30),
-       TextButton(
-         style: TextButton.styleFrom(
-           textStyle: const TextStyle(fontSize: 20),
-         ),
-         onPressed: () {},
-         child: const Text('Enabled'),
-        )
-      ]),
-    )
-
-
-Um TextButton é bastante parecido com os demais tipos, onde também é possível torná-lo disabled atribuindo null a propriedade onPressed. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151176882-488a146f-b67a-4c95-beb7-7ed341dd1ce4.gif">
-</div>
-
-
-<h2>Container</h2>
-
-
-Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
-
-
-    Center(
-      child: Container(
-        alignment: Alignment.center,
-        child: Center(child: Text("Children")),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.white),
-        height: 300,
-        width: 300,
-        margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.all(10),
-      ),
-    )
-
-
-Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446422-d9eeff80-c969-11eb-8dd6-3b1e0d786ed9.png">
-</div>
-
-Por se trantar de uma estrutura, um Container possui propriedades bastantes cooperativas no sentido de customização de estruturas de inteface. Algumas delas são:
-
-* <strong>alignment</strong> - Alinhamento do child dentro do Container
-* <strong>child</strong> - Define o child contido
-* <strong>color</strong> - Definição de cor do Container
-* <strong>constraints</strong> - Restrições adicionais a serem aplicadas ao child
-* <strong>decoration</strong> - Definição de estilo do Container
-* <strong>margin</strong> - Espaço vazio que rodeia o child e seu decoration
-* <strong>padding</strong> - Espaço vazio definido dentro Container, o separando internamente do child 
-
-
-<h2>Decoration</h2>
-
-
-O decoration é uma propriedade do Container que define uma camada de style anterior ao child, e em conjunto com o BoxContainer ou InputDecoration, e entre outros, tem suas próprias propriedades, dando um maior nível de customização ao container. Algumas delas são: 
-
-* <strong>borderRadius</strong> - Curvatura das bordas do container, aplicável individualmente
-* <strong>color</strong> - Cor de definição Container
-* <strong>boxShadow</strong> - List de definições de sombreamento do Container
-* <strong>gradient</strong> - Gradiente de preenchimento do container
-* <strong>image</strong> - Definição de uma imagem contida
-
-
-<h2>Column</h2>
-
-
-Uma Column é definida como um Widget de estruturação, cuja função é agrupar elementos verticalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Column. A seguir há um exemplo de declaração de uma Column:
-
-
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Expanded(
-          child: Container(...),
-        ),
-        Expanded(
-          child: Container(...),
-        ),
-        Expanded(
-          child: Row(
-            children:  <Widget> [
-              Flexible(
-               child: Container(...),
-             ),
-              Expanded(
-               child: Container(...),
-             ),
-            ], // <Widget>[]
-          ), // Row
-        ),
-        Flexible(
-          child: Container(...),
-        ),
-        Flexible(
-          child: Container(...),
-        )
-       ], // <Widget>[]
-    ) // Column
-
-
-O Widget Column conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço no vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da coluna). A imagem abaixo ilustra como o exemplo irá se comportar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446097-2ede4600-c969-11eb-9f11-ee271e7ae79e.png">
-</div>
-
-Há uma série de Widgets que podem ser associados a uma Column. A seguir estão definidos alguns deles:
-
-* <strong>children</strong> - Lista de Widgets definidos como parte da Column
-* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
-* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
-* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
-
-
-<h2>Row</h2>
-
-
-Uma Row também é definida como um Widget de estruturação, cuja função é agrupar elementos horizontalmente. Esses elementos são agrupados em um List de Widgets associado a propriedade children da Row. A seguir há um exemplo de declaração de uma Row:
-
-
-    Row(
-      children: <Widget>[
-       Flexible(
-          child: Container( ... ),
-        ),
-       Expanded(
-          child: Container( ... ),
-        ),
-       Flexible(
-          child: Container( ... ),
-        ),
-      ], // <Widget>[]
-    ) 
-
-
-Um Row também conta com definições de prioridade, onde um children pode ocupar mais ou menos espaço dentro do vetor. Isso é definido pelos tipos Expanded(oculpa o espaço restante) e Flexible(cede espaço dentro da linha). A imagem abaixo ilustra como o exemplo irá se comportar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446402-cb084d00-c969-11eb-9645-4f8e5c212f9d.png">
-</div>
-
-* <strong>children</strong> - Lista de Widgets definidos como parte da Row
-* <strong>mainAxisSize</strong> - Define quanto espaço deve ser ocupado no eixo principal
-* <strong>mainAxisAlignment</strong> - Define o posicionamento dos Widgets children em paralelo ao eixo 
-* <strong>verticalDirection</strong> - Determina a ordem de disposição dos Widgets children verticalmente e como interpretar o início e o fim na direção vertical
-
-
-<h2>Assets, Images, Icons e Text</h2>
-
-Os assets se tratam dos ativos(recursos) de uma aplicação, geralmente associado a View. O conceito de assets é bastante comum no desenvolvimento de interfaces, e o Flutter não foge à regra. Aqui os assets também são Widgets ou classes, que possuem definições de exibição determinados por propriedades individuais. Para isso o Flutter conta com a Class AssetsBundle, cunja função é gerir uma coleção de recurso usados pela aplicação.
-
-Qualquer aplicação Flutter possui um rootBundle definido por padrão, o qual contém os recuros já citados. Para adicionar novos recuros ao rootBundle é preciso editar a subseção flutter => assets no arquivo pubspec.yaml, onde são definidas dependências tanto do Material design(android) quanto do cupertino(ios). Exemplo:
-
-
-    flutter:
-      uses-material-design: true
-     // Para adicionar assets a sua aplicação, crie uma assets section:
-      assets:
-        - assets/images/
-        - assets/icons/
-
-
-É comum definir uma pasta assets no root da aplicação. Nela são declaradas as imagens e ícones que serão utilizados em pontos específicos do app. A seguir temos a descrição dos principais assests Widgets:  
-
-
-<h2>Images</h2>
-
-
-O Widget Image gera uma imagem e a exibe a partir de uma Url, arquivo, network ou asset disponibilizado, contando com uma série de classes com atributos próprios, utilizadas em situações distintas. As situações são definidas pela forma em que a imagem é disponibilizada. A seguir há uma definição padrão do Widget Image:
-
-
-    Image(
-      image: NetworkImage(
-        'https://flutter.github.io/assets-for-api-docs/assets/widgets/owl.jpg'
-      ),
-    )
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121402504-58c74680-c930-11eb-8427-0d367448f900.png">
-</div>
-
-
-Além do Image propriamente dito, há uma série de classes(contructors) com definições distintas de fontes de imagens, usadas em situações difentes. A seguir estão algumas delas:
-
-Obter imagens a partir de um asset bundler
-
-    Image.asset(String name, { ... })
-
-Obter imagens a partir de arquivos
-
-    Image.file(File file, { ... })
-
-Obter imagens a partir de um Uint8List
-
-    Image.memory(Uinit8List bytes, { ... })
-
-Obter imagens a partir de um network
-
-    Image.network(String src, { ... })
-
-Basicamente todos possuem as mesmas propriedades de definição de imagem, exceto por especificações relacionadas a obtenção da imagem, sendo um atributo obrigatório definido no inicio da chamada do constructor. Algumas das propriedades comuns a todos são:
-
-* <strong>image</strong> - A imagem que será exibida
-* <strong>width</strong> - Largura da imagem
-* <strong>height</strong> - Altura da imagem
-* <strong>alignment</strong> - Alinhamento da imagem com base nos limites da tela
-* <strong>fit</strong> - Alinhamento da imagen com base em seus limites
-* <strong>erroBuilder</strong> - Função que é chamada caso haja um erro no loading da imagem
-
-
-<h2>Icons</h2>
-
-O Icon é um Widget de componentes gráficos baseados na bilbioteca de icones do Material Design, e dependem da definição de um MaterialApp para serem utilizados. A seguir há um exemplo de uso do Icon Widget:
-
-
-    Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: const <Widget>[
-        Icon(
-          Icons.zoom_out_map_outlined,
-          color: Colors.red,
-          size: 50.0,
-        ),
-        Icon(
-          Icons.hail,
-          color: Colors.green,
-          size: 50.0,
-        ),
-        Icon(
-          Icons.face,
-          color: Colors.blue,
-          size: 50.0,
-        ),
-      ])
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121428625-67bbf200-c94c-11eb-8258-bcf069060e71.png">
-</div>
-
-Os icons são definidos em um proporção customizavel, mas são renderizados em um squared format, evitando erros na forma do icon no processo de loading. Algumas das propriedades do Icon Widget são:
-
-* <strong>icon</strong> - Define style do ElevaitedButton
-* <strong>color</strong> - Cor definida como preenchimento da área correspondente ao icon
-* <strong>sixe</strong> - Tamanho do icon, definido em pixel
-* <strong>icon</strong> - Define style do ElevaitedButton
-
-
-<h2>Text</h2>
-
-
-O Widget Text exibe um string com um single style. Um string pode sofrer um break em múltiplas linhas ou em uma apenas, dependendo da disposição do layout. É definido pela classe Text(), cujas propriedades consistem em definições de estilo, alinhamento, e entre outros, todas opcionais. Caso essas definições sejam omitidas, o texto irá utilizar as definições de estilo mais próximas que o contenham. A seguir há um exemplo de definição de texto:
-
-
-    Text(
-     'Children',
-     textDirection: TextDirection.rtl,
-     style: TextStyle(
-       fontSize: 20,
-       fontWeight: FontWeight.bold,
-       color: Colors.blue[900],
-     ),
-    )
-
-
-A estilização de texto é definida no atributo style em conjunto com a classe TextStyle. Esta possui atributos próprios de definição de estilo, como fontfamily, color, fontwheight e entre ountros.
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121446461-f1c68380-c969-11eb-927f-cac39d52b4a2.png">
-</div>
-
-Alguns dos atributos de um Widget de estilização de texto são:
-
-* <strong>data</strong> - Texto a ser exibido
-* <strong>textDirection</strong> - Direção de exibição do texto
-* <strong>textAlign</strong> - Definição de alinhamento horizontal do texto
-* <strong>style</strong> - Definição de estilo do texto
-
-
-<h2>Layout</h2>
-
-
-Toda desenvolvedor Flutter tem uma relação de extrema proximidade com o design e as sensações que pretende causar no usuário. Portanto, é muito importante gastar certo tempo pensando em como estruturar o layout da aplicação. Quais Widgets utilizar e como utilizar definem quão harmonioso será o app. Para tal, o Flutter dá ao desenvolvedor uma série de Widgets capazes de criar uma boa experiência para o usuário:
-
-
-<h2>Aling</h2>
-
-
-A definição de alinhamento de um Widget é feita de várias formas, uma delas é o Align. O Align permite posicionar um Widget child em praticamente qualquer parte do Widget que o contém, possuindo alinhamentos pré definidos ou determinados por valores de alinhamento limitados pelo alcance da área correspondente ao Widget pai. A classe Align conta com a propriedade alignment, que deriva do atributo AlignmentGeometry. A seguir há um exemplo que exibe diferentes posições definidas pelo Align Widget:
-
-
-    Column(
-     children: <Widget>[
-       Container(
-        height: 100,
-        width: 150,
-        child: Align(
-         alignment: Alignment.topLeft,
-         child: Text(
-           'Child',
-           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-          )),
-         decoration: BoxDecoration(color: Colors.white),
-         margin: EdgeInsets.all(10.0),
-       ),
-       Container(
-         height: 100,
-         width: 150,
-         child: Align(
-          alignment: Alignment.topRight,
-          child: Text(
-            'Child',
-            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-          )),
-         decoration: BoxDecoration(color: Colors.white),
-         margin: EdgeInsets.all(10.0),
-       ),
-       Container(
-        height: 100,
-        width: 150,
-        child: Align(
-          alignment: Alignment.center,
-          child: Text(
-            'Child',
-            style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-          )),
-        decoration: BoxDecoration(color: Colors.white),
-        margin: EdgeInsets.all(10.0),
-       ),
-       Container(
-        height: 100,
-        width: 150,
-        child: Align(
-         alignment: Alignment.bottomLeft,
-         child: Text(
-          'Child',
-           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-         )),
-         decoration: BoxDecoration(color: Colors.white),
-         margin: EdgeInsets.all(10.0),
-       ),
-       Container(
-        height: 100,
-        width: 150,
-        child: Align(
-         alignment: Alignment.bottomRight,
-         child: Text(
-           'Child',
-           style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-         )),
-         decoration: BoxDecoration(color: Colors.white),
-         margin: EdgeInsets.all(10.0),
-       )
-     ])
-     
-
-O exemplo acima demonstra um dos tipo de definição de alinhamento. Esses padrões de alinhamento definem posições específicas da área disponível. A imagem abaixo ilustra como o exemplo irá se comportar:
-
-<br> 
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121556328-28dc7980-c9ea-11eb-9087-1fbc26866344.png">
-</div>
-
-<br> 
-
-Essas posições são definidas a partir da classe Alignment, e são atribuidas a propriedade alignment do Widget Align(). A seguir temos uma lista dessas posições:
-
-* center
-* centerleft
-* centerRight
-* topCenter
-* topLeft
-* topRight
-* bottomCenter
-* bottomLeft
-* bottomRight
-
-Como já foi citado, também é possível definir o alinhamento com base em valores. Estes valor são chamados de cordenadas e definem a posição com base na altura e largura do Widget sendo percorrido. A seguir há um exemplo de alinhamento por cordenadas:
-
-    Align(
-     alignment: Alignment(0.2, 0.6),
-     child: Text(
-       'Child', 
-       style: TextStyle(fontSize: 20, color: Colors.blue[800]),
-     ))
-
-As coordenadas são definidas em um eixo horizontal/vertical, correspondendo respectivamente a largura e a altura. Suas dimensões vão de -0.9 a 0.9, tendo 0.1 como o ponto central, e cada uma dessas posições possuem dimensões de -0.09 a 0.09. A imagem abaixo ilustra como o exemplo irá se comportar: 
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/122596875-e72e7d00-d040-11eb-9f5f-8b544d8cc167.png">
-</div>
-
-
-<h2>AspectRatio</h2>
-
-
-O AspectRatio faz parte dos Widgets de definição de layout graças a sua capacidade de definir a proporção de componentes gráficos. Essa proporção é definida pelo resultado da razão entre o width e o height de um Widget, obtida a partir da operação W / h = AspectRatio. O resultado adapta o child dentro do espaço correspondente a área do Widget que o carrega. A seguir há um exemplo de uso do AspectRatio:
-
-    AspectRatio(
-     aspectRatio: 2 / 3,
-     child: Container(
-       alignment: Alignment.center,
-       decoration: BoxDecoration(color: Colors.yellow),
-       child: Text(
-         'Child',
-         style: TextStyle(color: Colors.blue[800], fontSize: 20),
-       ),
-     ))
-
-Um ponto que deve ser lembrado ao usar o AspectRatio é se certificar que ele seja livre para se dimensionar livremente. Usar um AspectRatio dentro de Widget Expanded() por exemplo, o força a se expandir junto com o Expanded(), impedindo seu próprio dimensionamento. Portanto, ao usa o AspectRatio deve-se definir um Align() ou alignment, como no exempli acima. A imagem a seguir ilustra como o mesmo irá se comportar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129612249-726555b3-198b-4a9d-a0b3-d7ea3e081df0.png">
-</div>
-
-O AspectRatio também pode ser definido diretamente pela razão entre os dois valor, assim como no exemplo baixo:
-
-
-    AspectRatio(
-      aspectRatio: 0.6,
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(color: Colors.yellow),
-        child: Text(
-          'Child',
-          style: TextStyle(color: Colors.blue[800], fontSize: 20),
-        ),
-      ))
-
-
-<h2>ConstrainedBox</h2>
-
-
-Assim como os demais Widgets de layout, o ConstrainedBox define as dimenções de um componente de inteface. O ConstrainedBox permite definir width ou height minimos e máximos, tornando possível redimensionar certos componentes caso necessário. Abaixo há uma exemplo de uso do ConstrainedBox:
-
-
-    ConstrainedBox(
-     constraints: BoxConstraints(maxWidth: 260, maxHeight: 80),
-     child: Container(
-       color: Colors.yellow,
-       padding: EdgeInsets.all(10),
-       alignment: Alignment.center,
-       child: Text.rich(TextSpan(children: <TextSpan>[
-       TextSpan(
-         text: 'Some text that you want to',
-         style: TextStyle(fontSize: 20)),
-       TextSpan(
-         text: ' break',
-          style: TextStyle(
-           fontSize: 20, fontWeight: FontWeight.bold))
-         ])
-       ),
-     ))
-
-
-O exemplo mostra uma quebra de texto definida por uma largura máxia atribuída ao ConstraintBox. Esse tipo de recurso se mostra essencial quando é necessário alocar muitos Widgets em apenas uma tela. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129612499-37c5f184-57b3-427b-a300-db53093b01b9.png">
-</div>
-
-Outra situação em que é possível aplicar o ConstraintBox é quando um Widget child precisar oculpar todo o espaço correspondente ao Widget que o carrega. Exemplo:
-
-
-    ConstrainedBox(
-     constraints: BoxConstraints.expand(),
-     child: Container(
-       color: Colors.yellow,
-       padding: EdgeInsets.all(10),
-       alignment: Alignment.center,
-       child: Text.rich(
-        TextSpan(
-         children: <TextSpan>[
-          TextSpan(
-            text: 'Some text that you want to',
-            style: TextStyle(fontSize: 20)),
-          TextSpan(
-            text: ' break',
-            style: TextStyle(
-             fontSize: 20, fontWeight: FontWeight.bold))
-          ])
-         ),
-       ))
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129612601-eefea79d-c675-43c9-87eb-7caf93466357.png">
-</div>
-
-
-<h2>Expanded</h2>
-
-
-O já mencionado Expanded é um Widget de definição de dimenções, normalmente associado a um Widget Multi-child, como uma Column ou row. Ele basicamente indica qual dos Widgets do vetor devem ocupar mais espaço em relação aos demias. A seguir há um exemplo de uso do Expanded:
-
-
-    Center(
-     child: Column(
-      children: <Widget>[
-        Container(
-          color: Colors.blue,
-          height: 150,
-          width: 500,
-        ),
-        Expanded(
-         child: Container(
-           color: Colors.amber,
-           width: 500,
-        )),
-        Container(
-          color: Colors.blue,
-          height: 150,
-          width: 500,
-        ),
-      ]),
-    )
-
-
-Com o Expanded é possível atribuír mais espaço de dimensionamento a um Widget específico. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/129612786-f788767a-27af-4f2c-b415-edf079fa1106.png">
-</div>
-
-Outra forma de uso é definindo miltiplos child em conjunto com um flex factor, priorizando o espaço disponível para determinados Widgets:
-
-
-    Row(
-     children: <Widget>[
-       Expanded(
-        flex: 1,
-        child: Container(
-          color: Colors.blue,
-          height: 100,
-        )),
-       Container(
-         color: Colors.yellow,
-         height: 100,
-         width: 70,
-       ),
-       Expanded(
-         flex: 2,
-         child: Container(
-           color: Colors.blue,
-           height: 100,
-         )),
-       ] 
-
-
-O flex factor define uma ordem de grandeza, e por consequência, de prioridade para ocupar mais espaço na Row. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129612965-76695621-a0a8-4ea8-85a5-af775005ba6f.png">
-</div>
-
-
-<h2>FittedBox</h2>
-
-
-Muitos Widgets podem ser definidos como box, podendo ser alinhados, agrupados ou mesmo postos um dentro do outro. O FittedBox age quando o espaço correspondente a um Widget é diferente de seu child, com isso é possível adaptar o espaço que o child oculpa. Há uma série de opções de 'encaixe', as quais podem ser definidas na principal propriedade do FittedBox Widget, a fit, que recebe um Boxfit como valor. A seguir temos exemplos de uso do FittedBox:
-
-
-    Container(
-     width: 500,
-     decoration: BoxDecoration(color: Colors.blue[800]),
-     child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-       Container(
-         color: Colors.white,
-         height: 100,
-         width: 100,
-         margin: EdgeInsets.all(10),
-         child: FittedBox(
-           fit: BoxFit.cover,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20),
-           ),
-         )),
-        Container(
-         color: Colors.white,
-         height: 100,
-         width: 100,
-         margin: EdgeInsets.all(10),
-         child: FittedBox(
-           fit: BoxFit.fill,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20),
-           ),
-         )),
-        Container(
-         color: Colors.white,
-         height: 20,
-         width: 100,
-         margin: EdgeInsets.all(10),
-         child: FittedBox(
-           fit: BoxFit.fitHeight,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20),
-           ),
-         )),
-        Container(
-         color: Colors.white,
-         height: 100,
-         width: 50,
-         margin: EdgeInsets.all(10),
-         child: FittedBox(
-           fit: BoxFit.fitWidth,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20),
-           ),
-         )),
-        Container(
-         color: Colors.white,
-         height: 100,
-         width: 100,
-         margin: EdgeInsets.all(10),
-         child: FittedBox(
-           fit: BoxFit.none,
-           child: Text(
-             'Child',
-             style: TextStyle(fontSize: 20),
-            ),
-          ))
-        ])
-
-
-O FittedBox é um dos Widgets com maior nível de adaptabilidade, pode ser utilizado de diversas formas e em diversas situações. A imagem a seguir mostra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121701665-82ef4480-caa7-11eb-932b-e579c72c6a6f.png">
-</div>
-
-<br>
-
-Como já foi mencionado, o FittedBox conta com a propriedade fit, que define o nível de ajuste de posicionamento do child.Além disso, o FittedBox conta também com a propriedade alignment, qua ajuda no dimensionamento dos Widgets:
-
-* <strong>fit</strong>
-* <strong>alignment</strong>
-
-A seguir estão as descritas cada propriedade do BoxFit:
-
-* <strong>cover</strong> - Torna o espaço oculpado pelo child maior que o disponível 
-* <strong>fill</strong> -  Encaixa o child no espaço disponível sem considerar as proporções
-* <strong>fitHeight</strong> - Adapta o tamanho do child de acordo com a altura do Widget pai
-* <strong>fitWidth</strong> - Adapta o tamanho do child de acordo com a largura do Widget pai
-* <strong>none</strong> - Anula os efeitos do FittedBox
-
-
-<h2>FractionallySizedBox</h2>
-
-
-O FractionallySizedBox é um Widget que dimensiona um Widget child definido uma fração do valor disponível para ser oculpado. Essa fração é definida por um Factor, podendo ser aplicado ao height ou width do Widget, sendo ambos atributos da classe FractionallySizedBox(). Esses atributos recebem um double como definição de espaçamento. A seguir há um exemplo de uso do FractionallySizedBox():
-
-    Row(
-     mainAxisAlignment: MainAxisAlignment.center,
-     children: <Widget>[
-      Container(
-       color: Colors.white,
-       height: 200,
-       width: 200,
-       margin: EdgeInsets.all(10),
-       alignment: Alignment.center,
-       child: FractionallySizedBox(
-         heightFactor: 1.0,
-         widthFactor: 0.6,
-         child: Container(
-           decoration: BoxDecoration(color: Colors.yellow),
-         ),
-       )),
-       Container(
-        color: Colors.white,
-        height: 200,
-        width: 200,
-        margin: EdgeInsets.all(10),
-        alignment: Alignment.center,
-        child: FractionallySizedBox(
-          heightFactor: 0.6,
-          widthFactor: 1.0,
-          child: Container(
-            decoration: BoxDecoration(color: Colors.yellow),
-          ),
-        ))
-      ])
-
-O quanto um child oculpa é definido por uma escala de 0.1(10%) a 1.0(100%). No exemplo acima é definido que o child do primeiro container irá oculpar 100% dos 200px de altura e 60% dos 200px de largura, o inverso ocorre com o segundo container. A imagem a seguir ilustra como o exemplo irá se compoirtar:
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129613215-bae89f68-51e4-49f9-845e-a2837b19472b.png">
-</div>
-
-Os principais Factores da classe FractionallySizedBox() são:
-
-* <strong>heightFactor</strong> - Fator de altura
-* <strong>widthFactor</strong> - Fator de largura
-
-
-<h2>LimitedBox</h2>
-
-
-Muitos Widgets child seguem as dimenções dos widgets que os carregam, limitando seu tamanho de acrodo com o tamanho disponível. Há casos em que as dimensões dos Widgets pais não são definidas, como em ListView, Column ou Row. Nestes casos é possível utilizar o LimitedBox, cuja função é definir um tamanho padrão a ser seguido. A seguir há um exemplo de uso do LimitedBox:
-
-    ListView(
-     children: [
-      for (var i = 0; i < 10; i++)
-       LimitedBox(
-        maxHeight: 200,
-        maxWidth: 200,
-        child: Container(
-         margin: EdgeInsets.all(1),
-         decoration: BoxDecoration(color: Colors.white),
-       ),
-      ),
-     ],
-    )
-
-O exemplo usa um ListView como Widget pai, tembém utiliza um Loop for para gerar uma sequência de Containers(child) aos quais será aplicado o LimitedBox. A imagems a seguir ilustram como o exemplo irá se comportar:
-
-<br>
-
-<div align="center">
-  <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788819-d2686a00-cba6-11eb-8519-6da69e4b19ec.png">
-  <img width="35%" src="https://user-images.githubusercontent.com/61476935/121788837-2410f480-cba7-11eb-90b8-8b8fd48b7264.png">
-</div>
-
-<br>
-
-O LimitedBox define um tamanho padrão máximo para todos os containers que foram gerados, permitindo um scroll cujo limite é o último índice do ListView, isso é possível graças aos atributos a seguir:
-
-* <strong>maxHeight</strong> - Altura máximo de um child
-* <strong>maxWidth</strong> - Largura máxima de um child
-
-
-<h2>Padding</h2>
-
-
-O padding define o espaçamento externo que um Widget terá com relação aos outros elementos da estrutura. Um padding é definido a partir do espaço que um Widget oculpa, diminuindo seu tamanho e substituindo esse espaço por um espaço vazio. A seguir há um exemplo de uso do Widget padding():
-
-
-    Padding(
-      padding: EdgeInsets.all(100),
-      child: Container(
-        decoration: BoxDecoration(color: Colors.yellow),
-      ),
-    )
-
-
-Um padding é definido através do atributo padding que recebe um EdgeInsets, Wideget responsável por definir um conjunto imutável de deslocamento em cada uma das quatro direções cardeais. Por isso é possível definir um padding para cada direção individulmente ou para todos igualmente. No exemplo acima, são definidos 100px de espaçamento entre o Widget pai e o child. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/129613351-1d15acfa-cdbb-412a-9910-991b609deb99.png">
-</div>
-
-
-<h2>EdgeInsets</h2>
-
-
-Anteriormente mencionado, o EdgeInsets define dimensionamento nas quatro direções existentes em um Widget. É normalmente associado a definição de margins e paddings, e possui atributos especificando para qual direção será aplicado o espaçamento. Estes são:
-
-
-<h3>EdgeInsets.all(value)</h3>
-
-
-Define que o espaçamento será aplicado nas quatro direções cardinais:
-
-    Container(
-     height: 90,
-     width: 200,
-     color: Colors.yellow,
-     margin: EdgeInsets.all(10),
-     padding: EdgeInsets.all(10),
-     child: Container(
-       color: Colors.orange,
-       alignment: Alignment.center,
-       child: Text('All', style: TextStyle(fontSize: 20)),
-     )),
-
-
-<h3>EdgeInsets.only(left: value)</h3>
-
-
-Define que o espaçamento será aplicado apenas a esquerda:
-
-    Container(
-     height: 90,
-     width: 200,
-     color: Colors.yellow,
-     margin: EdgeInsets.all(10),
-     padding: EdgeInsets.only(left: 140),
-     child: Container(
-       color: Colors.orange,
-       alignment: Alignment.center,
-       child: Text('left only', style: TextStyle(fontSize: 20)),
-     )), 
-
-
-<h3>EdgeInsets.only(right: value)</h3>
-
-
-Define que o espaçamento será aplicado apenas a direita:
-
-    Container(
-      height: 90,
-      width: 200,
-      color: Colors.yellow,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.only(right: 65),
-      child: Container(
-        color: Colors.orange,
-        alignment: Alignment.center,
-        child: Text('right only', style: TextStyle(fontSize: 20)),
-      )),
-
-
-<h3>EdgeInsets.only(top: value)</h3>
-
-
-Define que o espaçamento será aplicado apenas no topo:
-
-    Container(
-      height: 90,
-      width: 200,
-      color: Colors.yellow,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.only(top: 65),
-      child: Container(
-        color: Colors.orange,
-        alignment: Alignment.center,
-        child: Text('Top only', style: TextStyle(fontSize: 20)),
-      )),
-
-
-<h3>EdgeInsets.only(bottom: value)</h3>
-
-
-Define que o espaçamento será aplicado apenas no bottom:
-
-    Container(
-      height: 90,
-      width: 200,
-      color: Colors.yellow,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.only(bottom: 30),
-      child: Container(
-        color: Colors.orange,
-        alignment: Alignment.center,
-        child: Text('Bottom only', style: TextStyle(fontSize: 20)),
-      )),
-
-
-<h3>EdgeInsets.symmetric(vertical: value, horizontal: value)</h3>
-
-
-Define o espaçamento vertical e horizontalmente:
-
-    Container(
-      height: 90,
-      width: 200,
-      color: Colors.yellow,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 55),
-      child: Container(
-        color: Colors.orange,
-        alignment: Alignment.center,
-        child: Text('Symmetric', style: TextStyle(fontSize: 20)),
-      )),
-
-
-<h3>EdgeInsets.fromLTRB(left, right, top, bottom)</h3>
-
-
-Define um espaçamento único para cada direção:
-
-    Container(
-     height: 90,
-     width: 200,
-     color: Colors.yellow,
-     margin: EdgeInsets.all(10),
-     padding: EdgeInsets.fromLTRB(10, 30, 50, 90),
-     child: Container(
-       color: Colors.orange,
-       alignment: Alignment.center,
-       child: Text('Symmetric', style: TextStyle(fontSize: 20)),
-     )
-    ),
-
-
-Cada definição aceita números inteiros e decimais como valor de espaçamento, sendo esses definidos em pixels
-
-
-<h2>SizedBox</h2>
-
-
-O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
-
-
-    SizedBox(
-        width: 300.0,
-        height: 300.0,
-        child: Card(
-          color: Colors.blue[800],
-        ),
-      )
-
-
-<h2>Transform</h2>
-
-
-O Widget Transform aplica uma série de efeitos sobre seu child antes da renderização. Possui muitas funcinalidades aplicáveis à interação com o usuário, tais como a rotação de um Widget em seu eixo, transições, bouncy carousel e inúmeras outras customizações. Essas transformações são criadas com o uso de Constructors específicos, estes são:
-
-
-<h3>Transform()</h3>
-
-
-Principal constructor da classe, cuja principal propriedade é a transform e esta recebe um Matrix4. O Matrix4 é uma classe cuja função é definir um eixo na matriz de rotação do Widget ao qual ela é aplicada. A seguir temos um exemplo de uso do Transform():
-
-
-    Transform(
-       transform: Matrix4.skewY(0.3)..rotateZ(-9 / 48.0),
-       child: Container(
-         height: 150,
-         width: 150,
-         color: Colors.white,
-       ),
-     )
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121811712-96331900-cc3b-11eb-9f44-9a9f0cb5c112.png">
-</div>
-
-
-<h3>Transform.rotate()</h3>
-
-
-O rotate, cuja principal propriedade é o angle, recebe um ângulo de definição que rotaciona o Widget. O ângulo é dado pela razão entre dois valore ou pelo resultado da operação. A seguir temos um exemplo de uso do Transform.rotate():
-
-
-    Transform.rotate(
-      angle: 3 / 4, // 45 deg)
-      child: Container(
-        height: 150,
-        width: 150,
-        color: Colors.white,
-      ),
-    ),
-
-
-<div align="center">
-  <img src="https://user-images.githubusercontent.com/61476935/121811740-aa771600-cc3b-11eb-8daa-778835fed838.png">
-</div>
-
-
-<h2>Scrolling</h2>
-
-
-Qualquer aplicativo conta com um scroll, mesmo mínimo, como forma de navegação. O Flutter conta com uma série de tipos e definiçãos de scroll, todos relacionados a classe Scrollable. A classe Scrollable implemanta o modelo de interação para um scrollable Widget, incluindo reconhecimento de gestos, mas não modifica como a janela de visualização, que realmente exibe os children, é construída.
-
-É incomum criar diretamente utilizando a classe Scrollable, no lugar disso considere utilizar um ListView ou GridView, os quais combinam rolagem, janela de visualização e um modelo de layout. Os principais Scrollable Widgets são:
-
-
-<h2>ListView</h2>
-
-
-O ListView é a forma mais comum de uso da Scrollable classe. Ela agrupa uma lista de items em uma Scrollable lits definidos na propriedade children, comum a Widgets que agrupam outros Widgets, como Row e Column. Também é possível definir a direção de exibição dos children, sendo horizontal ou vertical, ambos definidos na propriedade scrollDirection. A seguir temos um exemplo de uso do ListView():
-
-    ListView(
-     children: [
-      for (var i = 0; i < 10; i++)
-       LimitedBox(
-        maxHeight: 200,
-        maxWidth: 200,
-        child: Container(
-         margin: EdgeInsets.all(1),
-         decoration: BoxDecoration(color: Colors.white),
-       ),
-      ),
-     ],
-    )
-
-O exemplo define uma sequência de Widgets child, cada um oculpando determinado espaço dentro da lista. Caso uma lista atinja um tamnho maior que o grid da tela, ela passa a ser scrollable, sendo possível acessar os items fora da lista com um scroll. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177205-d5f2cd4b-3ba7-4cb6-97e9-c9b24602fce8.gif">
-</div>
-
-
-<h2>ListView.builder()</h2>
-
-
-O ListView.builder() é utilizado para gerar uma lista dinamicamente, removendo um item da View caso este seja removido da lista. A seguir temos um exemplo de uso do ListView.builder():
-
-
-    class _MyHomePageState extends State<MyHomePage> {
-
-     final List<String> children = <String>['First', 'Second', 'Third', 'Four', 'Fifth', 'Sixth'];
-        
-      @override
-      Widget build(BuildContext context) {
-       return Scaffold(
-        body: Container(
-          alignment: Alignment.center,
-          child: ListView.builder(
-            itemCount: children.length,
-            itemBuilder: (BuildContext context, int index) {
-             return Container(
-               height: 200,
-               width: 200,
-               margin: EdgeInsets.only(bottom: 1),
-               decoration: BoxDecoration(color: Colors.blue[800]),
-               child: Center(child: Text('${children[index]}'),
-              ),
-            );
-          }),
-        ));
-       }
-     }
-
-
-O exemplo acima gera uma lista de seis items, estes sendo definidos em um String List. O liste builder usa das propriedades itemCount e itemBuilder para, respectivamente, definir o length do Array children e fazer um build. O build gera um container para cada item na lista, que recebe a string correspondente a sua posição equivalente na lista children. A imagem a seguir ilustra como o exemplo irá se comportar:
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151181779-65d1b9d4-e22f-469e-863a-e5afef762b80.gif">
-</div>
-
-
-<h2>ListView.separated()</h2>
-
-
-Além disso, também é possível tratar o espaçamento entre cada índice da lista. O ListView.separated faz uso da propriedade separatorBuilder, que recebe uma definição de espaçamento. A seguir tempos um exemplo de uso do ListView.separated:
-
-
-    ListView.separated(
-      padding: const EdgeInsets.all(8),
-      itemCount: children.length,
-      separatorBuilder: (BuildContext context, int index) => const Divider(),
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          height: 100,
-          color: Colors.orange[colorCodes[index]],
-          child: Center(child: Text('${children[index]}')),
-        );
-      }
-    )
-
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818626-b7f1c780-cc5e-11eb-99ac-3c3ef82bae39.png">
-</div>
-
-
-<h2>GridView</h2>
-
-
-O GridView é uma outra forma de dimensionar os elementos de uma lista, podendo determinar quantos Widgets por eixo transversal a lista irá exibir. É normalmente utilizado o GridView em conjunto com o constructor count. A seguir temos um exemplo de uso do GridView.count():
-
-
-    GridView.count(
-     crossAxisCount: 4,
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          child: Text('first'),
-          color: Colors.orange[100],
-        )
-        ...
-        
-      ],
-    )
-    
-
-Os elementos children do GridView são alinhados de acordo com o valor int de elementos por eixo, isso pode ser aplicado a uma lista mais longa de elementos. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177391-48cbad0d-33b5-41b7-afc6-1db2df87172c.gif">
-</div>
-
-Também é possível definir um espaçamento padrão para cada eixo. O espaçamento horizontal é definido através do  mainAxisSpacing: double value:
-
-    GridView.count(
-      crossAxisCount: 4,
-      mainAxisSpacing: 20.0,
-      children: <Widget>[
-        Container(
-          alignment: Alignment.center,
-          child: Text('first'),
-          color: Colors.orange[100],
-        ),
-        ...
-        
-      ],
-    )
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818644-d8218680-cc5e-11eb-9e07-bb7b760e4545.png">
-</div>
-  
-O mesmo pode ser dito quanto ao espaçamento vertical, que é definido a partir da propriedade crossAxisSpacing: double value:
-
-     GridView.count(
-       crossAxisCount: 4,
-       crossAxisSpacing: 20.0,
-       children: <Widget>[
-         Container(
-           alignment: Alignment.center,
-           child: Text('first'),
-           color: Colors.orange[100],
-         ),
-         ...
-         
-       ],
-     )
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/121818847-28e5af00-cc60-11eb-8730-92d04cfbc3be.png">
-</div>
-
-
-<h2>PageView</h2>
-
-
-O PageView, assim como os Widgets anteriores, define uma Scrollable List. Neste caso, cada índice da List é forçado a preencher o espaço correspondente a viewport, ou seja, cada índice passa a ser uma página do app. O PageView é definido em conjunto com um PageControll, que por sua vez declara qual das página(índice) será visto primeiro. A seguir temos um exmplo de uso do PageView():
-
-    class MyApp extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-        return MaterialApp(title: "My App", home: Scaffold(body: MyHomePage()));
-      }
-    }
-    
-    class MyHomePage extends StatelessWidget {
-      @override
-      Widget build(BuildContext context) {
-       final PageController controller = PageController(initialPage: 0);
-       return PageView(
-         scrollDirection: Axis.horizontal,
-         controller: controller,
-         children: <Widget>[
-           Container(
-             color: Colors.blue[700],
-             alignment: Alignment.center,
-             child: Text('First Page'),
-           ),
-           Container(
-             color: Colors.blue[800],
-             alignment: Alignment.center,
-             child: Text('Second Page'),
-           ),
-           Container(
-             color: Colors.blue[900],
-             alignment: Alignment.center,
-             child: Text('Third Page'),
-           )
-         ]);
-       }
-     }
-
-
-Perceba que em casos de uso do PageView, o mesmo é definido como estrutura padrão, neste caso sendo retornado pela principal classe da main.dart file. Também é importante observar o PageController(initialPage: 0);, que trata de aplicar a posição que dever ser exibida primeiro. A imagem a seguir ilustra como o exemplo acima irá se comportar:
-
-<br>
-
-<div align="center">
-  <img width="50%" src="https://user-images.githubusercontent.com/61476935/151177649-48069171-1659-4f87-ad36-db7f49339849.gif">
-</div>
-
-<br>
-
-Também é possível redefinir a direção do scroll, que por padrão é Axis.horizontal. Para definir o scroll como vertical usa-se o Axis.vertical. Veja um exemplo:
-
-    PageView(
-      scrollDirection: Axis.vertical,
-      controller: controller,
-      children: <Widget>[
-        
-        ...
-
-      ],
-    ); -->
 
 <br>
 
