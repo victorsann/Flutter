@@ -1102,18 +1102,21 @@ Um TextButton é bastante parecido com os demais tipos, onde também é possíve
 
 Um Container é um Widget de estruturação que combina widgets comuns de pinting, posicionamento e dimensionamento, de forma parecida a uma Column ou Row. Um container provê definições para os Widgets que ele contém, por isso é definido como um Widget de estruturação, essas definições incluem margens, paddings, cor, width, height etc. Exemplo de declaração de um Container:
 
-    Center(
-      child: Container(
-        alignment: Alignment.center,
-        child: Center(child: Text("Children")),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15), color: Colors.white),
-        height: 300,
-        width: 300,
-        margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.all(10),
+    Container(
+      height: 300,
+      width: 300,
+      alignment: Alignment.center,
+      margin: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15), 
+        color: Colors.white,
       ),
-    )
+      child: Center(
+        child: Text("Children"),
+      ),
+    ),
+
 
 Neste caso o Container define um espaçamento padrão e um cor para si. Para criar um novo Widget dependente do Container, basta definir para ele um child. Resultado do exemplo acima:
 
@@ -1909,12 +1912,12 @@ Cada definição aceita números inteiros e decimais como valor de espaçamento,
 O SizedBox é um Widget cujas definições de height e width são herdadas por seu child. Essas definições são feitas a partir das propriedades width e height, definidas em pixels. A seguir há um exemplo de uso do SizedBox:
 
     SizedBox(
-        width: 300.0,
-        height: 300.0,
-        child: Card(
-          color: Colors.blue[800],
-        ),
-      )
+      width: 300.0,
+      height: 300.0,
+      child: Card(
+        color: Colors.blue[800],
+      ),
+    )
 
 <h2>Transform</h2>
 
