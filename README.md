@@ -357,7 +357,7 @@ Este overview será dividido nas seguintes seções:
 6. Integrando o Flutter com outro código: Informações sobre diferentes técnicas disponíveis para aplicativos Flutter
 7. Suporte para a web: Considerações finais sobre as características do Flutter em um ambiente de navegador
 
-<h2>Architectural layers</h2>
+<h1>Architectural layers</h1>
 
 O Flutter foi desenvolvido como um sistema extensível de camadas, resultando numa série de bibliotecas independentes, onde cada qual depende da camada subjacente. Nenhuma camada possue provilégios de acesso à camada abaixo, e cada parte do framework foi desenvolvida como opcional e substituível. A imagem a seguir exemplifica a descrição:
 
@@ -823,7 +823,7 @@ Também definidos como um low-level approach, o uso dos InheritedWidget & Inheri
 <h2>Fish-Redux</h2>
 
 
-<h1>BLoC / Rx</h1>
+<h2>BLoC / Rx</h2>
 
 O BLoC, ou Business Logic Component, é um modelo de <i>state management</i> bastante utilizado pela comunidade flutter, sendo um dos primeiros a ser implementado. Com a premissa de separar regra de négocio, UI e gerenciamento de estado, a ferramenta foi desenvolvida com base em três pilares:
 
