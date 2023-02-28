@@ -456,7 +456,7 @@ Para aplicações web <i>release mode</i> configura:
 - A compilação é minificada e o tremor da árvore foi realizado.
 - O aplicativo é compilado no [dart2js](https://dart.dev/tools/dart2js) para melhor desempenho.
 
-O comando <i>flutter run --release</i> compila o app em <i>release mode</i.
+O comando <i>flutter run --release</i> compila o app em <i>release mode</i>.
 
 <h2>Profile</h2>
 
