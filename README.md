@@ -435,12 +435,11 @@ Para aplicações web <i>debug mode</i> configura:
 - A compilação não foi minificada e o tremor da árvore não foi executado.
 - O app é compilado com o compilador [dartdevc](https://dart.dev/tools/dartdevc) para facilitar a depuração.
 
-Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por IDEs como o Android Studio e VSCode que possuem meios próprios de monitorar o estado da depuração em execução.
+Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por IDEs como o Android Studio e VSCode que possuem meios próprios de monitorar o estado da depuração em execução. Além disso, cabe destacar que:
 
-> Nota: 
-> A ferramenta Hot reload funciona apenas em debug mode.<br>
-> O emulador e o simulador só executam apps em debug mode.<br>
-> O desempenho do aplicativo pode ser instável no modo de depuração.
+- A ferramenta Hot reload funciona apenas em debug mode.<br>
+- O emulador e o simulador só executam apps em debug mode.<br>
+- O desempenho do aplicativo pode ser instável no modo de depuração.
 
 
 <h1>Reactive UI</h1>
