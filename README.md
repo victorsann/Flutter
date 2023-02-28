@@ -419,7 +419,7 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 
 <h1>Build Modes</h1>
 
-As ferramentas do Flutter suportam três modos ao compilar m aplicativo mais um modo headless para teste. O modo de compilação a ser utilizado dependendo de onde o aplicativo se encontra no ciclo de desenvolvimento. Os cenários em que cada um dos módulos é utilizado e suasrespectivas definições serão abordados a seguir:
+As ferramentas do Flutter suportam três modos ao compilar um aplicativo mais um modo headless para teste. O modo de compilação a ser utilizado depende de onde o aplicativo se encontra no ciclo de desenvolvimento. Os cenários em que cada um dos módulos é utilizado e suas respectivas definições serão abordados a seguir:
 
 <h2>Debug</h2>
 
@@ -441,6 +441,37 @@ Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por
 - O emulador e o simulador só executam apps em debug mode.<br>
 - O desempenho do aplicativo pode ser instável no modo de depuração.
 
+<h2>Release</h2>
+
+O <i>release mode</i> é utilizado ao fazer o deploy da aplicação, quando a otimização máxima e o mínimo de consumo do sistema são necessários. Em dispositivos móveis, <i>release mode</i> (que não é compatível com o simulador ou emulador) configura:
+
+- As [asserções](https://dart.dev/guides/language/language-tour#assert) estão desabilitadas.
+- As informações de depuração são removidas.
+- A depuração está desabilitada.
+- A compilação é otimizada para inicialização rápida, execução rápida e menor ocupação de memória.
+- As extensões de serviço estão desabilitadas.
+
+Para aplicações web <i>release mode</i> configura:
+
+- A compilação é minificada e o tremor da árvore foi realizado.
+- O aplicativo é compilado no [dart2js](https://dart.dev/tools/dart2js) para melhor desempenho.
+
+O comando <i>flutter run --release</i> compila o app em <i>release mode</i.
+
+<h2>Profile</h2>
+
+No <i>profile mode</i>, algumas capacidades de depuração são mantidas - o suficiente para criar o perfil do desempenho da aplicativo. Em <i>profile mode</i> tanto o uso do emulador quanto do simulador estão desabilitados, pois seu comportamento não é representativo do desempenho real. Em um smartphone, o <i>profile mode</i> é semelhante ao release mode, com as seguintes diferenças:
+
+- Algumas extensões de serviço, como a que habilita a sobreposição de desempenho, estão habilitadas.
+- O rastreamento é ativado e as ferramentas que suportam a depuração no nível da fonte (como o [DevTools](https://docs.flutter.dev/development/tools/devtools)) podem se conectar ao processo.
+
+Para aplicações web <i>profile mode</i> configura:
+
+- A compilação não foi minificada, mas o tremor da árvore foi realizado.
+- O aplicativo é compilado no [dart2js](https://dart.dev/tools/dart2js).
+- O DevTools não pode se conectar a um aplicativo da Web Flutter em execução no profile mode. Neste caso o Chrome DevTools o substitui, gerando eventos de linha do tempo para um aplicativo da web.
+
+O comando <i>flutter run --profile</i> compila no modo de perfil.
 
 <h1>Reactive UI</h1>
 
