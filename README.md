@@ -438,8 +438,8 @@ Para aplicações web <i>debug mode</i> configura:
 Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por IDEs como o Android Studio e VSCode que possuem meios próprios de monitorar o estado da depuração em execução.
 
 > Nota: 
-> A ferramenta Hot reload funciona apenas em debug mode.
-> O emulador e o simulador só executam apps em debug mode.
+> A ferramenta Hot reload funciona apenas em debug mode.<br>
+> O emulador e o simulador só executam apps em debug mode.<br>
 > O desempenho do aplicativo pode ser instável no modo de depuração.
 
 
