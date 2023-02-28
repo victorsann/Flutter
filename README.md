@@ -417,11 +417,11 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 - Compõe as partes expostas pela API específica da plataforma do Embedder em um pacote executável na plataforma de destino.
 - Parte do modelo de aplicativo gerado pelo <i>flutter create</i>, de propriedade do desenvolvedor.
 
-<h2>Build Modes</h2>
+<h1>Build Modes</h1>
 
 As ferramentas do Flutter suportam três modos ao compilar m aplicativo mais um modo headless para teste. O modo de compilação a ser utilizado dependendo de onde o aplicativo se encontra no ciclo de desenvolvimento. Os cenários em que cada um dos módulos é utilizado e suasrespectivas definições serão abordados a seguir:
 
-<h3>Debug</h3>
+<h2>Debug</h2>
 
 No <i>debug mode</i>, o aplicativo é configurado para depuração no dispositivo físico, emulador ou simulador. O <i>debug mode</i> configura:
 
@@ -438,7 +438,6 @@ Para aplicações web <i>debug mode</i> configura:
 Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por IDEs como o Android Studio e VSCode que possuem meios próprios de monitorar o estado da depuração em execução.
 
 > Nota: 
-
 > A ferramenta Hot reload funciona apenas em debug mode.
 > O emulador e o simulador só executam apps em debug mode.
 > O desempenho do aplicativo pode ser instável no modo de depuração.
