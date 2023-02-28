@@ -375,7 +375,7 @@ No núcleo do Flutter está a <b>Flutter Engine</b>, que é em sua maioria um c�
 
 >A engine é acessada atrevés da biblioteca [dart:ui](https://github.com/flutter/engine/tree/main/lib/ui), que envolve o código C++ subjacente nas classes Dart.
 
-Normalmente os desenvolvedores interagem com o Flutter por meio do framework propiamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataformas, layouts e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
+Normalmente os desenvolvedores interagem com o Flutter por meio do framework propriamente dito, que fornece uma estrutura reativa e moderna escrita em Dart. Ele inclui um rico conjunto de plataformas, layouts e bibliotecas fundamentais, composto por uma série de camadas. Analisando de baixo para cima, temos:
 
 - Classes base ([foundational](https://api.flutter.dev/flutter/foundation/foundation-library.html)) e building block services como [animation](https://api.flutter.dev/flutter/animation/animation-library.html), [painting](https://api.flutter.dev/flutter/painting/painting-library.html), e [gestures](https://api.flutter.dev/flutter/gestures/gestures-library.html)
 - A camada de renderização ([rendering layer](https://api.flutter.dev/flutter/rendering/rendering-library.html)), que fornece uma abstração para lidar com o layout e permite construir uma árvore de objetos renderizáveis que podem ser manipulados dinamicamente
@@ -386,7 +386,7 @@ A estrutura do Flutter é relativamente pequena; muitos recursos de nível super
 
 <h2>Anatomia de um App Flutter</h2>
 
-O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda que o acompanha esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter.<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219654930-99fdb33a-4038-40cc-acbc-eb66b1b99bdb.png">
+O diagrama a seguir fornece uma visão geral das partes que compõem um aplicativo Flutter gerado pelo <i>flutter create</i>. Ele mostra onde a engine do Flutter se situa nesta stack, destaca os limites da API e identifica os repositórios onde as peças individuais residem. A legenda que o acompanha esclarece parte da terminologia comumente usada para descrever as partes de um aplicativo Flutter:<img align="right" style="width: 400px;" src="https://user-images.githubusercontent.com/61476935/219654930-99fdb33a-4038-40cc-acbc-eb66b1b99bdb.png">
 
 <h3>Dart App</h3>
 
@@ -396,8 +396,8 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
 
 <h3>Framework</h3>
 
-- Fornece API de nível superior para criar aplicativos de alta qualidade (widgets, hit-testing, gestos, acessibilidade, input).
-- Compõe a árvore de widgets do aplicativo em um cenário.
+- Fornece uma API de nível superior para criar aplicativos de alta qualidade (widgets, hit-testing, gestos, acessibilidade, input).
+- Compõe um cenário a partir da árvore de widgets do aplicativo.
 
 <h3>Engine</h3>
 
@@ -416,6 +416,33 @@ O diagrama a seguir fornece uma visão geral das partes que compõem um aplicati
  
 - Compõe as partes expostas pela API específica da plataforma do Embedder em um pacote executável na plataforma de destino.
 - Parte do modelo de aplicativo gerado pelo <i>flutter create</i>, de propriedade do desenvolvedor.
+
+<h2>Build Modes</h2>
+
+As ferramentas do Flutter suportam três modos ao compilar m aplicativo mais um modo headless para teste. O modo de compilação a ser utilizado dependendo de onde o aplicativo se encontra no ciclo de desenvolvimento. Os cenários em que cada um dos módulos é utilizado e suasrespectivas definições serão abordados a seguir:
+
+<h3>Debug</h3>
+
+No <i>debug mode</i>, o aplicativo é configurado para depuração no dispositivo físico, emulador ou simulador. O <i>debug mode</i> configura:
+
+- As [asserções](https://dart.dev/guides/language/language-tour#assert) estão habilitadas.
+- As extensões de serviço estão habilitadas.
+- A compilação é otimizada para desenvolvimento rápido e ciclos de execução (mas não para velocidade de execução, tamanho binário ou implantação).
+- A depuração está habilitada e as ferramentas que suportam a depuração no nível da fonte (como o DevTools) podem se conectar ao processo.
+
+Para aplicações web <i>debug mode</i> configura:
+
+- A compilação não foi minificada e o tremor da árvore não foi executado.
+- O app é compilado com o compilador [dartdevc](https://dart.dev/tools/dartdevc) para facilitar a depuração.
+
+Por padrão, o <i>flutter run</i> compila em debugging mode, build suportado por IDEs como o Android Studio e VSCode que possuem meios próprios de monitorar o estado da depuração em execução.
+
+> Nota: 
+
+> A ferramenta Hot reload funciona apenas em debug mode.
+> O emulador e o simulador só executam apps em debug mode.
+> O desempenho do aplicativo pode ser instável no modo de depuração.
+
 
 <h1>Reactive UI</h1>
 
