@@ -2580,15 +2580,15 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 O Bloc faz uso de uma série de widget para compor um ambiente de desenvolvimento que supre as principais necessidades que o desenvolvedor possa vir a ter. Eles são:
 
-<h2>BlocBuilder</h2>
-<h2>BlocSelector</h2>
-<h2>BlocProvider</h2>
-<h2>MultiBlocProvider</h2>
-<h2>BlocListener</h2>
-<h2>MultiBlocListener</h2>
-<h2>BlocConsumer</h2>
-<h2>RepositoryProvider</h2>
-<h2>MultiRepositoryProvider</h2>
+<h3>BlocBuilder</h3>
+<h3>BlocSelector</h3>
+<h3>BlocProvider</h3>
+<h3>MultiBlocProvider</h3>
+<h3>BlocListener</h3>
+<h3>MultiBlocListener</h3>
+<h3>BlocConsumer</h3>
+<h3>RepositoryProvider</h3>
+<h3>MultiRepositoryProvider</h3>
 
 <h2>Galeria</h2>
 
