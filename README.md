@@ -2581,7 +2581,33 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 O Bloc faz uso de uma série de widget para compor um ambiente de desenvolvimento que supre as principais necessidades que o desenvolvedor possa vir a ter. Eles são:
 
 <h3>BlocBuilder</h3>
+
+O <i>BlocBuilder</i> faz uso de um elemento <i>bloc</i> e de um função <i>builder</i>, funcionando de forma similar a um <i>StreamBuilder</i>, se atem a responsabilidade de gerenciar o contexto de crição de determinada parte da interface mediante mudanças de estado. A propriedade builder(responsável por recriar a parte correspondente ao estado na interface) deve, portanto, ser uma [função pura](https://en.wikipedia.org/wiki/Pure_function) que retorna um widget em resposta as variações de estado da UI:
+
+    BlocBuilder<BlocA, BlocAState>(
+      bloc: blocA, // provide the local bloc instance
+      builder: (context, state) {
+        // return widget here based on BlocA's state
+      }
+    )
+
+Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocBuilder</i> irá executar automaticamente uma pesquisa usando BlocProvider e o BuildContext atual. Um <i>bloc</i> só deve ser especificado caso seu escopo envolva apenas um único widget e este não seja acessível por meio de um BlocProvider pai e do BuildContext atual.
+
+Para um controle refinado sobre quando a função do construtor é chamada, um <i>buildWhen</i> opcional pode ser fornecido. <i>buildWhen</i> obtem o estado anterior do bloc e seu estado atual e retorna um booleano. Caso o buildWhen retorne true, o <i>builder method</i> será chamado com o estado e o widget será reconstruído. Caso o buildWhen retorne false, nenhuma rebuild irá ocorrer:
+
+    BlocBuilder<BlocA, BlocAState>(
+      buildWhen: (previousState, state) {
+        // return true/false to determine whether or not
+        // to rebuild the widget with state
+      },
+      builder: (context, state) {
+        // return widget here based on BlocA's state
+      }
+    )
+
 <h3>BlocSelector</h3>
+
+
 <h3>BlocProvider</h3>
 <h3>MultiBlocProvider</h3>
 <h3>BlocListener</h3>
