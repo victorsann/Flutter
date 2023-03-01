@@ -2507,7 +2507,7 @@ O exemplo a seguir demonstra a criação de um counter cujo estado será gerenci
     
     }
 
-A classe CounterBloc irá extender da classe Bloc, onde serão declarados o tipo de evento recebido, sendo desta vez uma classe abstrata <i>CounterEvents</i>, cuja classe filha será usada como evento emissor.
+A classe CounterBloc irá extender da classe Bloc, onde será declarado o tipo de evento recebido, sendo desta vez uma classe abstrata <i>CounterEvents</i>, cuja classe filha será usada como evento emissor.
 
 O próximo passo é declarar um event handler, o qual será responsável por tratar um tipo específico de evento e somente ele. Para delcarar um event handle, adicione um constructor a classe <i>CounterBloc</i> definindo um <i>initialState</i>, e, posteriormente, o método ```on```:
 
@@ -2517,7 +2517,7 @@ O próximo passo é declarar um event handler, o qual será responsável por tra
       });
     }
 
-O método <i>on</i> recebe o tipo de evento com pelo qual se responsabilizará. Como parâmetro é declarada uma função anônica, e esta, por sua vez, recebe o evento em si (o qual pode ser acessado a qualquer momento) e um Emitter, cuja função é permitir disparar novos estados a partir do event. 
+O método <i>on</i> recebe o tipo de evento pelo qual se responsabilizará. Como parâmetro é declarada uma função anônica, e esta, por sua vez, recebe o evento em si (o qual pode ser acessado a qualquer momento) e um Emitter, cuja função é permitir disparar novos estados a partir do event. 
 
 <h2>Monitorando um Bloc</h2>
 
@@ -2578,8 +2578,19 @@ A imagem a seguir ilustra como o exemplo irá se comportar:
 
 <h2>Bloc Widgets</h2>
 
+O Bloc faz uso de uma série de widget para compor um ambiente de desenvolvimento que supre as principais necessidades que o desenvolvedor possa vir a ter. Eles são:
 
+<h2>BlocBuilder</h2>
+<h2>BlocSelector</h2>
+<h2>BlocProvider</h2>
+<h2>MultiBlocProvider</h2>
+<h2>BlocListener</h2>
+<h2>MultiBlocListener</h2>
+<h2>BlocConsumer</h2>
+<h2>RepositoryProvider</h2>
+<h2>MultiRepositoryProvider</h2>
 
+<h2>Galeria</h2>
 
 
 <h2>GetIt</h2>
