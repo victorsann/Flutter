@@ -2593,7 +2593,7 @@ O <i>BlocBuilder</i> faz uso de um elemento <i>bloc</i> e de um função <i>buil
 
 Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocBuilder</i> irá executar automaticamente uma pesquisa usando BlocProvider e o BuildContext atual. Um <i>bloc</i> só deve ser especificado caso seu escopo envolva apenas um único widget e este não seja acessível por meio de um BlocProvider pai e do BuildContext atual.
 
-Para um controle refinado sobre quando a função do construtor é chamada, um <i>buildWhen</i> opcional pode ser fornecido. <i>buildWhen</i> obtem o estado anterior do bloc e seu estado atual e retorna um booleano. Caso o buildWhen retorne true, o <i>builder method</i> será chamado com o estado e o widget será reconstruído. Caso o buildWhen retorne false, nenhuma rebuild irá ocorrer:
+Para um controle refinado sobre quando a build function é chamada, um <i>buildWhen</i> opcional pode ser fornecido. A propriedade <i>buildWhen</i> obtem o estado anterior do bloc e seu estado atual e retorna um boolean. Caso a propriedade retorne true, o <i>builder method</i> será chamado com o estado e o widget será reconstruído. Caso retorne false, nenhuma rebuild irá ocorrer:
 
     BlocBuilder<BlocA, BlocAState>(
       buildWhen: (previousState, state) {
@@ -2607,8 +2607,23 @@ Para um controle refinado sobre quando a função do construtor é chamada, um <
 
 <h3>BlocSelector</h3>
 
+O <i>BlocSelector</i> é um widget com o funcionamento análogo ao de um <i>BlocBuilder</i>, porém, permite a filtragem de atualizações através da seleção de novos valores baseados no bloc state atual. Seu uso permite avitar builds desnecessários caso o valor selecionado não tenha sido alterado. Dessa forma, o valor selecionado deve ser imutável para que seletor possa determinar se a propriedade <i>builder</i> deve ou não ser chamada novamente.
+
+Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocSelector</i> irá performar automaticamente uma pesquisa utilizando o BlocProvider e o contexto atual.
+
+    BlocSelector<BlocA, BlocAState, SelectedState>(
+      selector: (state) {
+        // return selected state based on the provided state.
+      },
+      builder: (context, state) {
+        // return widget here based on the selected state.
+      },
+    )
 
 <h3>BlocProvider</h3>
+
+
+
 <h3>MultiBlocProvider</h3>
 <h3>BlocListener</h3>
 <h3>MultiBlocListener</h3>
