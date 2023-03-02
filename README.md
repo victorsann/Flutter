@@ -2622,10 +2622,89 @@ Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocSelector</i> irá performar
 
 <h3>BlocProvider</h3>
 
+O <i>BlocProvider</i> tem como função disponibilizar um bloc ao widget imediatamente abaixo na hierarquia através da chamada <i>BlocProvider.of<T>(context)</i>. Sendo utilizado para performar injeção de dependências (DI), o <i>BlocProvider</i> dá acesso  a instância única de um bloc para sua subtree. 
 
+Na maioria dos casos, <i>BlocProvider</i> deve ser usado para criar novos blocs que serão disponibilizados para o restante da subtree. Neste caso, como o <i>BlocProvider</i> é o responsável pela criação do bloco, ele cuidará automaticamente do seu fechamento.
+
+    BlocProvider(
+      create: (BuildContext context) => BlocA(),
+      child: ChildA(),
+    );
+
+Por padrão, <i>BlocProvider</i> irá criar a instância em lazily pattern, ou seja, a propriedade create será executada quando o bloc for consultado via <i>BlocProvider.of<BlocA>(context)</i>.
+
+Para evitar esse comportamento e forçar a criação a imediata, a propriedade <i.lazy> pode ser definido como false.
+
+    BlocProvider(
+      lazy: false,
+      create: (BuildContext context) => BlocA(),
+      child: ChildA(),
+    );
+
+Em alguns casos, o <i>BlocProvider</i> pode ser usado para fornecer um bloc existente para uma nova parte da widgets tree. Isso será mais comumente usado quando um bloc existente precisar ser disponibilizado para uma nova rota. Nesse caso, o <i>BlocProvider</i> não fechará automaticamente o bloc, pois não foi ele quem o criou.
+
+    BlocProvider.value(
+      value: BlocProvider.of<BlocA>(context),
+      child: ScreenA(),
+    );
+
+Então, de <i>ChildA</i> ou <i>ScreenA</i>, pode-se recuperar <i>BlocA</i> com:
+
+    // with extensions
+    context.read<BlocA>();
+    
+    // without extensions
+    BlocProvider.of<BlocA>(context);
+
+Porém, os snippets acima resultam em uma pesquisa única e o widget não será notificado sobre as alterações. Para recuperar a instância e assinar as alterações de estado subsequentes, deve-se utilizar:
+
+    // with extensions
+    context.watch<BlocA>();
+    
+    // without extensions
+    BlocProvider.of<BlocA>(context, listen: true);
+
+Além disso, o método <i>context.select</i> pode ser utilizado para recuperar parte de um estado e reagir a mudanças somente quando a parte selecionada sofrer alteração.
+
+    final isPositive = context.select((CounterBloc b) => b.state >= 0);
+
+O trecho acima só sofrerá rebuild caso o estado do <i>CounterBloc</i> mudar de positivo para negativo ou vice-versa e for funcionalmente idêntico ao uso de um <i>BlocSelector</i>.
 
 <h3>MultiBlocProvider</h3>
+
+<i>MultiBlocProvider</i> permite mesclar vários widgets <i>BlocProvider</i> em um. Sua função é melhorar a legibilidade e eliminar a necessidade de aninhar vários BlocProviders. Usando <i>MultiBlocProvider</i> é possível converter:
+
+    BlocProvider<BlocA>(
+      create: (BuildContext context) => BlocA(),
+      child: BlocProvider<BlocB>(
+        create: (BuildContext context) => BlocB(),
+        child: BlocProvider<BlocC>(
+          create: (BuildContext context) => BlocC(),
+          child: ChildA(),
+        )
+      )
+    )
+
+em:
+
+    MultiBlocProvider(
+      providers: [
+        BlocProvider<BlocA>(
+          create: (BuildContext context) => BlocA(),
+        ),
+        BlocProvider<BlocB>(
+          create: (BuildContext context) => BlocB(),
+        ),
+        BlocProvider<BlocC>(
+          create: (BuildContext context) => BlocC(),
+        ),
+      ],
+      child: ChildA(),
+    )
+
 <h3>BlocListener</h3>
+
+
 <h3>MultiBlocListener</h3>
 <h3>BlocConsumer</h3>
 <h3>RepositoryProvider</h3>
