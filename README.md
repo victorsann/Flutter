@@ -2609,7 +2609,7 @@ Para um controle refinado sobre quando a build function é chamada, um <i>buildW
 
 O <i>BlocSelector</i> é um widget com o funcionamento análogo ao de um <i>BlocBuilder</i>, porém, permite a filtragem de atualizações através da seleção de novos valores baseados no bloc state atual. Seu uso permite avitar builds desnecessários caso o valor selecionado não tenha sido alterado. Dessa forma, o valor selecionado deve ser imutável para que seletor possa determinar se a propriedade <i>builder</i> deve ou não ser chamada novamente.
 
-Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocSelector</i> irá performar automaticamente uma pesquisa utilizando o BlocProvider e o contexto atual.
+Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocSelector</i> irá performar automaticamente uma pesquisa utilizando o BlocProvider e o <i>BuildContext</i> atual.
 
     BlocSelector<BlocA, BlocAState, SelectedState>(
       selector: (state) {
@@ -2624,7 +2624,7 @@ Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocSelector</i> irá pe
 
 O <i>BlocProvider</i> tem como função disponibilizar um bloc ao widget imediatamente abaixo na hierarquia através da chamada <i>BlocProvider.of<T>(context)</i>. Sendo utilizado para performar injeção de dependências (DI), o <i>BlocProvider</i> dá acesso  a instância única de um bloc para sua subtree. 
 
-Na maioria dos casos, <i>BlocProvider</i> deve ser usado para criar novos blocs que serão disponibilizados para o restante da subtree. Neste caso, como o <i>BlocProvider</i> é o responsável pela criação do bloco, ele cuidará automaticamente do seu fechamento.
+Na maioria dos casos, <i>BlocProvider</i> deve ser usado para criar novos blocs que serão disponibilizados para o restante da subtree. Nesse caso, como o <i>BlocProvider</i> é o responsável pela criação do bloco, ele cuidará automaticamente do seu fechamento.
 
     BlocProvider(
       create: (BuildContext context) => BlocA(),
@@ -2633,7 +2633,7 @@ Na maioria dos casos, <i>BlocProvider</i> deve ser usado para criar novos blocs 
 
 Por padrão, <i>BlocProvider</i> irá criar a instância em lazily pattern, ou seja, a propriedade create será executada quando o bloc for consultado via <i>BlocProvider.of<BlocA>(context)</i>.
 
-Para evitar esse comportamento e forçar a criação a imediata, a propriedade <i.lazy> pode ser definido como false.
+Para evitar esse comportamento e forçar a criação a imediata, a propriedade <i>lazy</i> pode ser definido como false.
 
     BlocProvider(
       lazy: false,
@@ -2641,14 +2641,14 @@ Para evitar esse comportamento e forçar a criação a imediata, a propriedade <
       child: ChildA(),
     );
 
-Em alguns casos, o <i>BlocProvider</i> pode ser usado para fornecer um bloc existente para uma nova parte da widgets tree. Isso será mais comumente usado quando um bloc existente precisar ser disponibilizado para uma nova rota. Nesse caso, o <i>BlocProvider</i> não fechará automaticamente o bloc, pois não foi ele quem o criou.
+Em alguns casos, o <i>BlocProvider</i> pode ser usado para fornecer um bloc existente para uma nova parte da widget tree. Isso será mais comumente usado quando um bloc existente precisar ser disponibilizado para uma nova rota. Nesse caso, o <i>BlocProvider</i> não fechará automaticamente o bloc, pois ele não foi o responsável por sua criação.
 
     BlocProvider.value(
       value: BlocProvider.of<BlocA>(context),
       child: ScreenA(),
     );
 
-Então, de <i>ChildA</i> ou <i>ScreenA</i>, pode-se recuperar <i>BlocA</i> com:
+Então, de <i>ChildA</i> ou <i>ScreenA</i>, é possível recuperar <i>BlocA</i> com:
 
     // with extensions
     context.read<BlocA>();
@@ -2672,7 +2672,7 @@ O trecho acima só sofrerá rebuild caso o estado do <i>CounterBloc</i> mudar de
 
 <h3>MultiBlocProvider</h3>
 
-<i>MultiBlocProvider</i> permite mesclar vários widgets <i>BlocProvider</i> em um. Sua função é melhorar a legibilidade e eliminar a necessidade de aninhar vários BlocProviders. Usando <i>MultiBlocProvider</i> é possível converter:
+Um <i>MultiBlocProvider</i> permite mesclar vários widgets <i>BlocProvider</i> em um. Sua função é melhorar a legibilidade e eliminar a necessidade de aninhar vários BlocProviders. Usando <i>MultiBlocProvider</i> é possível converter:
 
     BlocProvider<BlocA>(
       create: (BuildContext context) => BlocA(),
@@ -2708,7 +2708,7 @@ O <i>BlocListener</i> faz uso de um <i>BlocWidgetListener</i> e de um bloc opcio
 
 Um <i>listener</i> é chamado uma única vez para cada mudança de estado (NÃO incluindo o estado inicial) ao contrário do <i>builder</i> no <i>BlocBuilder</i>, sendo uma função void.
 
-Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocListener</i> irá performar automaticamente uma pesquisa utilizando o <i>BlocProvider</i> e o contexto atual.
+Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocListener</i> irá performar automaticamente uma pesquisa utilizando o <i>BlocProvider</i> e o <i>BuildContext</i> atual.
 
     BlocListener<BlocA, BlocAState>(
       listener: (context, state) {
@@ -2717,7 +2717,7 @@ Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocListener</i> irá pe
       child: Container(),
     )
   
-Um bloc só deve ser especificado caso seja preciso fornecer um bloc que não seja acessível por meio de <i>BlocProvider</i> e do <i>BuildContext</i> atual.
+Um bloc só deve ser especificado caso haja a necessidade de fornecer um bloc que não é acessível por meio de <i>BlocProvider</i> e do <i>BuildContext</i> atual.
 
     BlocListener<BlocA, BlocAState>(
       bloc: blocA,
@@ -2726,7 +2726,7 @@ Um bloc só deve ser especificado caso seja preciso fornecer um bloc que não se
       }
     )
 
-Para um controle refinado sobre quando a função <i>listener</i> é chamada, um <i>listenWhen</i> opcional pode ser fornecido. <i>listenWhen</i> obtem o estado anterior do bloc e seu estado atual, retornando um boolean. Caso <i>listenWhen</i> retorne true, o <i>listener</i> será chamado com o estado, caso contrário, ele não será chamado.
+Para um controle refinado sobre quando a função <i>listener</i> é chamada, um <i>listenWhen</i> opcional pode ser fornecido. Sua função é obter o estado anterior do bloc e seu estado atual, retornando um boolean. Caso o resultado seja true, o <i>listener</i> será chamado com o estado, caso contrário, ele não será chamado.
 
     BlocListener<BlocA, BlocAState>(
       listenWhen: (previousState, state) {
@@ -2773,9 +2773,9 @@ em:
 
 <h3>BlocConsumer</h3>
 
-Um <i>BlocConsumer</i> expõe um <i>builder</i> e um <i>listener</i> para reagir a novos estados. Seu comportamento é análogo a um <i>BlocListener</i> e um <i>BlocBuilder</i> aninhados, mas reduz a quantidade de clichê necessária. Logo, só deve ser utilizado quando for necessário fazer um rebuild a UI e executar outras reações às mudanças de estado no bloc. O <i>BlocConsumer</i> faz uso de um <i>BlocWidgetBuilder</i> e um <i>BlocWidgetListener</i> obrigatórios e um <i>bloc</i> opcional, <i>BlocBuilderCondition</i> e <i>BlocListenerCondition</i>.
+Um <i>BlocConsumer</i> expõe um <i>builder</i> e um <i>listener</i> para reagir a novos estados. Seu comportamento é análogo a um <i>BlocListener</i> e um <i>BlocBuilder</i> aninhados, mas reduz a quantidade de clichê necessária. Logo, só deve ser utilizado quando for necessário fazer um rebuild da UI e executar outras reações às mudanças de estado no bloc. O <i>BlocConsumer</i> faz uso de um <i>BlocWidgetBuilder</i> e um <i>BlocWidgetListener</i> obrigatórios e um <i>bloc</i> opcional, <i>BlocBuilderCondition</i> e <i>BlocListenerCondition</i>.
 
-Caso o parâmetro <i>bloc</i> venha a ser omitido, <i>BlocConsumer</i> irá performar automaticamente uma pesquisa utilizando <i>BlocProvider</i> e o BuildContext atual.
+Caso o parâmetro <i>bloc</i> venha a ser omitido, <i>BlocConsumer</i> irá performar automaticamente uma pesquisa utilizando <i>BlocProvider</i> e o <i>BuildContext</i> atual.
 
     BlocConsumer<BlocA, BlocAState>(
       listener: (context, state) {
@@ -2807,7 +2807,7 @@ Um <i>listenWhen</i> e um <i>buildWhen</i> opcionais podem ser implementados par
 
 <h3>RepositoryProvider</h3>
 
-Um <i>RepositoryProvider</i> fornece um repositório para os widget imediatemante abaixo na widget tree através da chamada <i>RepositoryProvider.of<T>(context)</i>. Sendo utilizado para performar injeção de dependências (DI), para que uma única instância de um repositório possa ser fornecida a vários widgets em suma subtree. <i>BlocProvider</i> deve ser utilizado para fornecer <i>blocs</i>, enquanto <i>RepositoryProvider</i> deve ser utilizado apenas para repositórios.
+Um <i>RepositoryProvider</i> fornece um repositório para os widget imediatemante abaixo na widget tree através da chamada <i>RepositoryProvider.of<T>(context)</i>. Sendo utilizado para performar injeção de dependências (DI), para que uma única instância de um repositório possa ser fornecida a vários widgets em sua subtree. <i>BlocProvider</i> deve ser utilizado para fornecer <i>blocs</i>, enquanto <i>RepositoryProvider</i> deve ser utilizado apenas para repositórios.
 
     RepositoryProvider(
       create: (context) => RepositoryA(),
