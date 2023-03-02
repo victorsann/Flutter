@@ -2591,7 +2591,7 @@ O <i>BlocBuilder</i> faz uso de um elemento <i>bloc</i> e de um função <i>buil
       }
     )
 
-Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocBuilder</i> irá executar automaticamente uma pesquisa usando BlocProvider e o BuildContext atual. Um <i>bloc</i> só deve ser especificado caso seu escopo envolva apenas um único widget e este não seja acessível por meio de um BlocProvider pai e do BuildContext atual.
+Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocBuilder</i> irá executar automaticamente uma pesquisa usando BlocProvider e o BuildContext atual. Um <i>bloc</i> só deve ser especificado caso seu escopo envolva apenas um único widget e este não seja acessível por meio de um BlocProvider pai e do BuildContext atual.
 
 Para um controle refinado sobre quando a build function é chamada, um <i>buildWhen</i> opcional pode ser fornecido. A propriedade <i>buildWhen</i> obtem o estado anterior do bloc e seu estado atual e retorna um boolean. Caso a propriedade retorne true, o <i>builder method</i> será chamado com o estado e o widget será reconstruído. Caso retorne false, nenhuma rebuild irá ocorrer:
 
@@ -2609,7 +2609,7 @@ Para um controle refinado sobre quando a build function é chamada, um <i>buildW
 
 O <i>BlocSelector</i> é um widget com o funcionamento análogo ao de um <i>BlocBuilder</i>, porém, permite a filtragem de atualizações através da seleção de novos valores baseados no bloc state atual. Seu uso permite avitar builds desnecessários caso o valor selecionado não tenha sido alterado. Dessa forma, o valor selecionado deve ser imutável para que seletor possa determinar se a propriedade <i>builder</i> deve ou não ser chamada novamente.
 
-Caso o parâmetro <i>bloc</i> seja omitido, o <i>BlocSelector</i> irá performar automaticamente uma pesquisa utilizando o BlocProvider e o contexto atual.
+Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocSelector</i> irá performar automaticamente uma pesquisa utilizando o BlocProvider e o contexto atual.
 
     BlocSelector<BlocA, BlocAState, SelectedState>(
       selector: (state) {
@@ -2704,11 +2704,155 @@ em:
 
 <h3>BlocListener</h3>
 
+O <i>BlocListener</i> faz uso de um <i>BlocWidgetListener</i> e de um bloc opcional para invocar o <i>listener</i> em resposta a mudanças de estado no bloc disponibilizado. Ele deve ser usado para funcionalidades que precisam ocorrer uma vez por mudança de estado, como navegação, exibição de SnackBar, exibição de dialogs, etc...
+
+Um <i>listener</i> é chamado uma única vez para cada mudança de estado (NÃO incluindo o estado inicial) ao contrário do <i>builder</i> no <i>BlocBuilder</i>, sendo uma função void.
+
+Caso o parâmetro <i>bloc</i> venha a ser omitido, o <i>BlocListener</i> irá performar automaticamente uma pesquisa utilizando o <i>BlocProvider</i> e o contexto atual.
+
+    BlocListener<BlocA, BlocAState>(
+      listener: (context, state) {
+        // do stuff here based on BlocA's state
+      },
+      child: Container(),
+    )
+  
+Um bloc só deve ser especificado caso seja preciso fornecer um bloc que não seja acessível por meio de <i>BlocProvider</i> e do <i>BuildContext</i> atual.
+
+    BlocListener<BlocA, BlocAState>(
+      bloc: blocA,
+      listener: (context, state) {
+        // do stuff here based on BlocA's state
+      }
+    )
+
+Para um controle refinado sobre quando a função <i>listener</i> é chamada, um <i>listenWhen</i> opcional pode ser fornecido. <i>listenWhen</i> obtem o estado anterior do bloc e seu estado atual, retornando um boolean. Caso <i>listenWhen</i> retorne true, o <i>listener</i> será chamado com o estado, caso contrário, ele não será chamado.
+
+    BlocListener<BlocA, BlocAState>(
+      listenWhen: (previousState, state) {
+        // return true/false to determine whether or not
+        // to call listener with state
+      },
+      listener: (context, state) {
+        // do stuff here based on BlocA's state
+      },
+      child: Container(),
+    )
 
 <h3>MultiBlocListener</h3>
+
+O <i>MultiBlocListener</i> mescla vários BlocListeners em um. Sua função é melhorar a legibilidade e eliminar a necessidade de aninhar vários <i>BlocListeners</i>. Usando <i>MultiBlocListener</i> é possível converter:
+
+    BlocListener<BlocA, BlocAState>(
+      listener: (context, state) {},
+      child: BlocListener<BlocB, BlocBState>(
+        listener: (context, state) {},
+        child: BlocListener<BlocC, BlocCState>(
+          listener: (context, state) {},
+          child: ChildA(),
+        ),
+      ),
+    )
+
+em: 
+
+    MultiBlocListener(
+      listeners: [
+        BlocListener<BlocA, BlocAState>(
+          listener: (context, state) {},
+        ),
+        BlocListener<BlocB, BlocBState>(
+          listener: (context, state) {},
+        ),
+        BlocListener<BlocC, BlocCState>(
+          listener: (context, state) {},
+        ),
+      ],
+      child: ChildA(),
+    )
+
 <h3>BlocConsumer</h3>
+
+Um <i>BlocConsumer</i> expõe um <i>builder</i> e um <i>listener</i> para reagir a novos estados. Seu comportamento é análogo a um <i>BlocListener</i> e um <i>BlocBuilder</i> aninhados, mas reduz a quantidade de clichê necessária. Logo, só deve ser utilizado quando for necessário fazer um rebuild a UI e executar outras reações às mudanças de estado no bloc. O <i>BlocConsumer</i> faz uso de um <i>BlocWidgetBuilder</i> e um <i>BlocWidgetListener</i> obrigatórios e um <i>bloc</i> opcional, <i>BlocBuilderCondition</i> e <i>BlocListenerCondition</i>.
+
+Caso o parâmetro <i>bloc</i> venha a ser omitido, <i>BlocConsumer</i> irá performar automaticamente uma pesquisa utilizando <i>BlocProvider</i> e o BuildContext atual.
+
+    BlocConsumer<BlocA, BlocAState>(
+      listener: (context, state) {
+        // do stuff here based on BlocA's state
+      },
+      builder: (context, state) {
+        // return widget here based on BlocA's state
+      }
+    )
+
+Um <i>listenWhen</i> e um <i>buildWhen</i> opcionais podem ser implementados para um controle mais granular sobre quando o <i>listener</i> e o <i>builder</i> são chamados, sendo ambos invocados em cada mudança no bloc. Cada um deles obtem o estado anterior e o estado atual, retornando um boolean que determina se o <i>builder</i> e/ou função <i>listener</i> serão ou não invocados. O estado anterior será inicializado para o estado do bloc quando o <i>BlocConsumer</i> for inicializado. <i>listenWhen</i> e <i>buildWhen</i> são opcionais e, se não forem implementados, o padrão será true.
+
+    BlocConsumer<BlocA, BlocAState>(
+      listenWhen: (previous, current) {
+        // return true/false to determine whether or not
+        // to invoke listener with state
+      },
+      listener: (context, state) {
+        // do stuff here based on BlocA's state
+      },
+      buildWhen: (previous, current) {
+        // return true/false to determine whether or not
+        // to rebuild the widget with state
+      },
+      builder: (context, state) {
+        // return widget here based on BlocA's state
+      }
+    )
+
 <h3>RepositoryProvider</h3>
+
+Um <i>RepositoryProvider</i> fornece um repositório para os widget imediatemante abaixo na widget tree através da chamada <i>RepositoryProvider.of<T>(context)</i>. Sendo utilizado para performar injeção de dependências (DI), para que uma única instância de um repositório possa ser fornecida a vários widgets em suma subtree. <i>BlocProvider</i> deve ser utilizado para fornecer <i>blocs</i>, enquanto <i>RepositoryProvider</i> deve ser utilizado apenas para repositórios.
+
+    RepositoryProvider(
+      create: (context) => RepositoryA(),
+      child: ChildA(),
+    );
+
+Portanto, de <i>ChildA</i>, é possível recuperar a instância do repositório com:
+
+    // with extensions
+    context.read<RepositoryA>();
+    
+    // without extensions
+    RepositoryProvider.of<RepositoryA>(context)
+
 <h3>MultiRepositoryProvider</h3>
+
+Um <i>MultiRepositoryProvider</i> mescla vários widgets <i>RepositoryProvider</i> em um. Sua função é melhorar a legibilidade e eliminar a necessidade de aninhar vários <i>RepositoryProvider</i>. Usando <i>MultiRepositoryProvider</i>, é possível converter:
+
+    RepositoryProvider<RepositoryA>(
+      create: (context) => RepositoryA(),
+      child: RepositoryProvider<RepositoryB>(
+        create: (context) => RepositoryB(),
+        child: RepositoryProvider<RepositoryC>(
+          create: (context) => RepositoryC(),
+          child: ChildA(),
+        )
+      )
+    )
+
+em: 
+
+    MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<RepositoryA>(
+          create: (context) => RepositoryA(),
+        ),
+        RepositoryProvider<RepositoryB>(
+          create: (context) => RepositoryB(),
+        ),
+        RepositoryProvider<RepositoryC>(
+          create: (context) => RepositoryC(),
+        ),
+      ],
+      child: ChildA(),
+    )
 
 <h2>Galeria</h2>
 
