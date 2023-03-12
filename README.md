@@ -11,7 +11,7 @@ Sua popularidade é devido a facilidade que dispõe ao permitir criar interfaces
 
 Com uma arquitetura desenvolvida em camadas, o flutter faz uso de uma biblioteca única de widgets customizáveis, que podem ou não possuir um ciclo de vida mediado por suas mudanças de estado. Para controle de estado e portanto, reatividade, o flutter dispõe de uma série de métodos e bibliotecas, sobre as quais este documento irá tratar mais a frente. 
 
-<!-- <h2>Instalação</h2>
+<h2>Instalação</h2>
 
 Antes de iniciar o processo de instalação, é importante frisar que há mais de uma forma de instalar e utilizar o Flutter, que variam de acordo com sistema operacional. A descrição a seguir mostra o processo de instalação no Windows:
 
@@ -137,7 +137,7 @@ Para verificar a instalaçao, execute:
 
 Obs: É extremamente importante que a versão instalada seja a 1.8.0_211, isso garante que seus resultados serão semelhantes aos dos futuros exemplos
 
-<h2>Android Device</h2>
+<!-- <h2>Android Device</h2>
 
 Sendo o último passo da preparação do ambiente android, é preciso ter acesso a uma máquina virtual, também chamada de android device ou emulador, ferramenta extremamente importante no desenvolvimento mobile. O android studio disponibiliza uma série de dispositivos, como smartphones, smartwatches e TV's, sendo utilizados de acordo com o projeto a ser desenvolvido. O passo a passo do processo de criação e configuração do AVD pode ser acessado na documentação oficial do [developer.android.com](https://developer.android.com/studio/run/managing-avds?hl=pt-br)
 
