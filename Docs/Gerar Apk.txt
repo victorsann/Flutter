@@ -1,0 +1,3 @@
+ flutter build apk
+
+ maria-maria-flutter\build\app\outputs\flutter-apk

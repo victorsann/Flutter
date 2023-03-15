@@ -3727,9 +3727,38 @@ Com isso o State de cada item da lista é gerenciado individualmente. A imagem a
 
 <h2>GetX</h2>
 
+O GetX é uma das soluções mais populares que permeiam o desenvolvimento de interface em Flutter. Sendo definido pela sua [documentação](https://pub.dev/packages/get#about-get) como uma combinação de um state manager de alto nível e de alta performance, um injetor de dependências inteligente e um gerenciamento de rotas bastante rápido e prático. Essa combinação configura três princípios básicos que definem a prioridade dos recurso que a biblioteca disponibiliza: <b>PRODUTIVIDADE</b>, <b>PERFORMANCE</b> e <b>ORGANIZAÇÃO</b>.
+
+- <b>PRODUTIVIDADE</b>: O GetX tem seu foco em performance e no consumo mínimo de recurso, não fazendo uso dos conceitos de Streams ou ChangeNotifier.
+
+- <b>PERFORMANCE</b>: O GetX utiliza uma síntaxe simples e prazerosa, o que dá a ele uma alcunha de facilitador. Por exemplo, geralmente desenvolvedores precisam se ater ao consumo de memória por recursos não utilizados em suas aplicações. O GetX dispõe por padrão de um lazy loading de dependências, o que pode ser facilmente revertido caso a dependência em questão necessite permanecer em memória.
+
+- <b>ORGANIZAÇÃO</b>: O GetX permite um total desacoplamento da View, lógica de apresentação, lógica de negócio, injeção de depenências e navegação. Não sendo necessário utilizar o BuildContext para performar navegação entre rotas, o Getx elimina a obrigatoriedade de uso da widget tree para tal função. Seu uso também permite não depender de um context para ter acesso a controllers/blocs por meio de um inheritedWidget, logo, é possível desacomplar toda a lógica de apresentação e lógica de negócio da camada de visualização. Além, seus recursos permitem saber onde encontrar quaisquer features de uma aplicação, gerando um clean code por padrão. Além de facilitar a manutenção, isso torna o compartilhamento de módulos algo que até então no Flutter era impensável, algo totalmente possível. 
+
+Além disso, o GetX possui um rico ecossistema, uma comunidade imensa, um grande número de colaboradores e, segundo estes, será mantido enquanto o Flutter existir. Em adição, todo o processo de desenvolvimento pode ser completamente automatizado, tanto no server-side quanto no front através da [Get CLI](https://github.com/jonataslaw/get_cli). 
+
+A presença da bibliotéca também pode ser notada nos facilitadores que ferramentas como o [VSCode](https://marketplace.visualstudio.com/items?itemName=get-snippets.get-snippets) e [Andorid Studio/Intellij](https://plugins.jetbrains.com/plugin/14975-getx-snippets) disponibilizam para seu maximizar seu uso.
+
+<h3>Instalação</h3>
+
+Para adicionar o Get ao pubspec.yaml utiliza-se:
+
+    flutter pub add get
+
+Ocomando irá adicionar a seguinte linha na seção de dependências do projeto:
+
+    dependencies:
+      get: 
+
+Já para importar a biblioteca, utiliza-se:
+
+    import 'package:get/get.dart';
+
+<h3>Countet App Com GetX</h3>
+
+
 
 <h2>Riverpod</h2>
-
 
 <div align="center">
   <img src="https://user-images.githubusercontent.com/61476935/181625021-7854476d-4021-4cbd-a595-a16084ce6118.png">
