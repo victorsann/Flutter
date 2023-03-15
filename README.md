@@ -3756,7 +3756,84 @@ Já para importar a biblioteca, utiliza-se:
 
 <h3>Countet App Com GetX</h3>
 
+Para exemplificar o uso do GetX e como este supre as necessiades anteriormente mencionada, criaremos um app simples seguindo o modelo de increment app do flutter utilizando alguns dos recursos que o GetX disponibiliza. Para isso, crie um app chamado <i>counter_getx</i>:
 
+    flutter create counter_getx
+
+Após a criação, iremos declarar a lib [get](https://pub.dev/packages/get) como dependencie do projeto através do comando:
+
+    flutter pub add get
+
+Em seguida iremos adaptar o modelo padrão, que utilizar o setState method como state injector. Para isso faça as seguinte inserções:
+
+    void main() {
+      runApp(
+        GetMaterialApp(
+          home: HomePage(),
+        )
+      );
+    }
+
+O <i>GetMaterialApp</i> não se trata de uma modificação do MaterialApp comumente utilizado, ele nada mais é que um Widget pre configurado que tem como child um MaterialApp padrão, este podendo ser configurando manualmente se necessário. O <i>GetMaterialApp</i> irá criar routes, injetá-las, e injetar tudo o que for necessário para a navegação entre rotas. Caso sua intenção seja apenas utilizar o GetX para gerenciar o estado de sua interface, ou ter acesso as dependências do seu sistema, o uso do <i>GetMaterialApp</i> não é necessário. Este só é obrigatório caso sua intenção seja utilizar routes, snackbars, internationalization, bottomSheets, dialogs, e APIs de alto nível relacionadas a rotas e ausência de contexto.
+
+Como próximo passo, iremos criar a lógica de negócio para fazer a gestão da lógica de interface do nosso app. Em uma classe chamada <i>HomeController</i>, faça as seguintes inserções:
+
+    import 'package:get/get.dart';
+    
+    class HomeController extends GetxController {
+      var count = 0.obs;
+      increment() => count++;
+    }
+
+Em seguida iremos implementar a HomePage, child do <i>GetMaterialApp</i>:
+
+    class HomePage extends StatelessWidget {
+    
+      final HomeController controller = Get.put(HomeController());
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Obx(() => Text('${controller.count}'))
+          ),
+          body: Center(  
+            child: ElevatedButton(  
+              onPressed: () => Get.to(() => Other()),
+              child: const Text('Go to other'),
+            ),
+          ),
+          floatingActionButton: FloatingActionButton(    
+            onPressed: controller.increment,
+            child: const Icon(Icons.add),
+          ),
+        );
+      }
+    }
+
+Além dela, criaremos uma segunta página que será acessada através do routing system do GetX, esta sendo chamada de <i>Other</i>:
+
+    class Other extends StatelessWidget {
+    
+      final HomeController controller = Get.find();
+    
+      @override
+      Widget build(BuildContext context) {
+        return Scaffold(
+          appBar: AppBar(  
+            leading: IconButton(  
+              onPressed: () => Get.back(),
+              icon: const Icon(Icons.arrow_back),
+            ),
+          ),
+          body: Center(  
+            child: Text('${controller.count}'),
+          ),
+        );
+      }
+    }
+
+Neste exemplo, pode-se dizer que os três pilares do GetX foram exemplificados. 
 
 <h2>Riverpod</h2>
 
