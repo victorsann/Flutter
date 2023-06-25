@@ -4814,11 +4814,11 @@ O próximo passo é criar o script responsável por gerar os builds de teste do 
   <img src="https://github.com/victorsann/Flutter/assets/61476935/0328d6b7-de9a-45f8-bf00-5a52354db9b2" width="40%">
 </div>
 
-O BrowserStack é uma plataforma de teste em nuvem que oferece diversos serviços no segmento, em especial a automatização, dando aos desenvolvedores a capacidade de testar aplicações navegadores sob demanda, sistemas operacionais e dispositivos móveis reais.
+O BrowserStack uma plataforma de testes em nuvem cuja premissa é fornecer às equipes de desenvolvimento acesso a testes instantâneos e abrangentes em navegadores, sistemas operacionais e dispositivos móveis reais sob demanda, visando à funcionalidade, desempenho e apelo visual, permitindo a criação de softwares livres de bugs em escala.
+
+Para atender a desenvolvedores Flutter, a ferramenta faz uso do package `integration_test` como plataforma de criação de testes, permitindo opera-las em versões distintas da aplicação. A seguir estão descritos os passos necessários para gerar e testar versões tanto de apps Android quanto IOS:
 
 <h2>Android</h2>
-
-O trecho a seguir descreve o passo a passo para configurar e executar testes em aplicativos android na plataforma. É importante salientar que o BrowserStack também faz uso do package `integration_test`, portanto, a etapa que configura o app para utilizá-lo não será descrita.
 
 <h3>a) Configire uma conta no BrowserStack</h3>
 
@@ -4866,3 +4866,5 @@ Um exemplo de resposta para a solicitação é o seguinte:
     }
 
 O `build_id` é usado para identificar exclusivamente sua compilação no App Automate.
+
+<h2>IOS</h2>
