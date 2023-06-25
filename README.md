@@ -4755,13 +4755,11 @@ O Test Lab usa dispositivos de produção reais executados em um data center do 
 
 A ferramenta permite teste tanto em Android builds quanto em IOS builds, sendo necessário configurar o aplicativo para atender a ferramenta em ambos os caso:
 
-<h2>Android SetUp</h2>
+<h2>Android Setup</h2>
 
-Para iniciar, é importanter ter seguido as configurações de uso do `integration_test`, descritos nos paragrafos iniciais desta tópico. Em seguida siga o passo a passo descrtio adiante:
+Para iniciar, é importanter ter seguido as configurações de uso do `integration_test`, descritos nos paragrafos iniciais desta tópico. Em seguida siga o passo a passo descrito adiante:
 
-<h3>Arquivo de Teste de Instrumentação</h3>
-
-Crie um arquivo de teste de instrumentação no diretório `android/app/src/androidTest/java/com/example/myapp/` do aplicativo (substituindo com, example e myapp pelo package name de seu aplicativo). Em seguida crie um arquivo chamado de MainActivityTest.java ou outro nome de sua escolha. Nele iremos criar uma activity em java para executar os testes no ambiente nativo:
+Crie um arquivo de teste de instrumentação no diretório `android/app/src/androidTest/java/com/example/myapp/` do aplicativo (substituindo com, example e myapp pelo package name de aplicativo). Em seguida crie um arquivo MainActivityTest.java ou outro nome de sua escolha. Nele iremos criar uma activity em java para executar os testes no ambiente nativo:
 
     package com.example.myapp;
 
@@ -4776,7 +4774,7 @@ Crie um arquivo de teste de instrumentação no diretório `android/app/src/andr
       public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, false);
     }
 
-Atualize o `myapp/android/app/build.gradle` do seu aplicativo para garantir o uso da versão androidx do `AndroidJUnitRunner` e tenha as bibliotecas androidx como dependência.
+Feito isso, atualize o `myapp/android/app/build.gradle` do aplicativo para garantir o uso da versão androidx do `AndroidJUnitRunner` e tenha as bibliotecas androidx como dependência.
 
     android {
       ...
@@ -4793,6 +4791,21 @@ Atualize o `myapp/android/app/build.gradle` do seu aplicativo para garantir o us
         androidTestImplementation 'androidx.test:runner:1.2.0'
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     }
+
+Em seguida crie o repositório que irá conter os arquivos de teste da aplicação em `root\integration_test\`
+
+>
+
+O próximo passo é criar o script responsável por gerar os builds de teste do aplicativo. Na raiz do projeto, crie o integration_android.sh com o o seguinte conteúdo:
+
+    pushd android
+    # flutter build generates files in android/ for building the app
+    flutter build apk
+    ./gradlew app:assembleAndroidTest
+    ./gradlew app:assembleDebug -Ptarget=integration_test/app_test.dart
+    popd
+
+<h2>IOS Setup</h2>
 
 <div align="left">
   <img src="https://github.com/victorsann/Flutter/assets/61476935/fb322c7c-0c41-4956-aa40-8c00dd16fa36" width="30%">
