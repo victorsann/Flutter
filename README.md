@@ -4804,11 +4804,11 @@ Descrição
 
 O trecho a seguir descreve o passo a passo para configirar e executar testes em aplicativos android na plataforma. É importante salientar que o BrowserStack também faz uso do package `integration_test`, portanto, a etapa que configura o app para utilizá-lo será não será descrita.
 
-<h3>Configire uma conta no BrowserStack</h3>
+<h3>a) Configire uma conta no BrowserStack</h3>
 
 Para utilizar a ferramenta é necessário obter um `username` e uma `access key`. Portanto, crie e configure uma conta na plataforma: [www.browserstack.com](https://www.browserstack.com/).
 
-<h3>Carregue seu aplicativo</h3>
+<h3>b) Carregue seu aplicativo</h3>
 
 Para subir uma versão do seu aplicativo para os servidores do BrowserStack, crie um `.apk` ou `.aab` e submeta o arquivo resultante utilizando o seguinte request:
 
@@ -4829,7 +4829,7 @@ Um exemplo de resposta para a solicitação é o seguinte:
 
 O valor do parâmetro `app_url` na resposta é utilizado para especificar o aplicativo que irá sofrer os testes de integração de integração.
 
-<h3>Carregue um conjunto de testes</h3>
+<h3>c) Carregue um conjunto de testes</h3>
 
 <h3>Executar testes de integração do Android Flutter</h3>
 
