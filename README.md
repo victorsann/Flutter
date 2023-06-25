@@ -4745,7 +4745,9 @@ Para executar todos os testes contidos no diretório, basta não identificar um 
 
 Existe uma série de ferramentas que permitem automatizar testes em projetos flutter, podento citar a [Firebase Test Lab](https://firebase.google.com/docs/test-lab), o [BrowsweStack](https://www.browserstack.com/), e entre outras. Tais ferramentas são essenciais para a eficácia dos testes, pois permitem que a aplicação seja avaliada em inumeros dispositivos, permitindo uma visão do funcionamento de um app em um curto período de tempo.
 
-<h1>Firebase Test Lab</h1>
+<div align="left">
+  <img src="https://github.com/victorsann/Flutter/assets/61476935/7987e62c-4ecc-4e4b-9971-00faafa3ea0b" width="30%">
+</div>
 
 O Firebase Test Lab é uma infraestrutura de teste de aplicativos baseada em nuvem que permite testar um aplicativo em uma variedade de dispositivos (Android e IOS) e configurações, para que seja possível ter uma ideia melhor de como será seu desempenho nas mãos de usuários reais.
 
