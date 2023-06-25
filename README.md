@@ -4794,7 +4794,59 @@ Atualize o `myapp/android/app/build.gradle` do seu aplicativo para garantir o us
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     }
 
-
 <div align="center">
-  <img src="https://github.com/victorsann/Flutter/assets/61476935/fb322c7c-0c41-4956-aa40-8c00dd16fa36">
+  <img src="https://github.com/victorsann/Flutter/assets/61476935/fb322c7c-0c41-4956-aa40-8c00dd16fa36" width="50%">
 </div>
+
+Descrição
+
+<h2>Android</h2>
+
+O trecho a seguir descreve o passo a passo para configirar e executar testes em aplicativos android na plataforma. É importante salientar que o BrowserStack também faz uso do package `integration_test`, portanto, a etapa que configura o app para utilizá-lo será não será descrita.
+
+<h3>Configire uma conta no BrowserStack</h3>
+
+Para utilizar a ferramenta é necessário obter um `username` e uma `access key`. Portanto, crie e configure uma conta na plataforma: [www.browserstack.com](https://www.browserstack.com/).
+
+<h3>Carregue seu aplicativo</h3>
+
+Para subir uma versão do seu aplicativo para os servidores do BrowserStack, crie um `.apk` ou `.aab` e submeta o arquivo resultante utilizando o seguinte request:
+
+    curl -u "user_name:access_key" \
+    -X POST "https://api-cloud.browserstack.com/app-automate/flutter-integration-tests/v2/android/app" \
+    -F "file=@/path/to/app/file/app-debug.apk"
+
+Um exemplo de resposta para a solicitação é o seguinte:
+
+    {
+      "app_name":"app-debug.apk",
+      "app_url":"bs://85928c420100fe771ef81e69365271d3d6b3a31b",
+      "app_version":"1.0.0",
+      "app_id":"85928c420100fe771ef81e69365271d3d6b3a31b",
+      "uploaded_at":"2023-06-25 20:07:02 UTC",
+      "expiry":"2023-07-25 20:07:02 UTC"
+    }
+
+O valor do parâmetro `app_url` na resposta é utilizado para especificar o aplicativo que irá sofrer os testes de integração de integração.
+
+<h3>Carregue um conjunto de testes</h3>
+
+<h3>Executar testes de integração do Android Flutter</h3>
+
+Depois de carregar o aplicativo e suíte de teste, uma solicitação deve ser enviada para iniciar a execução do teste, conforme mostrado na seguinte amostra de solicitação cURL:
+
+    curl -u "user_name:access_key" \
+    -X POST "https://api-cloud.browserstack.com/app-automate/flutter-integration-tests/v2/android/build" \
+    -d '{"app": "app_url", "testSuite": "test_suite_url", "devices": ["Samsung Galaxy S9 Plus-9.0"]}' \
+    -H "Content-Type: application/json"
+
+Nele indentificamos o aplicativo a ser testado através `app_url` recuperada da primeira request; o conjunto de testes, atrevés da `test_suite_url` recuperada da segunda request; e a lista de devices em que os testes serão implementados, onde cada device é representado por uma string que o identifica.
+
+Um exemplo de resposta para a solicitação é o seguinte:
+
+    {
+      "message" : "Success",
+      "build_id" : "4d2b4deb810af077d5aed98f479bfdd2e64f36c3"
+    }
+
+O `build_id` é usado para identificar exclusivamente sua compilação no App Automate.
