@@ -4710,7 +4710,7 @@ Adicione o integration_test e flutter_test ao arquivo pubspec.yaml file:
       flutter_test:
         sdk: flutter
 
-Na raiz do projeto, crie um novo diretório integration_test/ como um novo arquivo, name_test.dart. No arquivo adicione o seguinte código:
+Na raiz do projeto, crie um novo diretório <i>integration_test/</i> como um novo arquivo, <i>name_test.dart</i>. No arquivo adicione o seguinte código:
 
     import 'package:flutter_test/flutter_test.dart';
     import 'package:integration_test/integration_test.dart';
@@ -4740,3 +4740,56 @@ Para executar um arquivo de teste utilizamos o comando `flutter test`, incluindo
 Para executar todos os testes contidos no diretório, basta não identificar um arquivo de teste no comando:
 
     flutter test integration_test
+
+<h1>Automatização</h1>
+
+Existe uma série de ferramentas que permitem automatizar testes em projetos flutter, podento citar a [Firebase Test Lab](https://firebase.google.com/docs/test-lab), o [BrowsweStack](https://www.browserstack.com/), e entre outras. Tais ferramentas são essenciais para a eficácia dos testes, pois permitem que a aplicação seja avaliada em inumeros dispositivos, permitindo uma visão do funcionamento de um app em um curto período de tempo.
+
+<h2>Firebase Test Lab</h2>
+
+O Firebase Test Lab é uma infraestrutura de teste de aplicativos baseada em nuvem que permite testar um aplicativo em uma variedade de dispositivos (Android e IOS) e configurações, para que seja possível ter uma ideia melhor de como será seu desempenho nas mãos de usuários reais.
+
+<h2>Como funciona ?</h2>
+
+O Test Lab usa dispositivos de produção reais executados em um data center do Google para exclusivo para teste aplicativos. Os dispositivos são possuem APIs atualizadas e configurações de localidade personalizáveis, permitindo que testes de um app sejam feitos levando em conta o hardware e as configurações que ele encontrará quando estiver em operação nos dispositivos dos clientes.
+
+A ferramenta permite teste tanto em Android builds quanto em IOS builds, sendo necessário configurar o aplicativo para atender a ferramenta em ambos os caso:
+
+<h2>Android SetUp</h2>
+
+Para iniciar, é importanter ter seguido as configurações de uso do `integration_test`, descritos nos paragrafos iniciais desta tópico. Em seguida siga o passo a passo descrtio adiante:
+
+<h3>Arquivo de Teste de Instrumentação</h3>
+
+Crie um arquivo de teste de instrumentação no diretório `android/app/src/androidTest/java/com/example/myapp/` do aplicativo (substituindo com, example e myapp pelo package name de seu aplicativo). Em seguida crie um arquivo chamado de MainActivityTest.java ou outro nome de sua escolha. Nele iremos criar uma activity em java para executar os testes no ambiente nativo:
+
+    package com.example.myapp;
+
+    import androidx.test.rule.ActivityTestRule;
+    import dev.flutter.plugins.integration_test.FlutterTestRunner;
+    import org.junit.Rule;
+    import org.junit.runner.RunWith;
+
+    @RunWith(FlutterTestRunner.class)
+    public class MainActivityTest {
+      @Rule
+      public ActivityTestRule<MainActivity> rule = new ActivityTestRule<>(MainActivity.class, true, false);
+    }
+
+Atualize o `myapp/android/app/build.gradle` do seu aplicativo para garantir o uso da versão androidx do `AndroidJUnitRunner` e tenha as bibliotecas androidx como dependência.
+
+    android {
+      ...
+      defaultConfig {
+        ...
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+      }
+    }
+
+    dependencies {
+        testImplementation 'junit:junit:4.12'
+
+        // https://developer.android.com/jetpack/androidx/releases/test/#1.2.0
+        androidTestImplementation 'androidx.test:runner:1.2.0'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    }
