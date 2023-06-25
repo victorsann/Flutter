@@ -4793,3 +4793,8 @@ Atualize o `myapp/android/app/build.gradle` do seu aplicativo para garantir o us
         androidTestImplementation 'androidx.test:runner:1.2.0'
         androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     }
+
+
+<div align="center">
+  <img src="https://github.com/victorsann/Flutter/assets/61476935/fb322c7c-0c41-4956-aa40-8c00dd16fa36">
+</div>
