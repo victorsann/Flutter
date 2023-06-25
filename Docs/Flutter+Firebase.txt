@@ -49,8 +49,12 @@ InitializeApp:
 AUTHENTICATION
 
 
-keytool -list -v -keystore "C:\Users\Victor\.android/debug.keystore" -alias androiddebugkey -storepass android
+ANALYTICS
 
-04:23:66:4D:9A:58:B1:4D:44:B8:0F:B9:AB:50:93:BC:19:3B:26:75
+To enable Analytics debug mode on an Android device, execute the following commands:
 
-7A:9A:AE:B9:4F:BC:D6:D2:7D:0E:E6:90:64:C5:AD:50:82:BD:37:C7
+> adb shell setprop debug.firebase.analytics.app PACKAGE_NAME
+
+To enable Analytics debug mode on your development device, specify the following command line argument in Xcode:
+
+> -FIRDebugEnabled
