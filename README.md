@@ -4814,7 +4814,7 @@ O próximo passo é criar o script responsável por gerar os builds de teste do 
   <img src="https://github.com/victorsann/Flutter/assets/61476935/0328d6b7-de9a-45f8-bf00-5a52354db9b2" width="40%">
 </div>
 
-Descrição
+O BrowserStack é uma plataforma de teste em nuvem que oferece diversos serviços no segmento, em especial a automatização, dando aos desenvolvedores a capacidade de testar aplicações navegadores sob demanda, sistemas operacionais e dispositivos móveis reais.
 
 <h2>Android</h2>
 
