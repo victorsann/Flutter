@@ -4745,7 +4745,7 @@ Para executar todos os testes contidos no diretório, basta não identificar um 
 
 Existe uma série de ferramentas que permitem automatizar testes em projetos flutter, podento citar a [Firebase Test Lab](https://firebase.google.com/docs/test-lab), o [BrowsweStack](https://www.browserstack.com/), e entre outras. Tais ferramentas são essenciais para a eficácia dos testes, pois permitem que a aplicação seja avaliada em inumeros dispositivos, permitindo uma visão do funcionamento de um app em um curto período de tempo.
 
-<h2>Firebase Test Lab</h2>
+<h1>Firebase Test Lab</h1>
 
 O Firebase Test Lab é uma infraestrutura de teste de aplicativos baseada em nuvem que permite testar um aplicativo em uma variedade de dispositivos (Android e IOS) e configurações, para que seja possível ter uma ideia melhor de como será seu desempenho nas mãos de usuários reais.
 
@@ -4808,14 +4808,14 @@ O próximo passo é criar o script responsável por gerar os builds de teste do 
 <h2>IOS Setup</h2>
 
 <div align="left">
-  <img src="https://github.com/victorsann/Flutter/assets/61476935/fb322c7c-0c41-4956-aa40-8c00dd16fa36" width="30%">
+  <img src="https://github.com/victorsann/Flutter/assets/61476935/0328d6b7-de9a-45f8-bf00-5a52354db9b2" width="30%">
 </div>
 
 Descrição
 
 <h2>Android</h2>
 
-O trecho a seguir descreve o passo a passo para configirar e executar testes em aplicativos android na plataforma. É importante salientar que o BrowserStack também faz uso do package `integration_test`, portanto, a etapa que configura o app para utilizá-lo será não será descrita.
+O trecho a seguir descreve o passo a passo para configurar e executar testes em aplicativos android na plataforma. É importante salientar que o BrowserStack também faz uso do package `integration_test`, portanto, a etapa que configura o app para utilizá-lo não será descrita.
 
 <h3>a) Configire uma conta no BrowserStack</h3>
 
@@ -4840,20 +4840,20 @@ Um exemplo de resposta para a solicitação é o seguinte:
       "expiry":"2023-07-25 20:07:02 UTC"
     }
 
-O valor do parâmetro `app_url` na resposta é utilizado para especificar o aplicativo que irá sofrer os testes de integração de integração.
+O valor do parâmetro `app_url` na resposta é utilizado para especificar o aplicativo que irá sofrer os testes de integração.
 
 <h3>c) Carregue um conjunto de testes</h3>
 
-<h3>Executar testes de integração do Android Flutter</h3>
+<h3>d) Executar testes de integração do Android Flutter</h3>
 
-Depois de carregar o aplicativo e suíte de teste, uma solicitação deve ser enviada para iniciar a execução do teste, conforme mostrado na seguinte amostra de solicitação cURL:
+Depois de carregar o aplicativo e suíte de teste, uma solicitação deve ser feita para iniciar a execução do teste, conforme mostrado na seguinte cURL:
 
     curl -u "user_name:access_key" \
     -X POST "https://api-cloud.browserstack.com/app-automate/flutter-integration-tests/v2/android/build" \
     -d '{"app": "app_url", "testSuite": "test_suite_url", "devices": ["Samsung Galaxy S9 Plus-9.0"]}' \
     -H "Content-Type: application/json"
 
-Nele indentificamos o aplicativo a ser testado através `app_url` recuperada da primeira request; o conjunto de testes, atrevés da `test_suite_url` recuperada da segunda request; e a lista de devices em que os testes serão implementados, onde cada device é representado por uma string que o identifica.
+Nela indentificamos o aplicativo a ser testado através `app_url`, recuperada da primeira request; o conjunto de testes atrevés da `test_suite_url`, recuperada da segunda request; e a lista de devices em que os testes serão implementados, onde cada device é representado por uma string.
 
 Um exemplo de resposta para a solicitação é o seguinte:
 
