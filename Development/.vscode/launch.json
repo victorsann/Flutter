@@ -1,0 +1,128 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "chart_app",
+            "cwd": "chart_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "chart_app (profile mode)",
+            "cwd": "chart_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "chart_app (release mode)",
+            "cwd": "chart_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "location",
+            "cwd": "location",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "location (profile mode)",
+            "cwd": "location",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "location (release mode)",
+            "cwd": "location",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "nubank",
+            "cwd": "nubank",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "nubank (profile mode)",
+            "cwd": "nubank",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "nubank (release mode)",
+            "cwd": "nubank",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "spotify-flutter-modular",
+            "cwd": "spotify-flutter-modular",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "spotify-flutter-modular (profile mode)",
+            "cwd": "spotify-flutter-modular",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "spotify-flutter-modular (release mode)",
+            "cwd": "spotify-flutter-modular",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "spotify_bloc",
+            "cwd": "spotify_bloc",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "spotify_bloc (profile mode)",
+            "cwd": "spotify_bloc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "spotify_bloc (release mode)",
+            "cwd": "spotify_bloc",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "teste",
+            "cwd": "teste",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "teste (profile mode)",
+            "cwd": "teste",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "teste (release mode)",
+            "cwd": "teste",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

@@ -312,6 +312,7 @@ O processo de execução da app em um dispositivo real é semelhante ao anteriom
 <br>
 
 O resultado é semelhante ao anteriormente visto em um android device. E como já foi dito, utilizar um aparelho real é uma alternativa ao uso dos emuladores, sendo importante também para que o desenvolvedor tenha contato com a aplicação desenvolvida de forma que o mesmo sinta a experiência do usuário. Tendo isto dito, deste ponto em diante, os exemplos irão permanecer restritos ao andorid device.
+ -->
 
 <h2>Conectando Device (WI-FI)</h2>
 
@@ -340,7 +341,6 @@ O próximo passso é acessar seu smartphone e verificar o endereço de IP corres
 </div>
 
 Tendo isso feito, já é possível remover a conexão USB. Entretanto, caso a rede seja desconectada entre qualquer ponto, seja sua máquina ou smartphone, você perderá a conexão, sendo necessário refazer o processo.
- -->
 
 <h1>Visão Geral da Arquitetura</h1>
 
@@ -4754,7 +4754,9 @@ O Firebase Test Lab é uma infraestrutura de teste de aplicativos baseada em nuv
 
 <h2>Como funciona ?</h2>
 
-O Test Lab usa dispositivos de produção reais executados em um data center do Google para exclusivo para teste aplicativos. Os dispositivos são possuem APIs atualizadas e configurações de localidade personalizáveis, permitindo que testes de um app sejam feitos levando em conta o hardware e as configurações que ele encontrará quando estiver em operação nos dispositivos dos clientes.
+O Test Lab usa dispositivos de produção reais executados em um data center do Google exclusivo para teste de aplicativos. Os dispositivos possuem APIs atualizadas e configurações de localidade personalizáveis, permitindo que testes de um app sejam feitos levando em conta o hardware e as configurações que ele encontrará quando estiver em operação nos dispositivos dos clientes.
+
+O ferramenta executa testes a partir de um arquivo .apk ou .aab do seu app, juntamente com um .apk de teste, ambos gerados no mesmo processo. Na plataforma de Test Lab do Firebase Console, os arquivos são submetidos a um teste instrumental
 
 A ferramenta permite teste tanto em Android builds quanto em IOS builds, sendo necessário configurar o aplicativo para atender a ferramenta em ambos os caso:
 
@@ -4813,6 +4815,7 @@ O próximo passo é criar o script responsável por gerar os builds de teste do 
 <div align="center">
   <img src="https://github.com/victorsann/Flutter/assets/61476935/0328d6b7-de9a-45f8-bf00-5a52354db9b2" width="40%">
 </div>
+<br>
 
 O BrowserStack uma plataforma de testes em nuvem cuja premissa é fornecer às equipes de desenvolvimento acesso a testes instantâneos e abrangentes em navegadores, sistemas operacionais e dispositivos móveis reais sob demanda, visando à funcionalidade, desempenho e apelo visual, permitindo a criação de softwares livres de bugs em escala.
 
